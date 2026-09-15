@@ -1,0 +1,34 @@
+{
+  "Claude_ai_chat_side_instructions.md": {
+    "hash": "3f3b94f9e5a133af056c770f14163e6d8df88833",
+    "synced_at": "2026-09-15T22:43:49+00:00"
+  },
+  "Joshua-english.txt": {
+    "hash": "789c9da00c0519b9deb320cd7f809ea06b46bd12",
+    "synced_at": "2026-09-15T22:43:49+00:00"
+  },
+  "Joshua-reading.txt": {
+    "hash": "ecef592616f4c56bbae359741bc8b24bdcf91d1e",
+    "synced_at": "2026-09-15T22:43:49+00:00"
+  },
+  "Joshua-words.tsv": {
+    "hash": "7f20edf9facbfed6d7522879b24d9c5af47a96de",
+    "synced_at": "2026-09-15T22:43:49+00:00"
+  },
+  "data/roots.json": {
+    "hash": "87c90005d1b42011d4e8c0c08c0fac272bf4b63b",
+    "synced_at": "2026-09-15T22:43:49+00:00"
+  },
+  "joshua_study_style_reference.md": {
+    "hash": "2a5a2b36ddd1dd635c02cfaa1739761c66ff6210",
+    "synced_at": "2026-09-15T22:43:49+00:00"
+  },
+  "threads-digest.md": {
+    "hash": "d2ae84bee1dbaf40cb5163e64d204d83c627dd32",
+    "synced_at": "2026-09-15T22:43:49+00:00"
+  },
+  "translation-choices.md": {
+    "hash": "29c8977bab5d9f5b6cfed482c972a07493c516ac",
+    "synced_at": "2026-09-15T22:43:49+00:00"
+  }
+}

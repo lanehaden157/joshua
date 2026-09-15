@@ -13,6 +13,9 @@
   advisory:
   7. audit_thread_coverage.py  Hebrew vs. fragments -- thread tag-coverage
                                gaps in built units (never fails the build)
+  8. check_project_sync.py    which project-side/README.md files have
+                               changed since they were last pasted into the
+                               Claude.ai project (never fails the build)
 
 units/*.html are the source of truth here -- this script never regenerates
 them from source-artifacts/. Adding a NEW unit is `port_artifact.py NN`, not
@@ -30,7 +33,8 @@ import os
 HERE = os.path.dirname(os.path.abspath(__file__))
 STEPS = ["apply_retrofit.py", "refresh_meta.py", "scan_occurrences.py",
          "verify_occurrences.py", "roots.py", "threads_digest.py"]
-ADVISORY = ["audit_thread_coverage.py"]  # run, show output, never fail the build
+ADVISORY = ["audit_thread_coverage.py"]  # run with --check, show output, never fail the build
+ADVISORY_BARE = ["check_project_sync.py"]  # run with no args, show output, never fail the build
 
 
 def main():
@@ -44,6 +48,9 @@ def main():
     for s in ADVISORY:
         print(f"\n=== {s} (advisory) ===")
         subprocess.run([sys.executable, os.path.join(HERE, s), "--check"], env=env)
+    for s in ADVISORY_BARE:
+        print(f"\n=== {s} (advisory) ===")
+        subprocess.run([sys.executable, os.path.join(HERE, s)], env=env)
     print("\nbuild ok")
 
 
