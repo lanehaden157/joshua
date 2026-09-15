@@ -1,0 +1,5 @@
+{
+  "_note": "Policy file -- Lane owns the content; nothing in the pipeline writes it. Global registry of TRACKED-THREAD root identity only (phase-0.6-plan.md §A6) -- a root is a hand-curated set of Strong's/lemma ids (joshua_study_style_reference.md §2), not a string, not a translit/gloss/colour bundle. Local (non-thread) roots stay in a unit's own unit-meta roots[] {root, translit, gloss} and are counted per-verse; they don't belong here. Shape is deliberately flat and minimal: {ids, note} only -- no kind/members (Matthew built and reverted that taxonomy the same day it shipped), no translit/gloss/colour (those live with the thread's other data, not with its id-set). Every id here must exist as a lemma in Joshua-words.tsv and must belong to exactly one root (pipeline/roots.py enforces both, plus that every threads.json thread's `root` resolves to an entry here).",
+  "version": 1,
+  "roots": {}
+}

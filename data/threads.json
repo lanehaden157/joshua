@@ -1,0 +1,5 @@
+{
+  "_note": "Policy file -- Lane owns the content, this stays empty until threads are actually chosen, not pre-populated. Per-thread shape (matches Matthew's data/threads.json): id, root, translit, gloss, color, status ('open'/'closed'), tagged (bool), opens {unit, ref}, payoffs [{unit, ref, note?}], note (prose). Each thread's `root` must also resolve to an entry in data/roots.json (a hand-curated set of Strong's/lemma ids, see pipeline/roots.py) before pipeline/audit_thread_coverage.py can audit it. candidates/retro are NOT thread.json fields -- those live per-unit in a fragment's unit-meta block (threads.candidates/threads.retro), see pipeline/unit_meta.py's module docstring.",
+  "version": 1,
+  "threads": []
+}

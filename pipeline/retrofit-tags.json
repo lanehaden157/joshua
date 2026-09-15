@@ -1,0 +1,3 @@
+{
+  "_note": "The record of hand-authored fragment edits, replayed idempotently by apply_retrofit.py (build.py step 1). Ops: strip_span / text / untag_word / retag_word (whole-unit), unwrap / retag / add (per-verse) -- see apply_retrofit.py. Once units exist, the committed units/*.html will already contain all of this; these entries are the audit trail and the safety net for port_artifact.py, which re-runs fragment extraction on a unit it (re)ports. Empty until the first unit is built -- no fabricated content."
+}
