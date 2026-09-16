@@ -1,22 +1,22 @@
 {
   "Joshua-words.tsv": {
     "hash": "7f20edf9facbfed6d7522879b24d9c5af47a96de",
-    "synced_at": "2026-09-16T03:36:13+00:00"
+    "synced_at": "2026-09-16T15:48:24+00:00"
   },
   "data/roots.json": {
     "hash": "87c90005d1b42011d4e8c0c08c0fac272bf4b63b",
-    "synced_at": "2026-09-16T03:36:13+00:00"
+    "synced_at": "2026-09-16T15:48:24+00:00"
   },
   "joshua_study_style_reference.md": {
-    "hash": "2a5a2b36ddd1dd635c02cfaa1739761c66ff6210",
-    "synced_at": "2026-09-16T03:36:13+00:00"
+    "hash": "eda6322373132dded672d4ae139016b665d89a33",
+    "synced_at": "2026-09-16T15:48:24+00:00"
   },
   "threads-digest.md": {
     "hash": "d2ae84bee1dbaf40cb5163e64d204d83c627dd32",
-    "synced_at": "2026-09-16T03:36:13+00:00"
+    "synced_at": "2026-09-16T15:48:24+00:00"
   },
   "translation-choices.md": {
-    "hash": "29c8977bab5d9f5b6cfed482c972a07493c516ac",
-    "synced_at": "2026-09-16T03:36:13+00:00"
+    "hash": "82c06f1bbbfdfa2248dff4517c56ba0147dbe59a",
+    "synced_at": "2026-09-16T15:48:24+00:00"
   }
 }
