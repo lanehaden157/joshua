@@ -1,16 +1,4 @@
 {
-  "Claude_ai_chat_side_instructions.md": {
-    "hash": "f06de25b7633d9e9f1b03f4a07fa48d2103e6de5",
-    "synced_at": "2026-09-16T03:36:13+00:00"
-  },
-  "Joshua-english.txt": {
-    "hash": "789c9da00c0519b9deb320cd7f809ea06b46bd12",
-    "synced_at": "2026-09-16T03:36:13+00:00"
-  },
-  "Joshua-reading.txt": {
-    "hash": "ecef592616f4c56bbae359741bc8b24bdcf91d1e",
-    "synced_at": "2026-09-16T03:36:13+00:00"
-  },
   "Joshua-words.tsv": {
     "hash": "7f20edf9facbfed6d7522879b24d9c5af47a96de",
     "synced_at": "2026-09-16T03:36:13+00:00"

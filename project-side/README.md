@@ -49,15 +49,17 @@ there) once it's authored.
 
 | file | direction | what it is | update cadence |
 |---|---|---|---|
-| [`Claude_ai_chat_side_instructions.md`](../Claude_ai_chat_side_instructions.md) | repo → project | Research project's operating instructions (persona, sourcing, three-pass workflow) | Re-paste into the project's instructions field whenever it changes |
 | [`joshua_study_style_reference.md`](../joshua_study_style_reference.md) | repo → project | The artifact contract — fragment shape, unit-meta schema, component whitelist, transliteration scheme, checklist | Re-paste whenever it changes |
 | [`translation-choices.md`](../translation-choices.md) | repo → project | Hand-maintained glossary of deliberate English renderings | Edit **in the same turn** as any wording decision — this is the rule that saved a retroactive pass on Matthew |
 | [`threads-digest.md`](../threads-digest.md) | repo → project | Generated snapshot of tracked cross-unit threads — source of truth for what to tag | Regenerate (`python pipeline/threads_digest.py`) any time `data/threads.json` changes; never hand-edit |
 | [`resources.md`](../resources.md) | repo → project | **Missing — needs authoring.** `Claude_ai_chat_side_instructions.md` already points to it as "the single authored inventory" (Hebrew/word files, generated digests, the commentary set). Nothing reads it yet because it doesn't exist. | N/A until created |
 | [`data/roots.json`](../data/roots.json) | repo → project | Tracked-thread root identity — hand-curated Strong's/lemma id sets per root (style reference §2) | Re-paste whenever a root's id set changes |
 | [`Joshua-words.tsv`](../Joshua-words.tsv) | repo → project | Per-word OSHB data (`word_id, ref, surface, lemma, morph`) — the thing every Hebrew string in an artifact must be pulled from, never hand-typed (style reference §2) | Static once generated; only changes if the corpus pin changes |
-| [`Joshua-reading.txt`](../Joshua-reading.txt) | repo ↔ project | Pointed Hebrew verse text | Manual sync point, like Matthew's `Matt.txt` ↔ `MatthewSBLGNT.txt` — nothing detects drift if the project side's own copy diverges |
-| [`Joshua-english.txt`](../Joshua-english.txt) | repo ↔ project | WEB-classic English verse text (baseline, not the study's own translation) | Same manual sync discipline |
+
+**No longer synced** (Lane's call, 2026-09-16): `Claude_ai_chat_side_instructions.md`,
+`Joshua-reading.txt`, `Joshua-english.txt`. All three still exist at their
+repo paths and are still authoritative there — they're just out of the
+`project-side/synced/` loop now.
 
 ## Also worth knowing about, not part of the sync loop
 

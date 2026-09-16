@@ -22,14 +22,11 @@ STATE_PATH = ROOT / "project-side" / "sync-state.json"
 # Repo-relative paths of every file that has to round-trip into the
 # Claude.ai project. Keep in sync with project-side/README.md's table.
 TRACKED_FILES = [
-    "Claude_ai_chat_side_instructions.md",
     "joshua_study_style_reference.md",
     "translation-choices.md",
     "threads-digest.md",
     "data/roots.json",
     "Joshua-words.tsv",
-    "Joshua-reading.txt",
-    "Joshua-english.txt",
 ]
 
 
