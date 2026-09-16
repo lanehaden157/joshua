@@ -37,13 +37,17 @@ trusting the file blindly.
 | divine name | יְהוָ֑ה (YHWH) | Yahweh | Matches `pipeline/hebrew.py`'s `OVERRIDES` table (Strong's 3068/3069) — not "LORD." Consistent with `Joshua-english.txt`'s WEB-classic source, which also uses Yahweh. |
 | ḥerem | חֵ֛רֶם (Josh 6:17) | **TODO** | Open. "Devoted to destruction" / "banned" / left untranslated ("ḥerem") are all live options — no default chosen. |
 | ḥesed | חָ֑סֶד (Josh 2:12) | **TODO** | Open. "Steadfast love" / "kindness" / "loyalty" each lose something; no default chosen. |
-| naḥalah | לְ/נַחֲלָ֧ה (Josh 11:23) | **TODO** | Open. "Inheritance" / "possession" / "allotment" — the last matches this project's own "Allotment" movement title (see `joshua_literary_unit_map.md`), which may or may not be the right reason to pick it. |
+| naḥalah | לְ/נַחֲלָ֧ה (Josh 11:23) | **inheritance** | Locked 2026-09-16. Not "allotment" — that word belongs to this project's own "Allotment" movement title (`joshua_literary_unit_map.md`), a literary-map label, not a translation reason; using it here risked the choice running backward. "Inheritance" keeps the causative verb legible: `tanḥil` (1:6, causative of the same root) renders "cause to inherit" / "give as an inheritance," visibly matching the noun. |
 | goel | מִ/גֹּאֵ֖ל (Josh 20:3) | **TODO** | Open. "Avenger" (of blood, its cities-of-refuge sense here) vs. the broader "redeemer" sense the same root carries elsewhere (Ruth, Job) — whether to render the same or differently by context is itself part of the open question. |
 | nefesh | נַפְשֹׁתֵ֖י/נוּ (Josh 2:13) | **TODO** | Open. "Life" / "soul" / "person" / left untranslated — famously resists any single fixed English equivalent; may end up context-dependent by deliberate choice rather than drift. |
-| y'all for 2pl | — | **TODO** | Register question, not a lexical one: whether 2nd-person-plural address (Joshua speaking to "all Israel," covenant-renewal addresses, etc.) gets marked in English (e.g. "y'all") the way Matthew's translation apparently does, or left unmarked. No default chosen. |
+| y'all for 2pl | — | **y'all, always** | Locked 2026-09-16. 2nd-person-plural address is always marked (e.g. "y'all"), 2nd-person-singular left unmarked — a fixed rule, not context-dependent, since Josh 1 alternates between singular "you" (Joshua) and plural "you" (the people / eastern tribes) and the alternation carries meaning that unmarked English would flatten. |
 
 ## Log
 
 - 2026-09-14: File created. Seeded the divine-name row (Yahweh, matches
   `hebrew.py`'s `OVERRIDES`); ḥerem, ḥesed, naḥalah, goel, nefesh, and the
   y'all-for-2pl question opened as TODO with no default filled in.
+- 2026-09-16: naḥalah locked to "inheritance" (not "allotment" — that's the
+  movement-title reason, not a translation reason). y'all-for-2pl locked to
+  "always mark 2pl as y'all" — decided at unit 1 specifically because ch.1
+  alternates singular/plural "you" and the alternation is meaningful.
