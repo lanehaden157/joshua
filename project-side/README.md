@@ -1,32 +1,49 @@
-# Project-side sync — index, not a copy
+# Project-side sync — index, not a copy of the canonical files
 
-This folder holds **no files of its own** except this index. Every file below
-lives at its one real path in the repo (linked); nothing is duplicated here.
-That's deliberate, not an oversight — `instructions.md` says it outright:
-*"Matthew's contract lived in three places and drifted."* A second copy here
-would be exactly that mistake. This file exists so you don't have to hunt for
-the paths, not to give any of them a second home.
+Every file in the table below has **one canonical copy**, at the repo path
+linked. That's deliberate — `Claude_ai_chat_side_instructions.md` says it
+outright: *"Matthew's contract lived in three places and drifted."* This
+file exists so you don't have to hunt for the canonical paths.
 
-**Workflow:** when a file marked "repo → project" below changes, re-paste its
-current content into the Claude.ai project (instructions field for
-`Claude_ai_chat_side_instructions.md`, project knowledge/files for the
-rest). Unlike Matthew's project, drift here is actually detected instead of
-relied on memory:
+**`project-side/synced/` is the one deliberate exception.** It holds a flat,
+auto-generated *copy* of every tracked file's current content (basenames
+only, e.g. `data/roots.json` → `synced/roots.json`), pushed to
+`github.com/lanehaden157/joshua`. Point the Claude.ai project's GitHub
+connector at that folder and its "sync" feature pulls fresh content on its
+own — no re-pasting, ever. Never hand-edit anything under `synced/`; it's
+overwritten on the next sync.
+
+**What keeps it current:** `pipeline/sync_to_github.py` copies every
+`TRACKED_FILES` entry into `synced/`, and if anything actually changed,
+commits and pushes. A Windows scheduled task (`JoshuaProjectSideSync`,
+`schtasks`/Task Scheduler) runs it every 15 minutes — it's a silent no-op
+when nothing's changed. Run it by hand any time with:
+
+```bash
+python pipeline/sync_to_github.py
+```
+
+To check the task itself (last run, next run, result code):
+
+```powershell
+Get-ScheduledTaskInfo -TaskName "JoshuaProjectSideSync"
+```
+
+**Fallback for projects that can't use a GitHub connector** (e.g. one
+that only takes uploaded files): `pipeline/check_project_sync.py` still
+does the old hash-diff-and-tell-you-what-changed job —
 
 ```bash
 python pipeline/check_project_sync.py               # what needs re-pasting
 python pipeline/check_project_sync.py --mark-synced  # after you've pasted everything
 ```
 
-It compares each tracked file's git blob hash against the hash recorded the
-last time you ran `--mark-synced`, so a real content change is caught even
-if you never commit. State lives in `project-side/sync-state.json` (git-
-tracked, so the sync history travels with the repo). `pipeline/build.py`
-also runs this check (advisory — never fails the build) so drift surfaces
-as a side effect of a normal build, not a separate thing to remember.
+— tracked separately in `project-side/sync-state.json`, and also run
+advisory (non-failing) inside `pipeline/build.py`.
 
 `resources.md` doesn't exist yet, so it isn't in `TRACKED_FILES` — add it
-to the list in `pipeline/check_project_sync.py` once it's authored.
+to the list in `pipeline/check_project_sync.py` (both scripts import from
+there) once it's authored.
 
 ## Files
 
