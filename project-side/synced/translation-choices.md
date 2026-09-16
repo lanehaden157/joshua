@@ -47,3 +47,4 @@ trusting the file blindly.
 - 2026-09-14: File created. Seeded the divine-name row (Yahweh, matches
   `hebrew.py`'s `OVERRIDES`); ḥerem, ḥesed, naḥalah, goel, nefesh, and the
   y'all-for-2pl question opened as TODO with no default filled in.
+test line
