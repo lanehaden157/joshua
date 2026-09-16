@@ -1,8 +1,8 @@
 # The Book of Joshua — Literary Unit Map
 
 **Status: draft.** 24 units across 4 movements. Chapters 1–9 checked directly
-against the Masoretic petuḥah/setumah breaks; chapters 10–24 rest on Hawk,
-Dozeman, and Firth's structural outlines (scholarship-grounded, not
+against the Masoretic petuḥah/setumah breaks; chapters 10–24 rest on Hawk
+and Dozeman's structural outlines (scholarship-grounded, not
 hand-verified — fine per Lane's call).
 
 Two unit breaks fall off the chapter grid: unit 8 (8:30–9:2, which the
