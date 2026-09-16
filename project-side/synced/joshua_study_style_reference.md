@@ -1,7 +1,7 @@
 # Joshua Study — Style Reference
 
 > **The artifact contract.** What a unit artifact must contain and what it must
-> not. `instructions.md` says how to work and points here; `resources.md` says
+> not. `Claude_ai_chat_side_instructions.md` says how to work and points here; `resources.md` says
 > what is on hand and what each source is good for; `CLAUDE.md` says how the
 > repo behaves. Every rule lives in exactly one of the four.
 
