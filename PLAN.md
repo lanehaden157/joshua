@@ -25,7 +25,7 @@ that follows from it, not a restatement of it.
   1–9 checked directly against the Masoretic petuḥah/setumah breaks,
   10–24 resting on Hawk/Dozeman/Firth's structural outlines. **Confirmed by
   Lane as-is** — units 10–24 don't need another look.
-- **`joshua_study_style_reference.md`** and **`instructions.md`** — the
+- **`joshua_study_style_reference.md`** and **`Claude_ai_chat_side_instructions.md`** — the
   artifact contract and research-project operating instructions, both
   authored by Lane. These are the authoritative documents for the schema
   and scheme going forward — see "Reconcile against the style reference"
@@ -140,7 +140,7 @@ unit_meta.py` + tests, `css/styles.css` (starter scaffold), `data/units.json`
 id-set shape landed in Phase 0.6), `translation-choices.md` seeded,
 `pipeline/threads_digest.py` ported and run once against the empty
 `threads.json` to prove the round trip works end to end before unit 1.
-`project-side/README.md` index created; `instructions.md` and
+`project-side/README.md` index created; `Claude_ai_chat_side_instructions.md` and
 `joshua_study_style_reference.md` landed from Lane.
 
 ### Phase 0.6 — Reconcile against the style reference ✅ DONE (2026-09-14)
@@ -286,7 +286,7 @@ errors, works at 375px mobile width. Every `pipeline/test_*.py` and
 touch pipeline *logic*, only `port_artifact.py`'s colour assignment
 (covered by a new, currently-passing regression test).
 
-### Phase 5 — Unit 1 ⚠️ NOT STARTED, blocked on Phase 4
+### Phase 5 — Unit 1 ⚠️ NOT STARTED, blocked on Lane producing the research artifact
 
 First real unit build (`1:1–18`, per the Literary Unit Map), exercising the
 whole pipeline end to end for the first time on real content: `hebrew.py`

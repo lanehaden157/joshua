@@ -11,8 +11,9 @@ below now describe the reworked pipeline directly; see `PLAN.md`'s Phase
   shape, unit-meta schema, component whitelist, transliteration scheme,
   checklist). Authoritative over this file where they disagree.
 - **`Claude_ai_chat_side_instructions.md`** — the research project's own operating
-  instructions (persona, sourcing, three-pass workflow). Paste-synced into
-  the Claude.ai project; see `project-side/README.md`.
+  instructions (persona, sourcing, three-pass workflow). Kept current in
+  the Claude.ai project via `project-side/synced/` and its GitHub-connector
+  sync (paste-sync is a fallback only); see `project-side/README.md`.
 - **`joshua_literary_unit_map.md`** — 24 units, 4 movements, confirmed
   as-is by Lane (fulfills the style reference's §9 TODO).
 - **`PLAN.md`** — phase list, open questions, and the Phase 0.6 rework
@@ -505,6 +506,8 @@ translation-choices.md          hand-maintained English-rendering glossary
 threads-digest.md               generated from data/threads.json, never hand-edit
 resources.md                    MISSING -- referenced by Claude_ai_chat_side_instructions.md, not yet authored
 project-side/README.md          index of files that round-trip with the research project
+project-side/sync-state.json    fallback hash-diff state for check_project_sync.py
+project-side/synced/            auto-generated mirror pushed to GitHub for the project's connector sync -- never hand-edit
 Joshua-reading.txt              generated, see "Source data" above
 Joshua-words.tsv                generated, see "Source data" above
 Joshua-english.txt              generated, see "Source data" above
@@ -528,6 +531,8 @@ pipeline/scan_occurrences.py    units/*.html -> data/occurrences.json
 pipeline/verify_occurrences.py  independent count re-derivation + tagged-flag check
 pipeline/refresh_meta.py        regenerate every built fragment's meta block
 pipeline/build.py               re-derive everything downstream of committed fragments
+pipeline/check_project_sync.py  fallback: reports which project-side files need re-pasting
+pipeline/sync_to_github.py      primary: mirrors project-side files into project-side/synced/ and pushes
 pipeline/test_apply_retrofit.py, test_scan_occurrences.py, test_verify_occurrences.py, test_port_artifact.py
                                  Phase 3 regression tests (test_port_artifact.py is the full end-to-end one)
 data/units.json                 real 24-unit / 4-movement registry, no units built yet
