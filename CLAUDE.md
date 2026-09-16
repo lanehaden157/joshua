@@ -10,7 +10,7 @@ below now describe the reworked pipeline directly; see `PLAN.md`'s Phase
 - **`joshua_study_style_reference.md`** — the artifact contract (fragment
   shape, unit-meta schema, component whitelist, transliteration scheme,
   checklist). Authoritative over this file where they disagree.
-- **`instructions.md`** — the research project's own operating
+- **`Claude_ai_chat_side_instructions.md`** — the research project's own operating
   instructions (persona, sourcing, three-pass workflow). Paste-synced into
   the Claude.ai project; see `project-side/README.md`.
 - **`joshua_literary_unit_map.md`** — 24 units, 4 movements, confirmed
@@ -498,12 +498,12 @@ yet — that's Phase 5, next.
 CLAUDE.md                       this file -- how the repo behaves
 PLAN.md                         phase list, open questions, Phase 0.6 rework list
 Port analysis.md                Matthew-pipeline port audit (guide, not gospel)
-instructions.md                 research-project operating instructions
+Claude_ai_chat_side_instructions.md research-project operating instructions
 joshua_study_style_reference.md the artifact contract -- authoritative over this file
 joshua_literary_unit_map.md     24 units / 4 movements, confirmed as-is
 translation-choices.md          hand-maintained English-rendering glossary
 threads-digest.md               generated from data/threads.json, never hand-edit
-resources.md                    MISSING -- referenced by instructions.md, not yet authored
+resources.md                    MISSING -- referenced by Claude_ai_chat_side_instructions.md, not yet authored
 project-side/README.md          index of files that round-trip with the research project
 Joshua-reading.txt              generated, see "Source data" above
 Joshua-words.tsv                generated, see "Source data" above
