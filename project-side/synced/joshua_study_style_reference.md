@@ -29,10 +29,21 @@ Split a paired opposition into two roots. Drop a one-passage wordplay. Fixed
 phrases the book repeats verbatim are the one exception and live in
 `threads.json`.
 
-A root's `translit` lists its same-root forms joined by ` · ` — `naḥalah ·
-naḥal`. Tag **every** morphological occurrence with the one slug, **including
-where the English renders it with a different word**. The tag follows the
-lexeme, not the gloss.
+A root's `translit` is the bare citation form only — `naḥal`, not `naḥalah ·
+naḥal · tanḥil`. Tag **every** morphological occurrence with the one slug,
+**including where the English renders it with a different word**. The tag
+follows the lexeme, not the gloss.
+
+**No inflected forms, no stem/binyan labels, in `translit` or `gloss` (2026-09-17,
+Lane).** Lane doesn't want a list of "different Hebrew forms" or a `Qal:`/
+`Hiphil:`/`noun:` tag cluttering the legend or a hover — he reads the plain
+English gloss and works out the rest himself. `translit` is one bare root form;
+`gloss` is a general, ungrammared definition (§3). A stem split (*yarash* Qal
+"possess" vs. Hiphil "drive out" later in the book) is real information, but it
+belongs in a thread's `note` or a verse's own `.gloss` popover — written out in
+plain language, not as a grammatical label — when it's actually load-bearing for
+that unit's translation choices, not pinned to the legend everywhere the root
+appears.
 
 Every slug must resolve to a colour: it appears in `threads-digest.md` or in
 this artifact's own `roots[]`. A `data-root` that resolves to nothing is a hard
@@ -141,12 +152,19 @@ All three present and non-empty. `root` matches `[a-z0-9-]+` — no capitals,
 underscores, or spaces. **No** `color`/`colour`: the site assigns colours. **No**
 `kind`/`members`: that taxonomy was tried and reverted.
 
-`gloss` is keyed to the **stem that actually occurs**, not to the lemma in the
-abstract. Where a root appears in two stems with two meanings, say both.
-*yarash* in Joshua is Hiphil "drive out" ×17 and Qal "take possession" ×12 — one
-gloss for that root is a lie either way. **(learned:** the parser project glossed
-one string per lemma with no stem field and had to work around it word by
-word.**)**
+`gloss` is a short, general English definition — no stem/binyan label (`Qal:`,
+`Hiphil:`, `Piel:`), no part-of-speech tag (`noun:`, `imperative:`). Lane reads
+plain English and infers the grammar himself; a legend or hover cluttered with
+that jargon is the opposite of what he wants (2026-09-17). Where a root
+genuinely carries two different meanings across two stems — *yarash* in Joshua
+is "drive out" in some occurrences and "take possession" in others — pick
+whichever reads better as a single general gloss, or fold both into one
+gloss without naming the stems (`"take possession; drive out"`), and put the
+*why* (which occurrences, which stem, why it matters) in a thread's `note` or
+the relevant verse's own `.gloss` popover instead. **(learned:** the parser
+project glossed one string per lemma with no way to say "this root splits" at
+all — the fix isn't a stem-labeled gloss, it's using the `note`/popover
+channels that already exist for verse-specific nuance.**)**
 
 Never seed a gloss from Strong's first definition. Sampled against Joshua
 vocabulary it was misleading in 9 of 16 cases — *gevul* as "cord", *ḥaram* as
@@ -313,8 +331,9 @@ is two tagged words sharing one id, so a per-word count doubles it.
 2. Meta block parses as JSON. All required keys, all four `threads` sub-keys, no
    unknown top-level keys.
 3. Every `roots[]` entry has `root` + `translit` + `gloss`; `root` is
-   `[a-z0-9-]+`; no `color`, no `kind`, no `members`; the gloss names the stem
-   that occurs.
+   `[a-z0-9-]+`; no `color`, no `kind`, no `members`; `translit` is the bare
+   root form only, `gloss` is plain-English with no stem/binyan or
+   part-of-speech label (§1, §3).
 4. Every `opens`/`payoffs` `id` exists in `threads-digest.md` and carries a
    `note`.
 5. Every `retro` entry targets an earlier unit, carries a `why`, and its root
@@ -354,8 +373,8 @@ Minimal and valid. Copy its shape.
   "title": "The City Given, the City Devoted",
   "movement": 2,
   "roots": [
-    { "root": "devote", "translit": "ḥerem · heḥerim", "gloss": "Hiphil: devote irrevocably, put to the ban; noun: the thing so devoted" },
-    { "root": "give",   "translit": "natan",           "gloss": "give, hand over" }
+    { "root": "devote", "translit": "ḥaram", "gloss": "devote irrevocably, put to the ban" },
+    { "root": "give",   "translit": "natan", "gloss": "give, hand over" }
   ],
   "threads": {
     "opens": [
