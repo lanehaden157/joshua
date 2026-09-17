@@ -1,95 +1,60 @@
 # Joshua Study — Style Reference
 
-> **The artifact contract.** What a unit artifact must contain and what it must
-> not. `Claude_ai_chat_side_instructions.md` says how to work and points here; `resources.md` says
-> what is on hand and what each source is good for; `CLAUDE.md` says how the
-> repo behaves. Every rule lives in exactly one of the four.
+> **The artifact contract.** What a unit artifact must contain and must not.
+> `Claude_ai_chat_side_instructions.md` says how to work; `resources.md` says
+> what's on hand; `CLAUDE.md` says how the repo behaves. Each rule lives in one
+> of the four.
 
-This is a guide, not a spec to satisfy. Where a rule gives a reason, the reason
-outranks the rule — Joshua is a different book and some of this will be wrong
-for it. Rebuild what doesn't work.
-
-The exceptions are marked **(learned)**. Each cost something to find, in Matthew
-or in the Hebrew parser project, and says where. Read the source before relaxing
-one.
-
-A corollary that keeps this file short: **every rule here either has a check in
-the pipeline or is a judgment call a human makes.** If a rule is neither, delete
-it. Matthew documented an endnote-pairing rule nothing checked, accepted two
-meta fields nothing consumed, and stated a legend was optional when the site
-required it.
+A guide, not a spec: where a rule gives a reason, the reason outranks the rule.
+Rules marked **(learned)** cost something to find — read the cited source
+before relaxing one. Every rule here either has a pipeline check or is a human
+judgment call; if it's neither, delete it.
 
 ---
 
 ## 1. Colour policy
 
-One **Hebrew lexical root** per `data-root`: the root and its same-root forms,
-nothing else. Never a theme, never a formula, never a bundle of different words.
-Split a paired opposition into two roots. Drop a one-passage wordplay. Fixed
-phrases the book repeats verbatim are the one exception and live in
-`threads.json`.
+One **Hebrew lexical root** per `data-root` — the root and its same-root forms,
+never a theme or a bundle of words. Split a paired opposition into two roots;
+drop a one-passage wordplay. Fixed phrases the book repeats verbatim are the one
+exception and live in `threads.json`.
 
-A root's `translit` is the bare citation form only — `naḥal`, not `naḥalah ·
-naḥal · tanḥil`. Tag **every** morphological occurrence with the one slug,
-**including where the English renders it with a different word**. The tag
-follows the lexeme, not the gloss.
+Tag **every** occurrence with the one slug, **including where the English uses a
+different word** — the tag follows the lexeme, not the gloss.
 
-**No inflected forms, no stem/binyan labels, in `translit` or `gloss` (2026-09-17,
-Lane).** Lane doesn't want a list of "different Hebrew forms" or a `Qal:`/
-`Hiphil:`/`noun:` tag cluttering the legend or a hover — he reads the plain
-English gloss and works out the rest himself. `translit` is one bare root form;
-`gloss` is a general, ungrammared definition (§3). A stem split (*yarash* Qal
-"possess" vs. Hiphil "drive out" later in the book) is real information, but it
-belongs in a thread's `note` or a verse's own `.gloss` popover — written out in
-plain language, not as a grammatical label — when it's actually load-bearing for
-that unit's translation choices, not pinned to the legend everywhere the root
-appears.
+`translit` is one bare root form (`naḥal`, not `naḥalah · naḥal · tanḥil`);
+`gloss` is plain English (§3). No inflected-form lists, no stem/binyan labels
+(Lane, 2026-09-17). A stem split that matters (*yarash* "possess" vs. "drive
+out") goes in a thread `note` or a verse `.gloss`, in plain language.
 
-Every slug must resolve to a colour: it appears in `threads-digest.md` or in
-this artifact's own `roots[]`. A `data-root` that resolves to nothing is a hard
-build failure. Declare tracked threads in `roots[]` too — redundant, harmless,
-and it makes the array a reliable answer to "what does this unit track."
+Every slug must resolve — in `threads-digest.md` or this artifact's `roots[]` —
+or the build fails. Declare tracked threads in `roots[]` too.
 
-**Resist the richer taxonomy. (learned:** `8d096c9` built a two-tier root/motif
-model across every file in the repo; `98b721a` reverted all of it the same day as
-complexity the data didn't need. Hebrew's version of the temptation is root vs.
-binyan vs. semantic field, and it will arrive around unit 3. The answer is the
-same: one slug, one colour, the family spelled out in `translit`.**)**
+**Tag notable words even when they aren't threads (Lane, 2026-09-17).** A single
+striking translation choice in a single verse earns a `data-root` span and a
+full `{root, translit, gloss}` entry (unit 1: *insight*, *murmur*, *shatter*,
+*man of valor*). Read for these deliberately, the way you read for structure
+(§6).
 
-**Tag a notable word even when it isn't a thread (2026-09-17, Lane).** A local
-root doesn't have to recur or set up a later payoff to earn a `data-root`
-span — a single word in a single verse qualifies whenever the translation
-choice itself is worth a beat: it departs from the expected rendering, or the
-Hebrew is doing something an English reader would otherwise walk past
-(*insight*, *murmur*, *shatter*, *man of valor* in unit 1 — none of them
-threads, all four unique enough to earn the hover). The bar is the same
-`{root, translit, gloss}` a tracked thread gets (§7's checklist), not a lighter
-one — a local root still needs a real bare-root `translit` and a real
-plain-English `gloss`, same rules as §1 and §3 above. When word-checking a
-unit, treat this as a first-class pass, not an afterthought: read for it the
-same way you already read for chiasms and echoes (§6).
+**`example`** — optional fourth field on any root: one short quoted clause from
+the unit's own English, no citation. Add it when context clarifies the choice
+faster than the gloss.
 
-**`example` — an optional fourth field, `{root, translit, gloss, example}`,
-for either a local root or a tracked thread.** One quoted in-text usage — a
-short clause pulled from the unit's own English, in Claude's voice, no
-citation attached (§4's no-named-resources rule applies here too) — shown as
-its own line in the click popover, below the gloss. Add it whenever seeing
-the word in context would clarify the choice faster than the gloss alone;
-skip it when the gloss already says everything the reader needs. Not every
-root needs one, tracked or local.
+**Resist a richer taxonomy. (learned:** `8d096c9` built a root/motif two-tier
+model; `98b721a` reverted it the same day. Hebrew's version — root vs. binyan
+vs. semantic field — gets the same answer: one slug, one colour.**)**
 
 ---
 
 ## 2. Root identity — ids, not strings
 
-**A root is a hand-curated set of Strong's ids in `roots.json`, and every tagged
-occurrence of a tracked thread carries the OSHB word id it refers to.** No
-Hebrew string is ever compared to another Hebrew string, anywhere in this
-project.
+**A root is a hand-curated set of Strong's ids in `roots.json`; every tracked
+thread occurrence carries its OSHB word id.** No Hebrew string is ever compared
+to another.
 
 ### Why not substring stems
 
-Measured against OSHB Joshua, matching each root's consonants as a substring:
+Consonant-substring matching against OSHB Joshua:
 
 | root | recall | precision |
 |---|---|---|
@@ -101,60 +66,41 @@ Measured against OSHB Joshua, matching each root's consonants as a substring:
 | *nakah* "strike" | **3%** | 100% |
 | *Yehoshuaʿ* | **0%** | — |
 
-Joshua's load-bearing verbs are weak roots. A stem list would silently miss most
-of *natan*, nearly all of *nakah*, and the book's title character. That is the
-exact failure the coverage audit exists to prevent.
+Joshua's load-bearing verbs are weak roots.
 
 ### Why not bare lemmas either
 
-One root routinely spans several Strong's numbers — *ḥaram* is 2763 (verb) and
-2764 (noun), *naḥal* 5157/5159, *gevul* 1366/1367, *yareʾ* 3372/3373/3374 — and
-one number sometimes bundles senses that want separating. So the root is a
-**decision**, recorded in `roots.json` as a set of ids with a note. Adding
-Hormah to the *ḥerem* root becomes a recorded judgment rather than a regex
-accident.
+One root often spans several Strong's numbers (*ḥaram* 2763/2764, *naḥal*
+5157/5159, *yareʾ* 3372–3374), and one number can bundle senses worth splitting.
+So a root is a **decision**, recorded as an id set with a note.
 
-Keep the lowercase letters on lemma ids (`834a`, `3588b`) in the data and strip
-them at query time. They are not homograph markers — `834a` and `834d` are both
-*ʾasher*. Their meaning is unverified; treat them as opaque.
+Lowercase suffixes on ids (`834a`) are kept in data, stripped at query time, and
+treated as opaque — not homograph markers.
 
 ### What the artifact does
 
-Every span tagging a **tracked thread** carries the word id from
-`Joshua-words.tsv`:
+Tracked-thread spans carry the word id from `Joshua-words.tsv`:
 
 ```html
 <span class="r" data-root="devote" data-w="068w5">devoted</span>
 ```
 
-Local roots — declared in this artifact's `roots[]` but not tracked threads —
-don't need `data-w`; the audit counts those per verse.
+Local roots don't need `data-w`. The audit does set arithmetic over ids, so a
+wrong word or mistyped id fails loudly.
 
-The audit then does set arithmetic over ids: what the source has, minus what the
-fragment tagged. Two things become loud that were previously silent — a wrong
-word tagged inside a verse whose count happens to match, and a mistyped id,
-which fails because the id's lemma isn't in the root's set.
-
-**Never hand-type Hebrew. Always pull by word id. (learned:** the Hebrew parser
-project's single strongest recommendation, and the reason maqqef, Unicode
-normalization, final letter forms, and ketiv spelling never cost it anything.
-NFC normalization alone reorders marks in 47% of Joshua's words, so any Hebrew
-string that has passed through an editor will not byte-match the source.**)**
+**Never hand-type Hebrew; pull by word id. (learned:** Hebrew parser project —
+NFC normalization alone reorders marks in 47% of Joshua's words.**)**
 
 ---
 
 ## 3. The hard contract
 
-The artifact is **one `<article class="unit" data-unit="N">` and nothing else**.
-No `<!doctype>`, `<html>`, `<head>`, `<body>`, `<style>`, `<link>`; no inline
-`style="…"`; no `--c-*` colour variables. It opens with
-`<script type="application/json" id="unit-meta">`.
+The artifact is **one `<article class="unit" data-unit="N">` and nothing
+else** — no doctype/html/head/body/style/link, no inline `style`, no `--c-*`
+vars. It opens with `<script type="application/json" id="unit-meta">`.
 
-**Unknown top-level keys are a hard error. (learned:** Matthew's research
-project authored `descriptor` and `discourse` in every v2 artifact for eleven
-units. Both were documented, both validated, both silently discarded, neither
-consumed by anything. A field the pipeline drops is worse than a field that's
-missing.**)**
+**Unknown top-level keys are a hard error. (learned:** Matthew's `descriptor`
+and `discourse` were authored for eleven units and silently discarded.**)**
 
 ### Top-level keys
 
@@ -168,216 +114,126 @@ missing.**)**
 | `slug` | — | str | `"unit-06"`; derived from `unit` if omitted |
 | `movement` | — | int | looked up from the Unit Map if omitted |
 
-### `roots[]` — every entry `{root, translit, gloss}`
+### `roots[]` — every entry `{root, translit, gloss, example?}`
 
-All three present and non-empty. `root` matches `[a-z0-9-]+` — no capitals,
-underscores, or spaces. **No** `color`/`colour`: the site assigns colours. **No**
-`kind`/`members`: that taxonomy was tried and reverted.
+`root` matches `[a-z0-9-]+`. **No** `color`/`colour` (the site assigns colours),
+**no** `kind`/`members` (tried and reverted).
 
-`gloss` is a short, general English definition — no stem/binyan label (`Qal:`,
-`Hiphil:`, `Piel:`), no part-of-speech tag (`noun:`, `imperative:`). Lane reads
-plain English and infers the grammar himself; a legend or hover cluttered with
-that jargon is the opposite of what he wants (2026-09-17). Where a root
-genuinely carries two different meanings across two stems — *yarash* in Joshua
-is "drive out" in some occurrences and "take possession" in others — pick
-whichever reads better as a single general gloss, or fold both into one
-gloss without naming the stems (`"take possession; drive out"`), and put the
-*why* (which occurrences, which stem, why it matters) in a thread's `note` or
-the relevant verse's own `.gloss` popover instead. **(learned:** the parser
-project glossed one string per lemma with no way to say "this root splits" at
-all — the fix isn't a stem-labeled gloss, it's using the `note`/popover
-channels that already exist for verse-specific nuance.**)**
+`gloss` is a short general definition — no `Qal:`/`Hiphil:`, no `noun:`. Where a
+root splits across stems, fold both senses into one gloss without naming stems
+(`"take possession; drive out"`) and put the why in a `note` or `.gloss`.
 
-Never seed a gloss from Strong's first definition. Sampled against Joshua
-vocabulary it was misleading in 9 of 16 cases — *gevul* as "cord", *ḥaram* as
-"seclude", *matteh* as "branch".
+Never seed a gloss from Strong's first definition — misleading in 9 of 16
+sampled Joshua words (*gevul* "cord", *ḥaram* "seclude").
 
 ### `threads` — `{opens, payoffs, candidates, retro}`
 
-All four keys present; each a list; empty lists allowed. "Required in the docs,
-optional in the code" is how a research project learns to guess.
+All four present, each a list, empty allowed.
 
-**`opens[]` / `payoffs[]`** — `{id, ref, note?}`. The artifact is the **only**
-author of both; `threads.json` receives them through the thread delta. `id` must
-already exist in `threads-digest.md`; propose new ones through `candidates`.
-`ref` is the verse. `note` is the one-line popover prose for that beat, written
-here, not only in the commentary.
+**`opens[]` / `payoffs[]`** — `{id, ref, note}`. The artifact is the only author
+of both. `id` must exist in `threads-digest.md` (propose new ones via
+`candidates`); `note` is the one-line popover prose. **(learned:** Matthew's
+`opens` stayed empty because openings were hand-authored elsewhere — two paths,
+one dead.**)**
 
-> Matthew's `opens` was documented, validated, rendered into reports, and empty
-> in every artifact, because openings were authored by hand in `threads.json`
-> instead. Two paths, one dead. This keeps one.
-
-**`candidates[]`** — `{root, why, ids?, refs?}`. Proposals only, never
-auto-promoted. `root` matches `[a-z0-9-]+`; `why` is one line; `ids` are the
-Strong's ids you actually observed in `Joshua-words.tsv` — evidence for Lane's
-decision, not the decision itself, since assembling the id set for a root is his
-call. `refs` are a few representative verses.
+**`candidates[]`** — `{root, why, ids?, refs?}`. Proposals only. `ids` are the
+Strong's ids you actually saw — evidence, not the decision. `refs` are a few
+representative verses.
 
 **`retro[]`** — `{unit, verse, text, root, why, nth?, op?, w?}`. Fixes for
-**earlier** units: what the close reading of *this* unit made you notice about a
-previous one. `unit` is a slug like `"unit-04"` and must not be this unit's own.
-`why` is required. `op` ∈ `add` (default), `retag`, `retag_word`, `untag_word`,
-`unwrap`, `strip_span`, `text`. The root it resolves to must be a tracked thread
-or a declared root of the target unit. When `op` is `add`/`retag`/`retag_word`
-and the target root is a **tracked thread**, `w` (the OSHB word id) is
-required — that op creates or repoints a `data-root` span, and a tracked-thread
-span must carry `data-w` same as any other (§7 checklist 8).
+**earlier** units (`unit` is a slug like `"unit-04"`, never this unit). `why`
+required. `op` ∈ `add` (default), `retag`, `retag_word`, `untag_word`, `unwrap`,
+`strip_span`, `text`. The root must resolve to a tracked thread or a declared
+root of the target unit. `add`/`retag`/`retag_word` onto a tracked thread
+requires `w`.
 
 ---
 
 ## 4. Components
 
-A small vocabulary, deliberately. **Inventing a class is a decision, not a
-formatting choice** — a new class needs CSS and a whitelist entry, and
-`build.py` reports classes the stylesheet never mentions. Matthew accumulated
-seven undocumented components across eleven artifacts; some got CSS after the
-fact, some still render unstyled.
+Deliberately small. **A new class is a decision** — it needs CSS and a
+whitelist entry, and the build reports unknown classes.
 
 | component | shape | note |
 |---|---|---|
-| coloured word | `<span class="r" data-root="X" data-w="…">…</span>` | `data-w` required for tracked threads (§2). `class="rl"` only **outside** verse blocks — inside a `.v` block it's counted anyway, so `rl` there only mislabels intent (`394db71`). |
-| verse | `<p class="v"><span class="n">17</span> … text<sup class="en"><a href="#n1">1</a></sup></p>` | one per verse, canonical order. An endnote marker is part of the verse `<p>` itself, the last thing before `</p>` — **never** inside the `.gloss` that follows |
-| gloss / compare | `<span class="gloss">…`, `<div class="compare">…` | **following siblings** of the verse, never nested inside it, never left unclosed around a following block. Carries the word-by-word translation discussion, collapsed behind the per-verse `*` toggle — a different thing from an endnote marker (see above) |
-| pericope heading | `<h3 class="pericope">Title <span>· 6:1–7</span></h3>` | the `· C:V` range is required. No `movement`/`panel`/`sectionhead` classes. |
+| coloured word | `<span class="r" data-root="X" data-w="…">…</span>` | `data-w` required for tracked threads (§2). `class="rl"` only **outside** verse blocks (`394db71`). |
+| verse | `<p class="v"><span class="n">17</span> … text<sup class="en"><a href="#n1">1</a></sup></p>` | one per verse, in order. The endnote marker is the last thing in the verse `<p>`, **never** inside the `.gloss` |
+| gloss | `<span class="gloss">…</span>` | **following sibling** of the verse, never nested, always closed. Word-by-word translation discussion, collapsed behind the per-verse `*` toggle |
+| pericope heading | `<h3 class="pericope">Title <span>· 6:1–7</span></h3>` | `· C:V` range required |
 | legend | `<section class="block legend" aria-label="color key"><ul></ul></section>` | **required, even as an empty stub** |
-| notes | `<section class="block notes"><ol><li id="n3">…</li></ol></section>` | `<ol><li>` for real numbering, not a bare `<p id>`. The porter prefixes ids per unit; every `href` must resolve to an `id` in the same fragment |
+| notes | `<section class="block notes"><ol><li id="n3">…</li></ol></section>` | real `<ol><li>`; every `href` resolves to an `id` in the fragment |
 
-**Endnote markers live at the end of the verse, not inside the collapsed gloss.
-(learned, 2026-09-17:** the first pass put `<sup class="en">` at the tail of
-the `.gloss` span, so the footnote reference itself was hidden behind the
-per-verse `*` toggle along with the translation commentary — a reader had to
-open the aside just to learn note 3 existed. A footnote marker is a different
-kind of thing from a collapsible translation note and reads should not have to
-click through one to see the other. `<ol>`/`<li>` for the notes list is the
-same fix from the other end: real ordinal numbering, not text implied only by
-the `id` string. `.block.notes li` is set smaller than body/verse text (§4's
-CSS), since a citation shouldn't compete with the translation for weight.**)**
+**(learned, 2026-09-17:** endnote markers inside `.gloss` hid the footnote behind
+the toggle.**)** **(learned:** the legend was once "optional" — `rebuildLegend()`
+only fills an existing one, and Matthew's unit 11 shipped with no colour key.**)**
 
-**The legend is required. (learned:** the style reference said it was optional
-because "the site rebuilds it from data." It doesn't — `rebuildLegend()` *fills*
-a legend the fragment already has and returns immediately if there is none.
-Matthew's unit 11 shipped without one and the live site renders it with no colour
-key. Nothing reported it.**)**
+Never hand-write swatches or `style="background:…"`.
 
-Never hand-write swatch dots or `style="background:…"`.
+**`aside.echo`** — optional, unbuilt: cross-book echo (Deuteronomy command →
+Joshua fulfilment; conquest summary vs. Judges 1). `<aside class="echo"
+data-anchor="C:V">`, a verse sibling. Ship it only with its nesting-depth check.
+**(learned:** `67b2712` — asides spliced inside unclosed `.gloss` spans silently
+collapsed.**)**
 
-**`aside.echo`** — the one optional component, for cross-book echo: a Deuteronomy
-command answered by a Joshua fulfilment, or the conquest summary against Judges
-1. `<aside class="echo" data-anchor="C:V">`, a sibling of the verse, never
-spliced inside an unclosed span. Ship it only when unit 1 actually wants it, and
-ship its nesting-depth check in the same commit or don't ship it. **(learned:**
-`67b2712` — a splice tool that didn't track open/close depth put eight asides
-inside unclosed `.gloss` spans across six units; the renderer silently collapsed
-them. Do **not** inherit Matthew's `aside.synoptic` and repurpose it; its check
-is tuned to its own markup.**)**
-
-**No named commentators, no named resources, anywhere in a fragment's prose —
-`.gloss`, `.verse-note`, `section.block.notes`, all of it (2026-09-17, Lane).**
-Not "Dozeman argues," not "Rashi's note," not "the Metsudah edition," not a
-scholar's name of any kind — and not a project-internal reference either
-(`Joshua-words.tsv`, a lemma id, `translation-choices.md`, `threads-digest.md`).
-The artifact has to stand on its own for a reader who has never seen this repo
-or opened a commentary; a name it can't unpack, or a filename that only means
-something inside this pipeline, breaks that. Write in Claude's own voice.
-Where views differ, say so in general terms — "one reading," "scholars read
-this two ways," "opinions vary," "a more traditional rendering" — and give the
-actual content of the disagreement, not who holds which side. This is a
-**voice** rule, not a sourcing rule: research still draws on real scholarship
-(`Claude_ai_chat_side_instructions.md`'s sourcing pass is unchanged), it just
-never surfaces the source's name in the shipped fragment. **(learned:** unit 1,
-drafted before this rule existed, cited Hawk, Dozeman, Radak, Rashi, Polzin,
-Rowlett, Mazor, and the Targums by name, plus a stray `Joshua-words.tsv` lemma
-count and a `translation-choices.md` pointer, straight in the reader-facing
-prose — meaningless furniture to anyone outside the project, and a citation a
-reader can't check is worse than no citation.**)**
+**Voice: no named commentators or resources, and no project-internal
+references, anywhere in fragment prose (Lane, 2026-09-17).** Not "Dozeman
+argues," not a Targum by name, not `Joshua-words.tsv` or a lemma id. Where views
+differ, say so in general terms ("one reading," "scholars read this two ways")
+and give the content of the disagreement. Research still uses real scholarship;
+the fragment just stands alone. **(learned:** unit 1's first draft named eight
+sources and two repo files in reader-facing prose.**)**
 
 ---
 
 ## 5. Hebrew in English
 
-**Transliteration** comes out of `pipeline/hebrew.py` and nowhere else. The
-scheme in one sentence: *a diacritic only where the plain Latin letter is already
-claimed by a different Hebrew letter*. So `ḥ ṭ ś` and the `ʾ`/`ʿ` pair, and no
-vowel carries a mark.
+**Transliteration** comes only from `pipeline/hebrew.py`. Scheme: a diacritic
+only where the plain letter is already claimed (`ḥ ṭ ś`, `ʾ`/`ʿ`); no vowel
+marks.
 
-- **No vowel length.** `mishpaṭ`, not `mišpāṭ`.
-- **No spirantization.** `melek`, not `melekh`; `torah`, not `thorah`. A scheme
-  that spells one root two ways defeats the colour system's whole claim. The
-  parser project models b/k/p for pronunciation and says plainly it would not do
-  so for a project like this one: *kol* comes out four ways there.
-- **Dagesh forte doubles**: `hammelek`. And the sheva under a doubled consonant
-  is **vocal**, so `hammelakim`, not `hamlakim` — the parser project's largest
-  single sheva divergence, 242 words, and the one that makes a word look like a
-  different word. Decide both together in unit 1 and log it.
-- **`יהוה` transliterates as bare `YHWH`.** The English rendering is **Yahweh**
-  (decided; `translation-choices.md` row 1).
+- **No vowel length** (`mishpaṭ`).
+- **No spirantization** (`melek`, `torah`) — one root, one spelling.
+- **Dagesh forte doubles**, and sheva under it is vocal: `hammelakim`.
+- **`יהוה` → `YHWH`**; the English rendering is **Yahweh**.
 
-**Overrides key on lemma id, not on codepoint.** U+05C7, the dedicated
-qamats-qatan character, occurs **zero** times in the biblical text — a
-codepoint-based rule would do nothing at all. Seed the override table with
-3068/3069 (YHWH), 3389 (Jerusalem, which otherwise loses its second vowel and
-comes out *yerushalam*), and 3605 (*kol*, which renders as *kal* in 185 of its
-236 Joshua occurrences). Extend it when the log flags one.
+Overrides key on **lemma id**, not codepoint (U+05C7 occurs zero times). Seeded:
+3068/3069 (YHWH), 3389 (Jerusalem), 3605 (*kol*).
 
-Two implementation traps the parser project hit and paid for: the function must
-handle phrases, not just single words — a verse passed through a one-word
-transliterator silently lost every space — and word-initial shuruq is `u-`, not
-`w-`.
+`ʾ` and `ʿ` look identical on a phone — distinguish them by more than the mark.
 
-**`ʾ` and `ʿ` are visually indistinguishable on a phone.** Wherever both appear
-in a legend or gloss, distinguish them by something other than the mark alone.
-
-**The scheme's authoritative definition is a test file of ~30 Joshua word ids and
-their expected output.** Prose descriptions of it — here, in `hebrew.py`'s
-docstring, in `CLAUDE.md` — are summaries and may drift; the parser project ended
-up with three partly-contradictory descriptions of its own scheme. When they
-disagree, the test file wins.
+**The test file is the scheme's authoritative definition**; prose summaries
+drift.
 
 **Translation philosophy.** The verse text is a fresh, wooden-but-readable
 rendering from the Hebrew, not a polish of an existing English version.
 Creative, intentional glosses are encouraged — the goal is understanding, not
 conformity to traditional renderings.
 
-**Wording.** Before rendering a Hebrew lexeme in a new unit, check
-`translation-choices.md` and match the prior decision. If a different rendering
-genuinely fits better in a specific verse, use it — but **flag the deviation
-explicitly in the artifact**, so Lane can decide whether it is a one-off or a
-correction that should propagate. Same Hebrew root → same English root unless
-flagged.
+**Wording.** Check `translation-choices.md` before rendering a lexeme and match
+prior decisions. A better verse-specific rendering is fine — **flag the
+deviation in the artifact** so Lane can decide one-off vs. correction. Update the
+file's row and Log **in the same turn**. **(learned:** Matthew started this file
+at unit 10 and paid with a retroactive audit — `b0f73cc`, `aed087e`,
+`0138548`.**)**
 
-Any rendering decided or changed in a unit updates its row and the Log section
-**in the same turn**, before moving on. **(learned:** Matthew started this file
-at unit 10 and paid with a dedicated wording-audit session plus a retroactive
-pass over everything already shipped — `b0f73cc`, `aed087e`, `0138548`.**)**
-
-Seeded: the divine name → **Yahweh**. *TODO at unit 1: ḥerem, ḥesed, naḥalah,
-goel, nefesh, and whether `y'all` marks genuine second-person plurals.*
+*Open at unit 1: ḥerem, ḥesed, naḥalah, goel, nefesh, and whether `y'all` marks
+second-person plurals.*
 
 ---
 
 ## 6. Judgment
 
-The things no check can catch.
+**Be tough on structures.** Chiasms and rings only when textually verifiable.
+Prefer the Masoretic paragraph breaks (52 *petuḥah*, 42 *setumah*) over patterns
+you noticed. **(learned:** `e9105a5` cut eight over-reaching chiasms.**)**
 
-**Be tough on structures.** Chiasms and rings only when real and textually
-verifiable. They are easy to invent and narrative invites pattern-matching that
-isn't there. **(learned:** `e9105a5` cut eight previously-published chiastic
-structures across seven units as over-reaching. Joshua's version of this failure
-will look different — imposed symmetry on episodes rather than on discourses — so
-carry the caution and expect a new shape.**)** Joshua hands you real structure
-for free: 52 *petuḥah* and 42 *setumah* paragraph breaks are marked in the text.
-Prefer what the Masoretes marked over what you noticed.
+**`threads.json` and `roots.json` are Lane's policy.** Nothing in the pipeline
+writes either.
 
-**`threads.json` and `roots.json` are policy Lane owns.** Nothing in the pipeline
-writes either. Which recurring word matters enough to track book-wide, and which
-Strong's ids belong to one root, are the two genuinely subjective judgments in
-the system — and the two most tempting to automate.
-
-**Names are joined by hand.** Wordplay between a place name and a root is real
-(*Achor* / *ʿakar* at 7:25–26) but Strong's etymology field is unreliable:
-*Gilgal* needs two hops to reach *galal*, and *Jericho* offers two guesses. Put
-names into `roots.json` one at a time, with the reason. Note also that *Beth-el*
-is two tagged words sharing one id, so a per-word count doubles it.
+**Names are joined by hand.** Place-name wordplay is real (*Achor* / *ʿakar*,
+7:25–26) but Strong's etymology is unreliable (*Gilgal*, *Jericho*). Add names
+to `roots.json` one at a time, with the reason. *Beth-el* is two tagged words
+sharing one id.
 
 **Ask rather than guess** on design or scope.
 
@@ -386,38 +242,25 @@ is two tagged words sharing one id, so a per-word count doubles it.
 ## 7. Before saving — the checklist
 
 1. One `<article>`, nothing above or below it.
-2. Meta block parses as JSON. All required keys, all four `threads` sub-keys, no
+2. Meta parses as JSON; required keys and all four `threads` sub-keys; no
    unknown top-level keys.
-3. Every `roots[]` entry has `root` + `translit` + `gloss`, plus an optional
-   `example`; `root` is `[a-z0-9-]+`; no `color`, no `kind`, no `members`;
-   `translit` is the bare root form only, `gloss` is plain-English with no
-   stem/binyan or part-of-speech label, `example` (when present) is one quoted
-   in-text usage with no citation attached (§1, §3, §4).
-4. Every word whose translation choice is unique enough to be worth a beat
-   has a local `data-root` span and a `roots[]` entry, even when it isn't a
-   tracked thread (§1).
-5. Every `opens`/`payoffs` `id` exists in `threads-digest.md` and carries a
-   `note`.
-6. Every `retro` entry targets an earlier unit, carries a `why`, and its root
-   resolves; a `retro` entry that adds/retags onto a tracked thread carries a
-   valid `w`.
-7. Every `data-root` slug is in `threads-digest.md` or in this artifact's
-   `roots[]`.
-8. Every tracked-thread span carries a `data-w` id copied from
-   `Joshua-words.tsv` — including where the English renders the root with an
-   unexpected word.
-9. Legend section present, stub or filled.
-10. Every pericope heading carries its `· C:V` range.
-11. `.gloss` / `.compare` are following siblings, all closed.
+3. Every `roots[]` entry: `root` (`[a-z0-9-]+`) + bare `translit` + plain
+   `gloss`, optional `example`; no `color`/`kind`/`members`, no stem or
+   part-of-speech labels.
+4. Every notable translation choice has a local span and `roots[]` entry (§1).
+5. Every `opens`/`payoffs` `id` is in `threads-digest.md` and has a `note`.
+6. Every `retro` targets an earlier unit, has a `why`, resolves, and carries
+   `w` when adding/retagging onto a tracked thread.
+7. Every `data-root` is in `threads-digest.md` or `roots[]`.
+8. Every tracked-thread span has a `data-w` from `Joshua-words.tsv`.
+9. Legend present, stub or filled.
+10. Every pericope heading has its `· C:V` range.
+11. `.gloss` blocks are closed following siblings.
 12. Every endnote `href` resolves to an `id` in the file.
-13. **Zero native Hebrew anywhere in the file — no exceptions, attribute values
-    included.**
-14. No inline `style`, no `--c-*` vars, no per-root class names, no class the
-    stylesheet doesn't know.
+13. **Zero native Hebrew anywhere — attribute values included.**
+14. No inline `style`, no `--c-*` vars, no class the stylesheet doesn't know.
 15. Wording matches `translation-choices.md`, or the deviation is flagged.
-16. No named commentator and no project-internal filename/id anywhere in
-    `.gloss`, `.verse-note`, or `section.block.notes` prose (§4) — general
-    voice only ("one reading," "scholars," "opinions vary").
+16. No named commentator or project-internal reference in prose (§4).
 
 Save as `joshua_NN_translation.html`, zero-padded, and present the file. It
 renders unstyled in chat — expected.
@@ -496,16 +339,6 @@ as already accomplished.</span>
 
 ## 9. The Literary Unit Map
 
-*TODO — required before unit 1. Renumbering after units ship means editing
-`threads.json` opens and payoffs, every `retro` entry, and every fragment's meta
-block.*
-
-Needs, per unit: number, slug, passage, working title, movement. Plus, at the
-top: the movement list, and every place a literary unit deliberately disagrees
-with the chapter grid, stated once so no artifact re-derives it.
-
-Two free inputs. OSHB marks 52 *petuḥah* (`<seg type="x-pe">`) and 42 *setumah*
-(`x-samekh`) paragraph breaks in Joshua — candidate boundaries the tradition
-already drew. And Joshua has 658 verses in OSHB with chapter 21 at 45, meaning
-21:36–37 are present and unmarked; check that against a printed BHS before the
-map treats chapter 21 as settled.
+Done — see `joshua_literary_unit_map.md` (24 units, 4 movements, confirmed by
+Lane). Renumbering after units ship means editing `threads.json` opens/payoffs,
+every `retro` entry, and every fragment's meta block.
