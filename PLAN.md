@@ -286,31 +286,35 @@ errors, works at 375px mobile width. Every `pipeline/test_*.py` and
 touch pipeline *logic*, only `port_artifact.py`'s colour assignment
 (covered by a new, currently-passing regression test).
 
-### Phase 5 — Unit 1 ⚠️ NOT STARTED, blocked on Lane producing the research artifact
+### Phase 5 — Unit 1 ✅ DONE (2026-09-17)
 
-First real unit build (`1:1–18`, per the Literary Unit Map), exercising the
-whole pipeline end to end for the first time on real content: `hebrew.py`
-transliteration, `unit_meta.py` validation, `audit_thread_coverage.py`
-coverage, `port_artifact.py`, the app shell rendering it. Whatever breaks
-here is cheaper than whatever breaks at unit 15. Plan folded into
-`phase-4-5-plan.md` alongside Phase 4, since Phase 4's shell needs real
-content to actually prove itself against.
+*Rights of Passage* (1:1–18) built and live (`345cb5f`). What it changed:
 
-### Phase 6+ — TBD after Phase 5
+- **Threads:** 10 tracked threads/roots. `cross` is one root over both
+  *ʿavar*/*ʿever* ids; `inherit` includes 5159 alongside 5157. Promotion is
+  now Claude's call, biased book-wide (`4d856c7`), with a documented
+  retrofit recipe (`3f5e287`).
+- **Contract changes from review (`a290044`):** no stem/part-of-speech
+  labels in glosses; endnote markers at verse end, not inside `.gloss`;
+  no named commentators or repo references in fragment prose; optional
+  `example` field; tag notable local words (*insight*, *murmur*,
+  *shatter*, *valor*).
+- **Fixes:** manual `?v=N` cache-buster on app module imports (GitHub
+  Pages caching); v15 tags only *rest*, with *gives* untagged, since `rl`
+  still shows the root's colour (`a3d3532`, `b5bcee5`).
+- **Docs trimmed (2026-09-17):** style reference, chat-side instructions,
+  and CLAUDE.md roughly halved or more, no rules dropped.
 
-Deliberately not planned in detail yet — Matthew's own phase list (its
-Phases 5–9: interactions, dashboard/concordance, compare boxes,
-persistence, author ergonomics) is a reasonable menu to draw from once
-Phase 5 shows what Joshua's own content actually needs, rather than
-committing to it now.
+### Phase 6 — Units 2–24
+
+Build units in order through the same loop: research artifact (Claude.ai,
+three passes) → `port_artifact.py` → thread promotion + retrofit → browser
+review → commit + sync. Revisit per unit whether anything from Matthew's
+later phases (concordance/dashboard, persistence, author ergonomics) has
+become worth building.
 
 ---
 
 ## Open questions for Lane
 
-None open. Phase 4's §A questions (discourse overlay, colour timing,
-book-map richness) were answered before B started; the visual-theme
-question (distinguishable from Matthew, not a recolour) came up mid-
-session and was folded in. Phase 0.6's scope was confirmed before it
-started and is done; the compare-box shape and unit map 10–24 were
-resolved earlier.
+None open.
