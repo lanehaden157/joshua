@@ -333,6 +333,11 @@ docstring, in `CLAUDE.md` — are summaries and may drift; the parser project en
 up with three partly-contradictory descriptions of its own scheme. When they
 disagree, the test file wins.
 
+**Translation philosophy.** The verse text is a fresh, wooden-but-readable
+rendering from the Hebrew, not a polish of an existing English version.
+Creative, intentional glosses are encouraged — the goal is understanding, not
+conformity to traditional renderings.
+
 **Wording.** Before rendering a Hebrew lexeme in a new unit, check
 `translation-choices.md` and match the prior decision. If a different rendering
 genuinely fits better in a specific verse, use it — but **flag the deviation
