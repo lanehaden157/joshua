@@ -219,6 +219,28 @@
       ],
       "total": 1
     },
+    "insight": {
+      "count": 2,
+      "verses": [
+        7,
+        8
+      ],
+      "hits": [
+        {
+          "v": 7,
+          "pre": "…t turn from it right or left, so that you may act with ",
+          "hit": "insight",
+          "post": " wherever you go.…"
+        },
+        {
+          "v": 8,
+          "pre": "…will make your way succeed, and then you will act with ",
+          "hit": "insight",
+          "post": ".…"
+        }
+      ],
+      "total": 2
+    },
     "listen": {
       "count": 3,
       "verses": [
@@ -246,6 +268,21 @@
         }
       ],
       "total": 3
+    },
+    "murmur": {
+      "count": 1,
+      "verses": [
+        8
+      ],
+      "hits": [
+        {
+          "v": 8,
+          "pre": "…e torah shall not move away from your mouth. You shall ",
+          "hit": "murmur",
+          "post": " it day and night, so that you keep watch to do accordi…"
+        }
+      ],
+      "total": 1
     },
     "possess": {
       "count": 5,
@@ -373,6 +410,21 @@
       ],
       "total": 5
     },
+    "shatter": {
+      "count": 1,
+      "verses": [
+        9
+      ],
+      "hits": [
+        {
+          "v": 9,
+          "pre": "…you? Be strong and be firm. Do not tremble and do not ",
+          "hit": "shatter",
+          "post": ", for Yahweh your God is with you wherever you go.\"…"
+        }
+      ],
+      "total": 1
+    },
     "strong": {
       "count": 4,
       "verses": [
@@ -430,6 +482,21 @@
         }
       ],
       "total": 2
+    },
+    "valor": {
+      "count": 1,
+      "verses": [
+        14
+      ],
+      "hits": [
+        {
+          "v": 14,
+          "pre": "…ss over in battle array before y'all's brothers, every ",
+          "hit": "mighty man of valor",
+          "post": ", and y'all will help them,…"
+        }
+      ],
+      "total": 1
     }
   }
 }

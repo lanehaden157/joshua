@@ -29,10 +29,21 @@ Split a paired opposition into two roots. Drop a one-passage wordplay. Fixed
 phrases the book repeats verbatim are the one exception and live in
 `threads.json`.
 
-A root's `translit` lists its same-root forms joined by ` · ` — `naḥalah ·
-naḥal`. Tag **every** morphological occurrence with the one slug, **including
-where the English renders it with a different word**. The tag follows the
-lexeme, not the gloss.
+A root's `translit` is the bare citation form only — `naḥal`, not `naḥalah ·
+naḥal · tanḥil`. Tag **every** morphological occurrence with the one slug,
+**including where the English renders it with a different word**. The tag
+follows the lexeme, not the gloss.
+
+**No inflected forms, no stem/binyan labels, in `translit` or `gloss` (2026-09-17,
+Lane).** Lane doesn't want a list of "different Hebrew forms" or a `Qal:`/
+`Hiphil:`/`noun:` tag cluttering the legend or a hover — he reads the plain
+English gloss and works out the rest himself. `translit` is one bare root form;
+`gloss` is a general, ungrammared definition (§3). A stem split (*yarash* Qal
+"possess" vs. Hiphil "drive out" later in the book) is real information, but it
+belongs in a thread's `note` or a verse's own `.gloss` popover — written out in
+plain language, not as a grammatical label — when it's actually load-bearing for
+that unit's translation choices, not pinned to the legend everywhere the root
+appears.
 
 Every slug must resolve to a colour: it appears in `threads-digest.md` or in
 this artifact's own `roots[]`. A `data-root` that resolves to nothing is a hard
@@ -44,6 +55,28 @@ model across every file in the repo; `98b721a` reverted all of it the same day a
 complexity the data didn't need. Hebrew's version of the temptation is root vs.
 binyan vs. semantic field, and it will arrive around unit 3. The answer is the
 same: one slug, one colour, the family spelled out in `translit`.**)**
+
+**Tag a notable word even when it isn't a thread (2026-09-17, Lane).** A local
+root doesn't have to recur or set up a later payoff to earn a `data-root`
+span — a single word in a single verse qualifies whenever the translation
+choice itself is worth a beat: it departs from the expected rendering, or the
+Hebrew is doing something an English reader would otherwise walk past
+(*insight*, *murmur*, *shatter*, *man of valor* in unit 1 — none of them
+threads, all four unique enough to earn the hover). The bar is the same
+`{root, translit, gloss}` a tracked thread gets (§7's checklist), not a lighter
+one — a local root still needs a real bare-root `translit` and a real
+plain-English `gloss`, same rules as §1 and §3 above. When word-checking a
+unit, treat this as a first-class pass, not an afterthought: read for it the
+same way you already read for chiasms and echoes (§6).
+
+**`example` — an optional fourth field, `{root, translit, gloss, example}`,
+for either a local root or a tracked thread.** One quoted in-text usage — a
+short clause pulled from the unit's own English, in Claude's voice, no
+citation attached (§4's no-named-resources rule applies here too) — shown as
+its own line in the click popover, below the gloss. Add it whenever seeing
+the word in context would clarify the choice faster than the gloss alone;
+skip it when the gloss already says everything the reader needs. Not every
+root needs one, tracked or local.
 
 ---
 
@@ -141,12 +174,19 @@ All three present and non-empty. `root` matches `[a-z0-9-]+` — no capitals,
 underscores, or spaces. **No** `color`/`colour`: the site assigns colours. **No**
 `kind`/`members`: that taxonomy was tried and reverted.
 
-`gloss` is keyed to the **stem that actually occurs**, not to the lemma in the
-abstract. Where a root appears in two stems with two meanings, say both.
-*yarash* in Joshua is Hiphil "drive out" ×17 and Qal "take possession" ×12 — one
-gloss for that root is a lie either way. **(learned:** the parser project glossed
-one string per lemma with no stem field and had to work around it word by
-word.**)**
+`gloss` is a short, general English definition — no stem/binyan label (`Qal:`,
+`Hiphil:`, `Piel:`), no part-of-speech tag (`noun:`, `imperative:`). Lane reads
+plain English and infers the grammar himself; a legend or hover cluttered with
+that jargon is the opposite of what he wants (2026-09-17). Where a root
+genuinely carries two different meanings across two stems — *yarash* in Joshua
+is "drive out" in some occurrences and "take possession" in others — pick
+whichever reads better as a single general gloss, or fold both into one
+gloss without naming the stems (`"take possession; drive out"`), and put the
+*why* (which occurrences, which stem, why it matters) in a thread's `note` or
+the relevant verse's own `.gloss` popover instead. **(learned:** the parser
+project glossed one string per lemma with no way to say "this root splits" at
+all — the fix isn't a stem-labeled gloss, it's using the `note`/popover
+channels that already exist for verse-specific nuance.**)**
 
 Never seed a gloss from Strong's first definition. Sampled against Joshua
 vocabulary it was misleading in 9 of 16 cases — *gevul* as "cord", *ḥaram* as
@@ -181,7 +221,7 @@ previous one. `unit` is a slug like `"unit-04"` and must not be this unit's own.
 or a declared root of the target unit. When `op` is `add`/`retag`/`retag_word`
 and the target root is a **tracked thread**, `w` (the OSHB word id) is
 required — that op creates or repoints a `data-root` span, and a tracked-thread
-span must carry `data-w` same as any other (§7 checklist 7).
+span must carry `data-w` same as any other (§7 checklist 8).
 
 ---
 
@@ -196,11 +236,22 @@ fact, some still render unstyled.
 | component | shape | note |
 |---|---|---|
 | coloured word | `<span class="r" data-root="X" data-w="…">…</span>` | `data-w` required for tracked threads (§2). `class="rl"` only **outside** verse blocks — inside a `.v` block it's counted anyway, so `rl` there only mislabels intent (`394db71`). |
-| verse | `<p class="v"><span class="n">17</span> …</p>` | one per verse, canonical order |
-| gloss / compare | `<span class="gloss">…`, `<div class="compare">…` | **following siblings** of the verse, never nested inside it, never left unclosed around a following block |
+| verse | `<p class="v"><span class="n">17</span> … text<sup class="en"><a href="#n1">1</a></sup></p>` | one per verse, canonical order. An endnote marker is part of the verse `<p>` itself, the last thing before `</p>` — **never** inside the `.gloss` that follows |
+| gloss / compare | `<span class="gloss">…`, `<div class="compare">…` | **following siblings** of the verse, never nested inside it, never left unclosed around a following block. Carries the word-by-word translation discussion, collapsed behind the per-verse `*` toggle — a different thing from an endnote marker (see above) |
 | pericope heading | `<h3 class="pericope">Title <span>· 6:1–7</span></h3>` | the `· C:V` range is required. No `movement`/`panel`/`sectionhead` classes. |
 | legend | `<section class="block legend" aria-label="color key"><ul></ul></section>` | **required, even as an empty stub** |
-| notes | `<section class="block notes">` with bare `id="n3"` / `href="#n3"` | the porter prefixes ids per unit; every `href` must resolve to an `id` in the same fragment |
+| notes | `<section class="block notes"><ol><li id="n3">…</li></ol></section>` | `<ol><li>` for real numbering, not a bare `<p id>`. The porter prefixes ids per unit; every `href` must resolve to an `id` in the same fragment |
+
+**Endnote markers live at the end of the verse, not inside the collapsed gloss.
+(learned, 2026-09-17:** the first pass put `<sup class="en">` at the tail of
+the `.gloss` span, so the footnote reference itself was hidden behind the
+per-verse `*` toggle along with the translation commentary — a reader had to
+open the aside just to learn note 3 existed. A footnote marker is a different
+kind of thing from a collapsible translation note and reads should not have to
+click through one to see the other. `<ol>`/`<li>` for the notes list is the
+same fix from the other end: real ordinal numbering, not text implied only by
+the `id` string. `.block.notes li` is set smaller than body/verse text (§4's
+CSS), since a citation shouldn't compete with the translation for weight.**)**
 
 **The legend is required. (learned:** the style reference said it was optional
 because "the site rebuilds it from data." It doesn't — `rebuildLegend()` *fills*
@@ -219,6 +270,26 @@ ship its nesting-depth check in the same commit or don't ship it. **(learned:**
 inside unclosed `.gloss` spans across six units; the renderer silently collapsed
 them. Do **not** inherit Matthew's `aside.synoptic` and repurpose it; its check
 is tuned to its own markup.**)**
+
+**No named commentators, no named resources, anywhere in a fragment's prose —
+`.gloss`, `.verse-note`, `section.block.notes`, all of it (2026-09-17, Lane).**
+Not "Dozeman argues," not "Rashi's note," not "the Metsudah edition," not a
+scholar's name of any kind — and not a project-internal reference either
+(`Joshua-words.tsv`, a lemma id, `translation-choices.md`, `threads-digest.md`).
+The artifact has to stand on its own for a reader who has never seen this repo
+or opened a commentary; a name it can't unpack, or a filename that only means
+something inside this pipeline, breaks that. Write in Claude's own voice.
+Where views differ, say so in general terms — "one reading," "scholars read
+this two ways," "opinions vary," "a more traditional rendering" — and give the
+actual content of the disagreement, not who holds which side. This is a
+**voice** rule, not a sourcing rule: research still draws on real scholarship
+(`Claude_ai_chat_side_instructions.md`'s sourcing pass is unchanged), it just
+never surfaces the source's name in the shipped fragment. **(learned:** unit 1,
+drafted before this rule existed, cited Hawk, Dozeman, Radak, Rashi, Polzin,
+Rowlett, Mazor, and the Targums by name, plus a stray `Joshua-words.tsv` lemma
+count and a `translation-choices.md` pointer, straight in the reader-facing
+prose — meaningless furniture to anyone outside the project, and a citation a
+reader can't check is worse than no citation.**)**
 
 ---
 
@@ -312,28 +383,36 @@ is two tagged words sharing one id, so a per-word count doubles it.
 1. One `<article>`, nothing above or below it.
 2. Meta block parses as JSON. All required keys, all four `threads` sub-keys, no
    unknown top-level keys.
-3. Every `roots[]` entry has `root` + `translit` + `gloss`; `root` is
-   `[a-z0-9-]+`; no `color`, no `kind`, no `members`; the gloss names the stem
-   that occurs.
-4. Every `opens`/`payoffs` `id` exists in `threads-digest.md` and carries a
+3. Every `roots[]` entry has `root` + `translit` + `gloss`, plus an optional
+   `example`; `root` is `[a-z0-9-]+`; no `color`, no `kind`, no `members`;
+   `translit` is the bare root form only, `gloss` is plain-English with no
+   stem/binyan or part-of-speech label, `example` (when present) is one quoted
+   in-text usage with no citation attached (§1, §3, §4).
+4. Every word whose translation choice is unique enough to be worth a beat
+   has a local `data-root` span and a `roots[]` entry, even when it isn't a
+   tracked thread (§1).
+5. Every `opens`/`payoffs` `id` exists in `threads-digest.md` and carries a
    `note`.
-5. Every `retro` entry targets an earlier unit, carries a `why`, and its root
+6. Every `retro` entry targets an earlier unit, carries a `why`, and its root
    resolves; a `retro` entry that adds/retags onto a tracked thread carries a
    valid `w`.
-6. Every `data-root` slug is in `threads-digest.md` or in this artifact's
+7. Every `data-root` slug is in `threads-digest.md` or in this artifact's
    `roots[]`.
-7. Every tracked-thread span carries a `data-w` id copied from
+8. Every tracked-thread span carries a `data-w` id copied from
    `Joshua-words.tsv` — including where the English renders the root with an
    unexpected word.
-8. Legend section present, stub or filled.
-9. Every pericope heading carries its `· C:V` range.
-10. `.gloss` / `.compare` are following siblings, all closed.
-11. Every endnote `href` resolves to an `id` in the file.
-12. **Zero native Hebrew anywhere in the file — no exceptions, attribute values
+9. Legend section present, stub or filled.
+10. Every pericope heading carries its `· C:V` range.
+11. `.gloss` / `.compare` are following siblings, all closed.
+12. Every endnote `href` resolves to an `id` in the file.
+13. **Zero native Hebrew anywhere in the file — no exceptions, attribute values
     included.**
-13. No inline `style`, no `--c-*` vars, no per-root class names, no class the
+14. No inline `style`, no `--c-*` vars, no per-root class names, no class the
     stylesheet doesn't know.
-14. Wording matches `translation-choices.md`, or the deviation is flagged.
+15. Wording matches `translation-choices.md`, or the deviation is flagged.
+16. No named commentator and no project-internal filename/id anywhere in
+    `.gloss`, `.verse-note`, or `section.block.notes` prose (§4) — general
+    voice only ("one reading," "scholars," "opinions vary").
 
 Save as `joshua_NN_translation.html`, zero-padded, and present the file. It
 renders unstyled in chat — expected.
@@ -354,8 +433,8 @@ Minimal and valid. Copy its shape.
   "title": "The City Given, the City Devoted",
   "movement": 2,
   "roots": [
-    { "root": "devote", "translit": "ḥerem · heḥerim", "gloss": "Hiphil: devote irrevocably, put to the ban; noun: the thing so devoted" },
-    { "root": "give",   "translit": "natan",           "gloss": "give, hand over" }
+    { "root": "devote", "translit": "ḥaram", "gloss": "devote irrevocably, put to the ban" },
+    { "root": "give",   "translit": "natan", "gloss": "give, hand over" }
   ],
   "threads": {
     "opens": [
@@ -394,14 +473,16 @@ because of the sons of Israel — no one going out, no one coming in.</p>
 
 <p class="v"><span class="n">2</span> And Yahweh said to Joshua, "See, I have
 <span class="r" data-root="give" data-w="06Fu4">given</span> Jericho into your
-hand."</p>
+hand."<sup class="en"><a href="#n1">1</a></sup></p>
 <span class="gloss"><em>have given</em> —
 <span class="rl" data-root="give">natan</span> in the perfect: the gift is spoken
-as already accomplished.<sup class="en"><a href="#n1">1</a></sup></span>
+as already accomplished.</span>
 
 <section class="block notes">
   <h2>Notes</h2>
-  <p id="n1">On the prophetic perfect, and why the English tense choice matters.</p>
+  <ol>
+  <li id="n1">On the prophetic perfect, and why the English tense choice matters.</li>
+  </ol>
 </section>
 </article>
 ```

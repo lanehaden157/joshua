@@ -258,14 +258,17 @@ drifted from it on several points before the rework closed them:
 - **`threads` requires all four sub-keys** (`opens`, `payoffs`,
   `candidates`, `retro`), each a list, empty lists fine — not just
   type-checked when present. `opens`/`payoffs` entries require a `note`
-  (checklist 4, the popover prose for that beat).
+  (checklist 5, the popover prose for that beat).
 - **`threads.candidates[]`** is `{root, why, ids?, refs?}` — `why` is
   required; `ids` must match `^\d+[a-z]?$`, `refs` must match `C:V`.
   `stems`/`exclude` (this fork's old, pre-style-reference shape) are now
   a hard rejection.
 - **`roots[]`** rejects `color`/`colour` (the site assigns colours) and
   `kind`/`members` (that taxonomy was tried and reverted, style reference
-  §1) — every entry is `{root, translit, gloss}`, nothing more.
+  §1) — every entry is `{root, translit, gloss}`, plus an optional `example`
+  added 2026-09-17 (one quoted in-text usage, no citation attached — style
+  reference §1) for a root, tracked or local, whose translation choice
+  benefits from seeing it in context. Nothing else.
 - **Component whitelist** (`check_component_whitelist`): every `class=`
   used in a fragment must be defined in `css/styles.css` (grep-diff, not
   a full CSS parse), and `REQUIRED_COMPONENT_CLASSES` (`block`, `legend`
@@ -279,18 +282,18 @@ drifted from it on several points before the rework closed them:
   and `href="#…n<N>"` in a fragment must pair up exactly.
 - **Zero native Hebrew script** (`check_no_hebrew_script`): the whole
   Hebrew Unicode block (U+0590–U+05FF), anywhere in a fragment, **no
-  exceptions, attribute values included** (checklist 12). This fork used
+  exceptions, attribute values included** (checklist 13). This fork used
   to exempt `threads.candidates[].stems` — that field doesn't exist in
   the schema anymore (candidates carry `ids`/`refs` now), and the
-  exemption contradicted checklist 12 regardless, so it's gone.
+  exemption contradicted checklist 13 regardless, so it's gone.
 - **Four newer fragment checks**, all hard failures folded into
   `validate_fragment()`: `check_data_root_resolves` (every `data-root`
   must resolve to a `threads.json` thread's root or this fragment's own
-  `roots[]`, checklist 6), `check_tracked_spans_have_data_w` (every
-  tracked-thread span must carry `data-w`, checklist 7),
+  `roots[]`, checklist 7), `check_tracked_spans_have_data_w` (every
+  tracked-thread span must carry `data-w`, checklist 8),
   `check_pericope_headings` (every `h3.pericope` must carry its `· C:V`
-  range, checklist 9), `check_no_inline_style` (no inline `style=`, no
-  `--c-*` colour vars, checklist 13).
+  range, checklist 10), `check_no_inline_style` (no inline `style=`, no
+  `--c-*` colour vars, checklist 14).
 - **`warnings_for_fragment()`** — a separate, non-fatal channel, kept
   structurally distinct from `validate_fragment()`'s hard errors:
   `class="rl"` inside a `.v` verse block (style reference §4: valid
@@ -307,7 +310,7 @@ drifted from it on several points before the rework closed them:
   `add`/`retag`/`retag_word` and whose target root is a tracked thread
   must carry `w` (an OSHB word id) — that op creates or repoints a
   `data-root` span, and a tracked-thread span needs `data-w` same as any
-  other (checklist 7). Local-root retro fixes need no `w`. Found and fixed
+  other (checklist 8). Local-root retro fixes need no `w`. Found and fixed
   while building the porter: the style reference's own §8 worked example
   had a retro entry missing both a correct verse number and a `w` — now
   fixed (verse 13 → 14, `w: "06UrB"`), along with two other wrong word ids

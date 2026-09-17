@@ -403,6 +403,7 @@ body.text-center .unit .v .n { display: inline; width: auto; margin-right: 4px; 
 }
 .root-pop p { margin: 7px 0 0; }
 .root-pop .rp-gloss { color: var(--ink); }
+.root-pop .rp-example { color: var(--ink-soft); font-style: italic; font-size: 13.5px; }
 .root-pop .rp-count { font-size: 13px; color: var(--ink-soft); }
 .root-pop .rp-traj { font-size: 13.5px; }
 .root-pop .rp-traj a, .root-pop .rp-also a { color: var(--accent-bronze); border-bottom: 1px dotted currentColor; }
@@ -457,7 +458,7 @@ body.text-center .unit .v .n { display: inline; width: auto; margin-right: 4px; 
    unlike Matthew's bare .notes -- so its frame comes from `.unit section.block`
    above; only the ordered-list styling is added here) */
 .unit .block.notes ol { margin: 0; padding-left: 26px; }
-.unit .block.notes li { margin: 0 0 15px; font-size: 16px; line-height: 1.55; }
+.unit .block.notes li { margin: 0 0 12px; font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); }
 
 .unit .foot, .unit footer { margin-top: 44px; text-align: center; font-size: 13px; color: var(--ink-soft); font-style: italic; }
 

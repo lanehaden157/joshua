@@ -68,13 +68,37 @@
       "roots": {
         "command": {
           "color": "#9c5a1e",
-          "translit": "tsawah · wayetsaw · tsiwwah",
-          "gloss": "Piel: command, give orders"
+          "translit": "tsawah",
+          "gloss": "command, give orders"
         },
         "listen": {
           "color": "#4a4f6b",
-          "translit": "shamaʿ · nishmaʿ",
-          "gloss": "Qal: listen to, heed, obey"
+          "translit": "shamaʿ",
+          "gloss": "listen to, heed, obey"
+        },
+        "insight": {
+          "color": "#5c3f7a",
+          "translit": "sakal",
+          "gloss": "have understanding, act wisely",
+          "example": "so that you may act with insight wherever you go (1:7)"
+        },
+        "murmur": {
+          "color": "#2f4f7a",
+          "translit": "hagah",
+          "gloss": "read or recite aloud in a low voice, mutter",
+          "example": "you shall murmur it day and night (1:8)"
+        },
+        "shatter": {
+          "color": "#5c6b1f",
+          "translit": "ḥatat",
+          "gloss": "be shattered, lose courage, be dismayed",
+          "example": "do not tremble and do not shatter (1:9)"
+        },
+        "valor": {
+          "color": "#a67c1e",
+          "translit": "gibbor ḥayil",
+          "gloss": "mighty man, man of strength — a stock military phrase",
+          "example": "every mighty man of valor (1:14)"
         }
       }
     },

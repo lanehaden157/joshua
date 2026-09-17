@@ -22,10 +22,14 @@ Shape (style reference §3):
   passage    str      "Joshua 9:1-27"
   title      str
   movement   int                           (optional; looked up from units.json)
-  roots      [ {root, translit, gloss} ]
+  roots      [ {root, translit, gloss, example?} ]
              every coloured root the unit tracks — translit + gloss ONLY, NO
              colour, no kind/members (that taxonomy was tried and reverted,
-             style reference §1).
+             style reference §1). `example` is optional: one quoted in-text
+             usage, for any root (tracked thread or local) whose translation
+             choice benefits from seeing it in context (style reference §1,
+             2026-09-17) — never a citation, never a filename, same voice
+             rule as everywhere else (§4).
   threads    { opens:[{id,ref,note}], payoffs:[{id,ref,note}],
                candidates:[{root,why,ids?,refs?}],
                retro:[{unit,verse,text,root,why,nth?,op?,w?}] }
@@ -187,6 +191,8 @@ def validate(meta, threads_json=None):
                         "is {root, translit, gloss}, nothing more")
         if not re.fullmatch(r"[a-z0-9-]+", r.get("root", "x")):
             errs.append(f"{where}: root '{r.get('root')}' must be [a-z0-9-]")
+        if "example" in r and not isinstance(r["example"], str):
+            errs.append(f"{where}: 'example' must be a string")
 
     th = meta.get("threads", {}) or {}
     for key in THREADS_SUBKEYS:
@@ -547,9 +553,12 @@ def generate(n, units_json=None, threads_json=None):
             e = {"translit": "", "gloss": ""}
         if name not in thread_roots and not (e.get("translit") or e.get("gloss")):
             continue
-        roots.append({"root": name,
-                      "translit": e.get("translit", ""),
-                      "gloss": e.get("gloss", "")})
+        entry = {"root": name,
+                 "translit": e.get("translit", ""),
+                 "gloss": e.get("gloss", "")}
+        if e.get("example"):
+            entry["example"] = e["example"]
+        roots.append(entry)
     roots.sort(key=lambda r: r["root"])
 
     opens, payoffs = _threads_touching(threads_json, n)
