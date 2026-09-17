@@ -395,22 +395,65 @@ new step Matthew never needed: `pipeline/roots.py`, validating
 claimed by two roots, every tracked thread's root has an entry) between
 `verify_occurrences.py` and `threads_digest.py`.
 
-Tests: `pipeline/test_apply_retrofit.py` (19), `pipeline/
-test_scan_occurrences.py` (4), `pipeline/test_verify_occurrences.py` (5),
-and `pipeline/test_port_artifact.py` — a full end-to-end run of
+Tests: `pipeline/test_apply_retrofit.py` (21 — includes `retag`'s `occ`
+param, added while retrofitting unit 1's newly-tracked roots, see below),
+`pipeline/test_scan_occurrences.py` (4), `pipeline/test_verify_occurrences.py`
+(5), and `pipeline/test_port_artifact.py` — a full end-to-end run of
 `port_artifact.py` against a scratch copy of `data/`/`units/`/`pipeline/
 out` (never the real registry), using the style reference's own §8 worked
 example as the incoming artifact: dry-run, real port, fragment
 validation, retro-merge onto an earlier unit, tracked roots produce no
 local-roots entry, a genuinely local root gets a hue from `port_artifact.
 py`'s `WELL` (Phase 4), and thread-delta report content (candidate
-preview, clean coverage, the merged retro fix) — 9 checks, all passing on
-the real logic paths
+preview, real tracked-thread coverage gaps against the worked example's
+deliberately-partial 2-verse excerpt, the merged retro fix) — 9 checks,
+all passing on the real logic paths
 (the subprocess-based `apply_retrofit`/`scan_occurrences`/
 `verify_occurrences` step is stubbed out, since a real subprocess would
 re-import those modules fresh and use their own path globals, not this
 test's monkeypatched scratch ones — those three steps have their own
-tests that exercise the real subprocess-free logic directly).
+tests that exercise the real subprocess-free logic directly). Found while
+building unit 1: `pipeline/roots.py`'s `load_roots()` used to bind its
+default `path=ROOTS_JSON` at import time, so a test's `roots.ROOTS_JSON =
+<scratch path>` monkeypatch was silently ignored on any no-arg call —
+harmless while the real `data/roots.json` was empty (both looked like "no
+entry"), but it would have masked real coverage-checking forever. Fixed
+to resolve the default at call time.
+
+### Thread promotion: book-wide vs. local (2026-09-16, Lane)
+
+Every unit's artifact arrives with a `threads.candidates[]` list — each
+one a **root that could go either way**: promoted to a tracked thread
+(`data/roots.json` + `data/threads.json`, coloured and audited book-wide)
+or left as a merely-local root (per-unit colour and gloss only, in
+`units.json`, no id set, no cross-unit coverage guarantee). Lane's call:
+**Claude decides this, not Lane** — biased toward book-wide, since a
+thread kept local that turns out to have a real payoff later is a worse
+outcome than one tracked book-wide that never pays off. Claude asks Lane
+only when genuinely unsure (unit 1's example: `kol` "all," 236 book-wide
+occurrences, flagged by the candidate's own `why` note as "probably too
+frequent to colour usefully" — asked, kept local).
+
+Promoting a candidate is not just a `data/roots.json`/`threads.json`
+edit — it changes the coverage-audit contract for that root from
+"informational, counted per verse" to "every occurrence in every built
+unit's passage must carry `data-w`" (`audit_thread_coverage.py`'s
+COVERAGE POLICY). An artifact written while a root was still expected to
+stay local will usually already have every occurrence *wrapped* in a
+span (the researcher tags what they notice), just without `data-w` (no
+reason to look up a word id for a root that was never going to be
+audited) — so promoting it after the fact is normally a `retrofit-tags.json`
+`retag` pass (inject `data-w` into existing spans, one entry per
+occurrence, cross-checked against `Joshua-words.tsv`), not new `add`
+tagging. Watch for one English span covering what should be two separate
+Hebrew occurrences, or two English spans covering one Hebrew occurrence
+(unit 1: Hiphil *yaniaḥ* "gives ... rest" split across two words) — the
+second case needs the secondary span demoted to `class="rl"` (`unwrap` +
+`add` with `cls: "rl"`), since `rl` is what `audit_thread_coverage.py`
+deliberately excludes from the count (its `SPAN_ATTRS` regex only matches
+`class="r"`). Re-run `pipeline/audit_thread_coverage.py` after any
+promotion-driven retrofit and confirm every promoted root reports clean
+before committing.
 
 ## The app shell (Phase 4)
 

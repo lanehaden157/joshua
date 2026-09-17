@@ -49,7 +49,13 @@ def bare_id(id_str: str) -> str:
     return m.group(1)
 
 
-def load_roots(path: str = ROOTS_JSON) -> dict:
+def load_roots(path: str = None) -> dict:
+    """path defaults to the module-level ROOTS_JSON, resolved at CALL time
+    (not bound as a mutable default at import time) so a caller -- a test,
+    or another module doing `roots.ROOTS_JSON = ...` -- can monkeypatch it
+    and have every no-arg load_roots() call see the new path."""
+    if path is None:
+        path = ROOTS_JSON
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 

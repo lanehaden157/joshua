@@ -1,3 +1,61 @@
 {
-  "_note": "The record of hand-authored fragment edits, replayed idempotently by apply_retrofit.py (build.py step 1). Ops: strip_span / text / untag_word / retag_word (whole-unit), unwrap / retag / add (per-verse) -- see apply_retrofit.py. Once units exist, the committed units/*.html will already contain all of this; these entries are the audit trail and the safety net for port_artifact.py, which re-runs fragment extraction on a unit it (re)ports. Empty until the first unit is built -- no fabricated content."
+  "_note": "The record of hand-authored fragment edits, replayed idempotently by apply_retrofit.py (build.py step 1). Ops: strip_span / text / untag_word / retag_word (whole-unit), unwrap / retag / add (per-verse) -- see apply_retrofit.py. Once units exist, the committed units/*.html will already contain all of this; these entries are the audit trail and the safety net for port_artifact.py, which re-runs fragment extraction on a unit it (re)ports. Unit 1's entries: the artifact already wrapped every tracked-root occurrence in a span, so this is all data-w injection (retag, from==to), not new tagging -- except the v15 'rest' pair, where the artifact rendered one Hebrew word (yaniaḥ) as two English words ('gives ... rest') in two separate spans; the second is demoted to class rl (uncounted echo, see apply_add's docstring) via unwrap+add rather than double-counted against one Hebrew occurrence. 'occ' (added to retag alongside this unit) picks the Nth same-root-same-text span in a verse, needed where one root renders the same English word twice in a verse (v11, v15 'possess').",
+  "unwrap": [
+    { "unit": "unit-01", "root": "rest", "text": "rest" }
+  ],
+  "add": [
+    { "unit": "unit-01", "verse": 15, "root": "rest", "text": "rest", "cls": "rl" }
+  ],
+  "retag": [
+    { "unit": "unit-01", "verse": 1, "from": "servant", "to": "servant", "text": "servant", "w": "06TSc" },
+
+    { "unit": "unit-01", "verse": 2, "from": "servant", "to": "servant", "text": "servant", "w": "06x9c" },
+    { "unit": "unit-01", "verse": 2, "from": "cross", "to": "cross", "text": "cross", "w": "06TZE" },
+    { "unit": "unit-01", "verse": 2, "from": "give", "to": "give", "text": "giving", "w": "06g2y" },
+
+    { "unit": "unit-01", "verse": 3, "from": "give", "to": "give", "text": "given", "w": "06LeN" },
+
+    { "unit": "unit-01", "verse": 6, "from": "strong", "to": "strong", "text": "strong", "w": "06dNE" },
+    { "unit": "unit-01", "verse": 6, "from": "firm", "to": "firm", "text": "firm", "w": "06xdF" },
+    { "unit": "unit-01", "verse": 6, "from": "inherit", "to": "inherit", "text": "inherit", "w": "06Snp" },
+    { "unit": "unit-01", "verse": 6, "from": "give", "to": "give", "text": "give", "w": "06Q7E" },
+
+    { "unit": "unit-01", "verse": 7, "from": "strong", "to": "strong", "text": "strong", "w": "06a62" },
+    { "unit": "unit-01", "verse": 7, "from": "firm", "to": "firm", "text": "firm", "w": "06KvD" },
+    { "unit": "unit-01", "verse": 7, "from": "torah", "to": "torah", "text": "torah", "w": "06Wxx" },
+    { "unit": "unit-01", "verse": 7, "from": "servant", "to": "servant", "text": "servant", "w": "069KV" },
+
+    { "unit": "unit-01", "verse": 8, "from": "torah", "to": "torah", "text": "torah", "w": "06Sov" },
+
+    { "unit": "unit-01", "verse": 9, "from": "strong", "to": "strong", "text": "strong", "w": "06j1i" },
+    { "unit": "unit-01", "verse": 9, "from": "firm", "to": "firm", "text": "firm", "w": "06J9J" },
+
+    { "unit": "unit-01", "verse": 11, "from": "cross", "to": "cross", "text": "Cross", "w": "0692v" },
+    { "unit": "unit-01", "verse": 11, "from": "cross", "to": "cross", "text": "crossing", "w": "06SaV" },
+    { "unit": "unit-01", "verse": 11, "from": "possess", "to": "possess", "text": "possess", "occ": 1, "w": "06XyU" },
+    { "unit": "unit-01", "verse": 11, "from": "give", "to": "give", "text": "giving", "w": "06ddd" },
+    { "unit": "unit-01", "verse": 11, "from": "possess", "to": "possess", "text": "possess", "occ": 2, "w": "06TW6" },
+
+    { "unit": "unit-01", "verse": 13, "from": "servant", "to": "servant", "text": "servant", "w": "06pqY" },
+    { "unit": "unit-01", "verse": 13, "from": "rest", "to": "rest", "text": "giving y'all rest", "w": "06v5z" },
+    { "unit": "unit-01", "verse": 13, "from": "give", "to": "give", "text": "give", "w": "066By" },
+
+    { "unit": "unit-01", "verse": 14, "from": "give", "to": "give", "text": "gave", "w": "06sYp" },
+    { "unit": "unit-01", "verse": 14, "from": "cross", "to": "cross", "text": "far side", "w": "06i4W" },
+    { "unit": "unit-01", "verse": 14, "from": "cross", "to": "cross", "text": "cross", "w": "06dSp" },
+
+    { "unit": "unit-01", "verse": 15, "from": "rest", "to": "rest", "text": "gives", "w": "06qry" },
+    { "unit": "unit-01", "verse": 15, "from": "possess", "to": "possess", "text": "possess", "occ": 1, "w": "06hEs" },
+    { "unit": "unit-01", "verse": 15, "from": "give", "to": "give", "text": "giving", "w": "06tkJ" },
+    { "unit": "unit-01", "verse": 15, "from": "possess", "to": "possess", "text": "possession", "w": "06bYD" },
+    { "unit": "unit-01", "verse": 15, "from": "possess", "to": "possess", "text": "possess", "occ": 2, "w": "06v2F" },
+    { "unit": "unit-01", "verse": 15, "from": "give", "to": "give", "text": "gave", "w": "06doW" },
+    { "unit": "unit-01", "verse": 15, "from": "servant", "to": "servant", "text": "servant", "w": "0663G" },
+    { "unit": "unit-01", "verse": 15, "from": "cross", "to": "cross", "text": "far side", "w": "061jv" },
+
+    { "unit": "unit-01", "verse": 16, "from": "send", "to": "send", "text": "send", "w": "06jfz" },
+
+    { "unit": "unit-01", "verse": 18, "from": "strong", "to": "strong", "text": "strong", "w": "06azZ" },
+    { "unit": "unit-01", "verse": 18, "from": "firm", "to": "firm", "text": "firm", "w": "06oiy" }
+  ]
 }

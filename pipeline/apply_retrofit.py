@@ -30,7 +30,10 @@ fragment.
   retag        change data-root on the span wrapping `text` in `verse`
                (optional "w": inject/update data-w on the retagged span --
                needed when retagging a previously-local span onto a tracked
-               thread, which had no data-w before)
+               thread, which had no data-w before; optional "occ": 1-based
+               index picking the Nth span with this root+text in the verse,
+               when the same root renders the same English text more than
+               once in one verse and a bare search can't tell them apart)
   unwrap       strip the data-root span around every `text` (whole unit)
   retag_word   whole unit: any `<span … data-root="from" …>TEXT</span> whose
                TEXT matches the `match` regex -> data-root="to" (no `w` --
@@ -91,27 +94,40 @@ def apply_add(html, it):
 
 
 def apply_retag(html, it):
+    """`occ` (default 1) picks the Nth from-match in the verse, left to
+    right -- needed when the same root produces the same English text twice
+    in one verse (e.g. two untagged-w "possess" spans from one Hebrew word
+    each), which a bare .search() can't tell apart. Idempotency for occ>1
+    is checked by data-w already matching at that same position, since
+    already_pat (used for the occ=1/from!=to case) can't distinguish which
+    of several same-text spans a replay is asking about."""
     span = vblock(html, it["verse"], it.get("nth", 1))
     if not span:
         return html, f"SKIP {it['unit']} v{it['verse']}: no .v block"
     a, b = span
     seg = html[a:b]
     w = it.get("w")
+    occ = it.get("occ", 1)
 
     # Match the whole opening <span ...> for this data-root/text so
     # data-root and (optionally) data-w can be rewritten together.
     open_pat = re.compile(
         r'<span class="(r[l]?)"([^>]*)\bdata-root="' + re.escape(it["from"])
         + r'"([^>]*)>' + re.escape(it["text"]) + r'</span>')
-    m = open_pat.search(seg)
+    matches = list(open_pat.finditer(seg))
 
     already_pat = re.compile(
         r'<span class="r[l]?"[^>]*\bdata-root="' + re.escape(it["to"])
         + r'"[^>]*>' + re.escape(it["text"]) + r'</span>')
-    if already_pat.search(seg) and not m:
-        return html, f"ok   {it['unit']} v{it['verse']}: already retagged"
-    if not m:
-        return html, f"MISS {it['unit']} v{it['verse']}: data-root=\"{it['from']}\">{it['text']} not present"
+    if len(matches) < occ:
+        if already_pat.search(seg):
+            return html, f"ok   {it['unit']} v{it['verse']}: already retagged"
+        return html, (f"MISS {it['unit']} v{it['verse']}: data-root=\"{it['from']}\">"
+                       f"{it['text']} not present (occ {occ})")
+
+    m = matches[occ - 1]
+    if w and it["from"] == it["to"] and f'data-w="{w}"' in m.group(0):
+        return html, f"ok   {it['unit']} v{it['verse']}: occurrence {occ} already data-w={w}"
 
     cls, before, after = m.group(1), m.group(2), m.group(3)
     attrs = (before + " " + after).strip()

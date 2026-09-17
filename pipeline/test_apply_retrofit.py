@@ -127,6 +127,42 @@ def test_retag_miss_when_not_present():
            msg.startswith("MISS"), msg)
 
 
+def test_retag_occ_picks_nth_duplicate_text():
+    """Two untagged-w spans with the same root and the same English text in
+    one verse (e.g. a Hebrew word occurring twice, each rendered 'possess')
+    can't be told apart by a bare search -- 'occ' disambiguates them."""
+    html = _verse(11, 'go in to <span class="r" data-root="possess">possess</span> '
+                       'the land Yahweh is giving you to '
+                       '<span class="r" data-root="possess">possess</span>')
+    once, msg1 = ar.apply_retag(html, {"unit": "unit-01", "verse": 11,
+                                        "from": "possess", "to": "possess",
+                                        "text": "possess", "w": "06XyU", "occ": 1})
+    twice, msg2 = ar.apply_retag(once, {"unit": "unit-01", "verse": 11,
+                                         "from": "possess", "to": "possess",
+                                         "text": "possess", "w": "06TW6", "occ": 2})
+    _check("occ=1 should tag the first occurrence",
+           'data-w="06XyU">possess</span> the land' in twice, twice)
+    _check("occ=2 should tag the second occurrence, not re-tag the first",
+           twice.count('data-w="06XyU"') == 1 and 'data-w="06TW6"' in twice, twice)
+
+
+def test_retag_occ_is_idempotent():
+    html = _verse(11, 'go in to <span class="r" data-root="possess">possess</span> '
+                       'the land Yahweh is giving you to '
+                       '<span class="r" data-root="possess">possess</span>')
+    once, _ = ar.apply_retag(html, {"unit": "unit-01", "verse": 11,
+                                     "from": "possess", "to": "possess",
+                                     "text": "possess", "w": "06XyU", "occ": 1})
+    once, _ = ar.apply_retag(once, {"unit": "unit-01", "verse": 11,
+                                     "from": "possess", "to": "possess",
+                                     "text": "possess", "w": "06TW6", "occ": 2})
+    twice, msg = ar.apply_retag(once, {"unit": "unit-01", "verse": 11,
+                                        "from": "possess", "to": "possess",
+                                        "text": "possess", "w": "06TW6", "occ": 2})
+    _check("re-applying occ=2 should no-op", twice == once, (once, twice))
+    _check("re-applying occ=2 should say 'ok'", msg.startswith("ok"), msg)
+
+
 # ------------------------------------------------------------------ unwrap
 
 def test_unwrap_strips_span():

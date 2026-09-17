@@ -66,41 +66,6 @@
       "movement": 1,
       "built": true,
       "roots": {
-        "give": {
-          "color": "#b1481f",
-          "translit": "natan · noten · netattiw · latet",
-          "gloss": "Qal: give — participle 'giving' (ongoing), perfect 'gave / have given' (done)"
-        },
-        "cross": {
-          "color": "#2f5f6b",
-          "translit": "ʿavar · ʿover · ʿever",
-          "gloss": "Qal: cross over; noun ʿever: the far side (of the Jordan)"
-        },
-        "possess": {
-          "color": "#8c6d1f",
-          "translit": "yarash · lareshet · yerushshah",
-          "gloss": "Qal: take possession, possess; noun: possession (the Hiphil 'drive out' does not occur in this unit)"
-        },
-        "inherit": {
-          "color": "#55642f",
-          "translit": "naḥal · tanḥil",
-          "gloss": "Hiphil: cause to inherit, give as an inheritance"
-        },
-        "rest": {
-          "color": "#6b3620",
-          "translit": "nuaḥ · meniaḥ · yaniaḥ",
-          "gloss": "Hiphil: give rest"
-        },
-        "strong": {
-          "color": "#3d6b4a",
-          "translit": "ḥazaq",
-          "gloss": "Qal imperative: be strong"
-        },
-        "firm": {
-          "color": "#7a3f5c",
-          "translit": "ʾamats",
-          "gloss": "Qal imperative: be firm, be resolute (the glottal ʾ, aleph — not the ʿ of ʿavar)"
-        },
         "command": {
           "color": "#9c5a1e",
           "translit": "tsawah · wayetsaw · tsiwwah",
@@ -110,21 +75,6 @@
           "color": "#4a4f6b",
           "translit": "shamaʿ · nishmaʿ",
           "gloss": "Qal: listen to, heed, obey"
-        },
-        "servant": {
-          "color": "#8a2f3a",
-          "translit": "ʿeved · ʿavdi",
-          "gloss": "noun: servant (Moses' title, 'servant of Yahweh')"
-        },
-        "torah": {
-          "color": "#6b1e46",
-          "translit": "torah",
-          "gloss": "noun: instruction, the Torah (here 'the scroll of the torah')"
-        },
-        "send": {
-          "color": "#1e7a5c",
-          "translit": "shalaḥ · tishlaḥenu",
-          "gloss": "Qal: send"
         }
       }
     },

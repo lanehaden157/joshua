@@ -242,9 +242,13 @@ def test_thread_delta_reports_coverage_and_candidate():
                "`shout`" in delta, delta)
         _check("thread delta should preview the candidate's id-matched forms",
                "word(s) book-wide" in delta, delta)
-        _check("thread delta should report clean tracked-thread coverage "
-               "(the worked example tags its one 'give' occurrence correctly)",
-               "is tagged. ✓" in delta, delta)
+        _check("thread delta should report real tracked-thread coverage gaps "
+               "(the worked example only tags v1-2 of a passage declared as "
+               "6:1-27, so occurrences elsewhere in the chapter are genuine "
+               "gaps -- this also exercises load_roots() picking up the "
+               "scratch-patched roots.json rather than a stale import-time default)",
+               "occurrence(s) the Hebrew has but the fragment leaves untagged" in delta
+               and '"root": "give"' in delta and '"root": "devote"' in delta, delta)
         _check("thread delta should report the retro fix for unit-05",
                "unit-05" in delta and "devote" in delta, delta)
 
