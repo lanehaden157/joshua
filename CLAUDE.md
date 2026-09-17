@@ -455,6 +455,43 @@ deliberately excludes from the count (its `SPAN_ATTRS` regex only matches
 promotion-driven retrofit and confirm every promoted root reports clean
 before committing.
 
+**The retrofit recipe** (mechanical steps, not judgment calls — do this
+per promoted root, per unit):
+
+1. Pull every occurrence of the root's id(s) within the unit's chapter(s)
+   straight from `Joshua-words.tsv`, in document order: filter rows whose
+   `ref` falls in the unit's passage, split each `lemma` on `/`, keep
+   digit-leading segments, bare them (`pipeline/roots.py`'s `bare_id()`),
+   and match against the id set. Keep `(ref, word_id, surface, morph)` —
+   this is the ground truth the fragment must match, not a re-derivation
+   from English.
+2. Pull every existing `<span class="r" data-root="ROOT">TEXT</span>` for
+   that root out of the built unit's fragment, verse by verse, in
+   document order.
+3. Match the two lists 1:1 **in order, per verse** — the translation
+   follows Hebrew word order closely enough that this works far more
+   often than not. Where the counts match verse-by-verse, this is a
+   straight ordered zip: occurrence *N* in the Hebrew list is span *N* in
+   the English list.
+4. Where a verse's counts *don't* match, that's the signal to look closer
+   (not a bug to route around): one span wrapping two Hebrew words (write
+   it as one `retag` covering both, or split the span by hand if the
+   distinction matters to the thread), or one Hebrew word rendered as two
+   English spans (demote the extra one to `class="rl"` per above), or a
+   genuinely untagged occurrence (a real `add`, not `retag` — rare, since
+   most candidates arrive already wrapped, see above).
+5. Same root + same English text twice in one verse (e.g. "possess ...
+   possess") needs `retag`'s `occ` (1-based, left to right) to tell the
+   two spans apart — a bare text match can't.
+6. Write one `retag` entry per matched occurrence: `{"unit", "verse",
+   "from": root, "to": root, "text", "w": word_id}` (`occ` only when
+   needed per #5). Batch them into `pipeline/retrofit-tags.json`.
+7. Re-run `python pipeline/port_artifact.py N`, then
+   `python pipeline/audit_thread_coverage.py` — expect every promoted
+   root to report `clean`, 0 gap/wrong-id/stray/missing-data-w. Any
+   remainder means a step-4 case was missed; don't hand-wave a nonzero
+   count.
+
 ## The app shell (Phase 4)
 
 `index.html` + `app/*.js` + `css/styles.css`, forked from `Projects/
