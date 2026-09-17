@@ -3,36 +3,314 @@
   "book": "Joshua",
   "unit_count": 24,
   "movements": [
-    { "n": 1, "name": "Entry into the land", "span": "Joshua 1:1–5:15", "units": [1, 2, 3, 4] },
-    { "n": 2, "name": "Conquest", "span": "Joshua 6:1–12:24", "units": [5, 6, 7, 8, 9, 10, 11, 12] },
-    { "n": 3, "name": "Allotment", "span": "Joshua 13:1–21:45", "units": [13, 14, 15, 16, 17, 18, 19, 20] },
-    { "n": 4, "name": "Epilogue: altar, farewell, covenant", "span": "Joshua 22:1–24:33", "units": [21, 22, 23, 24] }
+    {
+      "n": 1,
+      "name": "Entry into the land",
+      "span": "Joshua 1:1–5:15",
+      "units": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "n": 2,
+      "name": "Conquest",
+      "span": "Joshua 6:1–12:24",
+      "units": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "n": 3,
+      "name": "Allotment",
+      "span": "Joshua 13:1–21:45",
+      "units": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "n": 4,
+      "name": "Epilogue: altar, farewell, covenant",
+      "span": "Joshua 22:1–24:33",
+      "units": [
+        21,
+        22,
+        23,
+        24
+      ]
+    }
   ],
   "discourses": [],
   "units": [
-    { "n": 1, "slug": "unit-01", "passage": "Joshua 1:1–18", "title": "Rights of Passage", "movement": 1, "built": false },
-    { "n": 2, "slug": "unit-02", "passage": "Joshua 2:1–24", "title": "Rahab and the Spies", "movement": 1, "built": false },
-    { "n": 3, "slug": "unit-03", "passage": "Joshua 3:1–4:24", "title": "Crossing the Jordan", "movement": 1, "built": false },
-    { "n": 4, "slug": "unit-04", "passage": "Joshua 5:1–15", "title": "Gilgal: Circumcision, Passover, and the Commander", "movement": 1, "built": false },
-    { "n": 5, "slug": "unit-05", "passage": "Joshua 6:1–27", "title": "Jericho", "movement": 2, "built": false },
-    { "n": 6, "slug": "unit-06", "passage": "Joshua 7:1–26", "title": "Achan", "movement": 2, "built": false },
-    { "n": 7, "slug": "unit-07", "passage": "Joshua 8:1–29", "title": "Ai", "movement": 2, "built": false },
-    { "n": 8, "slug": "unit-08", "passage": "Joshua 8:30–9:2", "title": "Ebal: Altar and Covenant Reading", "movement": 2, "built": false },
-    { "n": 9, "slug": "unit-09", "passage": "Joshua 9:3–27", "title": "Gibeon's Deception", "movement": 2, "built": false },
-    { "n": 10, "slug": "unit-10", "passage": "Joshua 10:1–43", "title": "The Southern Campaign", "movement": 2, "built": false },
-    { "n": 11, "slug": "unit-11", "passage": "Joshua 11:1–23", "title": "The Northern Campaign", "movement": 2, "built": false },
-    { "n": 12, "slug": "unit-12", "passage": "Joshua 12:1–24", "title": "The Defeated Kings", "movement": 2, "built": false },
-    { "n": 13, "slug": "unit-13", "passage": "Joshua 13:1–33", "title": "Unfinished Land, Transjordan Allotted", "movement": 3, "built": false },
-    { "n": 14, "slug": "unit-14", "passage": "Joshua 14:1–15", "title": "West-Jordan Preparations and Caleb's Inheritance", "movement": 3, "built": false },
-    { "n": 15, "slug": "unit-15", "passage": "Joshua 15:1–63", "title": "Judah's Allotment", "movement": 3, "built": false },
-    { "n": 16, "slug": "unit-16", "passage": "Joshua 16:1–17:18", "title": "Joseph's Allotment: Ephraim and Manasseh", "movement": 3, "built": false },
-    { "n": 17, "slug": "unit-17", "passage": "Joshua 18:1–28", "title": "Shiloh: Assembly and Benjamin's Allotment", "movement": 3, "built": false },
-    { "n": 18, "slug": "unit-18", "passage": "Joshua 19:1–51", "title": "The Six Remaining Tribes and Joshua's Inheritance", "movement": 3, "built": false },
-    { "n": 19, "slug": "unit-19", "passage": "Joshua 20:1–9", "title": "Cities of Refuge", "movement": 3, "built": false },
-    { "n": 20, "slug": "unit-20", "passage": "Joshua 21:1–45", "title": "Levitical Cities and the Rest Formula", "movement": 3, "built": false },
-    { "n": 21, "slug": "unit-21", "passage": "Joshua 22:1–34", "title": "The Jordan Altar", "movement": 4, "built": false },
-    { "n": 22, "slug": "unit-22", "passage": "Joshua 23:1–16", "title": "Joshua's Farewell Address", "movement": 4, "built": false },
-    { "n": 23, "slug": "unit-23", "passage": "Joshua 24:1–28", "title": "Covenant Renewal at Shechem", "movement": 4, "built": false },
-    { "n": 24, "slug": "unit-24", "passage": "Joshua 24:29–33", "title": "Burials and Closing Notices", "movement": 4, "built": false }
+    {
+      "n": 1,
+      "slug": "unit-01",
+      "passage": "Joshua 1:1–18",
+      "title": "Rights of Passage",
+      "movement": 1,
+      "built": true,
+      "roots": {
+        "give": {
+          "color": "#b1481f",
+          "translit": "natan · noten · netattiw · latet",
+          "gloss": "Qal: give — participle 'giving' (ongoing), perfect 'gave / have given' (done)"
+        },
+        "cross": {
+          "color": "#2f5f6b",
+          "translit": "ʿavar · ʿover · ʿever",
+          "gloss": "Qal: cross over; noun ʿever: the far side (of the Jordan)"
+        },
+        "possess": {
+          "color": "#8c6d1f",
+          "translit": "yarash · lareshet · yerushshah",
+          "gloss": "Qal: take possession, possess; noun: possession (the Hiphil 'drive out' does not occur in this unit)"
+        },
+        "inherit": {
+          "color": "#55642f",
+          "translit": "naḥal · tanḥil",
+          "gloss": "Hiphil: cause to inherit, give as an inheritance"
+        },
+        "rest": {
+          "color": "#6b3620",
+          "translit": "nuaḥ · meniaḥ · yaniaḥ",
+          "gloss": "Hiphil: give rest"
+        },
+        "strong": {
+          "color": "#3d6b4a",
+          "translit": "ḥazaq",
+          "gloss": "Qal imperative: be strong"
+        },
+        "firm": {
+          "color": "#7a3f5c",
+          "translit": "ʾamats",
+          "gloss": "Qal imperative: be firm, be resolute (the glottal ʾ, aleph — not the ʿ of ʿavar)"
+        },
+        "command": {
+          "color": "#9c5a1e",
+          "translit": "tsawah · wayetsaw · tsiwwah",
+          "gloss": "Piel: command, give orders"
+        },
+        "listen": {
+          "color": "#4a4f6b",
+          "translit": "shamaʿ · nishmaʿ",
+          "gloss": "Qal: listen to, heed, obey"
+        },
+        "servant": {
+          "color": "#8a2f3a",
+          "translit": "ʿeved · ʿavdi",
+          "gloss": "noun: servant (Moses' title, 'servant of Yahweh')"
+        },
+        "torah": {
+          "color": "#6b1e46",
+          "translit": "torah",
+          "gloss": "noun: instruction, the Torah (here 'the scroll of the torah')"
+        },
+        "send": {
+          "color": "#1e7a5c",
+          "translit": "shalaḥ · tishlaḥenu",
+          "gloss": "Qal: send"
+        }
+      }
+    },
+    {
+      "n": 2,
+      "slug": "unit-02",
+      "passage": "Joshua 2:1–24",
+      "title": "Rahab and the Spies",
+      "movement": 1,
+      "built": false
+    },
+    {
+      "n": 3,
+      "slug": "unit-03",
+      "passage": "Joshua 3:1–4:24",
+      "title": "Crossing the Jordan",
+      "movement": 1,
+      "built": false
+    },
+    {
+      "n": 4,
+      "slug": "unit-04",
+      "passage": "Joshua 5:1–15",
+      "title": "Gilgal: Circumcision, Passover, and the Commander",
+      "movement": 1,
+      "built": false
+    },
+    {
+      "n": 5,
+      "slug": "unit-05",
+      "passage": "Joshua 6:1–27",
+      "title": "Jericho",
+      "movement": 2,
+      "built": false
+    },
+    {
+      "n": 6,
+      "slug": "unit-06",
+      "passage": "Joshua 7:1–26",
+      "title": "Achan",
+      "movement": 2,
+      "built": false
+    },
+    {
+      "n": 7,
+      "slug": "unit-07",
+      "passage": "Joshua 8:1–29",
+      "title": "Ai",
+      "movement": 2,
+      "built": false
+    },
+    {
+      "n": 8,
+      "slug": "unit-08",
+      "passage": "Joshua 8:30–9:2",
+      "title": "Ebal: Altar and Covenant Reading",
+      "movement": 2,
+      "built": false
+    },
+    {
+      "n": 9,
+      "slug": "unit-09",
+      "passage": "Joshua 9:3–27",
+      "title": "Gibeon's Deception",
+      "movement": 2,
+      "built": false
+    },
+    {
+      "n": 10,
+      "slug": "unit-10",
+      "passage": "Joshua 10:1–43",
+      "title": "The Southern Campaign",
+      "movement": 2,
+      "built": false
+    },
+    {
+      "n": 11,
+      "slug": "unit-11",
+      "passage": "Joshua 11:1–23",
+      "title": "The Northern Campaign",
+      "movement": 2,
+      "built": false
+    },
+    {
+      "n": 12,
+      "slug": "unit-12",
+      "passage": "Joshua 12:1–24",
+      "title": "The Defeated Kings",
+      "movement": 2,
+      "built": false
+    },
+    {
+      "n": 13,
+      "slug": "unit-13",
+      "passage": "Joshua 13:1–33",
+      "title": "Unfinished Land, Transjordan Allotted",
+      "movement": 3,
+      "built": false
+    },
+    {
+      "n": 14,
+      "slug": "unit-14",
+      "passage": "Joshua 14:1–15",
+      "title": "West-Jordan Preparations and Caleb's Inheritance",
+      "movement": 3,
+      "built": false
+    },
+    {
+      "n": 15,
+      "slug": "unit-15",
+      "passage": "Joshua 15:1–63",
+      "title": "Judah's Allotment",
+      "movement": 3,
+      "built": false
+    },
+    {
+      "n": 16,
+      "slug": "unit-16",
+      "passage": "Joshua 16:1–17:18",
+      "title": "Joseph's Allotment: Ephraim and Manasseh",
+      "movement": 3,
+      "built": false
+    },
+    {
+      "n": 17,
+      "slug": "unit-17",
+      "passage": "Joshua 18:1–28",
+      "title": "Shiloh: Assembly and Benjamin's Allotment",
+      "movement": 3,
+      "built": false
+    },
+    {
+      "n": 18,
+      "slug": "unit-18",
+      "passage": "Joshua 19:1–51",
+      "title": "The Six Remaining Tribes and Joshua's Inheritance",
+      "movement": 3,
+      "built": false
+    },
+    {
+      "n": 19,
+      "slug": "unit-19",
+      "passage": "Joshua 20:1–9",
+      "title": "Cities of Refuge",
+      "movement": 3,
+      "built": false
+    },
+    {
+      "n": 20,
+      "slug": "unit-20",
+      "passage": "Joshua 21:1–45",
+      "title": "Levitical Cities and the Rest Formula",
+      "movement": 3,
+      "built": false
+    },
+    {
+      "n": 21,
+      "slug": "unit-21",
+      "passage": "Joshua 22:1–34",
+      "title": "The Jordan Altar",
+      "movement": 4,
+      "built": false
+    },
+    {
+      "n": 22,
+      "slug": "unit-22",
+      "passage": "Joshua 23:1–16",
+      "title": "Joshua's Farewell Address",
+      "movement": 4,
+      "built": false
+    },
+    {
+      "n": 23,
+      "slug": "unit-23",
+      "passage": "Joshua 24:1–28",
+      "title": "Covenant Renewal at Shechem",
+      "movement": 4,
+      "built": false
+    },
+    {
+      "n": 24,
+      "slug": "unit-24",
+      "passage": "Joshua 24:29–33",
+      "title": "Burials and Closing Notices",
+      "movement": 4,
+      "built": false
+    }
   ]
 }

@@ -1,1 +1,435 @@
-{}
+{
+  "unit-01": {
+    "command": {
+      "count": 7,
+      "verses": [
+        7,
+        9,
+        10,
+        11,
+        13,
+        16,
+        18
+      ],
+      "hits": [
+        {
+          "v": 7,
+          "pre": "…to do according to all the torah that Moses my servant ",
+          "hit": "commanded",
+          "post": " you. Do not turn from it right or left, so that you ma…"
+        },
+        {
+          "v": 9,
+          "pre": "…Have I not ",
+          "hit": "commanded",
+          "post": " you? Be strong and be firm. Do not tremble and do not…"
+        },
+        {
+          "v": 10,
+          "pre": "…And Joshua ",
+          "hit": "commanded",
+          "post": " the officers of the people, saying,…"
+        },
+        {
+          "v": 11,
+          "pre": "…\"Cross through the middle of the camp and ",
+          "hit": "command",
+          "post": " the people, saying: 'Get provisions ready for y'all, f…"
+        },
+        {
+          "v": 13,
+          "pre": "…\"Remember the word that Moses the servant of Yahweh ",
+          "hit": "commanded",
+          "post": " y'all, saying: 'Yahweh y'all's God is giving y'all res…"
+        },
+        {
+          "v": 16,
+          "pre": "…And they answered Joshua, saying, \"All that you have ",
+          "hit": "commanded",
+          "post": " us we will do, and wherever you send us we will go.…"
+        },
+        {
+          "v": 18,
+          "pre": "…uth and does not listen to your words, in all that you ",
+          "hit": "command",
+          "post": " him, will be put to death. Only be strong and be firm.…"
+        }
+      ],
+      "total": 7
+    },
+    "cross": {
+      "count": 6,
+      "verses": [
+        2,
+        11,
+        14,
+        15
+      ],
+      "hits": [
+        {
+          "v": 2,
+          "pre": "…\"Moses my servant is dead. So now: rise, ",
+          "hit": "cross",
+          "post": " this Jordan, you and all this people, into the land th…"
+        },
+        {
+          "v": 11,
+          "pre": "…\"",
+          "hit": "Cross",
+          "post": " through the middle of the camp and command the people,…"
+        },
+        {
+          "v": 11,
+          "pre": "…ions ready for y'all, for in three more days y'all are ",
+          "hit": "crossing",
+          "post": " this Jordan, to go in to possess the land that Yahweh…"
+        },
+        {
+          "v": 14,
+          "pre": "…ock will stay in the land that Moses gave y'all on the ",
+          "hit": "far side",
+          "post": " of the Jordan. But y'all — y'all will cross over in ba…"
+        },
+        {
+          "v": 14,
+          "pre": "…on the far side of the Jordan. But y'all — y'all will ",
+          "hit": "cross",
+          "post": " over in battle array before y'all's brothers, every mi…"
+        },
+        {
+          "v": 15,
+          "pre": "…and that Moses the servant of Yahweh gave y'all on the ",
+          "hit": "far side",
+          "post": " of the Jordan, toward the sunrise.\"…"
+        }
+      ],
+      "total": 6
+    },
+    "firm": {
+      "count": 4,
+      "verses": [
+        6,
+        7,
+        9,
+        18
+      ],
+      "hits": [
+        {
+          "v": 6,
+          "pre": "…Be strong and be ",
+          "hit": "firm",
+          "post": ", for you — you will make this people inherit the land…"
+        },
+        {
+          "v": 7,
+          "pre": "…Only, be strong and be very ",
+          "hit": "firm",
+          "post": ", keeping watch to do according to all the torah that M…"
+        },
+        {
+          "v": 9,
+          "pre": "…Have I not commanded you? Be strong and be ",
+          "hit": "firm",
+          "post": ". Do not tremble and do not shatter, for Yahweh your Go…"
+        },
+        {
+          "v": 18,
+          "pre": "…mmand him, will be put to death. Only be strong and be ",
+          "hit": "firm",
+          "post": ".\"…"
+        }
+      ],
+      "total": 4
+    },
+    "give": {
+      "count": 8,
+      "verses": [
+        2,
+        3,
+        6,
+        11,
+        13,
+        14,
+        15
+      ],
+      "hits": [
+        {
+          "v": 2,
+          "pre": "…rdan, you and all this people, into the land that I am ",
+          "hit": "giving",
+          "post": " to them, to the sons of Israel.…"
+        },
+        {
+          "v": 3,
+          "pre": "…where the sole of y'all's foot treads, to y'all I have ",
+          "hit": "given",
+          "post": " it, just as I spoke to Moses.…"
+        },
+        {
+          "v": 6,
+          "pre": "…ople inherit the land that I swore to their fathers to ",
+          "hit": "give",
+          "post": " them.…"
+        },
+        {
+          "v": 11,
+          "pre": "…o go in to possess the land that Yahweh y'all's God is ",
+          "hit": "giving",
+          "post": " y'all to possess.'\"…"
+        },
+        {
+          "v": 13,
+          "pre": "…'Yahweh y'all's God is giving y'all rest, and he will ",
+          "hit": "give",
+          "post": " y'all this land.'…"
+        },
+        {
+          "v": 14,
+          "pre": "…and y'all's livestock will stay in the land that Moses ",
+          "hit": "gave",
+          "post": " y'all on the far side of the Jordan. But y'all — y'all…"
+        },
+        {
+          "v": 15,
+          "pre": "…d they too possess the land that Yahweh y'all's God is ",
+          "hit": "giving",
+          "post": " them. Then y'all will turn back to the land of y'all's…"
+        },
+        {
+          "v": 15,
+          "pre": "…possess it — the land that Moses the servant of Yahweh ",
+          "hit": "gave",
+          "post": " y'all on the far side of the Jordan, toward the sunris…"
+        }
+      ],
+      "total": 8
+    },
+    "inherit": {
+      "count": 1,
+      "verses": [
+        6
+      ],
+      "hits": [
+        {
+          "v": 6,
+          "pre": "…trong and be firm, for you — you will make this people ",
+          "hit": "inherit",
+          "post": " the land that I swore to their fathers to give them.…"
+        }
+      ],
+      "total": 1
+    },
+    "listen": {
+      "count": 3,
+      "verses": [
+        17,
+        18
+      ],
+      "hits": [
+        {
+          "v": 17,
+          "pre": "…Just as we ",
+          "hit": "listened",
+          "post": " to Moses in all things, so we will listen to you. Only…"
+        },
+        {
+          "v": 17,
+          "pre": "…Just as we ",
+          "hit": "listen",
+          "post": "ed to Moses in all things, so we will listen to you. On…"
+        },
+        {
+          "v": 18,
+          "pre": "…Any man who rebels against your mouth and does not ",
+          "hit": "listen",
+          "post": " to your words, in all that you command him, will be pu…"
+        }
+      ],
+      "total": 3
+    },
+    "possess": {
+      "count": 5,
+      "verses": [
+        11,
+        15
+      ],
+      "hits": [
+        {
+          "v": 11,
+          "pre": "…more days y'all are crossing this Jordan, to go in to ",
+          "hit": "possess",
+          "post": " the land that Yahweh y'all's God is giving y'all to po…"
+        },
+        {
+          "v": 11,
+          "pre": "…more days y'all are crossing this Jordan, to go in to ",
+          "hit": "possess",
+          "post": " the land that Yahweh y'all's God is giving y'all to po…"
+        },
+        {
+          "v": 15,
+          "pre": "…es y'all's brothers rest as he has y'all, and they too ",
+          "hit": "possess",
+          "post": " the land that Yahweh y'all's God is giving them. Then…"
+        },
+        {
+          "v": 15,
+          "pre": "…them. Then y'all will turn back to the land of y'all's ",
+          "hit": "possession",
+          "post": " and possess it — the land that Moses the servant of Ya…"
+        },
+        {
+          "v": 15,
+          "pre": "…es y'all's brothers rest as he has y'all, and they too ",
+          "hit": "possess",
+          "post": " the land that Yahweh y'all's God is giving them. Then…"
+        }
+      ],
+      "total": 5
+    },
+    "rest": {
+      "count": 3,
+      "verses": [
+        13,
+        15
+      ],
+      "hits": [
+        {
+          "v": 13,
+          "pre": "…Yahweh commanded y'all, saying: 'Yahweh y'all's God is ",
+          "hit": "giving y'all rest",
+          "post": ", and he will give y'all this land.'…"
+        },
+        {
+          "v": 15,
+          "pre": "…until Yahweh ",
+          "hit": "gives",
+          "post": " y'all's brothers rest as he has y'all, and they too po…"
+        },
+        {
+          "v": 15,
+          "pre": "…until Yahweh gives y'all's brothers ",
+          "hit": "rest",
+          "post": " as he has y'all, and they too possess the land that Ya…"
+        }
+      ],
+      "total": 3
+    },
+    "send": {
+      "count": 1,
+      "verses": [
+        16
+      ],
+      "hits": [
+        {
+          "v": 16,
+          "pre": "…hat you have commanded us we will do, and wherever you ",
+          "hit": "send",
+          "post": " us we will go.…"
+        }
+      ],
+      "total": 1
+    },
+    "servant": {
+      "count": 5,
+      "verses": [
+        1,
+        2,
+        7,
+        13,
+        15
+      ],
+      "hits": [
+        {
+          "v": 1,
+          "pre": "…And it came to be, after the death of Moses the ",
+          "hit": "servant",
+          "post": " of Yahweh, that Yahweh said to Joshua son of Nun, Mose…"
+        },
+        {
+          "v": 2,
+          "pre": "…\"Moses my ",
+          "hit": "servant",
+          "post": " is dead. So now: rise, cross this Jordan, you and all…"
+        },
+        {
+          "v": 7,
+          "pre": "…g watch to do according to all the torah that Moses my ",
+          "hit": "servant",
+          "post": " commanded you. Do not turn from it right or left, so t…"
+        },
+        {
+          "v": 13,
+          "pre": "…\"Remember the word that Moses the ",
+          "hit": "servant",
+          "post": " of Yahweh commanded y'all, saying: 'Yahweh y'all's God…"
+        },
+        {
+          "v": 15,
+          "pre": "…'s possession and possess it — the land that Moses the ",
+          "hit": "servant",
+          "post": " of Yahweh gave y'all on the far side of the Jordan, to…"
+        }
+      ],
+      "total": 5
+    },
+    "strong": {
+      "count": 4,
+      "verses": [
+        6,
+        7,
+        9,
+        18
+      ],
+      "hits": [
+        {
+          "v": 6,
+          "pre": "…Be ",
+          "hit": "strong",
+          "post": " and be firm, for you — you will make this people inher…"
+        },
+        {
+          "v": 7,
+          "pre": "…Only, be ",
+          "hit": "strong",
+          "post": " and be very firm, keeping watch to do according to all…"
+        },
+        {
+          "v": 9,
+          "pre": "…Have I not commanded you? Be ",
+          "hit": "strong",
+          "post": " and be firm. Do not tremble and do not shatter, for Ya…"
+        },
+        {
+          "v": 18,
+          "pre": "…ll that you command him, will be put to death. Only be ",
+          "hit": "strong",
+          "post": " and be firm.\"…"
+        }
+      ],
+      "total": 4
+    },
+    "torah": {
+      "count": 2,
+      "verses": [
+        7,
+        8
+      ],
+      "hits": [
+        {
+          "v": 7,
+          "pre": "…be very firm, keeping watch to do according to all the ",
+          "hit": "torah",
+          "post": " that Moses my servant commanded you. Do not turn from…"
+        },
+        {
+          "v": 8,
+          "pre": "…This scroll of the ",
+          "hit": "torah",
+          "post": " shall not move away from your mouth. You shall murmur…"
+        }
+      ],
+      "total": 2
+    }
+  }
+}
