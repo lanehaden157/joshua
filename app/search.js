@@ -5,7 +5,7 @@
    ḥerem/naḥalah the same way it worked for aphiēmi. Only the storage key
    and hint text are Joshua-specific. */
 
-import { getOccurrences, getThreadFor, resolveUnit } from "./threads.js?v=1";
+import { getOccurrences, getThreadFor, resolveUnit } from "./threads.js?v=2";
 
 const KEY = "joshua.search.q";
 

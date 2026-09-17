@@ -1,10 +1,10 @@
 {
-  "_note": "The record of hand-authored fragment edits, replayed idempotently by apply_retrofit.py (build.py step 1). Ops: strip_span / text / untag_word / retag_word (whole-unit), unwrap / retag / add (per-verse) -- see apply_retrofit.py. Once units exist, the committed units/*.html will already contain all of this; these entries are the audit trail and the safety net for port_artifact.py, which re-runs fragment extraction on a unit it (re)ports. Unit 1's entries: the artifact already wrapped every tracked-root occurrence in a span, so this is all data-w injection (retag, from==to), not new tagging -- except the v15 'rest' pair, where the artifact rendered one Hebrew word (yaniaḥ) as two English words ('gives ... rest') in two separate spans; the second is demoted to class rl (uncounted echo, see apply_add's docstring) via unwrap+add rather than double-counted against one Hebrew occurrence. 'occ' (added to retag alongside this unit) picks the Nth same-root-same-text span in a verse, needed where one root renders the same English word twice in a verse (v11, v15 'possess').",
+  "_note": "The record of hand-authored fragment edits, replayed idempotently by apply_retrofit.py (build.py step 1). Ops: strip_span / text / untag_word / retag_word (whole-unit), unwrap / retag / add (per-verse) -- see apply_retrofit.py. Once units exist, the committed units/*.html will already contain all of this; these entries are the audit trail and the safety net for port_artifact.py, which re-runs fragment extraction on a unit it (re)ports. Unit 1's entries: the artifact already wrapped every tracked-root occurrence in a span, so this is all data-w injection (retag, from==to), not new tagging -- except the v15 'rest' pair, where the artifact rendered one Hebrew word (yaniaḥ) as two English words ('gives ... rest') in two separate spans; 'rest' carries the tag (data-w) since it's the word a reader actually recognizes as the root, and 'gives' is demoted to class rl (uncounted echo, see apply_add's docstring, 2026-09-17: swapped from the original gives-primary/rest-rl split, which visually under-highlighted the word 'rest' itself) via unwrap+add rather than double-counted against one Hebrew occurrence. 'occ' (added to retag alongside this unit) picks the Nth same-root-same-text span in a verse, needed where one root renders the same English word twice in a verse (v11, v15 'possess').",
   "unwrap": [
-    { "unit": "unit-01", "root": "rest", "text": "rest" }
+    { "unit": "unit-01", "root": "rest", "text": "gives" }
   ],
   "add": [
-    { "unit": "unit-01", "verse": 15, "root": "rest", "text": "rest", "cls": "rl" }
+    { "unit": "unit-01", "verse": 15, "root": "rest", "text": "gives", "cls": "rl" }
   ],
   "retag": [
     { "unit": "unit-01", "verse": 1, "from": "servant", "to": "servant", "text": "servant", "w": "06TSc" },
@@ -44,7 +44,7 @@
     { "unit": "unit-01", "verse": 14, "from": "cross", "to": "cross", "text": "far side", "w": "06i4W" },
     { "unit": "unit-01", "verse": 14, "from": "cross", "to": "cross", "text": "cross", "w": "06dSp" },
 
-    { "unit": "unit-01", "verse": 15, "from": "rest", "to": "rest", "text": "gives", "w": "06qry" },
+    { "unit": "unit-01", "verse": 15, "from": "rest", "to": "rest", "text": "rest", "w": "06qry" },
     { "unit": "unit-01", "verse": 15, "from": "possess", "to": "possess", "text": "possess", "occ": 1, "w": "06hEs" },
     { "unit": "unit-01", "verse": 15, "from": "give", "to": "give", "text": "giving", "w": "06tkJ" },
     { "unit": "unit-01", "verse": 15, "from": "possess", "to": "possess", "text": "possession", "w": "06bYD" },

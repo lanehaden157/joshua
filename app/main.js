@@ -7,11 +7,20 @@
    discourseOf(), the discourse-bracket half of buildBookMap(), and the
    discourse half of renderPlacement() are dropped rather than adapted.
    Reads movements[] as {n, name, span, units} (data/units.json's own Phase 1
-   shape) instead of Matthew's {id, label}. */
+   shape) instead of Matthew's {id, label}.
 
-import { loadThreadData, resolveUnit, injectPalette, rebuildLegend, wireRoots } from "./threads.js?v=1";
-import { enhanceSpotlights } from "./spotlight.js?v=1";
-import { renderSearch } from "./search.js?v=1";
+   The `?v=N` on every same-origin module import below is manual cache-busting
+   for GitHub Pages (which serves app/*.js with long-lived cache headers, no
+   ETag revalidation to rely on). Bump every `?v=N` here AND in search.js's own
+   threads.js import, together, whenever threads.js/spotlight.js/search.js
+   changes -- a stale cached module is invisible in the DOM (data fetches are
+   fine, they already cache-bust via bust()) and easy to mistake for a real
+   bug. 2026-09-17: missed on the first ship of threads.js's `example` field,
+   which silently never rendered until this bump. */
+
+import { loadThreadData, resolveUnit, injectPalette, rebuildLegend, wireRoots } from "./threads.js?v=2";
+import { enhanceSpotlights } from "./spotlight.js?v=2";
+import { renderSearch } from "./search.js?v=2";
 
 const UNITS_URL = new URL("../data/units.json", import.meta.url);
 
