@@ -78,8 +78,26 @@ One root often spans several Strong's numbers (*ḥaram* 2763/2764, *naḥal*
 5157/5159, *yareʾ* 3372–3374), and one number can bundle senses worth splitting.
 So a root is a **decision**, recorded as an id set with a note.
 
-Lowercase suffixes on ids (`834a`) are kept in data, stripped at query time, and
-treated as opaque — not homograph markers.
+Lowercase suffixes on ids (`834a`) **are** meaningful, and matching honours
+them (Lane/Claude, 2026-09-19 — this reverses the earlier "treated as opaque"
+rule, which was checked against the lexicon and found wrong):
+
+- **A bare id claims the whole number.** `"2416"` matches every lexeme under
+  2416. Use this by default; it is what the ten current roots do.
+- **A suffixed id claims one lexeme.** `"2416e"` matches only *ḥayyîm* "life",
+  not `2416a` *ḥay* "alive". Reach for it when the number bundles genuinely
+  different words.
+
+In Joshua the split is real in three places: `3885a` *lodge* (3:1, 4:3, 6:11,
+8:9) vs `3885b` *murmur* (9:18); `2416a` *alive* vs `2416e` *life*; `6924a`
+*front* vs `6924b` *eastward* — the last being the boundary formula that runs
+through the allotment movement. Elsewhere the letters are inflectional rather
+than lexical (`834a–d` are all *ʾăšer* with different prefixes; `859a–e` all
+*ʾattâ* by person and number), and the bare id covers those correctly.
+
+A `+` suffix (`1007+`) is OSHB's multi-word-proper-name marker — same lexeme,
+always stripped. A suffixed id the corpus never carries is a hard error: it
+would match nothing, and a silent zero is worse than a loud failure.
 
 ### What the artifact does
 
