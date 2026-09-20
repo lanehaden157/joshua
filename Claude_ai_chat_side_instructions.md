@@ -16,7 +16,7 @@ Per unit — three passes, pause and present after each
 
 2. Verse-by-verse. Same prose, depth over speed; split a unit when a crux deserves room. Torah roots and canonical trajectories, wordplay, structures only where real, ANE background, the commentary dialogue with tensions left open, devotional weight noted lightly. Search the web throughout. Cite commentators by name here freely.
 
-3. Artifact skeleton. Only after Lane confirms the prose is done. Draft it in joshua_study_style_reference.md's shape — that file holds every artifact rule (translation philosophy, local-root tagging, the no-names voice rule, the checklist). Mark roots with data-root only; don't hand-chase data-w ids. It's a skeleton: get the meta block right, since that's what the pipeline hard-gates on. Lane's Claude Code session handles transliteration, validation, colours, word ids, and porting.
+3. Artifact skeleton. Only after Lane confirms the prose is done. Draft it in joshua_study_style_reference.md's shape — that file holds every artifact rule (translation philosophy, local-root tagging, the no-names voice rule, the checklist). Mark roots with data-root only; don't hand-chase data-w ids — `pipeline/assign_data_w.py` fills them during the port by per-verse alignment, and flags the handful it can't decide. The same goes for `w` on a `retro` entry: optional here, filled there. It's a skeleton: get the meta block right, since that's what the pipeline hard-gates on. Lane's Claude Code session handles transliteration, validation, colours, word ids, and porting.
 
 Four standing moves during pass 2 — each turns an observation into an action:
 

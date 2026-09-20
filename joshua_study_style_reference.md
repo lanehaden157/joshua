@@ -256,10 +256,15 @@ sharing one id.
    part-of-speech labels.
 4. Every notable translation choice has a local span and `roots[]` entry (§1).
 5. Every `opens`/`payoffs` `id` is in `threads-digest.md` and has a `note`.
-6. Every `retro` targets an earlier unit, has a `why`, resolves, and carries
-   `w` when adding/retagging onto a tracked thread.
+6. Every `retro` targets an earlier unit, has a `why`, and resolves. `w` is
+   **optional in the incoming artifact** — `pipeline/assign_data_w.py` fills
+   it during the port. Supply it if you happen to know it; never hand-chase it.
 7. Every `data-root` is in `threads-digest.md` or `roots[]`.
-8. Every tracked-thread span has a `data-w` from `Joshua-words.tsv`.
+8. Every tracked-thread span has a `data-w` from `Joshua-words.tsv` **in the
+   built fragment**. The artifact may arrive with none: the porter assigns
+   them by per-verse alignment and reports the verses it cannot decide
+   (typically one Hebrew word rendered as two English words, or the reverse).
+   This is a hard requirement on what ships, not on what you write.
 9. Legend present, stub or filled.
 10. Every pericope heading has its `· C:V` range.
 11. `.gloss` blocks are closed following siblings.

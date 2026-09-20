@@ -60,6 +60,7 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 import unit_meta as um              # noqa: E402
 import audit_thread_coverage as atc  # noqa: E402
+import assign_data_w as adw          # noqa: E402
 import roots as root_lib             # noqa: E402
 # transliteration in reports goes through atc._translit_row, which applies
 # the lemma-keyed OVERRIDES (review A17); bare transliterate() would render
@@ -559,6 +560,20 @@ def port_one(n, dry, src=None):
         sys.exit(1)
 
     fragment = to_fragment(raw, n)
+
+    # A6: the chat side is told to mark roots with data-root only and not to
+    # hand-chase word ids, so the artifact arrives without data-w. Fill them
+    # here by per-verse alignment; anything ambiguous is reported and left
+    # for a human rather than guessed at.
+    w_edits, w_report = adw.plan(fragment, meta["passage"])
+    if w_edits:
+        fragment = adw.apply_edits(fragment, w_edits)
+    print("")
+    print("=== data-w assignment ===")
+    print(f"assigned {len(w_edits)} span(s) by per-verse alignment"
+          + (f"; {len(w_report)} need(s) a human:" if w_report else ""))
+    for line in w_report:
+        print("  needs eyes:", line)
 
     no_write = dry or bool(src)
     local_roots = merge_units_json(meta, no_write, fragment)

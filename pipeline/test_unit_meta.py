@@ -175,13 +175,21 @@ def test_candidates_refs_bad_format_fails():
 
 # ------------------------------------------------------------------- retro
 
-def test_retro_add_tracked_root_without_w_fails():
+def test_retro_add_tracked_root_without_w_passes():
+    """`w` is optional in the incoming artifact (review A6).
+
+    The chat side is instructed not to hand-chase word ids, so requiring
+    `w` here made the contract unsatisfiable from that end.
+    assign_data_w.py fills them during the port, and the guarantee that a
+    shipped tracked span carries data-w is enforced on the built fragment
+    by check_tracked_spans_have_data_w() instead.
+    """
     meta = _meta(threads={**_EMPTY_THREADS,
                           "retro": [{"unit": "unit-02", "verse": 5, "text": "gave",
                                     "root": "strong", "why": "testing"}]})  # no w
     errs = um.validate(meta, threads_json=_THREADS_JSON)
-    _check("retro 'add' targeting a tracked thread without 'w' must fail",
-           any("no valid 'w'" in e for e in errs), errs)
+    _check("retro 'add' onto a tracked thread may omit 'w'",
+           not any("'w'" in e for e in errs), errs)
 
 
 def test_retro_add_tracked_root_with_w_passes():
@@ -193,14 +201,14 @@ def test_retro_add_tracked_root_with_w_passes():
            not any("valid 'w'" in e for e in errs), errs)
 
 
-def test_retro_retag_tracked_root_requires_w():
+def test_retro_retag_tracked_root_may_omit_w():
     meta = _meta(threads={**_EMPTY_THREADS,
                           "retro": [{"unit": "unit-02", "verse": 5, "text": "gave",
                                     "from": "local-only", "to": "strong",
                                     "op": "retag", "why": "testing"}]})
     errs = um.validate(meta, threads_json=_THREADS_JSON)
-    _check("retro 'retag' onto a tracked thread without 'w' must fail",
-           any("no valid 'w'" in e for e in errs), errs)
+    _check("retro 'retag' onto a tracked thread may omit 'w'",
+           not any("'w'" in e for e in errs), errs)
 
 
 def test_retro_local_root_needs_no_w():
@@ -217,8 +225,8 @@ def test_retro_malformed_w_fails():
                           "retro": [{"unit": "unit-02", "verse": 5, "text": "gave",
                                     "root": "strong", "why": "testing", "w": "!!not-an-id"}]})
     errs = um.validate(meta, threads_json=_THREADS_JSON)
-    _check("retro with a malformed 'w' must fail",
-           any("no valid 'w'" in e for e in errs), errs)
+    _check("retro with a malformed 'w' must still fail",
+           any("not a valid OSHB word id" in e for e in errs), errs)
 
 
 # -------------------------------------------------------------------- roots

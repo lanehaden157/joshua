@@ -188,3 +188,41 @@ Full suite green (44 checks in `test_unit_meta.py`), `build.py` green, thread
 coverage 0 gap / 0 wrong / 0 stray / 0 missing-data-w. Verified in the browser:
 16 roots, 69 tagged spans, 16 legend swatches, all distinct, no console errors.
 
+## 2026-09-19 (part 2) -- platform review G2 (data-w assigner + contract reconciliation)
+
+- **A5: `pipeline/assign_data_w.py`.** Turns CLAUDE.md's seven-step retrofit
+  recipe into one command. Per verse, per tracked root: zip the id-set's
+  source hits (in `Joshua-words.tsv` order) against that verse's
+  `<span class="r" data-root=...>` spans in document order. Counts agree ->
+  assign. Counts disagree -> assign *nothing* in that verse and say why. A
+  wrong `data-w` is worse than a missing one: missing is a hard error the
+  audit already catches, wrong silently points a reader's popover at the
+  wrong Hebrew word. Never overwrites an existing `data-w`; a conflicting
+  one is reported, not replaced.
+- **Validated against the real hand-tagged unit.** Stripping every `data-w`
+  from `units/unit-01.html` and re-running the assigner reproduces the file
+  **byte-identically** -- all 38 tracked spans, zero mismatches.
+- **Validated against the untagged source artifact** (which has 0 `data-w`):
+  37 of 38 assigned automatically, and the single verse it refused to guess
+  is `rest 1:15` -- exactly the documented ambiguity where one Hebrew word
+  (*yaniaḥ*) is rendered as two English words, the subject of `b5bcee5` and
+  a named example in CLAUDE.md's recipe step 4. The tool independently
+  rediscovered the one verse that genuinely needed a human. Per-unit cost
+  goes from 38 hand-placements to 1 decision.
+- `pipeline/test_assign_data_w.py`: the round-trip against real data, plus
+  the refusal cases (count mismatch, conflicting existing `data-w`,
+  idempotence on a tagged file, chapter defaulting and rollover).
+- **A6: contract reconciled.** The chat side was told "mark roots with
+  data-root only; don't hand-chase data-w ids" while the contract required
+  `w` in two places -- unsatisfiable from that end. `w` is now explicitly
+  optional in the incoming artifact and filled by the porter; the guarantee
+  moves to the built fragment, where `check_tracked_spans_have_data_w()`
+  already enforced it. Updated style reference §7 items 6 and 8,
+  `Claude_ai_chat_side_instructions.md` pass 3, and `unit_meta.validate()`
+  (a malformed `w` is still an error; a missing one is not). Two tests that
+  encoded the old rule were rewritten to the new one rather than deleted.
+- `port_artifact.py` runs the assigner right after `to_fragment()`, printing
+  what it assigned and what needs eyes.
+
+Full suite green (8 files), `build.py` green, `units/unit-01.html` unchanged.
+

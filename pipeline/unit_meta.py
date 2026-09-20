@@ -279,17 +279,20 @@ def validate(meta, threads_json=None):
                                 f"a declared root of {slug} — a tag that resolves "
                                 "to no colour is a hard verify failure")
                 # A retro fix that creates or repoints a span onto a TRACKED
-                # thread produces a span that must carry data-w (checklist 7),
-                # same as any other tracked-thread span. Local roots don't
-                # need one (style reference §2). See _ID_RE for the id format.
+                # thread produces a span that must carry data-w -- but `w` is
+                # OPTIONAL here (style reference §7 item 6, review A6): the
+                # chat side is told not to hand-chase word ids, and
+                # assign_data_w.py fills them during the port. A malformed
+                # `w` is still an error; a missing one is not. The guarantee
+                # is kept where it belongs, on the built fragment, by
+                # check_tracked_spans_have_data_w().
                 if op in ("add", "retag", "retag_word") and r in roots:
                     wid = e.get("w")
-                    if not wid or not _WORD_ID_RE.match(wid):
+                    if wid and not _WORD_ID_RE.match(wid):
                         errs.append(f"{where}: op '{op}' targets tracked "
-                                    f"thread '{r}' but has no valid 'w' (OSHB "
-                                    "word id from Joshua-words.tsv) -- a "
-                                    "tracked-thread span must carry data-w "
-                                    "(checklist 7)")
+                                    f"thread '{r}' with 'w'={wid!r}, which is "
+                                    "not a valid OSHB word id from "
+                                    "Joshua-words.tsv")
     return errs
 
 
