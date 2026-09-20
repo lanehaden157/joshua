@@ -35,6 +35,7 @@ trusting the file blindly.
 | word | Hebrew | rendering | note |
 |---|---|---|---|
 | divine name | יְהוָ֑ה (YHWH) | Yahweh | Matches `pipeline/hebrew.py`'s `OVERRIDES` table (Strong's 3068/3069) — not "LORD." Consistent with `Joshua-english.txt`'s WEB-classic source, which also uses Yahweh. |
+| ʿeved | עֶ֣בֶד (Josh 1:1) | **slave** | Locked 2026-09-19 (Lane). Matches Matthew's doulos rule ("slave, not servant"), so the canon reads one relationship one way: the LXX renders ʿeved with doulos in most places a canon-wide reader meets it. Moses' title becomes "slave of Yahweh" — a real choice some translations make, and now a decision rather than an accident (platform review C10). **Not yet applied:** unit 1's prose and the `servant` thread's gloss in `data/threads.json` still read "servant"; the rendering pass belongs to the chat side. |
 | ḥerem | חֵ֛רֶם (Josh 6:17) | **TODO** | Open. "Devoted to destruction" / "banned" / left untranslated ("ḥerem") are all live options — no default chosen. |
 | ḥesed | חָ֑סֶד (Josh 2:12) | **TODO** | Open. "Steadfast love" / "kindness" / "loyalty" each lose something; no default chosen. |
 | naḥalah | לְ/נַחֲלָ֧ה (Josh 11:23) | **inheritance** | Locked 2026-09-16. Not "allotment" — that word belongs to this project's own "Allotment" movement title (`joshua_literary_unit_map.md`), a literary-map label, not a translation reason; using it here risked the choice running backward. "Inheritance" keeps the causative verb legible: `tanḥil` (1:6, causative of the same root) renders "cause to inherit" / "give as an inheritance," visibly matching the noun. |
@@ -51,3 +52,4 @@ trusting the file blindly.
   movement-title reason, not a translation reason). y'all-for-2pl locked to
   "always mark 2pl as y'all" — decided at unit 1 specifically because ch.1
   alternates singular/plural "you" and the alternation is meaningful.
+- 2026-09-19: ʿeved locked to "slave", aligning with Matthew's doulos rule (platform review C10). Decision only — unit 1's prose and the `servant` thread gloss are unchanged and still need the rendering pass.
