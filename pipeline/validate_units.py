@@ -25,7 +25,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
 import unit_meta as um              # noqa: E402
-from port_artifact import DE_MIN, _de, roots_in_fragment  # noqa: E402
+from port_artifact import DE_MIN, ciede2000, roots_in_fragment  # noqa: E402
 
 ROOT = os.path.dirname(HERE)
 UNITS = os.path.join(ROOT, "units")
@@ -50,18 +50,51 @@ def unit_colours(slug, roots, threads, units_json):
     return out
 
 
-def check_colours(slug, colours):
-    """Report any pair of roots in one unit closer than DE_MIN."""
-    errs = []
+def closest_pairs(colours, limit=3):
+    """[(dE, root_a, hex_a, root_b, hex_b)] for the closest pairs, ranked.
+
+    Always returns the tightest few whether or not they cross DE_MIN, so
+    the ceiling is visible before it is hit rather than after.
+    """
     items = sorted(colours.items())
-    for i, (ra, ca) in enumerate(items):
-        for rb, cb in items[i + 1:]:
-            d = _de(ca, cb)
-            if d < DE_MIN:
-                errs.append(f"colour collision: '{ra}' ({ca}) and '{rb}' "
-                            f"({cb}) are dE={d:.1f}, under {DE_MIN} -- a "
-                            f"reader cannot tell these two apart")
-    return errs
+    pairs = [(ciede2000(ca, cb), ra, ca, rb, cb)
+             for i, (ra, ca) in enumerate(items)
+             for rb, cb in items[i + 1:]]
+    pairs.sort(key=lambda p: p[0])
+    return pairs[:limit]
+
+
+def check_colours(slug, colours):
+    """Warn on same-unit pairs under DE_MIN, and show the ranked ceiling."""
+    out = []
+    pairs = closest_pairs(colours, limit=3)
+    for d, ra, ca, rb, cb in pairs:
+        if d < DE_MIN:
+            out.append(f"colours close: '{ra}' ({ca}) / '{rb}' ({cb}) "
+                       f"dE2000={d:.1f}, under {DE_MIN}")
+    if pairs:
+        ranked = ", ".join(f"{ra}/{rb} {d:.1f}" for d, ra, _, rb, _ in pairs)
+        out.append(f"closest pairs in this unit (dE2000): {ranked}")
+    return out
+
+
+def check_thread_hexes_unique(threads):
+    """No two tracked threads may share a hex, book-wide.
+
+    Matthew has three sets of threads sharing a colour (review B2); a
+    shared hex means two different threads look like one wherever they
+    meet, in any unit. Cheap to assert, so assert it.
+    """
+    out, by_hex = [], {}
+    for root, t in sorted(threads.items()):
+        c = (t.get("color") or "").lower()
+        if c:
+            by_hex.setdefault(c, []).append(t.get("id", root))
+    for c, ids in sorted(by_hex.items()):
+        if len(ids) > 1:
+            out.append(f"threads {', '.join(repr(i) for i in ids)} all use "
+                       f"{c} -- two threads that look like one")
+    return out
 
 
 def main():
@@ -69,12 +102,16 @@ def main():
     units_json = um._load("units.json")
     threads = {t["root"]: t for t in threads_json["threads"]}
 
+    book_warns = check_thread_hexes_unique(threads)
+    for w in book_warns:
+        print("  warn  (book-wide)", w)
+
     paths = sorted(glob.glob(os.path.join(UNITS, "unit-*.html")))
     if not paths:
         print("no built units to validate")
         return 0
 
-    total_err = total_warn = 0
+    total_err, total_warn = 0, len(book_warns)
     for path in paths:
         name = os.path.basename(path)
         html = open(path, encoding="utf-8").read()

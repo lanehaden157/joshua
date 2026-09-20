@@ -52,6 +52,7 @@ file -- nothing here writes it.
 import argparse
 import glob
 import json
+import math
 import os
 import re
 import sys
@@ -98,10 +99,74 @@ def _lab(h):
 
 
 def _de(a, b):
+    """CIE76 -- plain Euclidean distance in Lab. Kept for callers that want
+    the cheap metric; prefer ciede2000() for anything a reader looks at."""
     return sum((x - y) ** 2 for x, y in zip(_lab(a), _lab(b))) ** 0.5
 
 
-DE_MIN = 12          # CIE-Lab distance below which two roots read as one colour
+def ciede2000(a, b):
+    """Perceptual distance between two hex colours (CIEDE2000, kL=kC=kH=1).
+
+    Raw hue distance lies about how different two colours look -- two
+    golds 20 degrees apart read as one colour, while two blues the same
+    distance apart read as two. CIE76 (_de) is better but still uneven
+    across the space. CIEDE2000 adds the lightness/chroma/hue weighting
+    and the blue-region rotation term, so one threshold means roughly the
+    same thing everywhere in the palette.
+    """
+    L1, a1, b1 = _lab(a)
+    L2, a2, b2 = _lab(b)
+    C1, C2 = math.hypot(a1, b1), math.hypot(a2, b2)
+    Cb = (C1 + C2) / 2
+    G = 0.5 * (1 - math.sqrt(Cb ** 7 / (Cb ** 7 + 25.0 ** 7))) if Cb else 0.5
+    a1p, a2p = (1 + G) * a1, (1 + G) * a2
+    C1p, C2p = math.hypot(a1p, b1), math.hypot(a2p, b2)
+
+    def _h(ap, bp):
+        if ap == 0 and bp == 0:
+            return 0.0
+        return math.degrees(math.atan2(bp, ap)) % 360
+
+    h1p, h2p = _h(a1p, b1), _h(a2p, b2)
+    dLp = L2 - L1
+    dCp = C2p - C1p
+    if C1p * C2p == 0:
+        dhp = 0.0
+    elif abs(h2p - h1p) <= 180:
+        dhp = h2p - h1p
+    elif h2p - h1p > 180:
+        dhp = h2p - h1p - 360
+    else:
+        dhp = h2p - h1p + 360
+    dHp = 2 * math.sqrt(C1p * C2p) * math.sin(math.radians(dhp) / 2)
+
+    Lbp = (L1 + L2) / 2
+    Cbp = (C1p + C2p) / 2
+    if C1p * C2p == 0:
+        hbp = h1p + h2p
+    elif abs(h1p - h2p) <= 180:
+        hbp = (h1p + h2p) / 2
+    elif h1p + h2p < 360:
+        hbp = (h1p + h2p + 360) / 2
+    else:
+        hbp = (h1p + h2p - 360) / 2
+
+    T = (1 - 0.17 * math.cos(math.radians(hbp - 30))
+         + 0.24 * math.cos(math.radians(2 * hbp))
+         + 0.32 * math.cos(math.radians(3 * hbp + 6))
+         - 0.20 * math.cos(math.radians(4 * hbp - 63)))
+    dTheta = 30 * math.exp(-(((hbp - 275) / 25) ** 2))
+    RC = 2 * math.sqrt(Cbp ** 7 / (Cbp ** 7 + 25.0 ** 7)) if Cbp else 0.0
+    SL = 1 + (0.015 * (Lbp - 50) ** 2) / math.sqrt(20 + (Lbp - 50) ** 2)
+    SC = 1 + 0.045 * Cbp
+    SH = 1 + 0.015 * Cbp * T
+    RT = -math.sin(math.radians(2 * dTheta)) * RC
+
+    return math.sqrt((dLp / SL) ** 2 + (dCp / SC) ** 2 + (dHp / SH) ** 2
+                     + RT * (dCp / SC) * (dHp / SH))
+
+
+DE_MIN = 10          # CIEDE2000 distance below which two roots read as one
 
 
 def assign_hues(local_roots, taken):
@@ -119,9 +184,9 @@ def assign_hues(local_roots, taken):
     out, used = {}, list(taken)
     for name in local_roots:
         pick = next((c for c in WELL
-                     if all(_de(c, u) >= DE_MIN for u in used)), None)
+                     if all(ciede2000(c, u) >= DE_MIN for u in used)), None)
         if pick is None:                       # well exhausted vs. this unit
-            pick = max(WELL, key=lambda c: min((_de(c, u) for u in used),
+            pick = max(WELL, key=lambda c: min((ciede2000(c, u) for u in used),
                                                default=float("inf")))
         out[name] = pick
         used.append(pick)
