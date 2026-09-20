@@ -14,9 +14,9 @@ existing readers of Joshua-reading.txt aren't affected by this addition.
 """
 import re
 
-SRC = r"C:\Users\laneh\OneDrive\Documents\Projects\Joshua\pipeline\corpus\web\07-JOSeng-web.usfm"
-OUT = r"C:\Users\laneh\OneDrive\Documents\Projects\Joshua\Joshua-english.txt"
-READING = r"C:\Users\laneh\OneDrive\Documents\Projects\Joshua\Joshua-reading.txt"
+SRC = r"C:\Users\laneh\OneDrive\Documents\Projects\Bible\Joshua\pipeline\corpus\web\07-JOSeng-web.usfm"
+OUT = r"C:\Users\laneh\OneDrive\Documents\Projects\Bible\Joshua\Joshua-english.txt"
+READING = r"C:\Users\laneh\OneDrive\Documents\Projects\Bible\Joshua\Joshua-reading.txt"
 
 raw = open(SRC, encoding="utf-8").read()
 

@@ -13,10 +13,10 @@ import re
 import xml.etree.ElementTree as ET
 
 NS = {"o": "http://www.bibletechnologies.net/2003/OSIS/namespace"}
-SRC = r"C:\Users\laneh\OneDrive\Documents\Projects\Joshua\pipeline\corpus\wlc\Josh.xml"
-OUT_READING = r"C:\Users\laneh\OneDrive\Documents\Projects\Joshua\Joshua-reading.txt"
-OUT_WORDS = r"C:\Users\laneh\OneDrive\Documents\Projects\Joshua\Joshua-words.tsv"
-OUT_BOUNDARIES = r"C:\Users\laneh\OneDrive\Documents\Projects\Joshua\candidate-boundaries.md"
+SRC = r"C:\Users\laneh\OneDrive\Documents\Projects\Bible\Joshua\pipeline\corpus\wlc\Josh.xml"
+OUT_READING = r"C:\Users\laneh\OneDrive\Documents\Projects\Bible\Joshua\Joshua-reading.txt"
+OUT_WORDS = r"C:\Users\laneh\OneDrive\Documents\Projects\Bible\Joshua\Joshua-words.tsv"
+OUT_BOUNDARIES = r"C:\Users\laneh\OneDrive\Documents\Projects\Bible\Joshua\candidate-boundaries.md"
 
 tree = ET.parse(SRC)
 root = tree.getroot()
