@@ -32,7 +32,7 @@ sys.path.insert(0, HERE)
 
 import audit_thread_coverage as atc          # noqa: E402
 import unit_meta as um                       # noqa: E402
-from roots import bare_id, load_roots        # noqa: E402
+from roots import load_roots                 # noqa: E402
 
 ROOT = os.path.dirname(HERE)
 UNITS = os.path.join(ROOT, "units")
@@ -97,9 +97,8 @@ def plan(html, passage, threads_json=None, roots_json=None):
         entry = roots.get(root_slug)
         if entry is None:
             continue
-        id_set = {bare_id(i) for i in entry["ids"]}
         hits = {w: cv for w, cv in
-                atc.source_hits_for_root(words, id_set).items()
+                atc.source_hits_for_root(words, entry["ids"]).items()
                 if atc.in_range(cv, lo, hi)}
 
         by_verse = {}

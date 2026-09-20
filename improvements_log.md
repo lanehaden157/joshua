@@ -275,3 +275,49 @@ prose spans read "slave", the legend reads "ʿeved — slave (Moses' title,
 errors. `units/unit-01.html` diff is exactly 5 lines, `data-root`/`data-w`
 untouched.
 
+## 2026-09-19 (part 4) -- A7: OSHB letter suffixes are not opaque
+
+Ran the lexicon check the review flagged as not done (`AugIndex.xml` +
+`LexicalIndex.xml`), and the "opaque" rule in style reference §2 turned out
+to be wrong. The letters separate genuinely distinct lexemes:
+
+| id | split | in Joshua |
+|---|---|---|
+| 3885 | a *lodge* / b *murmur* | 4x lodge (3:1, 4:3, 6:11, 8:9) vs 1x murmur (9:18) |
+| 2416 | a *alive* / e *life* | "living God" (3:10, 8:23) vs "days of your life" (1:5, 4:14) |
+| 6924 | a *front* / b *eastward* | 7:2 vs the boundary formula (15:5, 18:20, 19:12, 19:13) |
+
+Elsewhere the letters are inflectional, not lexical (834a-d are all *ʾăšer*
+with different prefixes; 859a-e all *ʾattâ* by person/number), so a bare id
+covers them correctly.
+
+Two counting corrections to the review's A7: it says 12 bare ids carry more
+than one suffix, which is right *only* if you separate letter suffixes from
+the `+` marker. `bare_id()` strips both; the other 67 collisions are all `+`
+(Beth-el as `1008` vs `1008+`), the same lexeme with a compound-name flag,
+correctly stripped.
+
+**Change:** matching now honours what is written. A bare id (`"2416"`) claims
+every lexeme under the number; a suffixed id (`"2416e"`) claims exactly one.
+
+- `roots.py` gains `lemma_key()` (keeps the letter, strips `+`) and
+  `split_ids()`. `_ID_RE` now captures the marker.
+- `source_hits_for_root(words, ids)` takes the root's **raw id list** instead
+  of a pre-stripped bare set, and matches bare-vs-exact itself. All six call
+  sites simplified accordingly.
+- The "no id in two roots" check understands the asymmetry: `3885a` and
+  `3885b` may sit in different roots, but a bare `3885` collides with either.
+- A suffixed id the corpus never carries is now a hard error -- under the new
+  semantics it would match *nothing*, and a silent zero is worse than a loud
+  failure. This reverses `test_lettered_id_normalizes`'s old assumption, which
+  was safe only while the letter was being stripped; that test was rewritten
+  rather than deleted, and two new ones cover the lodge/murmur split.
+
+**No existing root's coverage moved** -- all ten still report 89, 81, 32, 59,
+6, 8, 5, 9, 27, 23 occurrences, identical to before. The change is purely
+additive: precision is opt-in.
+
+Style reference §2 rewritten with the three real cases; `CLAUDE.md` updated,
+including pointing the retrofit recipe at `assign_data_w.py` instead of the
+by-hand steps 1-3.
+

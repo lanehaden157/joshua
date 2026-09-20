@@ -379,9 +379,9 @@ def _append_candidate_preview(lines, root, cand):
                      f"against a draft data/roots.json entry to preview coverage")
         return
     try:
-        id_set = {root_lib.bare_id(i) for i in ids}
+
         words = atc.load_words()
-        hits = atc.source_hits_for_root(words, id_set)
+        hits = atc.source_hits_for_root(words, ids)
         wbi = atc.words_by_id(words)
     except Exception as exc:  # pragma: no cover
         lines.append(f"    - (id preview unavailable: {exc})")

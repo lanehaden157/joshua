@@ -101,7 +101,12 @@ reference §2).
   `{"roots": {"<slug>": {"ids": [...], "note": "..."}}}`. Lane's policy.
 - **`pipeline/roots.py`** — loader/validator: every id is a real lemma, no id
   in two roots, every thread's root has an entry. `bare_id()` strips the
-  disambiguator letter and OSHB's `+` marker. `load_roots()` resolves its
+  disambiguator letter and OSHB's `+` marker; `lemma_key()` keeps the letter
+  and strips only `+`. Matching uses both via `split_ids()`: a bare id claims
+  every lexeme under a number, a suffixed id claims exactly one — so `3885a`
+  *lodge* and `3885b` *murmur* can be separate roots (style reference §2 has
+  the three real cases). A suffixed id the corpus never carries is an error,
+  since it would match nothing. `load_roots()` resolves its
   default path at call time — it used to bind at import, which silently
   ignored test monkeypatches.
 - **`pipeline/audit_thread_coverage.py`** — set arithmetic over word ids.
@@ -126,9 +131,11 @@ artifacts usually already wrap the occurrences, so it's normally a
 
 **Retrofit recipe** (per promoted root, per unit):
 
-1. Pull every occurrence from `Joshua-words.tsv` in the unit's passage: split
-   `lemma` on `/`, keep digit-leading segments, `bare_id()`, match the id set.
-   Keep `(ref, word_id, surface, morph)`.
+1. Pull every occurrence from `Joshua-words.tsv` in the unit's passage —
+   `audit_thread_coverage.source_hits_for_root(words, entry["ids"])` does
+   exactly this. Keep `(ref, word_id, surface, morph)`. **In practice run
+   `python pipeline/assign_data_w.py N` instead of steps 1–3 by hand; it does
+   the zip and reports only the verses it cannot decide.**
 2. Pull every `<span class="r" data-root="ROOT">` from the fragment, in order.
 3. Zip the two lists per verse.
 4. Where a verse's counts differ, look closer: one span over two Hebrew words

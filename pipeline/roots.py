@@ -26,7 +26,7 @@ THREADS_JSON = os.path.join(HERE, "..", "data", "threads.json")
 WORDS_TSV = os.path.join(HERE, "..", "Joshua-words.tsv")
 
 _SLUG_RE = re.compile(r"^[a-z0-9-]+$")
-_ID_RE = re.compile(r"^(\d+)(?:\s?[a-z]|\+)?$")
+_ID_RE = re.compile(r"^(\d+)\s?([a-z]|\+)?$")
 
 
 def bare_id(id_str: str) -> str:
@@ -49,6 +49,54 @@ def bare_id(id_str: str) -> str:
     return m.group(1)
 
 
+def lemma_key(id_str: str) -> str:
+    """Normalize an id while KEEPING its disambiguating letter.
+
+    '310 a' -> '310a'; '2763a' -> '2763a'; '1007+' -> '1007'; '5414' ->
+    '5414'. The two markers are not the same thing, which is why they are
+    treated differently here (review A7):
+
+    * The trailing **letter** separates genuinely distinct lexemes that
+      share a Strong's number. In Joshua: 3885a *lodge* vs 3885b *murmur*;
+      2416a *alive* vs 2416e *life*; 6924a *front* vs 6924b *eastward*.
+      Stripping it makes those impossible to tell apart, so a root that
+      wants one and not the other cannot say so.
+    * The trailing **'+'** is OSHB's marker for a lemma continuing into an
+      adjacent word as part of a multi-word proper name (Beth-el is '1007+'
+      plus the next word). Same lexeme either way, so it is always stripped.
+
+    Some letters really are inflectional rather than lexical -- 834a/b/c/d
+    are all *ʾăšer* with different prefixes, 859a-e all *ʾattâ* by person
+    and number. Writing the bare id still covers those, because a bare id
+    in a root's id set matches every letter variant. Precision is opt-in.
+    """
+    m = _ID_RE.match(id_str)
+    if not m:
+        raise ValueError(
+            f"malformed id {id_str!r}: expected digits with an optional "
+            f"trailing lowercase letter or '+', e.g. '2763', '2763a', '1007+'"
+        )
+    letter = (m.group(2) or "").strip()
+    return m.group(1) + (letter if letter.isalpha() else "")
+
+
+def split_ids(ids):
+    """A root's id list -> (bare_ids, exact_ids).
+
+    A bare id ('2416') matches every letter variant of that number; a
+    suffixed id ('2416e') matches only that lexeme. So a root can be as
+    coarse or as precise as the word actually needs.
+    """
+    bare, exact = set(), set()
+    for i in ids:
+        key = lemma_key(i)
+        if key[-1:].isalpha():
+            exact.add(key)
+        else:
+            bare.add(key)
+    return bare, exact
+
+
 def load_roots(path: str = None) -> dict:
     """path defaults to the module-level ROOTS_JSON, resolved at CALL time
     (not bound as a mutable default at import time) so a caller -- a test,
@@ -61,8 +109,10 @@ def load_roots(path: str = None) -> dict:
 
 
 def known_lemma_ids(words_tsv: str = WORDS_TSV) -> set:
-    """Every bare numeric lemma id that actually occurs in
-    Joshua-words.tsv. A lemma field may hold several "/"-separated
+    """Every lemma id that actually occurs in Joshua-words.tsv, in both
+    forms -- bare ('2416') and letter-preserving ('2416e') -- so a root
+    declaring either spelling can be checked against reality. A lemma
+    field may hold several "/"-separated
     segments (one per surface morpheme); bound-prefix segments (c, b, d,
     k, l, m, ...) aren't ids and are skipped."""
     known = set()
@@ -74,6 +124,7 @@ def known_lemma_ids(words_tsv: str = WORDS_TSV) -> set:
                 if not seg or not seg[0].isdigit():
                     continue
                 known.add(bare_id(seg))
+                known.add(lemma_key(seg))
     return known
 
 
@@ -89,7 +140,8 @@ def validate(data: dict, words_tsv: str = WORDS_TSV, threads_data: dict = None) 
         return ["roots.json's top-level 'roots' must be an object (slug -> entry)"]
 
     known_ids = known_lemma_ids(words_tsv)
-    id_owner = {}  # bare id -> slug that first claimed it
+    bare_owner = {}   # '2416'  -> slug claiming every lexeme under it
+    exact_owner = {}  # '2416e' -> slug claiming just that lexeme
 
     for slug, entry in roots.items():
         if not _SLUG_RE.match(slug):
@@ -117,14 +169,43 @@ def validate(data: dict, words_tsv: str = WORDS_TSV, threads_data: dict = None) 
                     f"{slug}: id {id_str!r} (bare {bare}) is not a lemma in "
                     f"{os.path.basename(words_tsv)}"
                 )
-            existing_owner = id_owner.get(bare)
-            if existing_owner is not None and existing_owner != slug:
+            elif lemma_key(id_str)[-1:].isalpha() and                     lemma_key(id_str) not in known_ids:
+                # The number exists but not this lexeme. Under A7 a
+                # suffixed id matches only its own lexeme, so this would
+                # match nothing at all -- a silent zero, which is worse
+                # than a loud error.
                 errors.append(
-                    f"id {bare} claimed by both {existing_owner!r} and {slug!r} "
+                    f"{slug}: id {id_str!r} -- {bare} occurs in "
+                    f"{os.path.basename(words_tsv)} but not with that "
+                    f"letter, so this id would match nothing. Use the bare "
+                    f"id {bare!r} to match every variant."
+                )
+            key = lemma_key(id_str)
+            precise = key[-1:].isalpha()
+
+            # A bare id claims every lexeme under that number; a suffixed
+            # id claims exactly one. So 3885a and 3885b may sit in
+            # different roots (lodge vs murmur), but a bare 3885 collides
+            # with either (review A7).
+            clash = None
+            if bare_owner.get(bare) not in (None, slug):
+                clash = bare_owner[bare]
+            elif precise and exact_owner.get(key) not in (None, slug):
+                clash = exact_owner[key]
+            elif not precise:
+                other = next((o for k, o in exact_owner.items()
+                              if bare_id(k) == bare and o != slug), None)
+                clash = other
+
+            if clash is not None:
+                errors.append(
+                    f"id {id_str!r} claimed by both {clash!r} and {slug!r} "
                     f"roots (§A5: an id in two roots is a hard failure)"
                 )
+            elif precise:
+                exact_owner[key] = slug
             else:
-                id_owner[bare] = slug
+                bare_owner[bare] = slug
 
     # `declined` is the ledger of candidates considered and deliberately
     # kept local (review A13). Without it the decision lives only in a

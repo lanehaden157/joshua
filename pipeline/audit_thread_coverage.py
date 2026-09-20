@@ -87,7 +87,7 @@ except Exception:  # pragma: no cover
     def _translit_row(row):
         return row["surface"]
 
-from roots import bare_id, load_roots  # noqa: E402
+from roots import bare_id, lemma_key, load_roots, split_ids  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UNITS = os.path.join(ROOT, "units")
@@ -209,14 +209,38 @@ def words_by_id(words):
     return {row["word_id"]: row for row in words}
 
 
-def source_hits_for_root(words, id_set):
-    """{word_id: (ch, v)} for every non-Ketiv word whose lemma has at
-    least one bare id in id_set. One entry per word id (§6: Beth-el is two
+def _lemma_id_forms(lemma_field):
+    """(bare_ids, exact_keys) for a row's '/'-separated lemma segments.
+
+    Bound-prefix segments ('c'/'b'/'l') aren't ids and are skipped.
+    """
+    bares, keys = set(), set()
+    for seg in lemma_field.split("/"):
+        seg = seg.strip()
+        if not seg or not seg[0].isdigit():
+            continue
+        try:
+            bares.add(bare_id(seg))
+            keys.add(lemma_key(seg))
+        except ValueError:
+            pass
+    return bares, keys
+
+
+def source_hits_for_root(words, ids):
+    """{word_id: (ch, v)} for every non-Ketiv word this root's ids claim.
+
+    `ids` is the root's raw id list. A bare id ('2416') matches every
+    letter variant of that number; a suffixed id ('2416e') matches only
+    that lexeme, so a root can distinguish 3885a *lodge* from 3885b
+    *murmur* (review A7). One entry per word id (§6: Beth-el is two
     tagged words sharing one id -- counted as two occurrences here, by
     design, not folded into one)."""
+    bare_set, exact_set = split_ids(ids)
     hits = {}
     for row in words:
-        if _lemma_bare_ids(row["lemma"]) & id_set:
+        bares, keys = _lemma_id_forms(row["lemma"])
+        if (bares & bare_set) or (keys & exact_set):
             hits[row["word_id"]] = (row["ch"], row["v"])
     return hits
 
@@ -360,8 +384,7 @@ def ids_report(root_slugs):
         if entry is None:
             print(f"  (no data/roots.json entry for '{slug}')")
             continue
-        id_set = {bare_id(i) for i in entry["ids"]}
-        hits = source_hits_for_root(words, id_set)
+        hits = source_hits_for_root(words, entry["ids"])
         wbi = words_by_id(words)
 
         by_form = {}
@@ -431,8 +454,7 @@ def coverage_for_fragment(slug, html, passage, threads_json=None, roots_json=Non
             warnings.append(f"thread '{tid}': root '{root_slug}' has no "
                              f"data/roots.json entry")
             continue
-        id_set = {bare_id(i) for i in entry["ids"]}
-        source_hits = source_hits_for_root(words, id_set)
+        source_hits = source_hits_for_root(words, entry["ids"])
         in_range_hits = {wid: cv for wid, cv in source_hits.items()
                           if in_range(cv, lo, hi)}
 
@@ -574,8 +596,8 @@ def audit(only=None, stub_for=None, unit_slugs=None):
 
         for tid in targets:
             if not _has_issue(tid):
-                id_set = {bare_id(i) for i in roots[tracked[tid]]["ids"]}
-                occ = len(source_hits_for_root(load_words(), id_set))
+                occ = len(source_hits_for_root(
+                    load_words(), roots[tracked[tid]]["ids"]))
                 print(f"  ✓ {tid:14} clean across {scope} ({occ} occ. book-wide)")
 
     if undefined and not unit_slugs:

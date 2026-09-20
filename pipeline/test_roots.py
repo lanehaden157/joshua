@@ -9,7 +9,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from roots import bare_id, known_lemma_ids, validate  # noqa: E402
+from roots import bare_id, known_lemma_ids, lemma_key, validate  # noqa: E402
 
 # Ids confirmed to occur in Joshua-words.tsv (see hebrew.py's OVERRIDES /
 # test_hebrew.py's corpus sweep).
@@ -64,19 +64,65 @@ def test_bad_slug_fails():
 
 
 def test_lettered_id_normalizes():
+    """bare_id() still strips; lemma_key() keeps the letter (review A7)."""
     failures = []
     if bare_id(f"{REAL_ID_KOL}a") != REAL_ID_KOL:
         failures.append(f"bare_id({REAL_ID_KOL}a) did not strip the trailing letter")
-    # A lettered id for a real lemma should validate cleanly even though
-    # Joshua-words.tsv itself never carries that exact lettered spelling --
-    # only the bare numeric id needs to occur.
+    if lemma_key(f"{REAL_ID_KOL}a") != f"{REAL_ID_KOL}a":
+        failures.append("lemma_key() dropped the disambiguating letter")
+    if lemma_key("1007+") != "1007":
+        failures.append("lemma_key() kept the '+' compound marker, which is "
+                        "the same lexeme and must be stripped")
+    if lemma_key("310 a") != "310a":
+        failures.append("lemma_key() did not normalize the TSV's spaced spelling")
+    return failures
+
+
+def test_lettered_id_that_does_not_exist_fails():
+    """A suffixed id matches only its own lexeme, so one the corpus never
+    carries would match nothing at all -- a silent zero. Loud instead.
+
+    This reverses the old rule, which accepted any lettered spelling as
+    long as the bare number occurred; that was safe only while the letter
+    was being stripped before matching.
+    """
     data = {
         "version": 1,
-        "roots": {"kol": {"ids": [f"{REAL_ID_KOL}a"], "note": "lettered variant"}},
+        "roots": {"kol": {"ids": [f"{REAL_ID_KOL}a"], "note": "no such lexeme"}},
+    }
+    errors = validate(data)
+    if not any("would match nothing" in e for e in errors):
+        return [f"expected a nonexistent lettered id to be rejected, got: {errors}"]
+    return []
+
+
+def test_real_lettered_ids_split_distinct_lexemes():
+    """3885a 'lodge' and 3885b 'murmur' are different words sharing a
+    Strong's number, and may therefore live in different roots."""
+    failures = []
+    data = {
+        "version": 1,
+        "roots": {
+            "lodge": {"ids": ["3885a"], "note": "lun, lodge"},
+            "murmur": {"ids": ["3885b"], "note": "lun, murmur"},
+        },
     }
     errors = validate(data)
     if errors:
-        failures.append(f"expected a lettered id for a real lemma to validate, got: {errors}")
+        failures.append(f"3885a and 3885b in separate roots should be legal, "
+                        f"got: {errors}")
+
+    # but a bare 3885 claims the whole number, so it collides with either
+    data2 = {
+        "version": 1,
+        "roots": {
+            "lodge": {"ids": ["3885"], "note": "all of 3885"},
+            "murmur": {"ids": ["3885b"], "note": "just the murmur sense"},
+        },
+    }
+    if not any("claimed by both" in e for e in validate(data2)):
+        failures.append("a bare id must collide with a suffixed id under the "
+                        "same number")
     return failures
 
 
@@ -160,6 +206,8 @@ _TESTS = [
     test_unknown_id_fails,
     test_bad_slug_fails,
     test_lettered_id_normalizes,
+    test_lettered_id_that_does_not_exist_fails,
+    test_real_lettered_ids_split_distinct_lexemes,
     test_id_in_two_roots_fails,
     test_missing_note_fails,
     test_kind_members_rejected,
