@@ -226,3 +226,52 @@ coverage 0 gap / 0 wrong / 0 stray / 0 missing-data-w. Verified in the browser:
 
 Full suite green (8 files), `build.py` green, `units/unit-01.html` unchanged.
 
+## 2026-09-19 (part 3) -- platform review G3 (the wording decisions)
+
+Decisions that are cheap now and a retroactive pass at unit 10 (Matthew's
+lesson) later.
+
+- **C10 -- ʿeved renders "slave"** (Lane). Applied to unit 1, all 5
+  occurrences (1:1, 1:2, 1:7, 1:13, 1:15), via a `text` op in
+  `retrofit-tags.json` matching `>servant</span>` rather than bare
+  "servant" -- the bare form would also have rewritten `data-root="servant"`
+  and the meta block's thread id. The thread *slug* stays `servant`: it is an
+  internal identifier, never shown to a reader, and renaming it would mean
+  retagging every span (review H7). Thread gloss updated to match. The 5
+  existing `retag` entries carrying the data-w injection had to be retargeted
+  from "servant" to "slave" or they would have silently MISSed on any future
+  re-port -- caught because apply_retrofit reported it.
+- **C12 -- shamayim renders "sky / skies"** everywhere (Lane), matching
+  Matthew's ouranos rule. Decided before unit 2 because Rahab's 2:11 is the
+  first hit. **Correction to the review:** C12 lists the occurrences as
+  2:11, 8:20, 10:11, 11:4 -- 11:4 does not contain shamayim; the fourth is
+  **10:13**. The four split by sense (2:11 and 8:20 cosmological, 10:11 and
+  10:13 physical; WEB itself renders the first pair "heaven" and the second
+  "sky"), and rendering them alike is the deliberate choice.
+- **A21 -- WEB is provenance only** (Lane). Not the base text, not a draft
+  the chat side edits, not a diff target. Generated and pinned for
+  reproducibility; nothing in the workflow reads it; its absence from
+  `project-side/synced/` is deliberate, not a gap. Written down in
+  `CLAUDE.md` beside the file, with the note that it is also *not* where the
+  Hebrew comes from (that is morphhb) -- the belief that prompted the item.
+- **A13 -- declined-candidate ledger.** `data/roots.json` gains `declined`
+  (slug -> {why, date, unit?, ids?}), seeded with `all`/kol and the actual
+  2026-09-16 reasoning, which until now lived only in a session log.
+  `roots.py` validates it (`why` and `date` required -- a bare "no" gets
+  re-litigated -- and a slug may not be both declined and tracked).
+  `threads_digest.py` renders a "Considered and kept local" section, so the
+  chat side reads it. `port_artifact.py` flags a re-proposal against the
+  original reasoning and asks what changed. Verified end to end by feeding
+  the porter an artifact that re-proposes `all`: the flag fires.
+- **D15/F20 (canon conventions file) deliberately NOT done.** Joshua and
+  Matthew are sibling repos with no shared parent, so a "shared" file today
+  means duplicating it or inventing a third location nothing reads. The
+  decisions are what is expensive to defer, and they are recorded; the file
+  waits for G6, when D1/D2 give it a real home.
+
+Full suite green, `build.py` green, coverage 0/0/0/0. Browser-verified: all 5
+prose spans read "slave", the legend reads "ʿeved — slave (Moses' title,
+'slave of Yahweh') 5×", no "servant" remains in the rendered text, no console
+errors. `units/unit-01.html` diff is exactly 5 lines, `data-root`/`data-w`
+untouched.
+

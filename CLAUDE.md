@@ -33,6 +33,13 @@ file points there rather than restating it.
 - **`Joshua-english.txt`** — WEB classic (`eng-web`, "Yahweh", USA spelling;
   not `eng-webp`/`eng-webbe`), same line shape, footnotes stripped. A separate
   file rather than a third column, so the Hebrew file's shape stays stable.
+  **Role: provenance only** (Lane, 2026-09-19). It is *not* the base text of
+  the study translation, not a draft the chat side edits, and not a diff
+  target — the style reference is explicit that the verse text is "not a
+  polish of an existing English version". It is generated and pinned so the
+  corpus is reproducible, and nothing in the workflow reads it. Its absence
+  from `project-side/synced/` is deliberate, not a gap. (It is also not
+  where the *Hebrew* comes from — that is morphhb, `pipeline/corpus/wlc/`.)
 - **`candidate-boundaries.md`** — every petuhah/setumah marker, uninterpreted.
 - Generators: `pipeline/build_reading.py` (from `pipeline/corpus/wlc/Josh.xml`)
   and `pipeline/build_english.py` (from WEB USFM; asserts verse count matches

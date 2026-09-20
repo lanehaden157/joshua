@@ -13,7 +13,7 @@ Generated from `data/threads.json` (version 1). 10 threads, 10 open.
 | `possess` | `possess` | yarash | take possession, possess | 1 (1:11) | — | open |
 | `rest` | `rest` | nuaḥ | give rest | 1 (1:13) | — | open |
 | `send` | `send` | shalaḥ | send | 1 (1:16) | — | open |
-| `servant` | `servant` | ʿeved | servant (Moses' title, 'servant of Yahweh') | 1 (1:1) | — | open |
+| `servant` | `servant` | ʿeved | slave (Moses' title, 'slave of Yahweh') | 1 (1:1) | — | open |
 | `strong` | `strong` | ḥazaq | be strong | 1 (1:6) | — | open |
 | `torah` | `torah` | torah | instruction, the Torah (here 'the scroll of the torah') | 1 (1:7) | — | open |
 
@@ -29,3 +29,9 @@ Generated from `data/threads.json` (version 1). 10 threads, 10 open.
 - **`servant`**: ʿeved YHWH belongs to Moses in unit 1; watch whether and when Joshua receives it (24:29).
 - **`strong`**: ḥazaq ×4 — three times from Yahweh, the last time from the eastern tribes (1:18); recurs at 10:25.
 - **`torah`**: 'the scroll of the torah' (1:8) opens a line to 8:31-34, 22:5, and 23:6.
+
+## Considered and kept local
+
+These were proposed as threads and deliberately declined. Don't re-propose one without a specific new payoff in view -- say what changed.
+
+- **`all`** (declined 2026-09-16, unit 1): kol, 236 occurrences book-wide. Asked Lane (the frequency made it a genuine toss-up) and kept local: a root that common carries no signal as a tracked thread -- colouring it would tint the page without telling a reader anything. Re-propose only with a specific payoff in view, not on frequency alone.

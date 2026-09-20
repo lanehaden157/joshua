@@ -24,6 +24,16 @@ def _ref(d):
     return f"{d.get('unit', '?')}" + (f" ({d['ref']})" if d.get("ref") else "")
 
 
+def _declined():
+    """roots.json's declined ledger, or {} when absent."""
+    path = os.path.join(ROOT, "data", "roots.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f).get("declined") or {}
+    except (OSError, ValueError):
+        return {}
+
+
 def main():
     data = json.load(open(SRC, encoding="utf-8"))
     threads = data["threads"]
@@ -81,9 +91,23 @@ def main():
     for t in sorted(threads, key=lambda x: x["id"]):
         lines.append(f"- **`{t['id']}`**: {t.get('note', '').strip()}")
 
+    # Declined candidates (review A13). This is the half of the promotion
+    # record that used to live only in a session log, so the same root got
+    # re-proposed every few units and re-argued from scratch.
+    declined = _declined()
+    if declined:
+        lines += ["", "## Considered and kept local", "",
+                  "These were proposed as threads and deliberately declined. "
+                  "Don't re-propose one without a specific new payoff in "
+                  "view -- say what changed.", ""]
+        for slug, e in sorted(declined.items()):
+            unit = f", unit {e['unit']}" if e.get("unit") else ""
+            lines.append(f"- **`{slug}`** (declined {e.get('date', '?')}"
+                         f"{unit}): {e.get('why', '').strip()}")
+
     lines.append("")
     open(OUT, "w", encoding="utf-8").write("\n".join(lines))
-    print(f"wrote {OUT} — {len(threads)} threads")
+    print(f"wrote {OUT} — {len(threads)} threads, {len(declined)} declined")
 
 
 if __name__ == "__main__":

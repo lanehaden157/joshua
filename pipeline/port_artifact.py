@@ -325,10 +325,19 @@ def thread_delta(meta, fragment_html=None, retrofit_applied=True):
 
     cands = th.get("candidates", []) or []
     if cands:
-        lines += ["", "## New-thread candidates (Lane decides)", ""]
+        lines += ["", "## New-thread candidates "
+                  "(Claude decides, biased book-wide)", ""]
+        declined = (um._load("roots.json").get("declined") or {})
         for c in cands:
             root = c.get("root", "?")
             lines.append(f"- `{root}` — {c.get('why', '').strip()}")
+            if root in declined:
+                d = declined[root]
+                lines.append(f"    - **previously declined** "
+                             f"{d.get('date', '?')}: {d.get('why', '').strip()}")
+                lines.append("    - re-proposing is fine, but say what "
+                             "changed -- a new payoff, not the same argument "
+                             "(review A13).")
             _append_candidate_preview(lines, root, c)
 
     retro = th.get("retro", []) or []

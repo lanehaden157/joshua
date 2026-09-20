@@ -126,6 +126,31 @@ def validate(data: dict, words_tsv: str = WORDS_TSV, threads_data: dict = None) 
             else:
                 id_owner[bare] = slug
 
+    # `declined` is the ledger of candidates considered and deliberately
+    # kept local (review A13). Without it the decision lives only in a
+    # session log, so the same root gets re-proposed every few units and
+    # re-argued from scratch.
+    declined = data.get("declined")
+    if declined is not None:
+        if not isinstance(declined, dict):
+            errors.append("roots.json's 'declined' must be an object "
+                          "(slug -> {why, date, unit?, ids?})")
+        else:
+            for slug, entry in declined.items():
+                if not _SLUG_RE.match(slug):
+                    errors.append(f"declined {slug!r}: slug must match [a-z0-9-]+")
+                if not isinstance(entry, dict):
+                    errors.append(f"declined {slug}: entry must be an object")
+                    continue
+                if not entry.get("why"):
+                    errors.append(f"declined {slug}: missing required 'why' -- "
+                                  "a bare 'no' gets re-litigated")
+                if not entry.get("date"):
+                    errors.append(f"declined {slug}: missing required 'date'")
+                if slug in roots:
+                    errors.append(f"declined {slug}: also a tracked root -- a "
+                                  "slug is one or the other, not both")
+
     if threads_data is not None:
         thread_roots = {
             t.get("root") for t in threads_data.get("threads", []) if isinstance(t, dict)
