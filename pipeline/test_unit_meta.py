@@ -469,6 +469,44 @@ def test_generate_output_validates_clean():
     _check("generate()'s output must validate clean", not errs, errs)
 
 
+def test_generate_round_trips_opens_and_payoffs_notes():
+    """The same round-trip, but with threads that actually touch the unit.
+
+    The empty-threads fixture above passed all the way through the A1 bug:
+    generate() built opens/payoffs entries as {id, ref} while validate()
+    required a `note` on both, so every refresh_meta run wrote unit-01 into
+    a shape the project's own validator rejected -- and no test noticed,
+    because with zero threads there were zero entries to get wrong.
+    """
+    units_json = {
+        "book": "Joshua",
+        "units": [{"n": 1, "slug": "unit-01", "passage": "Joshua 1:1-18",
+                   "title": "Rights of Passage", "movement": 1}],
+    }
+    threads_json = {"threads": [
+        {"id": "give", "root": "give", "translit": "natan", "gloss": "give",
+         "color": "#b1481f", "status": "open", "tagged": True,
+         "opens": {"unit": 1, "ref": "1:2", "note": "the land as gift."},
+         "payoffs": [], "note": "natan across the book."},
+        {"id": "rest", "root": "rest", "translit": "nuakh", "gloss": "rest",
+         "color": "#2f5f6b", "status": "open", "tagged": True,
+         "opens": {"unit": 0, "ref": "0:0", "note": "opens elsewhere."},
+         "payoffs": [{"unit": 1, "ref": "1:13", "note": "rest promised."}],
+         "note": "nuakh across the book."},
+    ]}
+    meta = um.generate(1, units_json=units_json, threads_json=threads_json)
+    errs = um.validate(meta, threads_json=threads_json)
+    _check("generate() must validate clean with threads touching the unit",
+           not errs, errs)
+
+    opens = meta["threads"]["opens"]
+    _check("generate() must carry opens.note through from threads.json",
+           opens and opens[0].get("note") == "the land as gift.", opens)
+    payoffs = meta["threads"]["payoffs"]
+    _check("generate() must carry payoffs[].note through from threads.json",
+           payoffs and payoffs[0].get("note") == "rest promised.", payoffs)
+
+
 # --------------------------------------------------- §8 worked-example contract
 
 def _extract_worked_example():

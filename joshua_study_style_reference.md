@@ -28,7 +28,11 @@ different word** — the tag follows the lexeme, not the gloss.
 out") goes in a thread `note` or a verse `.gloss`, in plain language.
 
 Every slug must resolve — in `threads-digest.md` or this artifact's `roots[]` —
-or the build fails. Declare tracked threads in `roots[]` too.
+or the build fails. **`roots[]` is local roots only** (Lane/Claude, 2026-09-19):
+do *not* re-declare a tracked thread there. `data/threads.json` is the single
+source of truth for a tracked thread's colour, translit and gloss; the site
+resolves a tracked `data-root` from it directly, so a second per-unit copy
+would only go stale.
 
 **Tag notable words even when they aren't threads (Lane, 2026-09-17).** A single
 striking translation choice in a single verse earns a `data-root` span and a
@@ -138,7 +142,9 @@ one dead.**)**
 
 **`candidates[]`** — `{root, why, ids?, refs?}`. Proposals only. `ids` are the
 Strong's ids you actually saw — evidence, not the decision. `refs` are a few
-representative verses.
+representative verses. **Claude decides whether a candidate is promoted,
+biased toward book-wide** (Lane, 2026-09-16): a local root that later pays off
+is worse than a tracked one that doesn't. Ask Lane only when genuinely unsure.
 
 **`retro[]`** — `{unit, verse, text, root, why, nth?, op?, w?}`. Fixes for
 **earlier** units (`unit` is a slug like `"unit-04"`, never this unit). `why`
@@ -216,8 +222,9 @@ file's row and Log **in the same turn**. **(learned:** Matthew started this file
 at unit 10 and paid with a retroactive audit — `b0f73cc`, `aed087e`,
 `0138548`.**)**
 
-*Open at unit 1: ḥerem, ḥesed, naḥalah, goel, nefesh, and whether `y'all` marks
-second-person plurals.*
+*Still open: ḥerem, ḥesed, goel, nefesh. Locked 2026-09-16: naḥalah →
+"inheritance"; `y'all` always marks a second-person plural. `translation-choices.md`
+is the authority — update it in the same turn as any wording decision.*
 
 ---
 

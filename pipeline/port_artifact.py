@@ -60,7 +60,9 @@ sys.path.insert(0, os.path.dirname(__file__))
 import unit_meta as um              # noqa: E402
 import audit_thread_coverage as atc  # noqa: E402
 import roots as root_lib             # noqa: E402
-from hebrew import transliterate as _translit  # noqa: E402
+# transliteration in reports goes through atc._translit_row, which applies
+# the lemma-keyed OVERRIDES (review A17); bare transliterate() would render
+# kol as "kal".
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "source-artifacts")
@@ -99,17 +101,28 @@ def _de(a, b):
     return sum((x - y) ** 2 for x, y in zip(_lab(a), _lab(b))) ** 0.5
 
 
+DE_MIN = 12          # CIE-Lab distance below which two roots read as one colour
+
+
 def assign_hues(local_roots, taken):
-    """local_roots: [names]; taken: [hex already used in this unit]. Return {name:hex}."""
+    """local_roots: [names]; taken: [hex already used in this unit]. Return {name:hex}.
+
+    Picks the first WELL colour at least DE_MIN from everything already in
+    play. When the well is exhausted against this unit -- unit 1 tags 16
+    distinct roots and the well only yields 13 mutually distinct at
+    DE_MIN -- fall back to the colour that is *furthest* from what is
+    taken, rather than WELL[len(used) % len(WELL)], which ignored
+    collisions outright and handed out exact duplicates of tracked-thread
+    colours. The fallback is still a compromise and validate_units.py will
+    report it; it just degrades gracefully instead of silently.
+    """
     out, used = {}, list(taken)
     for name in local_roots:
-        pick = None
-        for cand in WELL:
-            if all(_de(cand, u) >= 12 for u in used):
-                pick = cand
-                break
+        pick = next((c for c in WELL
+                     if all(_de(c, u) >= DE_MIN for u in used)), None)
         if pick is None:                       # well exhausted vs. this unit
-            pick = WELL[len(used) % len(WELL)]
+            pick = max(WELL, key=lambda c: min((_de(c, u) for u in used),
+                                               default=float("inf")))
         out[name] = pick
         used.append(pick)
     return out
@@ -145,11 +158,22 @@ def to_fragment(raw, n):
 
 # --------------------------------------------------------------- units.json merge
 
-def merge_units_json(meta, dry):
+def roots_in_fragment(html):
+    """Every distinct data-root slug actually tagged in the fragment.
+
+    The authority on which roots a unit uses is the markup, not meta.roots
+    -- since roots[] is local-only (style reference §1), a tracked thread
+    never appears there, so seeding collision-avoidance from meta.roots
+    alone is blind to every tracked colour in the unit."""
+    return set(re.findall(r'data-root="([a-z0-9-]+)"', html or ""))
+
+
+def merge_units_json(meta, dry, fragment_html=None):
     """Merge the unit's row into data/units.json. Local (non-tracked) roots
     get {color, translit, gloss} -- a local hue is assigned here (Phase 4),
     avoiding collisions with this unit's own existing local hues AND the
-    global colour of every tracked thread the unit also uses."""
+    global colour of every tracked thread the unit actually tags (read from
+    the fragment's data-root spans, not from meta.roots)."""
     uj = um._load("units.json")
     n = meta["unit"]
     row = um._unit_row(uj, n)
@@ -165,8 +189,9 @@ def merge_units_json(meta, dry):
     local = [r["root"] for r in meta["roots"] if r["root"] not in threads]
     taken = [e["color"] for e in existing.values()
              if isinstance(e, dict) and e.get("color")]
-    taken += [threads[r["root"]]["color"] for r in meta["roots"]
-              if r["root"] in threads and threads[r["root"]].get("color")]
+    tagged = roots_in_fragment(fragment_html) | {r["root"] for r in meta["roots"]}
+    taken += [threads[r]["color"] for r in sorted(tagged)
+              if r in threads and threads[r].get("color")]
     hues = assign_hues([r for r in local if r not in existing], taken)
 
     local_roots = {}
@@ -225,8 +250,12 @@ def thread_delta(meta, fragment_html=None, retrofit_applied=True):
                     entry["note"] = e["note"]
                 lines.append(f"    - add to `{e['id']}`.payoffs: "
                              f"`{json.dumps(entry, ensure_ascii=False)}`")
-            elif kind == "opens" and e.get("note"):
-                lines.append(f"    - popover note for the opens: “{e['note']}”")
+            elif kind == "opens" and not (t.get("opens") or {}).get("note"):
+                entry = {"unit": n, "ref": e.get("ref", "")}
+                if e.get("note"):
+                    entry["note"] = e["note"]
+                lines.append(f"    - set `{e['id']}`.opens: "
+                             f"`{json.dumps(entry, ensure_ascii=False)}`")
 
     cands = th.get("candidates", []) or []
     if cands:
@@ -286,7 +315,7 @@ def _append_candidate_preview(lines, root, cand):
     by_form = {}
     for wid, cv in hits.items():
         surface = wbi[wid]["surface"]
-        e = by_form.setdefault(surface, {"n": 0})
+        e = by_form.setdefault(surface, {"n": 0, "wid": wid})
         e["n"] += 1
     lines.append(f"    - if promoted, data/roots.json entry: "
                  f"`\"{root}\": {{\"ids\": {json.dumps(ids)}, \"note\": \"...\"}}`")
@@ -294,7 +323,8 @@ def _append_candidate_preview(lines, root, cand):
     lines.append(f"    - those ids match **{total}** word(s) book-wide "
                  f"({len(by_form)} distinct surface form(s)):")
     for surface, e in sorted(by_form.items(), key=lambda kv: -kv[1]["n"])[:12]:
-        lines.append(f"        {surface} ({_translit(surface)}) ×{e['n']}")
+        lines.append(f"        {surface} ({atc._translit_row(wbi[e['wid']])}) "
+                     f"×{e['n']}")
     extra = len(by_form) - 12
     if extra > 0:
         lines.append(f"        …and {extra} more form" + ("s" if extra != 1 else ""))
@@ -466,7 +496,7 @@ def port_one(n, dry, src=None):
     fragment = to_fragment(raw, n)
 
     no_write = dry or bool(src)
-    local_roots = merge_units_json(meta, no_write)
+    local_roots = merge_units_json(meta, no_write, fragment)
     if not meta.get("movement"):
         r = um._unit_row(um._load("units.json"), n)
         if r and r.get("movement"):

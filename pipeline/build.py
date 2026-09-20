@@ -31,8 +31,9 @@ import sys
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-STEPS = ["apply_retrofit.py", "refresh_meta.py", "scan_occurrences.py",
-         "verify_occurrences.py", "roots.py", "threads_digest.py"]
+STEPS = ["apply_retrofit.py", "refresh_meta.py", "validate_units.py",
+         "scan_occurrences.py", "verify_occurrences.py", "roots.py",
+         "threads_digest.py"]
 ADVISORY = ["audit_thread_coverage.py"]  # run with --check, show output, never fail the build
 ADVISORY_BARE = ["check_project_sync.py"]  # run with no args, show output, never fail the build
 

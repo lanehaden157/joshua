@@ -1,5 +1,5 @@
 {
-  "_note": "No units built yet (`built: false` on every row). `book` drives pipeline/audit_thread_coverage.py's source-file and line-prefix lookup (Joshua-reading.txt, 'Josh ' prefix) -- see that script's module docstring. Keep this in sync with whatever the actual reading-text file's ref column uses if either ever changes. `units[]` is a straight transcription of joshua_literary_unit_map.md (Phase 1) -- not a second literary-critical pass, Lane already confirmed the map as-is. Two unit breaks fall off the chapter grid: unit 8 (8:30-9:2) and the 24:28/29 split closing the book -- both transcribed as the map states them, not rounded to chapter boundaries.",
+  "_note": "`built: true` marks a unit whose fragment exists in `units/`; unit 1 is built as of 2026-09-17. `book` drives pipeline/audit_thread_coverage.py's source-file and line-prefix lookup (Joshua-reading.txt, 'Josh ' prefix) -- see that script's module docstring. Keep this in sync with whatever the actual reading-text file's ref column uses if either ever changes. `units[]` is a straight transcription of joshua_literary_unit_map.md (Phase 1) -- not a second literary-critical pass, Lane already confirmed the map as-is. Two unit breaks fall off the chapter grid: unit 8 (8:30-9:2) and the 24:28/29 split closing the book -- both transcribed as the map states them, not rounded to chapter boundaries.",
   "book": "Joshua",
   "unit_count": 24,
   "movements": [
@@ -72,12 +72,12 @@
           "gloss": "command, give orders"
         },
         "listen": {
-          "color": "#4a4f6b",
+          "color": "#5c3f7a",
           "translit": "shamaʿ",
           "gloss": "listen to, heed, obey"
         },
         "insight": {
-          "color": "#5c3f7a",
+          "color": "#4a4f6b",
           "translit": "sakal",
           "gloss": "have understanding, act wisely",
           "example": "so that you may act with insight wherever you go (1:7)"

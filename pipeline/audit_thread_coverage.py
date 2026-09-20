@@ -63,10 +63,29 @@ import unicodedata
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 try:
+    from hebrew import transliterate_word as _translit_word
+
+    def _translit_row(row):
+        """Transliterate a Joshua-words.tsv row with its lemma overrides.
+
+        Bare transliterate() is deterministic-only, so lemma-keyed
+        OVERRIDES never fire and kol renders as the mechanical `kal`
+        (review A17). The rows here always carry lemma and morph, so
+        there is no reason to drop them on the floor.
+        """
+        try:
+            return _translit_word(row["surface"], row.get("lemma", ""),
+                                  row.get("morph"))
+        except Exception:  # pragma: no cover - alignment edge case
+            return _translit(row["surface"])
+
     from hebrew import transliterate as _translit
 except Exception:  # pragma: no cover
     def _translit(s):
         return s
+
+    def _translit_row(row):
+        return row["surface"]
 
 from roots import bare_id, load_roots  # noqa: E402
 
@@ -348,7 +367,7 @@ def ids_report(root_slugs):
         by_form = {}
         for wid, cv in hits.items():
             surface = wbi[wid]["surface"]
-            e = by_form.setdefault(surface, {"n": 0, "refs": []})
+            e = by_form.setdefault(surface, {"n": 0, "refs": [], "wid": wid})
             e["n"] += 1
             e["refs"].append(f"{cv[0]}:{cv[1]}")
 
@@ -357,7 +376,7 @@ def ids_report(root_slugs):
         for surface, e in sorted(by_form.items(), key=lambda kv: -kv[1]["n"]):
             refs = ", ".join(e["refs"][:10])
             more = f" ... +{len(e['refs']) - 10} more" if len(e["refs"]) > 10 else ""
-            print(f"    {surface:16} {_translit(surface):18} "
+            print(f"    {surface:16} {_translit_row(wbi[e['wid']]):18} "
                   f"{e['n']:2}x  {refs}{more}")
     return 0
 
@@ -430,7 +449,7 @@ def coverage_for_fragment(slug, html, passage, threads_json=None, roots_json=Non
             if wid not in tagged_ids:
                 gaps.append({"thread": tid, "root": root_slug, "word_id": wid,
                              "ch": cv[0], "v": cv[1], "surface": wbi[wid]["surface"],
-                             "translit": _translit(wbi[wid]["surface"]),
+                             "translit": _translit_row(wbi[wid]),
                              "text": verse_text(html, cv[1])})
         for wid in sorted(tagged_ids):
             row = wbi.get(wid)

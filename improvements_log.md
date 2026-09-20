@@ -121,3 +121,70 @@
 - `Claude_ai_chat_side_instructions.md` trimmed 1,014 → ~460 words: pass 3's duplicated artifact rules (voice, local-root tagging, translation philosophy) replaced with a pointer to the style reference; three-pass flow, standing moves, scope, and working style kept.
 - `CLAUDE.md` trimmed 5,230 → ~1,590 words: restatements of the style reference (key table, checklist, transliteration rules) replaced with pointers; kept pins, BHS counts, the retrofit recipe, port/app-shell deviations from Matthew, and known gotchas. Fixed stale state (unit 1 built, 10 threads/roots, source-artifacts exists) and flagged resources.md as missing. Full suite + build.py clean.
 - `PLAN.md`: Phase 5 (unit 1) marked done with a short record of what it changed; Phase 6 = units 2–24; `resources.md` listed as the one open question. `CLAUDE.md` retrofit recipe step 4 corrected to match `b5bcee5` (unwrap the extra span rather than demote to `rl`).
+
+## 2026-09-19 -- platform review G1 (Joshua correctness pass)
+
+Worked the G1 group from `platform-design-review.md`. Every item verified by
+running code, not by reading prose.
+
+- **A2 `opens.note` now has a home.** Added `note` to `threads.json`'s `opens`
+  object, seeded on all 10 threads from each thread's prose `note` (every
+  thread opens in unit 1, so those notes already *were* the unit-1 opening
+  beats). `port_artifact.thread_delta()` now emits a paste-ready
+  `` `id`.opens: {...} `` entry the way it already did for payoffs, instead of
+  printing the note with nowhere to put it.
+- **A1 fixed.** `_threads_touching()` built `{id, ref}` while `validate()`
+  required `note` on both opens and payoffs, so *every* `build.py` run wrote
+  `units/unit-01.html` into a shape the project's own validator rejected --
+  10 errors, silently, on every build. Now carries `note` through for both.
+  Payoffs had the identical bug; unit 1 just has no payoffs yet to expose it.
+- **A3 decided: `roots[]` is local roots only.** Confirmed from
+  `app/threads.js` `resolveUnit()`, which unions `roots[]` with the occurrence
+  counts and prefers the *thread's* colour/translit/gloss whenever
+  `threads.byRoot` has the root -- so a tracked thread renders correctly
+  without appearing in `roots[]` at all. Re-declaring one there would only
+  duplicate `threads.json` per-unit and go stale. Style reference §1 amended;
+  the code already behaved this way.
+- **A4 fixed, and it was worse than the review thought.** `assign_hues()`
+  seeded `taken` from `meta.roots`, which under the A3 decision contains *no*
+  tracked threads -- so collision avoidance was blind to every tracked colour
+  in the unit. Now seeded from the fragment's actual `data-root` spans
+  (`roots_in_fragment()`). Separately, the `pick is None` fallback was
+  `WELL[len(used) % len(WELL)]`, which ignored collisions outright and handed
+  out *exact duplicates* of tracked-thread colours; it now picks the colour
+  furthest from what is taken.
+- **Density finding (review H11, arriving at unit 1).** Unit 1 tags 16
+  distinct roots; the 20-colour `WELL` yields only 13 mutually distinct at
+  dE>=12. The palette cannot separate this unit at the current threshold.
+  Best achievable is dE 11.0-11.5 on three pairs. Left for Lane -- widening
+  the well, lowering the threshold, and tagging less are all live.
+- **A20: `pipeline/validate_units.py`, a new hard build step.** Re-validates
+  every fragment on disk (meta + `validate_fragment`) rather than only the
+  incoming artifact at port time. Contract breaches fail the build; colour
+  distance warns, since that is a tunable aesthetic judgement rather than a
+  contract violation. Wired into `build.py` `STEPS` after `refresh_meta.py`.
+- **Closed the test gap that hid A1.** `test_generate_output_validates_clean`
+  passed only because its fixture used `{"threads": []}` -- zero entries, so
+  zero notes to get wrong. Added
+  `test_generate_round_trips_opens_and_payoffs_notes` with threads that
+  actually touch the unit, covering both opens and payoffs. Mutation-checked:
+  reverting the fix fails it. Suite 37 -> 44 checks.
+- **A17.** Reports called bare `transliterate()`, which is deterministic-only,
+  so lemma-keyed `OVERRIDES` never fired and kol rendered `kal`. Added
+  `audit_thread_coverage._translit_row()` (uses the row's lemma + morph);
+  the `--ids` report and the porter's candidate preview both go through it.
+- **A18.** Promotion authority said three different things. Aligned
+  `threads_digest.py` (and so `threads-digest.md`), `unit_meta.py`'s docstring
+  and style reference §3 to the 2026-09-16 decision: Claude decides, biased
+  book-wide, ask Lane only when genuinely unsure.
+- **A9.** `units.json` `_note` no longer claims "No units built yet";
+  `CLAUDE.md` no longer calls `app/threads.js` unchanged from Matthew (it has
+  the `example` field); style reference §5's open-questions line now reflects
+  naḥalah and y'all being locked 2026-09-16, with four still open.
+- **A22.** Committed the repo-move path residue and moved a misplaced
+  `improvements_log.md` heading that had orphaned a hebrew.py bug-fix bullet.
+
+Full suite green (44 checks in `test_unit_meta.py`), `build.py` green, thread
+coverage 0 gap / 0 wrong / 0 stray / 0 missing-data-w. Verified in the browser:
+16 roots, 69 tagged spans, 16 legend swatches, all distinct, no console errors.
+

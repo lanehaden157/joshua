@@ -194,7 +194,7 @@ Supporting scripts:
 `index.html` + `app/*.js` + `css/styles.css`, forked from Matthew. No
 discourse layer (movements only), a Matthew-style book map.
 
-- `app/threads.js` unchanged; `app/search.js` near-unchanged (storage key
+- `app/threads.js` is Matthew's plus an `example` field on resolved roots (the change that exposed the module cache-busting bug in `main.js`); `app/search.js` near-unchanged (storage key
   `joshua.search.q`); `app/spotlight.js` has only `.gloss` (compare/synoptic
   paths deleted).
 - `app/main.js` reads `movements[]` as `{n, name, span, units}` (the

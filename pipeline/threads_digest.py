@@ -45,8 +45,11 @@ def main():
         "just declare it in the unit's own `roots`. To propose promoting a local "
         "root to a tracked thread, add it to `threads.candidates` with a one-line "
         "reason (the Strong's/lemma `ids` you've actually observed in "
-        "`Joshua-words.tsv`, plus a few representative `refs`, if you have them); "
-        "Lane decides.",
+        "`Joshua-words.tsv`, plus a few representative `refs`, if you have them). "
+        "**Claude decides, biased toward book-wide** (Lane, 2026-09-16): a local "
+        "root that later pays off is worse than a tracked one that doesn't, so "
+        "promote on a real second sighting. Ask Lane only when genuinely "
+        "unsure.",
         "",
     ]
 

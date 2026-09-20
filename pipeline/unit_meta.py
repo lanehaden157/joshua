@@ -37,8 +37,9 @@ Shape (style reference §3):
              opens/payoffs `note` is required (the popover line for that
              beat). candidates PROPOSE new threads (never written
              automatically); `ids` are Strong's/lemma ids actually observed
-             in Joshua-words.tsv (evidence for Lane's decision, not the
-             decision itself -- style reference §2/§6), `refs` are a few
+             in Joshua-words.tsv (evidence for the promotion decision, not
+             the decision itself -- style reference §2/§6; Claude decides,
+             biased book-wide, Lane 2026-09-16), `refs` are a few
              representative C:V verses. NOT `stems`/`exclude` -- that was
              this fork's own pre-style-reference design (substring-stem
              matching, phase-0.6-plan.md §1) and is rejected here now.
@@ -528,13 +529,23 @@ def validate_fragment(html, css_path=None, meta=None, threads_json=None):
 #  used to keep blocks fresh once a build step exists)
 
 def _threads_touching(threads_json, n):
+    """opens/payoffs entries for unit n, carrying `note` through.
+
+    `note` is required by validate() on both, so generate() must round-trip
+    it or every regenerated meta block fails the project's own validator.
+    The note lives on the threads.json entry: `opens.note` for an opening
+    beat, `payoffs[].note` for a payoff.
+    """
     opens, payoffs = [], []
     for t in threads_json["threads"]:
-        if t.get("opens", {}).get("unit") == n:
-            opens.append({"id": t["id"], "ref": t["opens"].get("ref", "")})
+        o = t.get("opens") or {}
+        if o.get("unit") == n:
+            opens.append({"id": t["id"], "ref": o.get("ref", ""),
+                          "note": o.get("note", "")})
         for p in t.get("payoffs", []):
             if p.get("unit") == n:
-                payoffs.append({"id": t["id"], "ref": p.get("ref", "")})
+                payoffs.append({"id": t["id"], "ref": p.get("ref", ""),
+                                "note": p.get("note", "")})
     return opens, payoffs
 
 
