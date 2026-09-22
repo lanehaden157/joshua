@@ -5,8 +5,10 @@ components, transliteration scheme, checklist) lives in
 `joshua_study_style_reference.md` and is authoritative over this file — this
 file points there rather than restating it.
 
-**State (2026-09-17):** Phases 0–5 done; unit 1 built (`units/unit-01.html`);
-10 tracked threads in `data/threads.json`, 10 roots in `data/roots.json`.
+**State (2026-09-21):** Phases 0–5 done; units 1–2 built; 15 tracked threads
+in `data/threads.json`/`data/roots.json` (every one carries an `echo`).
+`source-artifacts/` is current for both units: edit there and re-port rather
+than editing `units/` by hand.
 
 ## Project documents
 
@@ -169,6 +171,13 @@ Implements style reference §3, §4, §7. Rules live there; repo-side notes:
     python pipeline/port_artifact.py 6              # port source-artifacts/joshua_06_translation.html
     python pipeline/port_artifact.py 6 --dry        # preview, write nothing
     python pipeline/port_artifact.py 6 --src X.html # dry-run a practice file
+    python pipeline/port_artifact.py 1 --force      # re-port an already-built unit
+
+**Re-porting a built unit needs `--force`.** A re-port replaces the fragment
+wholesale with the source artifact. `7af1a59` (the unit 2 port) re-ported
+unit 1 from a source artifact a day staler than the fragment, and silently
+lost four local roots, the anonymous-voice notes and the C7 markup. Fixed
+2026-09-21 by making the source artifact current and adding the guard.
 
 Deliberately slimmer than Matthew's:
 
@@ -178,6 +187,9 @@ Deliberately slimmer than Matthew's:
 - No `--backfill`.
 - Candidate preview runs proposed `ids` through
   `audit_thread_coverage.source_hits_for_root()`, so preview and audit agree.
+- `merge_units_json()` carries a local root's optional `example`/`echo` into
+  `data/units.json`. It used to write only `{color, translit, gloss}`, so
+  `generate()` dropped both on regen.
 - Only `unit_meta.validate()` on the meta dict blocks the write;
   `validate_fragment()` findings are reported, and the fragment is still
   written for browser review.
@@ -208,7 +220,8 @@ Supporting scripts:
 `index.html` + `app/*.js` + `css/styles.css`, forked from Matthew. No
 discourse layer (movements only), a Matthew-style book map.
 
-- `app/threads.js` is Matthew's plus an `example` field on resolved roots (the change that exposed the module cache-busting bug in `main.js`); `app/search.js` near-unchanged (storage key
+- `app/threads.js` is Matthew's plus `example` and `echo` fields on resolved
+  roots (`echo` renders as a "cf." line in the root popover, `.rp-echo`); originally just `example` (the change that exposed the module cache-busting bug in `main.js`); `app/search.js` near-unchanged (storage key
   `joshua.search.q`); `app/spotlight.js` has `.gloss` and `aside.echo`
   (compare/synoptic paths deleted) — both are verse-sibling asides
   collapsed behind one shared per-verse toggle.

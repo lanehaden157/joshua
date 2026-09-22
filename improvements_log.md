@@ -453,3 +453,14 @@ Full suite green (`test_unit_meta.py` 52 checks), `build.py` green, coverage
 - 5 new `test_unit_meta.py` checks (schema validation + generate() never
   re-adding the key) + 2 new `test_port_artifact.py` checks (thread-delta
   section, stdout printing). Full suite + `build.py` still clean.
+
+## 2026-09-21 (part 5) — Lane's unit 1–2 read-through feedback
+- Footnotes now look like Matthew's: `css/styles.css` `.notes` gets a top rule and a 16px ink body with no panel, and `section.block.notes` is neutralised explicitly. That markup was what gave the white box. New notes use `div.notes` with a bold `<strong>lead (vN).</strong>`.
+- New optional `echo` field on roots[] (and on threads.json threads). One line naming a word's Torah or later-canon history, shown as a "cf." row in the root popover (`app/threads.js`, `.rp-echo`). `unit_meta.validate()` checks it and now rejects unknown root keys; `generate()` round-trips it.
+- Fixed a real bug: `port_artifact.merge_units_json()` never persisted a local root's `example`, so regen dropped it. Unit 2 had lost 4 examples this way.
+- Found and fixed a regression. The unit 2 port (`7af1a59`) had re-ported unit 1 from a stale source artifact, which lost the insight/murmur/shatter/valor roots, brought back named commentators and stem-labelled glosses, and undid C7. Both source artifacts are now current. `port_artifact.py` refuses to overwrite a built unit without `--force`.
+- `chase` (radaf, 7291) promoted to a tracked thread (#1d2a80). Unit 2 has 7 occurrences, 19 book-wide; all 15 threads audit clean.
+- Units 1–2 reworked (source artifacts, re-ported). Glosses cut to a phrase or a sentence, and grammar/textual/debate material moved into footnotes (U1: 9 notes, U2: 8). Radak-derived glosses cut. Added cross-canon asides: U1 has 10 (Deut 34:5/Judg 1:1, Gen 13:17, Deut 11:24, Gen 15:18, Exod 3:12 + Deut 31:6/Heb 13:5, Deut 31:7, Deut 17:18–20, Exod 12:39, Deut 3:18–20, Deut 34:9). U2 has 10, including Tamar + Matt 1:3–5 at 2:21, the Num 13 spies, the Exod 1 midwives, 1 Sam 19:12 + 2 Cor 11:33, and Num 13:31–33. New local roots with echoes: sole (Gen 8:9, Deut 28:65), dread (Exod 15:16, 23:27), scarlet (Gen 38:28–30). Every notable local root and all 15 threads carry an `echo`. All 73 Hebrew-Bible references checked against morphhb.
+- Voice fixes in data: removed "Hawk:" from the rest thread's opens note and a stale "Promote before unit 5." from devote's.
+- Docs: style reference §1 (`echo`), §3, §4 (*Balance*: short glosses, footnotes for depth, intertext over grammar), checklist 4/17, §8 example (div.notes + echo). Chat-side instructions: intertext-first lens, grammar and Radak in proportion, a sixth standing move. translation-choices.md: radaf row. CLAUDE.md state/porter notes.
+- Tests: test_unit_meta 60 (3 new), test_port_artifact 13 (2 new: the example/echo round trip and the --force guard). Full suite + build.py clean.

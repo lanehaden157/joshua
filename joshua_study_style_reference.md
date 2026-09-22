@@ -40,9 +40,20 @@ full `{root, translit, gloss}` entry (unit 1: *insight*, *murmur*, *shatter*,
 *man of valor*). Read for these deliberately, the way you read for structure
 (§6).
 
-**`example`** — optional fourth field on any root: one short quoted clause from
+**`example`** — optional field on any root: one short quoted clause from
 the unit's own English, no citation. Add it when context clarifies the choice
 faster than the gloss.
+
+**`echo`** — optional field on any root: one line saying where the word has
+already appeared in the Torah, or where it reappears distinctively later, shown
+in the root's popover with a "cf." (Lane, 2026-09-21). *Sole of the foot* at
+1:3 → the dove that "found no resting place for the sole of its foot" (Gen 8:9);
+*scarlet* at 2:18 → Tamar's scarlet thread (Gen 38:28–30); *dread* at 2:9 →
+Exod 15:16. **Read for these the way you read for notable translation
+choices**: a word with a canon history should at least get a local root with
+an `echo`, even when it is tagged nowhere else in the unit. Lead with the
+reference, then say what it adds, in one or two sentences. Tracked threads can
+carry an `echo` in `threads.json` too.
 
 **Resist a richer taxonomy. (learned:** `8d096c9` built a root/motif two-tier
 model; `98b721a` reverted it the same day. Hebrew's version — root vs. binyan
@@ -137,10 +148,11 @@ and `discourse` were authored for eleven units and silently discarded.**)**
 | `movement` | — | int | looked up from the Unit Map if omitted |
 | `questions` | — | array | wording/data calls only Lane can make, §3a |
 
-### `roots[]` — every entry `{root, translit, gloss, example?}`
+### `roots[]` — every entry `{root, translit, gloss, example?, echo?}`
 
 `root` matches `[a-z0-9-]+`. **No** `color`/`colour` (the site assigns colours),
-**no** `kind`/`members` (tried and reverted).
+**no** `kind`/`members` (tried and reverted), and no other keys — an unknown
+key on a root fails validation rather than vanishing on regen.
 
 `gloss` is a short general definition — no `Qal:`/`Hiphil:`, no `noun:`. Where a
 root splits across stems, fold both senses into one gloss without naming stems
@@ -212,16 +224,38 @@ whitelist entry, and the build reports unknown classes.
 |---|---|---|
 | coloured word | `<span class="r" data-root="X" data-w="…">…</span>` | `data-w` required for tracked threads (§2). `class="rl"` only **outside** verse blocks (`394db71`). |
 | verse | `<p class="v"><span class="n">17</span> … text<sup class="en"><a href="#n1">1</a></sup></p>` | one per verse, in order. The endnote marker is the last thing in the verse `<p>`, **never** inside the `.gloss` |
-| gloss | `<span class="gloss">…</span>` | **following sibling** of the verse, never nested, always closed. Word-by-word translation discussion, collapsed behind the per-verse `*` toggle |
+| gloss | `<span class="gloss">…</span>` | **following sibling** of the verse, never nested, always closed. Short word-level notes, collapsed behind the per-verse `*` toggle; see *Balance* below |
 | pericope heading | `<h3 class="pericope">Title <span>· 6:1–7</span></h3>` | `· C:V` range required |
 | legend | `<section class="block legend" aria-label="color key"><ul></ul></section>` | **required, even as an empty stub** |
-| notes | `<section class="block notes"><ol><li id="n3">…</li></ol></section>` | real `<ol><li>`; every `href` resolves to an `id` in the fragment |
+| notes | `<div class="notes"><h2>Notes</h2><ol><li id="n3"><strong>hid him (v4).</strong> …</li></ol></div>` | Matthew's shape (Lane, 2026-09-21): real `<ol><li>`, each note opening with a bold lead (the phrase and verse); every `href` resolves to an `id` in the fragment. `section.block.notes` still renders correctly, but new artifacts should use `div.notes` |
 
 **(learned, 2026-09-17:** endnote markers inside `.gloss` hid the footnote behind
 the toggle.**)** **(learned:** the legend was once "optional" — `rebuildLegend()`
 only fills an existing one, and Matthew's unit 11 shipped with no colour key.**)**
 
 Never hand-write swatches or `style="background:…"`.
+
+### Balance — what goes where (Lane, 2026-09-21)
+
+Strong suggestions, from reading units 1–2 on the site:
+
+- **Glosses stay short.** A phrase or one sentence, roughly 25 words or fewer
+  per verse. Anything that needs more room goes in a **footnote**: a grammar
+  point, a textual variant, a debate between readings, archaeology. Footnotes
+  have room to go into detail, and Matthew's run 10–20 per unit. Unit 2's
+  first draft had a 90-word gloss on 2:1. It is now a two-line gloss plus
+  note 1.
+- **Grammar and medieval commentary are seasoning, not the meal.** Include a
+  grammar point when it changes how the verse reads (the participle "is
+  giving" vs. the perfect "have given"). A form that only *looks* odd (a
+  masculine suffix, a singular object, a Ketiv/Qere) goes in a footnote or is
+  left out. The same goes for the medieval Jewish commentators: one reading
+  among several, not the default voice.
+- **Intertextuality is the main course.** Say where the Torah stands behind a
+  line, and where a line reappears later, including in the New Testament.
+  Unit 2's first draft had no Tamar and no Matthew 1:5, and that is exactly
+  the kind of connection Lane wants surfaced. Use `aside.echo` for a
+  verse-level connection and a root `echo` (§1) for a word-level one.
 
 **`aside.echo`** — optional, built 2026-09-21 (Lane, before unit 2): cross-book
 echo (Deuteronomy command → Joshua fulfilment; conquest summary vs. Judges 1).
@@ -307,9 +341,10 @@ sharing one id.
 2. Meta parses as JSON; required keys and all four `threads` sub-keys; no
    unknown top-level keys.
 3. Every `roots[]` entry: `root` (`[a-z0-9-]+`) + bare `translit` + plain
-   `gloss`, optional `example`; no `color`/`kind`/`members`, no stem or
+   `gloss`, optional `example`/`echo`; no `color`/`kind`/`members`, no stem or
    part-of-speech labels.
-4. Every notable translation choice has a local span and `roots[]` entry (§1).
+4. Every notable translation choice has a local span and `roots[]` entry (§1),
+   and so does every word with a Torah or later-canon history, with an `echo`.
 5. Every `opens`/`payoffs` `id` is in `threads-digest.md` and has a `note`.
 6. Every `retro` targets an earlier unit, has a `why`, and resolves. `w` is
    **optional in the incoming artifact** — `pipeline/assign_data_w.py` fills
@@ -330,6 +365,8 @@ sharing one id.
 14. No inline `style`, no `--c-*` vars, no class the stylesheet doesn't know.
 15. Wording matches `translation-choices.md`, or the deviation is flagged.
 16. No named commentator or project-internal reference in prose (§4).
+17. Glosses are short, longer material is in footnotes, and the unit's
+    intertextual links are surfaced (§4 *Balance*).
 
 Save as `joshua_NN_translation.html`, zero-padded, and present the file. It
 renders unstyled in chat — expected.
@@ -351,7 +388,8 @@ Minimal and valid. Copy its shape.
   "movement": 2,
   "roots": [
     { "root": "devote", "translit": "ḥaram", "gloss": "devote irrevocably, put to the ban" },
-    { "root": "give",   "translit": "natan", "gloss": "give, hand over" }
+    { "root": "give",   "translit": "natan", "gloss": "give, hand over",
+      "echo": "Gen 12:7 — 'to your seed I will give this land,' the first promise to Abraham" }
   ],
   "threads": {
     "opens": [
@@ -395,12 +433,12 @@ hand."<sup class="en"><a href="#n1">1</a></sup></p>
 <span class="rl" data-root="give">natan</span> in the perfect: the gift is spoken
 as already accomplished.</span>
 
-<section class="block notes">
+<div class="notes">
   <h2>Notes</h2>
   <ol>
-  <li id="n1">On the prophetic perfect, and why the English tense choice matters.</li>
+  <li id="n1"><strong>have given (v2).</strong> On the prophetic perfect, and why the English tense choice matters.</li>
   </ol>
-</section>
+</div>
 </article>
 ```
 

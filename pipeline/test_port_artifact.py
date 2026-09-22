@@ -234,6 +234,66 @@ def test_real_port_local_root_gets_a_colour():
                and shout.get("gloss") == "war cry", shout)
 
 
+def _local_root_artifact(root_entry):
+    return (
+        '<article class="unit" data-unit="7">\n'
+        '<script type="application/json" id="unit-meta">\n' +
+        json.dumps({
+            "unit": 7, "slug": "unit-07", "passage": "Joshua 8:1-29",
+            "title": "Ai", "movement": 2, "roots": [root_entry],
+            "threads": {"opens": [], "payoffs": [], "candidates": [], "retro": []},
+        }) +
+        '\n</script>\n'
+        '<section class="block legend" aria-label="color key"><ul></ul></section>\n'
+        '<p class="v"><span class="n">1</span> '
+        f'<span class="r" data-root="{root_entry["root"]}">Shout!</span></p>\n'
+        '</article>\n'
+    )
+
+
+def test_real_port_keeps_local_root_example_and_echo():
+    """Regression (2026-09-21): merge_units_json() wrote only {color,
+    translit, gloss}, so a local root's `example` never reached units.json
+    and generate() -- which rebuilds roots[] from that row -- dropped it
+    from the built fragment. Unit 2 lost four examples this way. `echo`
+    rides the same path."""
+    with _ScratchProject() as sp:
+        entry = {"root": "shout", "translit": "teruʿah", "gloss": "war cry",
+                 "example": "raise a great shout", "echo": "1 Sam 4:5 — the shout at the ark"}
+        open(os.path.join(sp.src, "joshua_07_translation.html"), "w",
+             encoding="utf-8").write(_local_root_artifact(entry))
+        pa.port_one(7, dry=False, src=None)
+        meta = um.parse(open(os.path.join(sp.units, "unit-07.html"), encoding="utf-8").read())
+        got = next((r for r in meta["roots"] if r["root"] == "shout"), {})
+        _check("built fragment keeps the local root's example",
+               got.get("example") == entry["example"], got)
+        _check("built fragment keeps the local root's echo",
+               got.get("echo") == entry["echo"], got)
+
+
+def test_reporting_a_built_unit_needs_force():
+    """A re-port replaces the fragment wholesale; 7af1a59 did it by accident
+    and regressed unit 1. Without --force an existing fragment is refused."""
+    with _ScratchProject() as sp:
+        entry = {"root": "shout", "translit": "teruʿah", "gloss": "war cry"}
+        open(os.path.join(sp.src, "joshua_07_translation.html"), "w",
+             encoding="utf-8").write(_local_root_artifact(entry))
+        pa.port_one(7, dry=False, src=None)
+        dest = os.path.join(sp.units, "unit-07.html")
+        open(dest, "a", encoding="utf-8").write("<!-- hand fix -->\n")
+        try:
+            pa.port_one(7, dry=False, src=None)
+            refused = False
+        except SystemExit:
+            refused = True
+        _check("re-port of a built unit without force must refuse", refused, None)
+        _check("refused re-port must leave the fragment untouched",
+               "hand fix" in open(dest, encoding="utf-8").read(), None)
+        pa.port_one(7, dry=False, src=None, force=True)
+        _check("force=True re-port replaces the fragment",
+               "hand fix" not in open(dest, encoding="utf-8").read(), None)
+
+
 def test_thread_delta_reports_coverage_and_candidate():
     with _ScratchProject() as sp:
         pa.port_one(6, dry=False, src=None)

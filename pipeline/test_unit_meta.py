@@ -138,6 +138,27 @@ def test_candidates_missing_why_fails():
 
 # --------------------------------------------------------------- questions
 
+def test_root_echo_accepted():
+    m = _meta(roots=[{"root": "sole", "translit": "kap regel", "gloss": "sole of the foot",
+                      "echo": "Gen 8:9 — the dove found no resting place"}])
+    errs = um.validate(m)
+    _check("a root with a string echo must validate", not errs, errs)
+
+
+def test_root_echo_must_be_nonempty_string():
+    for bad in ("", "   ", ["Gen 8:9"], 3):
+        m = _meta(roots=[{"root": "sole", "translit": "kap regel", "gloss": "g", "echo": bad}])
+        errs = um.validate(m)
+        _check(f"root echo {bad!r} must fail", any("echo" in e for e in errs), errs)
+
+
+def test_root_unknown_key_rejected():
+    m = _meta(roots=[{"root": "sole", "translit": "kap regel", "gloss": "g", "note": "x"}])
+    errs = um.validate(m)
+    _check("an unknown key on a root must fail loudly, not be dropped on regen",
+           any("unknown key 'note'" in e for e in errs), errs)
+
+
 def test_questions_clean_entry_passes():
     meta = _meta(questions=[{"topic": "ḥerem rendering",
                               "note": "devoted to destruction vs. transliterated?",

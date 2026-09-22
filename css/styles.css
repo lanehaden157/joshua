@@ -409,6 +409,9 @@ body.text-center .unit .v .n { display: inline; width: auto; margin-right: 4px; 
 .root-pop p { margin: 7px 0 0; }
 .root-pop .rp-gloss { color: var(--ink); }
 .root-pop .rp-example { color: var(--ink-soft); font-style: italic; font-size: 13.5px; }
+/* cross-canon echo on a root (roots[].echo) -- same "cf." + Jordan teal as aside.echo */
+.root-pop .rp-echo { font-size: 13.5px; color: var(--ink); border-left: 2px solid var(--accent-jordan); padding-left: 8px; }
+.root-pop .rp-echo::before { content: "cf. "; font-family: var(--display); font-weight: 600; color: var(--accent-jordan); }
 .root-pop .rp-count { font-size: 13px; color: var(--ink-soft); }
 .root-pop .rp-traj { font-size: 13.5px; }
 .root-pop .rp-traj a, .root-pop .rp-also a { color: var(--accent-bronze); border-bottom: 1px dotted currentColor; }
@@ -459,14 +462,18 @@ body.text-center .unit .v .n { display: inline; width: auto; margin-right: 4px; 
 .sr-unit li b { color: var(--ink); font-weight: 600; }
 .sr-v { font-family: var(--display); color: var(--accent-clay); font-size: 13px; margin-right: 2px; }
 
-/* endnotes -- plain .notes, matching Matthew (platform-design-review.md C7:
-   Matthew's shape won core -- zero retrofit there vs. this one unit here).
-   Used to be section.block.notes with its frame borrowed from `.unit
-   section.block`; now a bare top-divider like every other book will use. */
-.unit .notes { margin-top: 40px; border-top: 2px solid var(--ink); padding-top: 16px; }
-.unit .notes h2 { font-family: var(--display); font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; margin: 0 0 16px; }
+/* endnotes -- Matthew's look exactly (Lane, 2026-09-21): a bare top divider,
+   full-size ink body, no panel. `section.block.notes` (what the style
+   reference used to prescribe, and what units 1-2 first shipped with) is
+   neutralised explicitly, since `.unit section.block` would otherwise frame
+   it as a white box -- that is how the C7 fix got silently undone once. */
+.unit .notes, .unit section.block.notes {
+  margin: 48px 0 0; border: none; border-top: 2px solid var(--ink); border-radius: 0;
+  background: none; padding: 18px 0 0;
+}
+.unit .notes h2 { font-family: var(--display); font-size: 17px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; margin: 0 0 16px; }
 .unit .notes ol { margin: 0; padding-left: 26px; }
-.unit .notes li { margin: 0 0 12px; font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); }
+.unit .notes li { margin: 0 0 15px; font-size: 16px; line-height: 1.55; color: var(--ink); }
 
 .unit .foot, .unit footer { margin-top: 44px; text-align: center; font-size: 13px; color: var(--ink-soft); font-style: italic; }
 

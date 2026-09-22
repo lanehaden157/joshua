@@ -2,9 +2,11 @@ The study
 
 A literary-unit-by-unit walk through Joshua with Lane, in English. Lane has a little Hebrew, so the English carries the language: transliterate every Hebrew word, gloss it plainly, and never print native script — not in chat, not in an artifact, not in an attribute.
 
-Never assume a term is known from earlier. Reintroduce transliteration and gloss each time, and explain weight-bearing grammar (binyan, waw-consecutive, construct chain, infinitive absolute) in plain terms.
+Never assume a term is known from earlier. Reintroduce transliteration and gloss each time. Explain grammar in plain terms when it changes how a verse reads (a participle against a perfect, a causative stem), and otherwise let it go. Grammar that is merely unusual (a masculine suffix, a singular object, a Ketiv/Qere) belongs in a footnote, if anywhere.
 
-Lens: narrative structure, keyword tracing, type-scenes, the creation–covenant–exile–presence metanarrative. Prefer Joshua's own markers — Deuteronomistic framing, allotment formulae, Masoretic paragraph breaks, the conquest-summary tension with Judges 1 — over imposed symmetry.
+Lens: intertextuality first. Where the Torah stands behind a line, where a line or word comes back later in the canon (the Prophets, the Writings, the New Testament), and what the echo does. Then narrative structure, keyword tracing, type-scenes, and the creation–covenant–exile–presence metanarrative. Lane's own examples of what he wants: Rahab next to Tamar (the scarlet thread, Gen 38) and Rahab in Matthew's genealogy (Matt 1:5); "sole of the foot" at 1:3 and the dove that found no resting place for the sole of its foot (Gen 8:9). Prefer Joshua's own markers — Deuteronomistic framing, allotment formulae, Masoretic paragraph breaks, the conquest-summary tension with Judges 1 — over imposed symmetry.
+
+Keep the medieval Jewish commentators (Radak, Rashi) and fine-grained grammar in proportion (Lane, 2026-09-21). They are good material but were running too loud in unit 2. Use them as one voice among several, not the backbone of a verse.
 
 What's on hand
 
@@ -14,15 +16,16 @@ Per unit — three passes, pause and present after each
 
 1. Pre-read briefing. Flowing prose, no headers, bullets, or bold. Placement, ANE background, genre, intertextual setup, vocabulary to watch, tensions to hold. Orient, don't resolve.
 
-2. Verse-by-verse. Same prose, depth over speed; split a unit when a crux deserves room. Torah roots and canonical trajectories, wordplay, structures only where real, ANE background, the commentary dialogue with tensions left open, devotional weight noted lightly. Search the web throughout. Cite commentators by name here freely.
+2. Verse-by-verse. Same prose, depth over speed; split a unit when a crux deserves room. Torah roots and canonical trajectories first, then wordplay, structures only where real, ANE background, the commentary dialogue with tensions left open, devotional weight noted lightly. Search the web throughout. Cite commentators by name here freely.
 
-3. Artifact skeleton. Only after Lane confirms the prose is done. Draft it in joshua_study_style_reference.md's shape — that file holds every artifact rule (translation philosophy, local-root tagging, the no-names voice rule, the checklist). Mark roots with data-root only; don't hand-chase data-w ids — `pipeline/assign_data_w.py` fills them during the port by per-verse alignment, and flags the handful it can't decide. The same goes for `w` on a `retro` entry: optional here, filled there. It's a skeleton: get the meta block right, since that's what the pipeline hard-gates on. Any wording/data call Lane needs to make goes in `questions[]` (§3a), not asked in chat. Lane's Claude Code session handles transliteration, validation, colours, word ids, and porting.
+3. Artifact skeleton. Only after Lane confirms the prose is done. Draft it in joshua_study_style_reference.md's shape — that file holds every artifact rule (translation philosophy, local-root tagging, the no-names voice rule, the checklist). Mark roots with data-root only; don't hand-chase data-w ids — `pipeline/assign_data_w.py` fills them during the port by per-verse alignment, and flags the handful it can't decide. The same goes for `w` on a `retro` entry: optional here, filled there. It's a skeleton: get the meta block right, since that's what the pipeline hard-gates on. Keep glosses short, a phrase or a sentence. Anything longer (a grammar point, a textual variant, a debate) goes in a footnote with a bold lead (style reference §4, *Balance*). Expect footnotes to outnumber a handful. Any wording/data call Lane needs to make goes in `questions[]` (§3a), not asked in chat. Lane's Claude Code session handles transliteration, validation, colours, word ids, and porting.
 
-Five standing moves during pass 2 — each turns an observation into an action:
+Six standing moves during pass 2 — each turns an observation into an action:
 
 - A tracked thread opens or pays off → name it and draft the one-line popover note now (it becomes the note field).
 - A root recurs across units but isn't tracked → flag it as a candidate with the lemma ids you saw.
 - A single notable translation choice → flag it for a local roots[] entry.
+- A word with a Torah history, or a distinctive later reuse (dread, scarlet, sole of the foot) → a local roots[] entry with an `echo` line, the reference first, then what it adds (style reference §1). A verse-level connection → an `aside.echo`.
 - A missed or wrong tag in an earlier unit → a threads.retro entry, not a prose aside.
 - A wording or data call only Lane can make (a glossary lock, which rendering to use, whether to widen a tracked root) → **don't ask Lane here.** Render your best provisional choice so the draft keeps moving, flag it in-fragment (a `.gloss`, same as any open crux), and add a `questions[]` entry to the artifact skeleton (style reference §3a: `{topic, note, options?}`). Lane's Claude Code session surfaces it at port time and asks him there.
 

@@ -22,14 +22,18 @@ Shape (style reference §3):
   passage    str      "Joshua 9:1-27"
   title      str
   movement   int                           (optional; looked up from units.json)
-  roots      [ {root, translit, gloss, example?} ]
+  roots      [ {root, translit, gloss, example?, echo?} ]
              every coloured root the unit tracks — translit + gloss ONLY, NO
              colour, no kind/members (that taxonomy was tried and reverted,
              style reference §1). `example` is optional: one quoted in-text
              usage, for any root (tracked thread or local) whose translation
              choice benefits from seeing it in context (style reference §1,
              2026-09-17) — never a citation, never a filename, same voice
-             rule as everywhere else (§4).
+             rule as everywhere else (§4). `echo` is optional: one line
+             naming where the word already appeared (Torah) or reappears
+             distinctively later ("Gen 8:9 — the dove found no rest for the
+             sole of its foot"), shown in the root popover (style reference
+             §1, Lane 2026-09-21).
   threads    { opens:[{id,ref,note}], payoffs:[{id,ref,note}],
                candidates:[{root,why,ids?,refs?}],
                retro:[{unit,verse,text,root,why,nth?,op?,w?}] }
@@ -210,6 +214,12 @@ def validate(meta, threads_json=None):
             errs.append(f"{where}: root '{r.get('root')}' must be [a-z0-9-]")
         if "example" in r and not isinstance(r["example"], str):
             errs.append(f"{where}: 'example' must be a string")
+        if "echo" in r and not (isinstance(r["echo"], str) and r["echo"].strip()):
+            errs.append(f"{where}: 'echo' must be a non-empty string")
+        for k in set(r) - {"root", "translit", "gloss", "example", "echo",
+                           "color", "colour", "kind", "members"}:
+            errs.append(f"{where}: unknown key '{k}' -- a root is "
+                        "{root, translit, gloss, example?, echo?}")
 
     th = meta.get("threads", {}) or {}
     for key in THREADS_SUBKEYS:
@@ -699,6 +709,8 @@ def generate(n, units_json=None, threads_json=None):
                  "gloss": e.get("gloss", "")}
         if e.get("example"):
             entry["example"] = e["example"]
+        if e.get("echo"):
+            entry["echo"] = e["echo"]
         roots.append(entry)
     roots.sort(key=lambda r: r["root"])
 

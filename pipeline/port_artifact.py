@@ -275,6 +275,11 @@ def merge_units_json(meta, dry, fragment_html=None):
             "translit": r["translit"],
             "gloss": r["gloss"],
         }
+        # optional fields ride along, or generate() -- which rebuilds roots[]
+        # from this row -- silently drops them on the next regen
+        for k in ("example", "echo"):
+            if r.get(k):
+                local_roots[name][k] = r[k]
 
     row.update({"slug": meta.get("slug", row["slug"]), "passage": meta["passage"],
                 "title": meta["title"], "built": True, "roots": local_roots})
@@ -574,7 +579,7 @@ def print_questions(meta):
             print(f"      - {opt}")
 
 
-def port_one(n, dry, src=None):
+def port_one(n, dry, src=None, force=False):
     os.makedirs(OUT, exist_ok=True)
     if src:
         if not os.path.exists(src):
@@ -639,6 +644,16 @@ def port_one(n, dry, src=None):
               f"(coverage checked before retrofit-tags.json is applied)")
         return
 
+    # A re-port replaces the whole built fragment with whatever the source
+    # artifact says. The unit 2 port (7af1a59) re-ported unit 1 from a source
+    # artifact that predated a day of hand fixes, and silently regressed it
+    # (four local roots lost, named commentators back, C7 undone). A re-port
+    # is legitimate -- it is how a reworked artifact ships -- but it should
+    # never happen by accident.
+    if os.path.exists(dest) and not force:
+        sys.exit(f"{dest} already exists. Re-porting replaces it wholesale with "
+                 f"the source artifact -- make sure the source is current "
+                 f"(not older than the built fragment), then pass --force.")
     open(dest, "w", encoding="utf-8").write(fragment)
     print(f"wrote {dest}")
     print(f"local hues: { {k: v['color'] for k, v in local_roots.items()} }")
@@ -664,10 +679,12 @@ def main():
                     help="port from this file instead of source-artifacts/; "
                          "writes nothing, just builds the thread-delta report "
                          "(for dry-running the porter on a practice fragment)")
+    ap.add_argument("--force", action="store_true",
+                    help="allow replacing an already-built units/unit-NN.html")
     a = ap.parse_args()
     if not a.unit:
         ap.error("give a unit number")
-    port_one(a.unit, a.dry, a.src)
+    port_one(a.unit, a.dry, a.src, a.force)
 
 
 if __name__ == "__main__":

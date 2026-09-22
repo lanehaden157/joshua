@@ -44,3 +44,6 @@ Read this first. 3 lines max per session.
   data calls land in Claude Code at port time instead of being asked on the project side —
   unit_meta.py validates it, port_artifact.py prints it to stdout + the thread delta, dropped
   on regen like candidates/retro. Chat-side instructions updated (5th standing move).
+- **2026-09-21 (part 5)**: Lane's read-through feedback on units 1–2. Footnotes restyled to match Matthew; new root `echo` popover field; `chase` promoted (15 threads).
+  Units 1–2 reworked with short glosses, depth in footnotes, less grammar/Radak and more intertext (Tamar/Matt 1:5, Gen 8:9 sole-of-foot). Found and fixed the unit 2 port silently regressing unit 1; the porter now needs --force to overwrite.
+  See session_summary_2026-09-21c.md.
