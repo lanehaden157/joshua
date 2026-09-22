@@ -199,11 +199,6 @@
           "gloss": "Shittim, 'the acacias': the last camp east of the Jordan",
           "echo": "Num 25:1 — at Shittim Israel was drawn into the worship of Baal of Peor; Mic 6:5 later says 'remember... from Shittim to Gilgal,' naming this unit's two ends as proof of Yahweh's righteous acts."
         },
-        "holy": {
-          "color": "#7a3f5c",
-          "translit": "qadash",
-          "gloss": "be holy; set apart, make holy"
-        },
         "great": {
           "color": "#9c5a1e",
           "translit": "gadal",
@@ -258,7 +253,76 @@
       "passage": "Joshua 5:1–15",
       "title": "Gilgal: Circumcision, Passover, and the Commander",
       "movement": 1,
-      "built": false
+      "built": true,
+      "roots": {
+        "circumcise": {
+          "color": "#8c6d1f",
+          "translit": "mul",
+          "gloss": "circumcise, cut off the foreskin"
+        },
+        "foreskin": {
+          "color": "#55642f",
+          "translit": "ʿorlah",
+          "gloss": "foreskin; uncircumcised",
+          "example": "circumcised the sons of Israel at the Hill of the Foreskins",
+          "echo": "Gen 17:11 — the foreskin as the covenant's sign in Abraham's flesh; Deut 10:16 and Jer 4:4 later demand the foreskin of the heart be cut, turning the rite into a moral claim."
+        },
+        "go-out": {
+          "color": "#6b3620",
+          "translit": "yatsaʾ",
+          "gloss": "go out, come out (of Egypt)",
+          "example": "all the people who came out of Egypt"
+        },
+        "reproach": {
+          "color": "#7a3f5c",
+          "translit": "ḥerpah",
+          "gloss": "reproach, disgrace, taunt"
+        },
+        "roll": {
+          "color": "#9c5a1e",
+          "translit": "galal",
+          "gloss": "roll, roll away"
+        },
+        "gilgal": {
+          "color": "#5c3f7a",
+          "translit": "gilgal",
+          "gloss": "Gilgal, a place named by a pun on 'rolled'",
+          "echo": "1 Sam 11:15; 15:12–33 — where Saul is made king and then rejected; Hos 9:15 and Amos 5:5 later make the name a byword for failed worship."
+        },
+        "passover": {
+          "color": "#4f333c",
+          "translit": "pesaḥ",
+          "gloss": "Passover",
+          "echo": "Exod 12:48 — no uncircumcised man may eat the Passover, so the circumcision must come first; 'the morrow after the Passover' is the day Israel left Egypt (Num 33:3)."
+        },
+        "produce": {
+          "color": "#4d362b",
+          "translit": "ʿavur",
+          "gloss": "produce, stored yield (of the land)"
+        },
+        "manna": {
+          "color": "#433a26",
+          "translit": "man",
+          "gloss": "manna, the wilderness bread",
+          "echo": "Exod 16:35 — Israel ate manna forty years 'until they came to the border of the land of Canaan'; here the promised end arrives."
+        },
+        "commander": {
+          "color": "#353e2a",
+          "translit": "sar",
+          "gloss": "commander, officer, prince"
+        },
+        "army": {
+          "color": "#20413b",
+          "translit": "tsava",
+          "gloss": "army, host; war-service"
+        },
+        "sandal": {
+          "color": "#243e4f",
+          "translit": "naʿal",
+          "gloss": "sandal",
+          "echo": "Exod 3:5 — 'strip your sandals from your feet' at the burning bush; Joshua receives Moses' call-scene, but no commission follows."
+        }
+      }
     },
     {
       "n": 5,

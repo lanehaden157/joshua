@@ -1069,6 +1069,49 @@
       ],
       "total": 1
     },
+    "complete": {
+      "count": 5,
+      "verses": [
+        1,
+        10,
+        11,
+        16,
+        17
+      ],
+      "hits": [
+        {
+          "v": 16,
+          "pre": "…down toward the Sea of the Arabah, the Salt Sea, were ",
+          "hit": "wholly",
+          "post": " cut off. And the people crossed opposite Jericho.…"
+        },
+        {
+          "v": 17,
+          "pre": "…was crossing on dry ground, until the whole nation had ",
+          "hit": "finished",
+          "post": " crossing the Jordan.…"
+        },
+        {
+          "v": 1,
+          "pre": "…And it was, when the whole nation had ",
+          "hit": "finished",
+          "post": " crossing the Jordan, that Yahweh said to Joshua, sayin…"
+        },
+        {
+          "v": 10,
+          "pre": "…nding in the middle of the Jordan until everything was ",
+          "hit": "finished",
+          "post": " that Yahweh commanded Joshua to speak to the people, a…"
+        },
+        {
+          "v": 11,
+          "pre": "…And it was, when all the people had ",
+          "hit": "finished",
+          "post": " crossing, then the chest of Yahweh crossed, and the pr…"
+        }
+      ],
+      "total": 5
+    },
     "cross": {
       "count": 22,
       "verses": [
@@ -1575,6 +1618,433 @@
           "pre": "…es of the land may know the hand of Yahweh, that it is ",
           "hit": "strong",
           "post": ", so that y'all may fear Yahweh y'all's God all the day…"
+        }
+      ],
+      "total": 2
+    }
+  },
+  "unit-04": {
+    "army": {
+      "count": 2,
+      "verses": [
+        14,
+        15
+      ],
+      "hits": [
+        {
+          "v": 14,
+          "pre": "…And he said, \"No — for I am commander of the ",
+          "hit": "army",
+          "post": " of Yahweh; now I have come.\" And Joshua fell on his fa…"
+        },
+        {
+          "v": 15,
+          "pre": "…And the commander of the ",
+          "hit": "army",
+          "post": " of Yahweh said to Joshua, \"Strip your sandal from off…"
+        }
+      ],
+      "total": 2
+    },
+    "circumcise": {
+      "count": 8,
+      "verses": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ],
+      "hits": [
+        {
+          "v": 2,
+          "pre": "…ahweh said to Joshua, \"Make yourself flint knives, and ",
+          "hit": "circumcise",
+          "post": " the sons of Israel again, a second time.\"…"
+        },
+        {
+          "v": 3,
+          "pre": "…So Joshua made himself flint knives and ",
+          "hit": "circumcised",
+          "post": " the sons of Israel at the Hill of the Foreskins.…"
+        },
+        {
+          "v": 4,
+          "pre": "…And this is the reason Joshua ",
+          "hit": "circumcised",
+          "post": ": all the people who came out of Egypt, the males, all…"
+        },
+        {
+          "v": 5,
+          "pre": "…For all the people who came out had been ",
+          "hit": "circumcised",
+          "post": ", but all the people born in the wilderness on the way,…"
+        },
+        {
+          "v": 5,
+          "pre": "…For all the people who came out had been ",
+          "hit": "circumcised",
+          "post": ", but all the people born in the wilderness on the way,…"
+        },
+        {
+          "v": 7,
+          "pre": "…r sons, whom he raised up in their place — them Joshua ",
+          "hit": "circumcised",
+          "post": ", for they were uncircumcised, because they had not cir…"
+        },
+        {
+          "v": 7,
+          "pre": "…r sons, whom he raised up in their place — them Joshua ",
+          "hit": "circumcised",
+          "post": ", for they were uncircumcised, because they had not cir…"
+        },
+        {
+          "v": 8,
+          "pre": "…And when all the nation had finished being ",
+          "hit": "circumcised",
+          "post": ", they stayed in their places in the camp until they re…"
+        }
+      ],
+      "total": 8
+    },
+    "commander": {
+      "count": 2,
+      "verses": [
+        14,
+        15
+      ],
+      "hits": [
+        {
+          "v": 14,
+          "pre": "…And he said, \"No — for I am ",
+          "hit": "commander",
+          "post": " of the army of Yahweh; now I have come.\" And Joshua fe…"
+        },
+        {
+          "v": 15,
+          "pre": "…And the ",
+          "hit": "commander",
+          "post": " of the army of Yahweh said to Joshua, \"Strip your sand…"
+        }
+      ],
+      "total": 2
+    },
+    "complete": {
+      "count": 2,
+      "verses": [
+        6,
+        8
+      ],
+      "hits": [
+        {
+          "v": 6,
+          "pre": "…the nation, the men of war who came out of Egypt, had ",
+          "hit": "come to an end",
+          "post": " — those who did not listen to the voice of Yahweh, to…"
+        },
+        {
+          "v": 8,
+          "pre": "…And when all the nation had ",
+          "hit": "finished",
+          "post": " being circumcised, they stayed in their places in the…"
+        }
+      ],
+      "total": 2
+    },
+    "cross": {
+      "count": 2,
+      "verses": [
+        1
+      ],
+      "hits": [
+        {
+          "v": 1,
+          "pre": "…happened, when all the kings of the Amorites who were ",
+          "hit": "beyond",
+          "post": " the Jordan westward, and all the kings of the Canaanit…"
+        },
+        {
+          "v": 1,
+          "pre": "…s of the Jordan before the sons of Israel until we had ",
+          "hit": "crossed",
+          "post": ", that their heart melted, and there was no spirit left…"
+        }
+      ],
+      "total": 2
+    },
+    "foreskin": {
+      "count": 2,
+      "verses": [
+        3,
+        7
+      ],
+      "hits": [
+        {
+          "v": 3,
+          "pre": "…and circumcised the sons of Israel at the Hill of the ",
+          "hit": "Foreskins",
+          "post": ".…"
+        },
+        {
+          "v": 7,
+          "pre": "…n their place — them Joshua circumcised, for they were ",
+          "hit": "uncircumcised",
+          "post": ", because they had not circumcised them on the way.…"
+        }
+      ],
+      "total": 2
+    },
+    "gilgal": {
+      "count": 2,
+      "verses": [
+        9,
+        10
+      ],
+      "hits": [
+        {
+          "v": 9,
+          "pre": "…t from off y'all.\" So the name of that place is called ",
+          "hit": "Gilgal",
+          "post": " to this day.…"
+        },
+        {
+          "v": 10,
+          "pre": "…And the sons of Israel camped at ",
+          "hit": "Gilgal",
+          "post": ", and they made the Passover on the fourteenth day of t…"
+        }
+      ],
+      "total": 2
+    },
+    "give": {
+      "count": 1,
+      "verses": [
+        6
+      ],
+      "hits": [
+        {
+          "v": 6,
+          "pre": "…them see the land which Yahweh swore to their fathers ",
+          "hit": "to give",
+          "post": " us, a land flowing with milk and honey.…"
+        }
+      ],
+      "total": 1
+    },
+    "go-out": {
+      "count": 5,
+      "verses": [
+        4,
+        5,
+        6
+      ],
+      "hits": [
+        {
+          "v": 4,
+          "pre": "…s is the reason Joshua circumcised: all the people who ",
+          "hit": "came out",
+          "post": " of Egypt, the males, all the men of war, had died in t…"
+        },
+        {
+          "v": 4,
+          "pre": "…s is the reason Joshua circumcised: all the people who ",
+          "hit": "came out",
+          "post": " of Egypt, the males, all the men of war, had died in t…"
+        },
+        {
+          "v": 5,
+          "pre": "…For all the people who ",
+          "hit": "came out",
+          "post": " had been circumcised, but all the people born in the w…"
+        },
+        {
+          "v": 5,
+          "pre": "…For all the people who ",
+          "hit": "came out",
+          "post": " had been circumcised, but all the people born in the w…"
+        },
+        {
+          "v": 6,
+          "pre": "…e wilderness, until all the nation, the men of war who ",
+          "hit": "came out",
+          "post": " of Egypt, had come to an end — those who did not liste…"
+        }
+      ],
+      "total": 5
+    },
+    "holy": {
+      "count": 1,
+      "verses": [
+        15
+      ],
+      "hits": [
+        {
+          "v": 15,
+          "pre": "…foot, for the place on which you are standing — it is ",
+          "hit": "set apart",
+          "post": ".\" And Joshua did so.…"
+        }
+      ],
+      "total": 1
+    },
+    "manna": {
+      "count": 2,
+      "verses": [
+        12
+      ],
+      "hits": [
+        {
+          "v": 12,
+          "pre": "…And the ",
+          "hit": "manna",
+          "post": " ceased on the morrow, when they ate from the produce o…"
+        },
+        {
+          "v": 12,
+          "pre": "…And the ",
+          "hit": "manna",
+          "post": " ceased on the morrow, when they ate from the produce o…"
+        }
+      ],
+      "total": 2
+    },
+    "melt": {
+      "count": 1,
+      "verses": [
+        1
+      ],
+      "hits": [
+        {
+          "v": 1,
+          "pre": "…sons of Israel until we had crossed, that their heart ",
+          "hit": "melted",
+          "post": ", and there was no spirit left in them before the sons…"
+        }
+      ],
+      "total": 1
+    },
+    "passover": {
+      "count": 2,
+      "verses": [
+        10,
+        11
+      ],
+      "hits": [
+        {
+          "v": 10,
+          "pre": "…the sons of Israel camped at Gilgal, and they made the ",
+          "hit": "Passover",
+          "post": " on the fourteenth day of the month, in the evening, on…"
+        },
+        {
+          "v": 11,
+          "pre": "…e from the produce of the land on the morrow after the ",
+          "hit": "Passover",
+          "post": " — unleavened cakes and parched grain, on this very day…"
+        }
+      ],
+      "total": 2
+    },
+    "produce": {
+      "count": 2,
+      "verses": [
+        11,
+        12
+      ],
+      "hits": [
+        {
+          "v": 11,
+          "pre": "…And they ate from the ",
+          "hit": "produce",
+          "post": " of the land on the morrow after the Passover — unleave…"
+        },
+        {
+          "v": 12,
+          "pre": "…the manna ceased on the morrow, when they ate from the ",
+          "hit": "produce",
+          "post": " of the land; and there was no more manna for the sons…"
+        }
+      ],
+      "total": 2
+    },
+    "reproach": {
+      "count": 1,
+      "verses": [
+        9
+      ],
+      "hits": [
+        {
+          "v": 9,
+          "pre": "…And Yahweh said to Joshua, \"Today I have rolled the ",
+          "hit": "reproach",
+          "post": " of Egypt from off y'all.\" So the name of that place is…"
+        }
+      ],
+      "total": 1
+    },
+    "roll": {
+      "count": 1,
+      "verses": [
+        9
+      ],
+      "hits": [
+        {
+          "v": 9,
+          "pre": "…And Yahweh said to Joshua, \"Today I have ",
+          "hit": "rolled",
+          "post": " the reproach of Egypt from off y'all.\" So the name of…"
+        }
+      ],
+      "total": 1
+    },
+    "sandal": {
+      "count": 1,
+      "verses": [
+        15
+      ],
+      "hits": [
+        {
+          "v": 15,
+          "pre": "…nder of the army of Yahweh said to Joshua, \"Strip your ",
+          "hit": "sandal",
+          "post": " from off your foot, for the place on which you are sta…"
+        }
+      ],
+      "total": 1
+    },
+    "servant": {
+      "count": 1,
+      "verses": [
+        14
+      ],
+      "hits": [
+        {
+          "v": 14,
+          "pre": "…own, and said to him, \"What is my lord speaking to his ",
+          "hit": "slave",
+          "post": "?\"…"
+        }
+      ],
+      "total": 1
+    },
+    "swear": {
+      "count": 2,
+      "verses": [
+        6
+      ],
+      "hits": [
+        {
+          "v": 6,
+          "pre": "…did not listen to the voice of Yahweh, to whom Yahweh ",
+          "hit": "swore",
+          "post": " that he would not let them see the land which Yahweh s…"
+        },
+        {
+          "v": 6,
+          "pre": "…did not listen to the voice of Yahweh, to whom Yahweh ",
+          "hit": "swore",
+          "post": " that he would not let them see the land which Yahweh s…"
         }
       ],
       "total": 2

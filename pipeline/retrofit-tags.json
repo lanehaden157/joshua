@@ -315,6 +315,38 @@
       "to": "firm",
       "text": "firm",
       "w": "06oiy"
+    },
+    {
+      "unit": "unit-03",
+      "verse": 5,
+      "from": "holy",
+      "to": "holy",
+      "text": "Set yourselves apart",
+      "w": "06emv"
+    },
+    {
+      "unit": "unit-04",
+      "verse": 6,
+      "from": "complete",
+      "to": "complete",
+      "text": "come to an end",
+      "w": "06Gds"
+    },
+    {
+      "unit": "unit-04",
+      "verse": 8,
+      "from": "complete",
+      "to": "complete",
+      "text": "finished",
+      "w": "06H8n"
+    },
+    {
+      "unit": "unit-04",
+      "verse": 15,
+      "from": "holy",
+      "to": "holy",
+      "text": "set apart",
+      "w": "06NvG"
     }
   ],
   "add": [
@@ -324,6 +356,44 @@
       "root": "swear",
       "text": "swore",
       "w": "06LJh"
+    },
+    {
+      "unit": "unit-03",
+      "verse": 16,
+      "root": "complete",
+      "text": "wholly",
+      "w": "06xmV"
+    },
+    {
+      "unit": "unit-03",
+      "verse": 17,
+      "root": "complete",
+      "text": "finished",
+      "w": "06Eyi"
+    },
+    {
+      "unit": "unit-03",
+      "verse": 1,
+      "nth": 2,
+      "root": "complete",
+      "text": "finished",
+      "w": "06Ci2"
+    },
+    {
+      "unit": "unit-03",
+      "verse": 10,
+      "nth": 2,
+      "root": "complete",
+      "text": "finished",
+      "w": "06vtM"
+    },
+    {
+      "unit": "unit-03",
+      "verse": 11,
+      "nth": 2,
+      "root": "complete",
+      "text": "finished",
+      "w": "06caE"
     }
   ],
   "text": [
