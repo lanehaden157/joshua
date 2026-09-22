@@ -391,3 +391,65 @@ Full suite green (`test_unit_meta.py` 52 checks), `build.py` green, coverage
   `<div class="notes">`. `css/styles.css`: replaced the `.block.notes` rules (which
   borrowed their frame from the generic `.block` panel style) with a plain top-divider
   `.notes` rule, matching Matthew's shape. `pipeline/build.py` green after.
+
+## 2026-09-21 (part 2) — Unit 2 ported
+- Ported `source-artifacts/joshua_02_translation.html` -> `units/unit-02.html` via
+  `pipeline/port_artifact.py 2`. `assign_data_w.py` placed all 9 spans by alignment,
+  no human intervention needed.
+- Thread promotions (Claude's call, biased book-wide per CLAUDE.md policy):
+  promoted `devote` (haram, 2763a), `swear` (shavaʿ̲/shevuʿ̲ah, 7650+7621),
+  `blood` (dam, 1818), `melt` (masas, 4549) to tracked threads in
+  `data/roots.json` + `data/threads.json`. Declined widening `cross`'s id set to
+  cover maʿ̲berot "fords" (4569b, distinct lemma, single occurrence) -- logged
+  in `roots.json`'s `declined` ledger instead.
+- `swear`'s first occurrence is actually 1:6 (Yahweh's oath to the fathers),
+  untagged when unit 1 was built -- retro'd via a new `add` op in
+  `pipeline/retrofit-tags.json` (word `06LJh`, text "swore"), applied by
+  re-running `port_artifact.py 1`.
+- Accepted 5 of the porter's proposed payoffs onto existing threads: `send`
+  (2:1), `give` (2:9, 2:24), `cross` (2:10, 2:23) -- none closed the thread.
+- `audit_thread_coverage.py`: 0 gap/wrong/stray/missing-data-w across all 14
+  tracked threads. `verify_thread_coverage.py`: 11/11. Full `build.py` clean.
+- Fixed a stale hardcoded count in `test_assign_data_w.py` (asserted exactly
+  38 tracked spans in unit 1; now 39 after the swear retro) -- now derives
+  the expected count from the file instead of hardcoding it.
+- Smoke-tested unit 2 live (static server, `#/unit-02`): threads panel,
+  local-root list, and all 24 verses render clean; no console errors.
+
+## 2026-09-21 (part 3) — Unit 2 wording review
+- `translation-choices.md`: ḥerem locked (Lane, ahead of unit 5) to
+  "devote(d) to destruction" -- kept as an English phrase, not
+  transliterated like ḥesed/torah, since the verb form dominates the early
+  occurrences and a transliterated verb reads far worse than a
+  transliterated noun. Yam Suf (2:10) locked to "Reed Sea" over the
+  traditional "Red Sea". Both already matched what `unit-02.html` actually
+  rendered -- no fragment changes needed, glossary only.
+- Fixed a real glossary bug: the ḥesed row said "two occurrences, both at
+  2:12" -- `Joshua-words.tsv` has three (lemma 2617a: 2:12 ×2, 2:14 ×1).
+  `unit-02.html`'s tagging was already correct (3 spans); only the
+  glossary row was wrong.
+- Checked unit 2's plural-possessive usage ("y'all's God", "y'all's way")
+  against unit 1's convention -- already consistent, no fix needed.
+
+## 2026-09-21 (part 4) — questions[] artifact field
+- Lane's ask: wording/data questions the chat side has for him were getting
+  asked (and answered) on the project side after the artifact was already
+  handed off -- he wants them surfaced here instead, with choices, at port
+  time. New artifact-contract field: `questions[]` (`{topic, note,
+  options?}`), style reference §3a.
+- `pipeline/unit_meta.py`: added `questions` to `ALLOWED_TOP_LEVEL_KEYS`,
+  validated (topic/note required strings, options optional string list).
+  Deliberately NOT round-tripped by `generate()` -- consumed and dropped
+  exactly like `threads.candidates`/`threads.retro`, so a regenerated
+  fragment never carries stale questions.
+- `pipeline/port_artifact.py`: new `print_questions()` prints every
+  question straight to stdout right after meta validation (both `--dry`
+  and real-write paths) -- the copy meant to actually get read, in the
+  terminal, not buried in a report file. `thread_delta()` also gets an
+  "## Open questions for Lane" section for the written record.
+- `Claude_ai_chat_side_instructions.md`: fifth standing move added --
+  wording/data calls go in `questions[]`, not asked in chat; pass-3
+  artifact-skeleton description updated to match.
+- 5 new `test_unit_meta.py` checks (schema validation + generate() never
+  re-adding the key) + 2 new `test_port_artifact.py` checks (thread-delta
+  section, stdout printing). Full suite + `build.py` still clean.

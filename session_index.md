@@ -34,3 +34,13 @@ Read this first. 3 lines max per session.
   div.notes markup won core (zero retrofit there vs. this repo's one unit). Converted
   unit-01's section.block.notes to div.notes and gave styles.css a plain top-divider
   .notes rule, replacing the one borrowed from the generic .block panel style.
+- **2026-09-21 (part 2)**: Unit 2 ported (units/unit-02.html). Promoted 4 new tracked
+  threads (devote, swear, blood, melt); swear needed a retro tag on unit 1's 1:6.
+  Full build/audit/tests clean; smoke-tested live in browser. See session_summary_2026-09-21b.md.
+- **2026-09-21 (part 3)**: Unit 2 wording review (Lane's flags) — ḥerem locked to "devote(d)
+  to destruction", Yam Suf locked to "Reed Sea" (both already matched the fragment, glossary
+  only); fixed a real ḥesed occurrence-count bug in translation-choices.md (3, not 2).
+- **2026-09-21 (part 4)**: New artifact field `questions[]` (style reference §3a) so wording/
+  data calls land in Claude Code at port time instead of being asked on the project side —
+  unit_meta.py validates it, port_artifact.py prints it to stdout + the thread delta, dropped
+  on regen like candidates/retro. Chat-side instructions updated (5th standing move).
