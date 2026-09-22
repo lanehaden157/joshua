@@ -5,9 +5,10 @@ components, transliteration scheme, checklist) lives in
 `joshua_study_style_reference.md` and is authoritative over this file — this
 file points there rather than restating it.
 
-**State (2026-09-22):** Phases 0–5 done; units 1–3 built; 18 tracked threads
-in `data/threads.json`/`data/roots.json` (every one carries an `echo`).
-`source-artifacts/` is current for all three units: edit there and re-port
+**State (2026-09-22):** Phases 0–5 done; units 1–4 built (Movement I complete);
+20 tracked threads in `data/threads.json`/`data/roots.json` (every one carries an
+`echo`). This repo is not migrating onto the shared core (`../g6-plan.md`, which is for future books); copy a core fix across only when it clearly helps.
+`source-artifacts/` is current for all four units: edit there and re-port
 rather than editing `units/` by hand. Tracked-thread colours are assigned
 algorithmically (`port_artifact.assign_tracked_colors()`), same as local
 roots — never hand-picked (Lane, 2026-09-22).
