@@ -307,9 +307,15 @@ touch pipeline *logic*, only `port_artifact.py`'s colour assignment
 
 ### Phase 6 — Units 2–24
 
-Build units in order through the same loop: research artifact (Claude.ai,
-three passes) → `port_artifact.py` → thread promotion + retrofit → browser
-review → commit + sync. Revisit per unit whether anything from Matthew's
+Build units in order through the same loop: `build.py` has the unit's
+canon-leads sheet waiting → research artifact (Claude.ai, four passes, pass 3
+the intertext ledger) → `port_artifact.py` → thread promotion + retrofit →
+browser review → commit + sync.
+
+**To do: units 1–2 through the intertext pass.** Their echoes and
+cross-reference asides were drafted in Claude Code from memory (2026-09-21)
+and are provisional. The project side runs pass 3 against each shipped unit
+and delivers a revised artifact; re-port with `port_artifact.py N --force`. Revisit per unit whether anything from Matthew's
 later phases (concordance/dashboard, persistence, author ergonomics) has
 become worth building.
 

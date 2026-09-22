@@ -13,7 +13,10 @@
   advisory:
   7. audit_thread_coverage.py  Hebrew vs. fragments -- thread tag-coverage
                                gaps in built units (never fails the build)
-  8. check_project_sync.py    which project-side/README.md files have
+  8. canon_leads.py         canon-leads/canon-leads-unit-NN.md for every built
+                               unit + the next one: the project side's
+                               intertext reading list (never fails the build)
+  9. check_project_sync.py    which project-side/README.md files have
                                changed since they were last pasted into the
                                Claude.ai project (never fails the build)
 
@@ -35,7 +38,7 @@ STEPS = ["apply_retrofit.py", "refresh_meta.py", "validate_units.py",
          "scan_occurrences.py", "verify_occurrences.py", "roots.py",
          "threads_digest.py"]
 ADVISORY = ["audit_thread_coverage.py"]  # run with --check, show output, never fail the build
-ADVISORY_BARE = ["check_project_sync.py"]  # run with no args, show output, never fail the build
+ADVISORY_BARE = ["canon_leads.py", "check_project_sync.py"]  # run with no args, show output, never fail the build
 
 
 def main():

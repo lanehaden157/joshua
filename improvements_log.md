@@ -464,3 +464,11 @@ Full suite green (`test_unit_meta.py` 52 checks), `build.py` green, coverage
 - Voice fixes in data: removed "Hawk:" from the rest thread's opens note and a stale "Promote before unit 5." from devote's.
 - Docs: style reference §1 (`echo`), §3, §4 (*Balance*: short glosses, footnotes for depth, intertext over grammar), checklist 4/17, §8 example (div.notes + echo). Chat-side instructions: intertext-first lens, grammar and Radak in proportion, a sixth standing move. translation-choices.md: radaf row. CLAUDE.md state/porter notes.
 - Tests: test_unit_meta 60 (3 new), test_port_artifact 13 (2 new: the example/echo round trip and the --force guard). Full suite + build.py clean.
+
+## 2026-09-22 — Intertext pass: canon leads + ledger
+- Why: the unit 1–2 cross-references added on 2026-09-21 were drafted in Claude Code from memory, not researched on the project side. Lane wants the project side to spend real time on intertextuality.
+- New `pipeline/canon_leads.py`: per unit, rare words (≤20 verses in the whole Hebrew Bible) and adjacent-lemma phrases shared with the Torah (overlapping pairs merged), each with every hit, transliterated, from the full morphhb Hebrew Bible. Narrow by design: listing every word would mean ~33,000 Torah verses for Joshua 2. Unit 1: 22 leads, unit 2: 16, unit 3: 23. It found a link the Claude Code draft missed: Josh 2:8 "before they lay down" = Gen 19:4, Lot's house in Sodom.
+- `build.py` runs it (advisory) for built units + the next one. `check_project_sync.TRACKED_FILES` globs `canon-leads/`, so the sheets reach the project mirror.
+- `pipeline/test_canon_leads.py`: 8 checks on real hits (Gen 8:9, Exod 15:15–16, Deut 1:28, Num 25:1, Gen 19:4), pair merging, the cutoff, and no Hebrew script in the output.
+- Chat-side instructions: four passes now. Pass 3 is the intertext pass, which starts from the leads sheet and produces a ledger with every link considered, its evidence, source, strength and verdict, rejected rows included, and pauses for Lane before the artifact. Coverage expectations are strong suggestions. Units 1–2 flagged there and in PLAN.md as needing the pass.
+- Style reference §1: echoes come from the ledger's kept rows. CLAUDE.md, project-side/README.md and PLAN.md updated.

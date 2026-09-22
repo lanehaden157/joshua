@@ -27,7 +27,8 @@ TRACKED_FILES = [
     "threads-digest.md",
     "data/roots.json",
     "Joshua-words.tsv",
-]
+] + sorted(  # the intertext pass's reading lists, one per unit (pipeline/canon_leads.py)
+    p.relative_to(ROOT).as_posix() for p in (ROOT / "canon-leads").glob("canon-leads-unit-*.md"))
 
 
 def hash_file(path: Path) -> str | None:

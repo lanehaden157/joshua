@@ -47,3 +47,5 @@ Read this first. 3 lines max per session.
 - **2026-09-21 (part 5)**: Lane's read-through feedback on units 1–2. Footnotes restyled to match Matthew; new root `echo` popover field; `chase` promoted (15 threads).
   Units 1–2 reworked with short glosses, depth in footnotes, less grammar/Radak and more intertext (Tamar/Matt 1:5, Gen 8:9 sole-of-foot). Found and fixed the unit 2 port silently regressing unit 1; the porter now needs --force to overwrite.
   See session_summary_2026-09-21c.md.
+- **2026-09-22**: Intertext pass. New `pipeline/canon_leads.py` (rare words + Torah-shared phrases per unit, whole Hebrew Bible, synced to the project, run by build.py).
+  Chat-side instructions gain pass 3, an intertext ledger with rejected rows, reviewed by Lane before the artifact. Unit 1–2 echoes marked provisional until the project side runs it. See session_summary_2026-09-22.md.

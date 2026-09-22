@@ -14,7 +14,8 @@ than editing `units/` by hand.
 
 - **`joshua_study_style_reference.md`** — the artifact contract.
 - **`Claude_ai_chat_side_instructions.md`** — the Claude.ai research project's
-  workflow (three passes, standing moves). Synced via `project-side/`.
+  workflow (four passes incl. the intertext pass, standing moves). Not in the
+  synced mirror: Lane pastes it into the project's instructions by hand.
 - **`joshua_literary_unit_map.md`** — 24 units, 4 movements, confirmed.
 - **`PLAN.md`** — phase list and open questions.
 - **`Port analysis.md`** — the Matthew-pipeline port audit. Guide, not gospel.
@@ -151,6 +152,25 @@ artifacts usually already wrap the occurrences, so it's normally a
    `python pipeline/audit_thread_coverage.py`; every promoted root must report
    clean. Don't hand-wave a nonzero count.
 
+## Canon leads — `pipeline/canon_leads.py`
+
+The mechanical half of the project side's intertext pass (Lane, 2026-09-21):
+Claude Code finds where words recur, the project side decides what matters.
+Per unit, `canon-leads/canon-leads-unit-NN.md` lists rare words (≤ `--rare`
+verses in the Hebrew Bible, default 20) and adjacent-lemma phrases shared
+with the Torah (overlapping pairs merged), each with every hit,
+transliterated. It reads the whole Hebrew Bible from
+`node_modules/morphhb/wlc`. It is deliberately narrow: listing every word
+would mean ~33,000 Torah verses for Joshua 2. Blind to common words, themes,
+type-scenes and the New Testament. `build.py` regenerates it for every built
+unit plus the next one, and `check_project_sync.TRACKED_FILES` globs the
+folder into the synced mirror. `pipeline/test_canon_leads.py` pins real hits
+(Gen 8:9, Exod 15:15–16, Deut 1:28, Gen 19:4).
+
+Drafting cross-references here from memory is the thing this replaces. The
+unit 1–2 echoes were written that way and are provisional until the project
+side runs its pass on them.
+
 ## Fragment validation — `pipeline/unit_meta.py`
 
 Implements style reference §3, §4, §7. Rules live there; repo-side notes:
@@ -256,6 +276,7 @@ project-side/sync-state.json     fallback hash state for check_project_sync.py
 project-side/synced/             generated mirror for GitHub-connector sync -- never hand-edit
 Joshua-reading.txt, Joshua-words.tsv, Joshua-english.txt, candidate-boundaries.md   generated source data
 source-artifacts/                incoming research artifacts (joshua_NN_translation.html)
+canon-leads/                     generated intertext reading lists, one per unit (synced)
 units/                           ported fragments (unit-NN.html)
 data/units.json                  24-unit / 4-movement registry
 data/threads.json                tracked threads (Lane's policy)
@@ -272,6 +293,7 @@ pipeline/verify_thread_coverage.py  independent re-derivation of the audit
 pipeline/unit_meta.py            meta parse/validate/generate + fragment checks
 pipeline/threads_digest.py       threads.json -> threads-digest.md
 pipeline/port_artifact.py        port a research artifact into the site
+pipeline/canon_leads.py          unit -> canon-leads/ (rare words + Torah phrases, whole Hebrew Bible)
 pipeline/apply_retrofit.py       idempotent fragment-edit ops, replayed by build.py
 pipeline/retrofit-tags.json      hand-authored fragment edits
 pipeline/retro-tags.json         generated retro fixes (created on first merged retro)
@@ -281,7 +303,7 @@ pipeline/refresh_meta.py         regenerate every fragment's meta block
 pipeline/build.py                re-derive everything downstream of fragments
 pipeline/sync_to_github.py       primary project-side sync (mirror + push)
 pipeline/check_project_sync.py   fallback: which project-side files need re-pasting
-pipeline/test_*.py               hebrew, roots, unit_meta, apply_retrofit, scan_occurrences, verify_occurrences, port_artifact
+pipeline/test_*.py               hebrew, roots, unit_meta, apply_retrofit, scan_occurrences, verify_occurrences, port_artifact, canon_leads
 pipeline/corpus/{wlc,lexicon,web}/   pinned sources
 package.json                     morphhb pin
 ```
