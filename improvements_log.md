@@ -384,3 +384,10 @@ flagged it as a known gap. Built before unit 2 (Lane's call):
 Full suite green (`test_unit_meta.py` 52 checks), `build.py` green, coverage
 0/0/0/0, `units/unit-01.html` unchanged.
 
+
+## 2026-09-21 — C7 resolved (platform-design-review.md)
+- Matthew's `<div class="notes">` won the cross-project decision (zero retrofit there vs.
+  this repo's single unit). `units/unit-01.html`: `<section class="block notes">` ->
+  `<div class="notes">`. `css/styles.css`: replaced the `.block.notes` rules (which
+  borrowed their frame from the generic `.block` panel style) with a plain top-divider
+  `.notes` rule, matching Matthew's shape. `pipeline/build.py` green after.

@@ -30,3 +30,7 @@ Read this first. 3 lines max per session.
 - **2026-09-19 (part 4)**: A7 settled against the lexicon: OSHB letter suffixes are NOT opaque (3885a lodge vs 3885b murmur; 2416a alive vs 2416e life; 6924a front vs 6924b eastward). Matching now honours them — bare id claims the whole number, suffixed id claims one lexeme. No existing root's coverage changed. Style reference §2 rewritten.
 - **2026-09-21**: G4 prep. Ḥesed locked (left untranslated, gloss). nefesh locked to a two-rule split: Matthew's life/being psychē mechanism for 6 self/address occurrences, "person" as a documented exception for 10 ḥerem-formula/legal occurrences Matthew has no analog for. Built aside.echo (was spec'd, genuinely unbuilt) before unit 2: CSS, unit_meta.check_echo() (anchor format + anchor-matches-verse + the 67b2712 nesting check), spotlight.js toggle integration, 8 new tests, verified live in-browser then reverted the test content.
 
+- **2026-09-21**: C7 (platform-design-review.md) resolved cross-project — Matthew's
+  div.notes markup won core (zero retrofit there vs. this repo's one unit). Converted
+  unit-01's section.block.notes to div.notes and gave styles.css a plain top-divider
+  .notes rule, replacing the one borrowed from the generic .block panel style.
