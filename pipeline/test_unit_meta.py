@@ -408,6 +408,86 @@ def test_pericope_heading_missing_range_fails():
            len(errs) == 1, errs)
 
 
+_ECHO_META = {"passage": "Joshua 3:1-17"}
+
+
+def test_echo_clean_passes():
+    html = ('<p class="v"><span class="n">3:2</span> text.</p>'
+            '<aside class="echo" data-anchor="3:2">cf. Deut 27:2-4, the '
+            'command this fulfils.</aside>')
+    errs = um.check_echo(html, _ECHO_META)
+    _check("a clean aside.echo with a matching anchor should pass",
+           not errs, errs)
+
+
+def test_echo_missing_anchor_fails():
+    html = ('<p class="v"><span class="n">3:2</span> t.</p>'
+            '<aside class="echo">no anchor</aside>')
+    errs = um.check_echo(html, _ECHO_META)
+    _check("aside.echo with no data-anchor must fail",
+           any("no data-anchor" in e for e in errs), errs)
+
+
+def test_echo_malformed_anchor_fails():
+    html = ('<p class="v"><span class="n">3:2</span> t.</p>'
+            '<aside class="echo" data-anchor="three-two">x</aside>')
+    errs = um.check_echo(html, _ECHO_META)
+    _check("aside.echo with a malformed data-anchor must fail",
+           any("is not 'C:V'" in e for e in errs), errs)
+
+
+def test_echo_anchor_mismatched_with_verse_fails():
+    html = ('<p class="v"><span class="n">3:2</span> t.</p>'
+            '<aside class="echo" data-anchor="3:5">x</aside>')
+    errs = um.check_echo(html, _ECHO_META)
+    _check("aside.echo data-anchor that doesn't match the verse it "
+           "follows must fail",
+           any("doesn't match the verse" in e for e in errs), errs)
+
+
+def test_echo_nested_inside_unclosed_gloss_fails():
+    """The exact 67b2712 regression: an aside spliced into gloss content
+    that was never properly closed collapsed silently in the browser."""
+    html = ('<p class="v"><span class="n">3:2</span> text.</p>'
+            '<span class="gloss">discussion '
+            '<aside class="echo" data-anchor="3:2">nested!</aside>'
+            ' more text</span>')
+    errs = um.check_echo(html, _ECHO_META)
+    _check("aside.echo nested inside an unclosed .gloss span must fail "
+           "(67b2712)",
+           any("67b2712" in e for e in errs), errs)
+
+
+def test_echo_bare_verse_number_rollover():
+    """Bare `<span class="n">2</span>` inherits the chapter from the
+    nearest preceding explicit C:V, same convention as
+    assign_data_w.verse_blocks()."""
+    html = ('<p class="v"><span class="n">3:1</span> a</p>'
+            '<p class="v"><span class="n">2</span> b</p>'
+            '<aside class="echo" data-anchor="3:2">x</aside>')
+    errs = um.check_echo(html, _ECHO_META)
+    _check("a bare verse number should still resolve to the right "
+           "chapter for anchor matching",
+           not errs, errs)
+
+
+def test_echo_unclosed_aside_fails():
+    html = ('<p class="v"><span class="n">3:2</span> t.</p>'
+            '<aside class="echo" data-anchor="3:2">never closed')
+    errs = um.check_echo(html, _ECHO_META)
+    _check("an aside.echo missing its closing tag must fail",
+           any("open/close count mismatch" in e for e in errs), errs)
+
+
+def test_echo_class_is_in_css_whitelist():
+    """echo must be a real css/styles.css class, not just accepted by
+    check_echo() -- otherwise check_component_whitelist() would reject
+    any fragment that actually uses it."""
+    classes = um._css_classes()
+    _check("'echo' must be defined in css/styles.css",
+           classes is not None and "echo" in classes, classes)
+
+
 def test_no_inline_style_fails():
     html = '<div style="color: red">x</div>'
     errs = um.check_no_inline_style(html)

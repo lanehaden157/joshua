@@ -321,3 +321,66 @@ Style reference §2 rewritten with the three real cases; `CLAUDE.md` updated,
 including pointing the retrofit recipe at `assign_data_w.py` instead of the
 by-hand steps 1-3.
 
+## 2026-09-21 -- G4 prep: the wording decisions and aside.echo, before unit 2
+
+### ḥesed and nefesh (translation-choices.md)
+
+- **ḥesed** locked to left-untranslated ("ḥesed") with a gloss. Two
+  occurrences, both Rahab (2:12), a reciprocal covenant-loyalty exchange
+  paired with "a sign of truth" -- not the word's usual divine-to-human
+  register, which made every single-word English option (steadfast love /
+  kindness / loyalty) lose something specific. Same pattern already in use
+  for `torah`.
+- **nefesh** locked to a two-rule split, not left open-ended. Pulled all 16
+  occurrences and their morphology first: **Rule A** (self/address, 6
+  occurrences: 2:13, 2:14, 9:24, 22:5, 23:11, 23:14) follows Matthew's
+  psychē mechanism exactly -- Hebrew singular -> "life", Hebrew plural ->
+  "being(s)", never "soul". **Rule B** (10 occurrences: the ḥerem
+  battle-report formula 10:28-11:11, and the cities-of-refuge law 20:3/20:9)
+  is a documented exception: "person". Both are Hebrew-grammatical-singular
+  uses, generic/distributive ("every person," "a person"), and Matthew's
+  psychē has no occurrence in that register to borrow from -- "he struck
+  the life/being with the sword" is not idiomatic English and miscounts
+  what's being described. Neither decision is applied to prose yet; unit 1
+  contains neither word (both start at 2:12/2:13).
+
+### aside.echo built (style reference §4, review A15)
+
+Was spec'd but genuinely unbuilt: not in the CSS class whitelist, no
+validator, no nesting-depth check, `app/spotlight.js`'s own header comment
+flagged it as a known gap. Built before unit 2 (Lane's call):
+
+- `css/styles.css` -- `.unit aside.echo` and its `.verse-note` variant,
+  modelled on `.gloss`'s box shape but Jordan-teal left border + a
+  CSS-generated "cf. " prefix, so the two are visually distinct once open.
+- `pipeline/unit_meta.py` `check_echo()` -- new, wired into
+  `validate_fragment()`. Three things: `data-anchor="C:V"` present and
+  well-formed; the anchor matches the verse the echo actually follows in the
+  fragment (drift between position and anchor would be invisible to a
+  reader and to a diff); and the nesting-depth check the style reference
+  calls for -- no `<aside class="echo">` starts inside an unclosed `.gloss`
+  span, which is the literal `67b2712` bug, not a hypothetical one. Modelled
+  the check the way a naive renderer actually behaves (nearest `</span>`
+  closes a gloss, whether or not it was meant to) rather than assuming
+  well-formed input, since that mismatch *is* the failure mode.
+- `app/spotlight.js` -- extended to mount `.echo` alongside `.gloss` under
+  the same per-verse toggle (one "is there more here" control, not two).
+- 8 new tests in `test_unit_meta.py` (44 -> 52): a clean pass, missing
+  anchor, malformed anchor, anchor/verse mismatch, the 67b2712 nesting
+  case, bare-verse-number chapter rollover, unclosed `<aside>`, and that
+  `echo` is a real CSS class (so `check_component_whitelist` doesn't reject
+  a fragment that uses it). Mutation-tested the nesting check by disabling
+  it: the regression test fails, confirming it isn't a coincidence.
+- Verified live: injected a real echo into a scratch copy of unit-01.html
+  (never committed), confirmed it validates clean through the actual
+  pipeline, rendered it in the browser, clicked the toggle open, screenshot
+  confirmed the teal "cf." styling and correct box mounting alongside the
+  existing gloss. Reverted the test content -- `unit-01.html`'s committed
+  diff is zero.
+- Style reference §4 and checklist item 11 updated to describe the built
+  component instead of the unbuilt spec; `CLAUDE.md`'s app-shell section and
+  its now-stale "`app/spotlight.js` has only `.gloss`" line updated too.
+
+Full suite green (`test_unit_meta.py` 52 checks), `build.py` green, coverage
+0/0/0/0, `units/unit-01.html` unchanged.
+

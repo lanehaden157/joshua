@@ -483,6 +483,101 @@ def check_pericope_headings(html):
     return errs
 
 
+ECHO_OPEN_RE = re.compile(r'<aside\s+class="echo"([^>]*)>')
+ECHO_CLOSE_RE = re.compile(r'</aside>')
+ECHO_ANCHOR_RE = re.compile(r'data-anchor="([^"]*)"')
+GLOSS_OPEN_RE = re.compile(r'<span\s+class="gloss">')
+SPAN_CLOSE_RE = re.compile(r'</span>')
+NUM_RE = re.compile(r'<span class="n">\s*(?:(\d+):)?(\d+)\s*</span>')
+PASSAGE_FIRST_CH_RE = re.compile(r"(\d+):")
+
+
+def _verse_at(html, pos, default_ch):
+    """The (ch, v) of the .v block a position in html falls inside, or the
+    nearest preceding one if it's a following sibling (a .gloss/.echo,
+    which live just after the </p> of the verse they comment on).
+
+    Bare verse numbers (`<span class="n">3</span>`) inherit the chapter
+    from the nearest preceding explicit `C:V` and roll forward on a
+    number that goes backwards -- same convention as
+    assign_data_w.verse_blocks(), reimplemented locally rather than
+    imported, so this module stays a leaf with no dependency on
+    Joshua-words.tsv (it only needs the fragment string)."""
+    ch, v, prev_v = default_ch, None, None
+    for m in NUM_RE.finditer(html, 0, pos):
+        this_v = int(m.group(2))
+        if m.group(1):
+            ch, prev_v = int(m.group(1)), None
+        elif prev_v is not None and this_v < prev_v:
+            ch += 1
+        prev_v = this_v
+        v = this_v
+    return ch, v
+
+
+def check_echo(html, meta=None):
+    """`aside.echo` — style reference §4: optional, a verse sibling like
+    `.gloss`, "ship it only with its nesting-depth check."
+
+    Three things, all part of that check:
+    1. `data-anchor="C:V"` is present and well-formed.
+    2. The anchor matches the verse the echo actually follows in the
+       fragment -- an anchor that drifts from its position is exactly the
+       kind of silent mismatch a reader would never notice and a diff
+       would never catch.
+    3. No `<aside class="echo">` starts inside an unclosed (or
+       too-early-closed) `<span class="gloss">` (`67b2712`: an aside
+       spliced into gloss content collapsed silently). Modelled the way a
+       naive renderer actually behaves -- the *nearest* `</span>` at or
+       after a gloss's opening tag is treated as closing it, whether or
+       not it was meant to -- because that mismatch is the failure mode,
+       not a hypothetical one.
+    """
+    errs = []
+    default_ch = None
+    if meta and meta.get("passage"):
+        m = PASSAGE_FIRST_CH_RE.search(meta["passage"])
+        if m:
+            default_ch = int(m.group(1))
+
+    span_closes = [m.start() for m in SPAN_CLOSE_RE.finditer(html)]
+    gloss_ranges = []
+    for m in GLOSS_OPEN_RE.finditer(html):
+        end = next((p for p in span_closes if p >= m.end()), len(html))
+        gloss_ranges.append((m.start(), end))
+
+    for m in ECHO_OPEN_RE.finditer(html):
+        attrs = m.group(1)
+        am = ECHO_ANCHOR_RE.search(attrs)
+        if not am:
+            errs.append("aside.echo has no data-anchor=\"C:V\" attribute")
+            continue
+        anchor = am.group(1)
+        if not _REF_RE.match(anchor):
+            errs.append(f"aside.echo data-anchor={anchor!r} is not 'C:V' "
+                        f"(e.g. '3:2')")
+            continue
+
+        if default_ch is not None:
+            ch, v = _verse_at(html, m.start(), default_ch)
+            if v is not None and anchor != f"{ch}:{v}":
+                errs.append(f"aside.echo data-anchor={anchor!r} doesn't match "
+                            f"the verse it follows ({ch}:{v}) -- an echo "
+                            f"anchors the verse it's a sibling of")
+
+        if any(gs < m.start() < ge for gs, ge in gloss_ranges):
+            errs.append(f"aside.echo at data-anchor={anchor!r} starts inside "
+                        f"an unclosed .gloss span -- the exact 67b2712 "
+                        f"failure mode (style reference §4): close the "
+                        f".gloss's </span> before the aside, don't nest it")
+
+    if len(ECHO_CLOSE_RE.findall(html)) != len(ECHO_OPEN_RE.findall(html)):
+        errs.append("aside.echo open/close count mismatch -- an unclosed "
+                    "or stray </aside>")
+
+    return errs
+
+
 def check_no_inline_style(html):
     """No inline style=, no --c-* colour vars (checklist 13)."""
     errs = []
@@ -512,10 +607,10 @@ def warnings_for_fragment(html):
 def validate_fragment(html, css_path=None, meta=None, threads_json=None):
     """All fragment-level HARD checks in one call: component whitelist,
     endnote integrity, zero Hebrew script, data-root resolution, tracked-
-    span data-w, pericope headings, no inline style/--c-* vars. Does not
-    include validate()'s meta-dict checks, and does not include
-    warnings_for_fragment()'s non-fatal warnings -- run all three when
-    checking a real fragment."""
+    span data-w, pericope headings, aside.echo anchors/nesting, no inline
+    style/--c-* vars. Does not include validate()'s meta-dict checks, and
+    does not include warnings_for_fragment()'s non-fatal warnings -- run
+    all three when checking a real fragment."""
     errs = []
     errs += check_component_whitelist(html, css_path)
     errs += check_endnote_integrity(html)
@@ -523,6 +618,7 @@ def validate_fragment(html, css_path=None, meta=None, threads_json=None):
     errs += check_data_root_resolves(html, meta, threads_json)
     errs += check_tracked_spans_have_data_w(html, threads_json)
     errs += check_pericope_headings(html)
+    errs += check_echo(html, meta)
     errs += check_no_inline_style(html)
     return errs
 

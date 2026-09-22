@@ -1,13 +1,16 @@
-/* Per-verse asides, collapsed by default. Joshua has one kind (unlike
+/* Per-verse asides, collapsed by default. Joshua has two kinds (unlike
    Matthew's three): .gloss -> a light "note" (bare * marker, plain italic
-   aside, no box). Matthew's .compare ("spotlight" ✦ chip) has no Joshua
-   analogue (Phase 2 resolved no compare box) and is dropped, not adapted.
-   aside.synoptic's Joshua analogue, aside.echo, is optional and unbuilt
-   (style reference §4) -- left out until/unless a unit actually wants it,
-   per the style reference's own "ship the check in the same commit as the
-   class" discipline. Runs on the freshly-loaded fragment; the fragments
-   themselves are untouched. */
+   aside, no box), and aside.echo -> a cross-book echo (Deuteronomy command
+   -> Joshua fulfilment, etc.), built 2026-09-21 (style reference §4).
+   Matthew's .compare ("spotlight" ✦ chip) has no Joshua analogue (Phase 2
+   resolved no compare box) and is dropped, not adapted. Both kinds share
+   one toggle per verse -- a reader doesn't need to know which is which to
+   find "is there more here"; the CSS (Jordan teal left-border + "cf."
+   prefix vs. the plain grey gloss border) tells them apart once open.
+   Runs on the freshly-loaded fragment; the fragments themselves are
+   untouched. */
 
+const ASIDE_SEL = ".gloss, aside.echo";
 const STOP_SEL =
   "p.v, div.v, h3, section, header, .verses, table";
 
@@ -15,18 +18,18 @@ export function enhanceSpotlights(root) {
   let count = 0;
 
   for (const verse of root.querySelectorAll("p.v, div.v")) {
-    const glosses = [];
+    const asides = [];
     let n = verse.nextElementSibling;
     while (n && !n.matches(STOP_SEL)) {
       const next = n.nextElementSibling;
-      if (n.matches(".gloss")) glosses.push(n);
-      else if (glosses.length) break;
+      if (n.matches(ASIDE_SEL)) asides.push(n);
+      else if (asides.length) break;
       n = next;
     }
-    if (!glosses.length) continue;
+    if (!asides.length) continue;
 
-    mount(verse, verse, glosses);
-    count += glosses.length;
+    mount(verse, verse, asides);
+    count += asides.length;
   }
 
   if (count) addAllControl(root);

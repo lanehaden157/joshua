@@ -209,8 +209,9 @@ Supporting scripts:
 discourse layer (movements only), a Matthew-style book map.
 
 - `app/threads.js` is Matthew's plus an `example` field on resolved roots (the change that exposed the module cache-busting bug in `main.js`); `app/search.js` near-unchanged (storage key
-  `joshua.search.q`); `app/spotlight.js` has only `.gloss` (compare/synoptic
-  paths deleted).
+  `joshua.search.q`); `app/spotlight.js` has `.gloss` and `aside.echo`
+  (compare/synoptic paths deleted) — both are verse-sibling asides
+  collapsed behind one shared per-verse toggle.
 - `app/main.js` reads `movements[]` as `{n, name, span, units}` (the
   `data/units.json` shape). `normalizeSectionHeadings()` dropped.
   **`hoistStructureBlocks()` skips `.notes` as well as `.legend`** — Joshua's
@@ -218,7 +219,12 @@ discourse layer (movements only), a Matthew-style book map.
 - `css/styles.css` — Joshua's own theme, not Matthew's: sun-bleached ground,
   clay (verse numbers, endnotes), bronze (headings, chrome), Jordan teal
   (placement). Cinzel display, Frank Ruhl Libre body. No `.compare`, no
-  Matthew-only components. `.echo` left out until wanted.
+  Matthew-only components. `aside.echo` (cross-book echo) built 2026-09-21,
+  before unit 2 — same shape as `.gloss` (verse sibling, never nested,
+  always closed), collapsed behind the same toggle in `app/spotlight.js`,
+  Jordan teal + "cf." prefix once open. `pipeline/unit_meta.check_echo()`
+  enforces the `data-anchor="C:V"` match and the nesting-depth check the
+  style reference calls for (§4, checklist 11).
 - Preview via `.claude/launch.json` (static file server).
 
 ## Repo layout

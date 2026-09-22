@@ -18,8 +18,7 @@
      .unit[data-unit="N"] [data-root="x"] { color: ... }
    Component vocabulary matches joshua_study_style_reference.md §4 exactly:
    mast, kicker, pericope, block, block.legend, block.notes, v, n, r, rl,
-   gloss, en. No .compare (Phase 2: no compare box) and no aside.echo yet
-   (§4: optional, unbuilt until a unit wants it).
+   gloss, en, aside.echo. No .compare (Phase 2: no compare box).
    ========================================================================== */
 
 :root {
@@ -333,6 +332,8 @@ sup.en a { border: none; }
 body.text-center .unit .v { text-align: center; padding-left: 0; text-indent: 0; }
 body.text-center .unit .v .n { display: inline; width: auto; margin-right: 4px; }
 .unit .gloss { display: block; text-indent: 0; margin: 3px 0 14px 0; padding: 6px 14px; border-left: 2px solid var(--rule); color: var(--ink-soft); font-style: italic; font-size: 15px; line-height: 1.5; }
+.unit aside.echo { display: block; text-indent: 0; margin: 3px 0 14px 0; padding: 6px 14px; border-left: 2px solid var(--accent-jordan); color: var(--ink-soft); font-size: 15px; line-height: 1.5; }
+.unit aside.echo::before { content: "cf. "; font-family: var(--display); font-weight: 600; font-style: normal; color: var(--accent-jordan); }
 .unit sup.en { font-size: .62em; font-style: normal; color: var(--accent-clay); font-weight: 700; vertical-align: super; line-height: 0; }
 
 /* ---- collapsed per-verse aside: light "note" (*) ---- */
@@ -363,6 +364,10 @@ body.text-center .unit .v .n { display: inline; width: auto; margin-right: 4px; 
 }
 .unit .verse-note .gloss { display: block; margin: 0; padding: 0; border: none; }
 .unit .verse-note .gloss + .gloss { margin-top: 8px; }
+.unit .verse-note aside.echo { display: block; margin: 0; padding-left: 14px; border: none; border-left: 2px solid var(--accent-jordan); }
+.unit .verse-note .gloss + aside.echo,
+.unit .verse-note aside.echo + .gloss,
+.unit .verse-note aside.echo + aside.echo { margin-top: 8px; }
 
 /* ---- root hover tip + click popover ---- */
 
