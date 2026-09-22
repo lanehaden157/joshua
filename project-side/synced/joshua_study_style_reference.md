@@ -193,11 +193,18 @@ only fills an existing one, and Matthew's unit 11 shipped with no colour key.**)
 
 Never hand-write swatches or `style="background:…"`.
 
-**`aside.echo`** — optional, unbuilt: cross-book echo (Deuteronomy command →
-Joshua fulfilment; conquest summary vs. Judges 1). `<aside class="echo"
-data-anchor="C:V">`, a verse sibling. Ship it only with its nesting-depth check.
+**`aside.echo`** — optional, built 2026-09-21 (Lane, before unit 2): cross-book
+echo (Deuteronomy command → Joshua fulfilment; conquest summary vs. Judges 1).
+`<aside class="echo" data-anchor="C:V">`, a verse sibling, same shape as
+`.gloss` (never nested, always closed) and collapsed behind the same per-verse
+`*` toggle (`app/spotlight.js`), distinguished once open by its "cf." prefix
+and Jordan-teal border rather than `.gloss`'s plain grey. `data-anchor` must
+match the `C:V` of the verse it's actually a sibling of — `pipeline/unit_meta.py`
+`check_echo()` enforces both that and the nesting-depth check.
 **(learned:** `67b2712` — asides spliced inside unclosed `.gloss` spans silently
-collapsed.**)**
+collapsed; `check_echo()`'s nesting check models exactly this failure mode,
+not a hypothetical one.**)** The CSS prepends "cf." — don't write it into the
+echo's own text, or it renders "cf. cf. Deut 27:2-4…".
 
 **Voice: no named commentators or resources, and no project-internal
 references, anywhere in fragment prose (Lane, 2026-09-17).** Not "Dozeman
@@ -285,7 +292,9 @@ sharing one id.
    This is a hard requirement on what ships, not on what you write.
 9. Legend present, stub or filled.
 10. Every pericope heading has its `· C:V` range.
-11. `.gloss` blocks are closed following siblings.
+11. `.gloss` and `aside.echo` blocks are closed following siblings, never
+    nested in each other; every `aside.echo` has a `data-anchor="C:V"`
+    matching the verse it follows.
 12. Every endnote `href` resolves to an `id` in the file.
 13. **Zero native Hebrew anywhere — attribute values included.**
 14. No inline `style`, no `--c-*` vars, no class the stylesheet doesn't know.
