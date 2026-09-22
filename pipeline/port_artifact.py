@@ -80,11 +80,36 @@ OUT = os.path.join(ROOT, "pipeline", "out")
 # desert/Jordan-valley palette (terracotta, bronze, olive, jordan-teal,
 # wine, umber), deliberately distinct from Matthew's crimson/gold well.
 # See css/styles.css's header comment for the shared theme this draws from.
+#
+# The first 20 are the original Phase-4 well (Lane, 2026-09-15) -- kept
+# fixed and first, since existing threads/roots reference these exact hex
+# values. Expanded to 65 on 2026-09-22 (Lane: "I'll need at least 60
+# colors") after promoting sole/lodge/fear exhausted the original 20 --
+# 15 tracked threads plus units 1+3's combined 18 local roots left almost
+# no room, and the fallback path was already producing near-duplicates
+# (one exact collision pre-existed: servant/devote both #8a2f3a). The
+# extra 45 are generated, not hand-picked (Lane: never manually decide
+# colors) -- Lab-space sampled within the same lightness/chroma band as
+# the original 20 (L* 25-56, chroma 14-42, matching the original's
+# measured range) so they stay in the same muted earth-tone family
+# rather than drifting into vivid/neon territory, filtered for
+# WCAG contrast >= 2.8 against both --bg and --panel (the original 20's
+# own worst-case contrast), and greedily accepted only when >= DE_MIN
+# CIEDE2000 from every colour already in the well. See
+# pipeline/test_port_artifact.py's WELL-integrity checks.
 WELL = [
     "#b1481f", "#2f5f6b", "#8c6d1f", "#55642f", "#6b3620", "#3d6b4a",
     "#7a3f5c", "#1f6e7a", "#9c5a1e", "#4a4f6b", "#8a2f3a", "#5c6b1f",
     "#2f4f7a", "#a67c1e", "#6b1e46", "#1e7a5c", "#8f4a1e", "#3f5c6b",
     "#7a5c1e", "#5c3f7a",
+    "#4f333c", "#4d362b", "#433a26", "#353e2a", "#20413b", "#243e4f",
+    "#423651", "#194423", "#53350e", "#403d06", "#005847", "#6f4946",
+    "#58563f", "#66513d", "#635164", "#006494", "#5a5a9c", "#7f5482",
+    "#945042", "#a24860", "#4d6f67", "#826269", "#5e6b82", "#786c56",
+    "#687059", "#876656", "#716889", "#00807c", "#007da2", "#496fb2",
+    "#557f44", "#aa5a88", "#a66566", "#5a8087", "#827b4a", "#8b6cae",
+    "#9c744c", "#b06a51", "#90778c", "#69866e", "#747da6", "#0091a1",
+    "#9d7c77", "#6887a1", "#27947c",
 ]
 
 
@@ -196,6 +221,31 @@ def assign_hues(local_roots, taken):
         out[name] = pick
         used.append(pick)
     return out
+
+
+def assign_tracked_colors(names):
+    """Colour(s) for NEWLY PROMOTED tracked threads, algorithmically (Lane,
+    2026-09-22: "I don't ever want to manually decide colors" -- this is
+    the tracked-thread counterpart to assign_hues(), which only ever
+    covered local roots; promotion had no automated colour path before).
+
+    A tracked thread can appear in any unit, so its colour must avoid
+    every OTHER tracked thread's colour (globally, always) and every
+    LOCAL root colour currently on record in data/units.json (globally,
+    conservatively -- cheaper and safer than trying to predict which
+    future units a thread's candidate refs will eventually touch).
+    Reads data/threads.json and data/units.json directly.
+    """
+    threads_json = um._load("threads.json")
+    units_json = um._load("units.json")
+    taken = [t["color"] for t in threads_json["threads"] if t.get("color")]
+    for u in units_json["units"]:
+        for name, r in (u.get("roots") or {}).items():
+            if name in names:
+                continue  # replacing a root's own prior local colour, if any
+            if isinstance(r, dict) and r.get("color"):
+                taken.append(r["color"])
+    return assign_hues(names, taken)
 
 
 # --------------------------------------------------------------- fragment build

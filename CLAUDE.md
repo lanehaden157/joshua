@@ -5,10 +5,12 @@ components, transliteration scheme, checklist) lives in
 `joshua_study_style_reference.md` and is authoritative over this file — this
 file points there rather than restating it.
 
-**State (2026-09-21):** Phases 0–5 done; units 1–2 built; 15 tracked threads
+**State (2026-09-22):** Phases 0–5 done; units 1–3 built; 18 tracked threads
 in `data/threads.json`/`data/roots.json` (every one carries an `echo`).
-`source-artifacts/` is current for both units: edit there and re-port rather
-than editing `units/` by hand.
+`source-artifacts/` is current for all three units: edit there and re-port
+rather than editing `units/` by hand. Tracked-thread colours are assigned
+algorithmically (`port_artifact.assign_tracked_colors()`), same as local
+roots — never hand-picked (Lane, 2026-09-22).
 
 ## Project documents
 
@@ -128,6 +130,15 @@ Claude decides whether a `threads.candidates[]` root becomes a tracked thread,
 tracked one that doesn't. Ask Lane only when genuinely unsure (unit 1: `kol`,
 236 occurrences, asked, kept local).
 
+Its colour comes from `port_artifact.assign_tracked_colors()` (Lane,
+2026-09-22: never hand-pick) — the tracked-thread counterpart to
+`assign_hues()`, checked against every other tracked colour plus every local
+root colour on record in `data/units.json`, globally. The `WELL` palette was
+expanded from 20 to 65 colours the same day promoting three threads at once
+exhausted the original well (see `pipeline/port_artifact.py`'s `WELL` comment
+for the generation method) — if it runs short again, expand it the same way
+rather than picking a colour by hand.
+
 Promotion makes every occurrence in every built unit require `data-w`. Existing
 artifacts usually already wrap the occurrences, so it's normally a
 `retrofit-tags.json` `retag` pass, not new tagging.
@@ -216,7 +227,10 @@ Deliberately slimmer than Matthew's:
 - Local roots get a colour from Joshua's own `WELL` palette via
   `assign_hues()` (CIE-Lab distance, avoiding the unit's other local hues and
   every tracked thread's colour). Tracked-thread colours live only in
-  `data/threads.json`, hand-authored.
+  `data/threads.json` — that file itself is still edited by hand (nothing
+  writes it automatically), but its colour *values* come from
+  `assign_tracked_colors()`, the same algorithm, never picked by eye
+  (Lane, 2026-09-22).
 - Retro entries are dry-checked via `apply_retrofit.FNS[op]` and merged into
   generated `pipeline/retro-tags.json`, separate from hand-authored
   `pipeline/retrofit-tags.json`.

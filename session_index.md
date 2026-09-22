@@ -49,3 +49,5 @@ Read this first. 3 lines max per session.
   See session_summary_2026-09-21c.md.
 - **2026-09-22**: Intertext pass. New `pipeline/canon_leads.py` (rare words + Torah-shared phrases per unit, whole Hebrew Bible, synced to the project, run by build.py).
   Chat-side instructions gain pass 3, an intertext ledger with rejected rows, reviewed by Lane before the artifact. Unit 1–2 echoes marked provisional until the project side runs it. See session_summary_2026-09-22.md.
+- **2026-09-22 (part 2)**: Unit 3 ported (Josh 3:1–4:24). Got all 8 artifact questions from Lane (chest not ark, "set yourselves apart", land not earth, y'all's possessives); widened `rest`/`strong` tracked threads onto real occurrences. Full build clean, browser-verified.
+- **2026-09-22 (part 3)**: Thread colours confirmed always-algorithmic (Lane). New `assign_tracked_colors()`; `WELL` palette expanded 20→65 (generated, not picked) after promotion exhausted it. Promoted sole/lodge/fear to tracked threads (18 total). Full build + tests clean.

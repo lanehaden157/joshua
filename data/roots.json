@@ -31,15 +31,17 @@
     },
     "rest": {
       "ids": [
-        "5117"
+        "5117",
+        "3240"
       ],
-      "note": "nuaḥ, Hiphil give rest. Only 3 occurrences in unit 1 but explicitly sets up the book's completion formula, restated at 21:44, 22:4, 23:1 -- small count, high thematic payoff."
+      "note": "nuaḥ, Hiphil give rest, plus 3240, the lexicon's separate number for the causative 'lay down/set down' at unit 3's 4:3, 4:8 -- the stones are set to rest exactly where the priests' feet came to rest (3:13). Widened 2026-09-22 (Lane). Sets up the book's completion formula, restated at 21:44, 22:4, 23:1."
     },
     "strong": {
       "ids": [
-        "2388"
+        "2388",
+        "2389"
       ],
-      "note": "ḥazaq, be strong. The 'be strong and be firm' refrain recurs at 10:25 and elsewhere; paired throughout with 'firm' (ʾamats)."
+      "note": "ḥazaq, be strong (verb) plus 2389, the adjective used at unit 3's 4:24 ('the hand of Yahweh, that it is strong'), echoing the exodus 'strong hand' formula. Widened 2026-09-22 (Lane). The 'be strong and be firm' refrain recurs at 10:25 and elsewhere; paired throughout with 'firm' (ʾamats)."
     },
     "firm": {
       "ids": [
@@ -95,6 +97,25 @@
         "7291"
       ],
       "note": "radaf, chase/pursue (Lane, 2026-09-21: promoted to a tracked thread). The king's chasers of 2:5-22 open it; it runs through the rout formulae (7:5; 8:16-24; 10:10, 19; 11:8), the blood-avenger who chases the manslayer (20:5), 'one of you chases a thousand' (23:10), and Egypt chasing the fathers to the Reed Sea (24:6)."
+    },
+    "sole": {
+      "ids": [
+        "3709"
+      ],
+      "note": "kap (regel), sole of the foot (Lane, 2026-09-22: promoted to a tracked thread, unit 3). Promised at 1:3 ('every place the sole of your foot treads'), made literal at 3:13 and 4:18, where soles touching and leaving the water start and stop the Jordan miracle. A phrase-level thread with a Torah history (Gen 8:9; Deut 11:24; 28:65)."
+    },
+    "lodge": {
+      "ids": [
+        "3885a",
+        "4411"
+      ],
+      "note": "lun (Niphal, spend the night) + malon (noun, lodging place) -- one root, both ids (Lane, 2026-09-22: promoted to a tracked thread, unit 3). Israel spends the night before each decisive move: the Jordan (3:1), the stones (4:3, 4:8), Jericho (6:11), Ai (8:9). Carries the Jacob echo (Gen 32)."
+    },
+    "fear": {
+      "ids": [
+        "3372"
+      ],
+      "note": "yareʾ, fear/stand in awe of (Lane, 2026-09-22: promoted to a tracked thread, unit 3). Israel fears Joshua as it feared Moses (4:14); the crossing is so that Israel fears Yahweh (4:24); 'do not fear' before battle (8:1; 10:8); 'fear Yahweh and serve him' at Shechem (24:14)."
     }
   },
   "declined": {

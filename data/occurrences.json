@@ -1052,5 +1052,532 @@
       ],
       "total": 5
     }
+  },
+  "unit-03": {
+    "arrayed": {
+      "count": 1,
+      "verses": [
+        12
+      ],
+      "hits": [
+        {
+          "v": 12,
+          "pre": "…the sons of Gad and the half-tribe of Manasseh crossed ",
+          "hit": "arrayed for battle",
+          "post": " before the sons of Israel, as Moses had spoken to them…"
+        }
+      ],
+      "total": 1
+    },
+    "cross": {
+      "count": 22,
+      "verses": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        22,
+        23
+      ],
+      "hits": [
+        {
+          "v": 1,
+          "pre": "…the sons of Israel, and they lodged there before they ",
+          "hit": "crossed",
+          "post": ".…"
+        },
+        {
+          "v": 2,
+          "pre": "…And it was, at the end of three days, the officers ",
+          "hit": "crossed",
+          "post": " through the middle of the camp…"
+        },
+        {
+          "v": 4,
+          "pre": "…may know the way y'all are to walk, for y'all have not ",
+          "hit": "crossed",
+          "post": " on this way yesterday or the day before.”…"
+        },
+        {
+          "v": 6,
+          "pre": "…e priests, saying, “Lift the chest of the covenant and ",
+          "hit": "cross",
+          "post": " before the people.” And they lifted the chest of the c…"
+        },
+        {
+          "v": 11,
+          "pre": "…e chest of the covenant of the Lord of all the land is ",
+          "hit": "crossing",
+          "post": " before y'all into the Jordan.…"
+        },
+        {
+          "v": 14,
+          "pre": "…nd it was, when the people set out from their tents to ",
+          "hit": "cross",
+          "post": " the Jordan, and the priests carrying the chest of the…"
+        },
+        {
+          "v": 16,
+          "pre": "…bah, the Salt Sea, were wholly cut off. And the people ",
+          "hit": "crossed",
+          "post": " opposite Jericho.…"
+        },
+        {
+          "v": 17,
+          "pre": "…ground in the middle of the Jordan, and all Israel was ",
+          "hit": "crossing",
+          "post": " on dry ground, until the whole nation had finished cro…"
+        },
+        {
+          "v": 17,
+          "pre": "…ground in the middle of the Jordan, and all Israel was ",
+          "hit": "crossing",
+          "post": " on dry ground, until the whole nation had finished cro…"
+        },
+        {
+          "v": 1,
+          "pre": "…And it was, when the whole nation had finished ",
+          "hit": "crossing",
+          "post": " the Jordan, that Yahweh said to Joshua, saying,…"
+        },
+        {
+          "v": 3,
+          "pre": "…iests' feet stood fixed, twelve stones, and bring them ",
+          "hit": "across",
+          "post": " with y'all, and lay them down in the lodging place whe…"
+        },
+        {
+          "v": 5,
+          "pre": "…And Joshua said to them, “",
+          "hit": "Cross",
+          "post": " before the chest of Yahweh y'all's God into the middle…"
+        },
+        {
+          "v": 7,
+          "pre": "…ff before the chest of the covenant of Yahweh. When it ",
+          "hit": "crossed",
+          "post": " into the Jordan, the waters of the Jordan were cut off…"
+        },
+        {
+          "v": 8,
+          "pre": "…he tribes of the sons of Israel, and they brought them ",
+          "hit": "across",
+          "post": " with them to the lodging place and laid them down ther…"
+        },
+        {
+          "v": 10,
+          "pre": "…hat Moses commanded Joshua. And the people hurried and ",
+          "hit": "crossed",
+          "post": ".…"
+        },
+        {
+          "v": 11,
+          "pre": "…And it was, when all the people had finished ",
+          "hit": "crossing",
+          "post": ", then the chest of Yahweh crossed, and the priests, be…"
+        },
+        {
+          "v": 11,
+          "pre": "…people had finished crossing, then the chest of Yahweh ",
+          "hit": "crossed",
+          "post": ", and the priests, before the people.…"
+        },
+        {
+          "v": 12,
+          "pre": "…ben and the sons of Gad and the half-tribe of Manasseh ",
+          "hit": "crossed",
+          "post": " arrayed for battle before the sons of Israel, as Moses…"
+        },
+        {
+          "v": 13,
+          "pre": "…About forty thousand equipped for war ",
+          "hit": "crossed",
+          "post": " before Yahweh for battle, to the plains of Jericho.…"
+        },
+        {
+          "v": 22,
+          "pre": "…let y'all's children know, saying, ‘On dry land Israel ",
+          "hit": "crossed",
+          "post": " this Jordan.’…"
+        },
+        {
+          "v": 23,
+          "pre": "…waters of the Jordan from before y'all until y'all had ",
+          "hit": "crossed",
+          "post": ", just as Yahweh y'all's God did to the Reed Sea, which…"
+        },
+        {
+          "v": 23,
+          "pre": "…waters of the Jordan from before y'all until y'all had ",
+          "hit": "crossed",
+          "post": ", just as Yahweh y'all's God did to the Reed Sea, which…"
+        }
+      ],
+      "total": 22
+    },
+    "dry-ground": {
+      "count": 3,
+      "verses": [
+        17,
+        18
+      ],
+      "hits": [
+        {
+          "v": 17,
+          "pre": "…ing the chest of the covenant of Yahweh stood fixed on ",
+          "hit": "dry ground",
+          "post": " in the middle of the Jordan, and all Israel was crossi…"
+        },
+        {
+          "v": 17,
+          "pre": "…ing the chest of the covenant of Yahweh stood fixed on ",
+          "hit": "dry ground",
+          "post": " in the middle of the Jordan, and all Israel was crossi…"
+        },
+        {
+          "v": 18,
+          "pre": "…the soles of the priests' feet were pulled up onto the ",
+          "hit": "dry ground",
+          "post": ", that the waters of the Jordan returned to their place…"
+        }
+      ],
+      "total": 4
+    },
+    "dry-land": {
+      "count": 3,
+      "verses": [
+        22,
+        23
+      ],
+      "hits": [
+        {
+          "v": 22,
+          "pre": "…hen y'all shall let y'all's children know, saying, ‘On ",
+          "hit": "dry land",
+          "post": " Israel crossed this Jordan.’…"
+        },
+        {
+          "v": 23,
+          "pre": "…For Yahweh y'all's God ",
+          "hit": "dried up",
+          "post": " the waters of the Jordan from before y'all until y'all…"
+        },
+        {
+          "v": 23,
+          "pre": "…For Yahweh y'all's God ",
+          "hit": "dried up",
+          "post": " the waters of the Jordan from before y'all until y'all…"
+        }
+      ],
+      "total": 4
+    },
+    "fear": {
+      "count": 3,
+      "verses": [
+        14,
+        24
+      ],
+      "hits": [
+        {
+          "v": 14,
+          "pre": "…made Joshua great in the eyes of all Israel, and they ",
+          "hit": "feared",
+          "post": " him as they had feared Moses, all the days of his life…"
+        },
+        {
+          "v": 14,
+          "pre": "…made Joshua great in the eyes of all Israel, and they ",
+          "hit": "feared",
+          "post": " him as they had feared Moses, all the days of his life…"
+        },
+        {
+          "v": 24,
+          "pre": "…e hand of Yahweh, that it is strong, so that y'all may ",
+          "hit": "fear",
+          "post": " Yahweh y'all's God all the days.”…"
+        }
+      ],
+      "total": 3
+    },
+    "fixed": {
+      "count": 3,
+      "verses": [
+        3,
+        4,
+        17
+      ],
+      "hits": [
+        {
+          "v": 17,
+          "pre": "…sts carrying the chest of the covenant of Yahweh stood ",
+          "hit": "fixed",
+          "post": " on dry ground in the middle of the Jordan, and all Isr…"
+        },
+        {
+          "v": 3,
+          "pre": "…he Jordan, from the spot where the priests' feet stood ",
+          "hit": "fixed",
+          "post": ", twelve stones, and bring them across with y'all, and…"
+        },
+        {
+          "v": 4,
+          "pre": "…And Joshua called the twelve men whom he had ",
+          "hit": "fixed on",
+          "post": " from the sons of Israel, one man, one man from each tr…"
+        }
+      ],
+      "total": 3
+    },
+    "great": {
+      "count": 2,
+      "verses": [
+        7,
+        14
+      ],
+      "hits": [
+        {
+          "v": 7,
+          "pre": "…And Yahweh said to Joshua, “This day I will begin to ",
+          "hit": "make you great",
+          "post": " in the eyes of all Israel, so that they may know that…"
+        },
+        {
+          "v": 14,
+          "pre": "…On that day Yahweh made Joshua ",
+          "hit": "great",
+          "post": " in the eyes of all Israel, and they feared him as they…"
+        }
+      ],
+      "total": 3
+    },
+    "heap": {
+      "count": 2,
+      "verses": [
+        13,
+        16
+      ],
+      "hits": [
+        {
+          "v": 13,
+          "pre": "…aters coming down from above, and they will stand, one ",
+          "hit": "heap",
+          "post": ".”…"
+        },
+        {
+          "v": 16,
+          "pre": "…waters coming down from above stood. They rose up, one ",
+          "hit": "heap",
+          "post": ", very far off, at Adam, the city beside Zarethan, and…"
+        }
+      ],
+      "total": 3
+    },
+    "holy": {
+      "count": 1,
+      "verses": [
+        5
+      ],
+      "hits": [
+        {
+          "v": 5,
+          "pre": "…And Joshua said to the people, “",
+          "hit": "Set yourselves apart",
+          "post": ", for tomorrow Yahweh will do wonders among y'all.”…"
+        }
+      ],
+      "total": 2
+    },
+    "land": {
+      "count": 3,
+      "verses": [
+        11,
+        13,
+        24
+      ],
+      "hits": [
+        {
+          "v": 11,
+          "pre": "…Look! The chest of the covenant of the Lord of all the ",
+          "hit": "land",
+          "post": " is crossing before y'all into the Jordan.…"
+        },
+        {
+          "v": 13,
+          "pre": "…priests carrying the chest of Yahweh, Lord of all the ",
+          "hit": "land",
+          "post": ", come to rest in the waters of the Jordan, the waters…"
+        },
+        {
+          "v": 24,
+          "pre": "…so that all the peoples of the ",
+          "hit": "land",
+          "post": " may know the hand of Yahweh, that it is strong, so tha…"
+        }
+      ],
+      "total": 4
+    },
+    "living": {
+      "count": 1,
+      "verses": [
+        10
+      ],
+      "hits": [
+        {
+          "v": 10,
+          "pre": "…And Joshua said, “By this y'all shall know that a ",
+          "hit": "living",
+          "post": " God is among y'all, and that he will dispossess, yes d…"
+        }
+      ],
+      "total": 2
+    },
+    "lodge": {
+      "count": 4,
+      "verses": [
+        1,
+        3,
+        8
+      ],
+      "hits": [
+        {
+          "v": 1,
+          "pre": "…to the Jordan, he and all the sons of Israel, and they ",
+          "hit": "lodged",
+          "post": " there before they crossed.…"
+        },
+        {
+          "v": 3,
+          "pre": "…bring them across with y'all, and lay them down in the ",
+          "hit": "lodging place",
+          "post": " where y'all lodge tonight.’”…"
+        },
+        {
+          "v": 3,
+          "pre": "…ll, and lay them down in the lodging place where y'all ",
+          "hit": "lodge",
+          "post": " tonight.’”…"
+        },
+        {
+          "v": 8,
+          "pre": "…Israel, and they brought them across with them to the ",
+          "hit": "lodging place",
+          "post": " and laid them down there.…"
+        }
+      ],
+      "total": 5
+    },
+    "possess": {
+      "count": 2,
+      "verses": [
+        10
+      ],
+      "hits": [
+        {
+          "v": 10,
+          "pre": "…now that a living God is among y'all, and that he will ",
+          "hit": "dispossess",
+          "post": ", yes dispossess, from before y'all the Canaanite and t…"
+        },
+        {
+          "v": 10,
+          "pre": "…now that a living God is among y'all, and that he will ",
+          "hit": "dispossess",
+          "post": ", yes dispossess, from before y'all the Canaanite and t…"
+        }
+      ],
+      "total": 3
+    },
+    "rest": {
+      "count": 3,
+      "verses": [
+        3,
+        8,
+        13
+      ],
+      "hits": [
+        {
+          "v": 13,
+          "pre": "…ts carrying the chest of Yahweh, Lord of all the land, ",
+          "hit": "come to rest",
+          "post": " in the waters of the Jordan, the waters of the Jordan…"
+        },
+        {
+          "v": 3,
+          "pre": "…, twelve stones, and bring them across with y'all, and ",
+          "hit": "lay them down",
+          "post": " in the lodging place where y'all lodge tonight.’”…"
+        },
+        {
+          "v": 8,
+          "pre": "…brought them across with them to the lodging place and ",
+          "hit": "laid them down",
+          "post": " there.…"
+        }
+      ],
+      "total": 5
+    },
+    "shittim": {
+      "count": 1,
+      "verses": [
+        1
+      ],
+      "hits": [
+        {
+          "v": 1,
+          "pre": "…oshua rose early in the morning, and they set out from ",
+          "hit": "Shittim",
+          "post": " and came to the Jordan, he and all the sons of Israel,…"
+        }
+      ],
+      "total": 1
+    },
+    "sole": {
+      "count": 2,
+      "verses": [
+        13,
+        18
+      ],
+      "hits": [
+        {
+          "v": 13,
+          "pre": "…And it will be, when the ",
+          "hit": "soles",
+          "post": " of the feet of the priests carrying the chest of Yahwe…"
+        },
+        {
+          "v": 18,
+          "pre": "…Yahweh came up from the middle of the Jordan, and the ",
+          "hit": "soles",
+          "post": " of the priests' feet were pulled up onto the dry groun…"
+        }
+      ],
+      "total": 3
+    },
+    "strong": {
+      "count": 1,
+      "verses": [
+        24
+      ],
+      "hits": [
+        {
+          "v": 24,
+          "pre": "…es of the land may know the hand of Yahweh, that it is ",
+          "hit": "strong",
+          "post": ", so that y'all may fear Yahweh y'all's God all the day…"
+        }
+      ],
+      "total": 2
+    }
   }
 }

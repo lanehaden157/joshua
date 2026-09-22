@@ -53,6 +53,11 @@
           "unit": 2,
           "ref": "2:23",
           "note": "Two men cross the Jordan ahead of the nation — a small, secret crossing before the great public one of unit 3."
+        },
+        {
+          "unit": 3,
+          "ref": "3:17",
+          "note": "The book's first command, 'cross over' (1:2), is carried out: the whole nation finishes crossing the Jordan."
         }
       ],
       "note": "the book's first command, qum ʿavor 'rise, cross' (1:2), relayed down the chain (1:11); ʿever 'far side' marks the eastern tribes as people of the other bank. One root, both ids.",
@@ -71,7 +76,13 @@
         "ref": "1:11",
         "note": "Qal yarash 'possess' only in unit 1; the Hiphil 'drive out' arrives later in the book — the stem split is the thread."
       },
-      "payoffs": [],
+      "payoffs": [
+        {
+          "unit": 3,
+          "ref": "3:10",
+          "note": "The causative stem arrives: not 'take possession' but 'dispossess.' The same root now names what happens to the land's peoples."
+        }
+      ],
       "note": "Qal yarash 'possess' only in unit 1; the Hiphil 'drive out' arrives later in the book — the stem split is the thread.",
       "echo": "Gen 15:7 — 'to give you this land to possess it,' to Abraham; Deut 1:8 — 'go in and possess the land.'"
     },
@@ -96,7 +107,7 @@
       "id": "rest",
       "root": "rest",
       "translit": "nuaḥ",
-      "gloss": "give rest",
+      "gloss": "give rest; lay/set down (causative)",
       "color": "#6b3620",
       "status": "open",
       "tagged": true,
@@ -105,15 +116,21 @@
         "ref": "1:13",
         "note": "meniaḥ 'giving rest' (1:13) and yaniaḥ (1:15) set up the book's completion formula (21:44, 22:4, 23:1)."
       },
-      "payoffs": [],
-      "note": "meniaḥ 'giving rest' (1:13) and yaniaḥ (1:15) set up the book's completion formula (21:44, 22:4, 23:1).",
+      "payoffs": [
+        {
+          "unit": 3,
+          "ref": "3:13",
+          "note": "The rest promised in 1:13 first appears as a footstep: the priests' soles come to rest in the river, and the river stops."
+        }
+      ],
+      "note": "meniaḥ 'giving rest' (1:13) and yaniaḥ (1:15) set up the book's completion formula (21:44, 22:4, 23:1). Widened 2026-09-22 (Lane) to include 3240, the lexicon's separate number for the causative 'lay down' at 4:3, 4:8 — the stones set down exactly where the feet came to rest.",
       "echo": "Gen 8:4, 9 — the ark comes to rest (nuaḥ), and the dove finds no resting place; Deut 12:9–10 — rest promised as the goal of the land. Heb 4:8 — 'if Joshua had given them rest, God would not speak of another day.'"
     },
     {
       "id": "strong",
       "root": "strong",
       "translit": "ḥazaq",
-      "gloss": "be strong",
+      "gloss": "be strong; strong (adjective)",
       "color": "#3d6b4a",
       "status": "open",
       "tagged": true,
@@ -122,8 +139,14 @@
         "ref": "1:6",
         "note": "ḥazaq ×4 — three times from Yahweh, the last time from the eastern tribes (1:18); recurs at 10:25."
       },
-      "payoffs": [],
-      "note": "ḥazaq ×4 — three times from Yahweh, the last time from the eastern tribes (1:18); recurs at 10:25.",
+      "payoffs": [
+        {
+          "unit": 3,
+          "ref": "4:24",
+          "note": "'The hand of Yahweh, that it is strong' — the adjective, echoing the exodus 'strong hand' formula, widened onto the same thread as the verb."
+        }
+      ],
+      "note": "ḥazaq ×4 — three times from Yahweh, the last time from the eastern tribes (1:18); recurs at 10:25. Widened 2026-09-22 (Lane) to include 2389, the adjective used at 4:24.",
       "echo": "Deut 31:6–7, 23 — 'be strong and be firm' is Moses' charge to Israel and to Joshua, then Yahweh's, before Joshua 1 repeats it."
     },
     {
@@ -284,6 +307,74 @@
       "payoffs": [],
       "echo": "Exod 14:8–9 — Pharaoh chased after the sons of Israel to the sea; Josh 24:6 remembers it. Deut 32:30 — 'how could one chase a thousand?', turned into promise at Josh 23:10.",
       "note": "Chasing: Jericho's decoy chase (2:5–22) turns into Israel's own routs (7:5, where Israel is the one chased; 8:16–24; 10:10, 19; 11:8), the blood-avenger who chases the manslayer to a city of refuge (20:5), 'one of you chases a thousand' (23:10), and Egypt chasing the fathers to the Reed Sea (24:6)."
+    },
+    {
+      "id": "sole",
+      "root": "sole",
+      "translit": "kap",
+      "gloss": "palm of the hand; sole of the foot",
+      "color": "#4f333c",
+      "status": "open",
+      "tagged": true,
+      "opens": {
+        "unit": 1,
+        "ref": "1:3",
+        "note": "'every place the sole of y'all's foot treads, to y'all I have given it' — the promise is a footstep, before any crossing has happened."
+      },
+      "payoffs": [
+        {
+          "unit": 3,
+          "ref": "3:13",
+          "note": "The promise turns literal: the priests' soles come to rest in the river, and the Jordan itself stops."
+        },
+        {
+          "unit": 3,
+          "ref": "4:18",
+          "note": "A sole lifted lets the river go — the same word starts and stops the miracle."
+        }
+      ],
+      "note": "kap regel, 'sole of the foot': promised at 1:3 ('every place the sole of your foot treads'), made literal at 3:13 and 4:18, where soles touching and leaving the water start and stop the miracle. Promoted to a tracked thread 2026-09-22 (Lane, unit 3) — a phrase-level thread with a Torah history.",
+      "echo": "Gen 8:9 — the dove found no resting place for the sole of its foot (manoaḥ, the root of 'rest' at 1:13); Deut 11:24 repeats the promise nearly word for word; Deut 28:65 turns the same words into exile's curse. Here every place the sole treads is given, and at the Jordan a sole coming to rest is what stops the water."
+    },
+    {
+      "id": "lodge",
+      "root": "lodge",
+      "translit": "lun",
+      "gloss": "spend the night; lodging place",
+      "color": "#4d362b",
+      "status": "open",
+      "tagged": true,
+      "opens": {
+        "unit": 3,
+        "ref": "3:1",
+        "note": "Israel lodges on the east bank of the Jordan before crossing — the first of the book's decisive overnight camps."
+      },
+      "payoffs": [],
+      "note": "lun, 'lodge the night', with malon 'lodging place': Israel spends the night before each decisive move (the Jordan 3:1, the stones 4:3, 4:8, Jericho 6:11, Ai 8:9). Promoted to a tracked thread 2026-09-22 (Lane, unit 3).",
+      "echo": "Gen 32:13, 21–22 — Jacob lodges the night in camp, then crosses the ford of the Jabbok and comes out of the night named Israel. Here Israel lodges on both sides of its own crossing."
+    },
+    {
+      "id": "fear",
+      "root": "fear",
+      "translit": "yareʾ",
+      "gloss": "fear, stand in awe of",
+      "color": "#433a26",
+      "status": "open",
+      "tagged": true,
+      "opens": {
+        "unit": 3,
+        "ref": "4:14",
+        "note": "Israel fears Joshua on the day Yahweh makes him great — the same fear it had for Moses."
+      },
+      "payoffs": [
+        {
+          "unit": 3,
+          "ref": "4:24",
+          "note": "The crossing's stated purpose: so that all the peoples of the land know Yahweh's strong hand, and so that Israel fears Yahweh — the fear of the leader widens to fear of Yahweh himself."
+        }
+      ],
+      "note": "yareʾ: Israel fears Joshua as it feared Moses (4:14); the crossing is so that Israel fears Yahweh (4:24); 'do not fear' before battle (8:1; 10:8); 'fear Yahweh and serve him' at Shechem (24:14). Promoted to a tracked thread 2026-09-22 (Lane, unit 3).",
+      "echo": "Deut 31:6, 8 — 'do not fear or be in dread... Yahweh himself goes before you,' Moses' charge before the crossing, the same passage already behind the strong/firm thread, extended here to fear."
     }
   ]
 }
