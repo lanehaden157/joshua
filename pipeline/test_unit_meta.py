@@ -136,6 +136,49 @@ def test_candidates_missing_why_fails():
            any("why" in e for e in errs), errs)
 
 
+# --------------------------------------------------------------- questions
+
+def test_questions_clean_entry_passes():
+    meta = _meta(questions=[{"topic": "ḥerem rendering",
+                              "note": "devoted to destruction vs. transliterated?",
+                              "options": ["devoted to destruction", "ḥerem, glossed"]}])
+    errs = um.validate(meta)
+    _check("a well-formed questions[] entry should not fail",
+           not errs, errs)
+
+
+def test_questions_missing_topic_fails():
+    meta = _meta(questions=[{"note": "which rendering?"}])  # no topic
+    errs = um.validate(meta)
+    _check("questions[] entry missing 'topic' must fail",
+           any("questions[0]" in e and "topic" in e for e in errs), errs)
+
+
+def test_questions_missing_note_fails():
+    meta = _meta(questions=[{"topic": "ḥerem rendering"}])  # no note
+    errs = um.validate(meta)
+    _check("questions[] entry missing 'note' must fail",
+           any("questions[0]" in e and "note" in e for e in errs), errs)
+
+
+def test_questions_options_must_be_string_list():
+    meta = _meta(questions=[{"topic": "x", "note": "y", "options": "not a list"}])
+    errs = um.validate(meta)
+    _check("questions[] 'options' must be a list of strings",
+           any("options" in e for e in errs), errs)
+
+
+def test_questions_is_dropped_by_generate():
+    """questions[] is consumed at port time and never re-emitted -- a
+    regenerated fragment should carry none, same as candidates/retro."""
+    units_json = {"units": [{"n": 1, "slug": "unit-01", "passage": "Joshua 1:1-18",
+                              "title": "Commission", "movement": 1, "roots": {}}]}
+    threads_json = {"threads": []}
+    meta = um.generate(1, units_json=units_json, threads_json=threads_json)
+    _check("generate() never adds a 'questions' key",
+           "questions" not in meta, meta)
+
+
 def test_candidates_stems_exclude_rejected():
     meta = _meta(threads={**_EMPTY_THREADS,
                           "candidates": [{"root": "give", "why": "testing",

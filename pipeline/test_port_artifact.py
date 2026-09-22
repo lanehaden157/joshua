@@ -253,6 +253,40 @@ def test_thread_delta_reports_coverage_and_candidate():
                "unit-05" in delta and "devote" in delta, delta)
 
 
+def test_thread_delta_reports_open_questions():
+    with _ScratchProject() as sp:
+        meta = {
+            "unit": 6, "slug": "unit-06", "passage": "Joshua 6:1-27",
+            "title": "Jericho", "roots": [],
+            "threads": {"opens": [], "payoffs": [], "candidates": [], "retro": []},
+            "questions": [{"topic": "ḥerem rendering",
+                           "note": "devoted to destruction, or transliterated?",
+                           "options": ["devoted to destruction", "ḥerem, glossed"]}],
+        }
+        path = pa.thread_delta(meta)
+        delta = open(path, encoding="utf-8").read()
+        _check("thread delta should have an open-questions section",
+               "## Open questions for Lane" in delta, delta)
+        _check("thread delta should report the topic",
+               "ḥerem rendering" in delta, delta)
+        _check("thread delta should report the options",
+               "devoted to destruction" in delta and "ḥerem, glossed" in delta, delta)
+
+
+def test_print_questions_writes_to_stdout():
+    import io
+    import contextlib
+    meta = {"questions": [{"topic": "Yam Suf",
+                            "note": "Reed Sea or Red Sea?",
+                            "options": ["Reed Sea", "Red Sea"]}]}
+    buf = io.StringIO()
+    with contextlib.redirect_stdout(buf):
+        pa.print_questions(meta)
+    out = buf.getvalue()
+    _check("print_questions should print the topic and note to stdout",
+           "Yam Suf" in out and "Reed Sea or Red Sea?" in out, out)
+
+
 def test_missing_meta_block_is_a_hard_error():
     with _ScratchProject() as sp:
         open(os.path.join(sp.src, "joshua_07_translation.html"), "w",

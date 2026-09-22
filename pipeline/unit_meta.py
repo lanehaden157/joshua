@@ -51,6 +51,21 @@ Shape (style reference §3):
              All of opens/payoffs/candidates/retro are consumed by the
              porter and dropped — generate() rebuilds the block from the
              data files, so none of this reaches the rendered page.
+  questions  [ {topic, note, options?} ]
+             Wording/data calls that only Lane can make, surfaced by the
+             chat side instead of asked there (2026-09-21, Lane: those
+             questions were landing on the project side, which he doesn't
+             want to answer on — he wants them presented here, in Claude
+             Code, at port time). `topic` is a short label (an AskUserQuestion
+             header, effectively); `note` is the actual question with enough
+             context to answer without re-deriving it; `options` is an
+             optional list of short candidate answers. Same no-names voice
+             rule as fragment prose (style reference §4) — describe the
+             choice, don't cite who raised it. Consumed and dropped exactly
+             like candidates/retro: the porter prints each one and folds it
+             into the thread-delta report so the person running the port
+             sees it and can ask Lane directly; generate() never re-adds
+             this key, so a regenerated fragment carries none.
 
 ALLOWED_TOP_LEVEL_KEYS below is the complete, closed set of authorable
 top-level keys -- `descriptor`/`discourse` are NOT in it (style reference
@@ -138,6 +153,7 @@ REQUIRED = ("unit", "passage", "title", "roots", "threads")
 # key and having it silently pass.
 ALLOWED_TOP_LEVEL_KEYS = {
     "unit", "slug", "passage", "title", "movement", "roots", "threads",
+    "questions",
 }
 
 # threads must carry all four of these, each a list (style reference §3).
@@ -235,6 +251,21 @@ def validate(meta, threads_json=None):
                     isinstance(x, str) and _REF_RE.match(x) for x in c["refs"]):
                 errs.append(f"{where}: 'refs' must be a list of 'C:V' strings "
                             f"(e.g. '6:5')")
+
+    for i, q in enumerate(meta.get("questions", []) or []):
+        where = f"questions[{i}]"
+        if not q.get("topic"):
+            errs.append(f"{where}: missing 'topic'")
+        elif not isinstance(q["topic"], str):
+            errs.append(f"{where}: 'topic' must be a string")
+        if not q.get("note"):
+            errs.append(f"{where}: missing 'note'")
+        elif not isinstance(q["note"], str):
+            errs.append(f"{where}: 'note' must be a string")
+        if "options" in q:
+            if not isinstance(q["options"], list) or not all(
+                    isinstance(x, str) for x in q["options"]):
+                errs.append(f"{where}: 'options' must be a list of strings")
 
     if threads_json is not None:
         ids = {t["id"] for t in threads_json["threads"]}

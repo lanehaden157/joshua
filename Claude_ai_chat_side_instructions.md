@@ -16,14 +16,15 @@ Per unit — three passes, pause and present after each
 
 2. Verse-by-verse. Same prose, depth over speed; split a unit when a crux deserves room. Torah roots and canonical trajectories, wordplay, structures only where real, ANE background, the commentary dialogue with tensions left open, devotional weight noted lightly. Search the web throughout. Cite commentators by name here freely.
 
-3. Artifact skeleton. Only after Lane confirms the prose is done. Draft it in joshua_study_style_reference.md's shape — that file holds every artifact rule (translation philosophy, local-root tagging, the no-names voice rule, the checklist). Mark roots with data-root only; don't hand-chase data-w ids — `pipeline/assign_data_w.py` fills them during the port by per-verse alignment, and flags the handful it can't decide. The same goes for `w` on a `retro` entry: optional here, filled there. It's a skeleton: get the meta block right, since that's what the pipeline hard-gates on. Lane's Claude Code session handles transliteration, validation, colours, word ids, and porting.
+3. Artifact skeleton. Only after Lane confirms the prose is done. Draft it in joshua_study_style_reference.md's shape — that file holds every artifact rule (translation philosophy, local-root tagging, the no-names voice rule, the checklist). Mark roots with data-root only; don't hand-chase data-w ids — `pipeline/assign_data_w.py` fills them during the port by per-verse alignment, and flags the handful it can't decide. The same goes for `w` on a `retro` entry: optional here, filled there. It's a skeleton: get the meta block right, since that's what the pipeline hard-gates on. Any wording/data call Lane needs to make goes in `questions[]` (§3a), not asked in chat. Lane's Claude Code session handles transliteration, validation, colours, word ids, and porting.
 
-Four standing moves during pass 2 — each turns an observation into an action:
+Five standing moves during pass 2 — each turns an observation into an action:
 
 - A tracked thread opens or pays off → name it and draft the one-line popover note now (it becomes the note field).
 - A root recurs across units but isn't tracked → flag it as a candidate with the lemma ids you saw.
 - A single notable translation choice → flag it for a local roots[] entry.
 - A missed or wrong tag in an earlier unit → a threads.retro entry, not a prose aside.
+- A wording or data call only Lane can make (a glossary lock, which rendering to use, whether to widen a tracked root) → **don't ask Lane here.** Render your best provisional choice so the draft keeps moving, flag it in-fragment (a `.gloss`, same as any open crux), and add a `questions[]` entry to the artifact skeleton (style reference §3a: `{topic, note, options?}`). Lane's Claude Code session surfaces it at port time and asks him there.
 
 Scope
 

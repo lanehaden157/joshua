@@ -17,6 +17,10 @@ Pipeline for a new unit N:
      - opens/payoffs that need a tagged/status flip
      - new-thread candidates, each with an id-set preview (data/roots.json
        shape) so Lane can review coverage before committing an id set
+     - open questions (meta.questions[]) -- wording/data calls only Lane can
+       make, also printed straight to stdout so whoever's running the port
+       sees them immediately and can ask Lane right here instead of the
+       chat side asking on the project side (2026-09-21)
      - fragment-structure findings, from unit_meta.validate_fragment() --
        reported, not a hard gate (the port still writes the fragment for
        review; only the meta-dict validation blocks the write)
@@ -340,6 +344,14 @@ def thread_delta(meta, fragment_html=None, retrofit_applied=True):
                              "(review A13).")
             _append_candidate_preview(lines, root, c)
 
+    questions = meta.get("questions", []) or []
+    if questions:
+        lines += ["", "## Open questions for Lane", ""]
+        for q in questions:
+            lines.append(f"- **{q.get('topic', '?')}** — {q.get('note', '').strip()}")
+            for opt in q.get("options", []) or []:
+                lines.append(f"    - {opt}")
+
     retro = th.get("retro", []) or []
     if retro:
         lines += ["", "## Retro fixes for earlier units", "",
@@ -358,9 +370,9 @@ def thread_delta(meta, fragment_html=None, retrofit_applied=True):
         _append_coverage(lines, slug, fragment_html, meta.get("passage", ""),
                          retrofit_applied)
 
-    if not touched and not cands and not retro:
+    if not touched and not cands and not retro and not questions:
         lines.append("_no tracked threads opened or paid off in this unit, "
-                     "no candidates, no retro fixes._")
+                     "no candidates, no retro fixes, no open questions._")
 
     os.makedirs(OUT, exist_ok=True)
     path = os.path.join(OUT, f"thread-delta-{n:02d}.md")
@@ -543,6 +555,25 @@ def run_retrofit_and_scan():
 
 # --------------------------------------------------------------- commands
 
+def print_questions(meta):
+    """Wording/data calls the chat side flagged for Lane (meta.questions[]) --
+    printed straight to stdout, at the top of the port, so whoever is
+    running port_artifact.py sees them immediately and can ask Lane right
+    here instead of the chat side asking on the project side (2026-09-21,
+    Lane: 'i dont wanna be answering those on project side'). Also folded
+    into the thread-delta report by thread_delta() for the written record,
+    but this is the copy meant to actually get read."""
+    questions = meta.get("questions", []) or []
+    if not questions:
+        return
+    print("")
+    print(f"=== {len(questions)} open question(s) for Lane ===")
+    for q in questions:
+        print(f"  [{q.get('topic', '?')}] {q.get('note', '').strip()}")
+        for opt in q.get("options", []) or []:
+            print(f"      - {opt}")
+
+
 def port_one(n, dry, src=None):
     os.makedirs(OUT, exist_ok=True)
     if src:
@@ -567,6 +598,8 @@ def port_one(n, dry, src=None):
         for e in errs:
             print("  -", e)
         sys.exit(1)
+
+    print_questions(meta)
 
     fragment = to_fragment(raw, n)
 
