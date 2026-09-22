@@ -68,37 +68,13 @@
       "roots": {
         "command": {
           "color": "#9c5a1e",
-          "translit": "tsawah",
-          "gloss": "command, give orders"
+          "translit": "tsawah · wayetsaw · tsiwwah",
+          "gloss": "Piel: command, give orders"
         },
         "listen": {
           "color": "#5c3f7a",
-          "translit": "shamaʿ",
-          "gloss": "listen to, heed, obey"
-        },
-        "insight": {
-          "color": "#4a4f6b",
-          "translit": "sakal",
-          "gloss": "have understanding, act wisely",
-          "example": "so that you may act with insight wherever you go (1:7)"
-        },
-        "murmur": {
-          "color": "#2f4f7a",
-          "translit": "hagah",
-          "gloss": "read or recite aloud in a low voice, mutter",
-          "example": "you shall murmur it day and night (1:8)"
-        },
-        "shatter": {
-          "color": "#a67c1e",
-          "translit": "ḥatat",
-          "gloss": "be shattered, lose courage, be dismayed",
-          "example": "do not tremble and do not shatter (1:9)"
-        },
-        "valor": {
-          "color": "#7a5c1e",
-          "translit": "gibbor ḥayil",
-          "gloss": "mighty man, man of strength — a stock military phrase",
-          "example": "every mighty man of valor (1:14)"
+          "translit": "shamaʿ · nishmaʿ",
+          "gloss": "Qal: listen to, heed, obey"
         }
       }
     },
@@ -108,7 +84,54 @@
       "passage": "Joshua 2:1–24",
       "title": "Rahab and the Spies",
       "movement": 1,
-      "built": false
+      "built": true,
+      "roots": {
+        "enter": {
+          "color": "#55642f",
+          "translit": "boʾ",
+          "gloss": "come, come in, enter"
+        },
+        "lie-down": {
+          "color": "#6b3620",
+          "translit": "shakav",
+          "gloss": "lie down"
+        },
+        "dig": {
+          "color": "#7a3f5c",
+          "translit": "ḥafar",
+          "gloss": "dig; search out"
+        },
+        "rahab": {
+          "color": "#9c5a1e",
+          "translit": "Raḥav",
+          "gloss": "wide, spacious — the name Rahab"
+        },
+        "soften": {
+          "color": "#7a5c1e",
+          "translit": "mug",
+          "gloss": "go soft, dissolve (with fear)"
+        },
+        "hesed": {
+          "color": "#5c3f7a",
+          "translit": "ḥesed",
+          "gloss": "loyalty that binds both parties; kindness owed and kept"
+        },
+        "clear": {
+          "color": "#6b1e46",
+          "translit": "naqi",
+          "gloss": "clear, innocent, released from an obligation"
+        },
+        "cord": {
+          "color": "#3d6b4a",
+          "translit": "tiqvah",
+          "gloss": "cord; hope"
+        },
+        "find": {
+          "color": "#8c6d1f",
+          "translit": "matsaʾ",
+          "gloss": "find; befall"
+        }
+      }
     },
     {
       "n": 3,

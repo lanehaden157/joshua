@@ -1,7 +1,7 @@
 """Tests for assign_data_w.py.
 
 The headline test is the round-trip: strip every data-w from the one
-hand-tagged unit on disk and prove the assigner puts all 38 back
+hand-tagged unit on disk and prove the assigner puts all of them back
 byte-identically. That is the whole claim of the script -- it reproduces
 hand work -- so it is checked against real data, not a fixture.
 
@@ -51,8 +51,9 @@ def test_round_trip_reproduces_hand_tagging():
     after = atc.parse_tagged_spans(rebuilt)
     _check("every span's (root, word_id) matches the original",
            before == after)
-    _check("all 38 tracked spans were assigned",
-           len([w for _, w in after if w]) == 38,
+    expected = orig.count('data-w="')
+    _check("every tracked span was assigned",
+           len([w for _, w in after if w]) == expected,
            len([w for _, w in after if w]))
 
 

@@ -317,6 +317,15 @@
       "w": "06oiy"
     }
   ],
+  "add": [
+    {
+      "unit": "unit-01",
+      "verse": 6,
+      "root": "swear",
+      "text": "swore",
+      "w": "06LJh"
+    }
+  ],
   "text": [
     {
       "unit": "unit-01",

@@ -15,7 +15,18 @@
         "ref": "1:2",
         "note": "natan ×8 in unit 1's speeches; Yahweh 'is giving' (participle) vs. 'Moses gave' (perfect) — the land as gift, already done and not yet done."
       },
-      "payoffs": [],
+      "payoffs": [
+        {
+          "unit": 2,
+          "ref": "2:9",
+          "note": "The first voice after Yahweh's to say the land is already given is a Canaanite prostitute's — the gift confirmed from the far side of the wall."
+        },
+        {
+          "unit": 2,
+          "ref": "2:24",
+          "note": "The spies' whole report is Rahab's sentence handed back to Joshua: Yahweh has given the land into our hand."
+        }
+      ],
       "note": "natan ×8 in unit 1's speeches; Yahweh 'is giving' (participle) vs. 'Moses gave' (perfect) — the land as gift, already done and not yet done."
     },
     {
@@ -31,7 +42,18 @@
         "ref": "1:2",
         "note": "the book's first command, qum ʿavor 'rise, cross' (1:2), relayed down the chain (1:11); ʿever 'far side' marks the eastern tribes as people of the other bank. One root, both ids."
       },
-      "payoffs": [],
+      "payoffs": [
+        {
+          "unit": 2,
+          "ref": "2:10",
+          "note": "ʿever, 'the far side of the Jordan' — spoken from Jericho's bank, Sihon and Og are the ones across the river."
+        },
+        {
+          "unit": 2,
+          "ref": "2:23",
+          "note": "Two men cross the Jordan ahead of the nation — a small, secret crossing before the great public one of unit 3."
+        }
+      ],
       "note": "the book's first command, qum ʿavor 'rise, cross' (1:2), relayed down the chain (1:11); ʿever 'far side' marks the eastern tribes as people of the other bank. One root, both ids."
     },
     {
@@ -159,8 +181,78 @@
         "ref": "1:16",
         "note": "'wherever you send us we will go' (1:16) — the next verse in the book, 2:1, is Joshua sending the spies."
       },
-      "payoffs": [],
+      "payoffs": [
+        {
+          "unit": 2,
+          "ref": "2:1",
+          "note": "'Wherever you send us we will go' (1:16) — the very next act in the book is Joshua sending, quietly, two men; by 2:3 the king of Jericho is sending too."
+        }
+      ],
       "note": "'wherever you send us we will go' (1:16) — the next verse in the book, 2:1, is Joshua sending the spies."
+    },
+    {
+      "id": "devote",
+      "root": "devote",
+      "translit": "ḥaram",
+      "gloss": "devote to destruction",
+      "color": "#8a2f3a",
+      "status": "open",
+      "tagged": true,
+      "opens": {
+        "unit": 2,
+        "ref": "2:10",
+        "note": "first ḥaram in the book, in Rahab's mouth, before Israel has devoted a single Canaanite city; becomes the governing law of Jericho, Ai, and the campaign reports."
+      },
+      "payoffs": [],
+      "note": "first ḥaram in the book, in Rahab's mouth (2:10), before Israel has devoted a single Canaanite city; becomes the governing law of Jericho, Ai, and the campaign reports. Promote before unit 5."
+    },
+    {
+      "id": "swear",
+      "root": "swear",
+      "translit": "shavaʿ̲",
+      "gloss": "swear (an oath)",
+      "color": "#2f4f7a",
+      "status": "open",
+      "tagged": true,
+      "opens": {
+        "unit": 1,
+        "ref": "1:6",
+        "note": "Yahweh's oath to the fathers (retro'd — untagged when unit 1 was built)."
+      },
+      "payoffs": [],
+      "note": "Oaths bind the book together: Yahweh's oath to the fathers (1:6), Rahab's oath (2:12, 17, 20), its keeping (6:22), the Gibeonite oath (9:15, 19-20), the rest formula (21:43-44)."
+    },
+    {
+      "id": "blood",
+      "root": "blood",
+      "translit": "dam",
+      "gloss": "blood",
+      "color": "#a67c1e",
+      "status": "open",
+      "tagged": true,
+      "opens": {
+        "unit": 2,
+        "ref": "2:19",
+        "note": "'his blood on his head' — the bloodguilt logic the cities-of-refuge law runs on."
+      },
+      "payoffs": [],
+      "note": "'his blood on his head' (2:19) is the bloodguilt logic the cities-of-refuge law runs on — the blood-avenger of 20:3, 20:5, 20:9."
+    },
+    {
+      "id": "melt",
+      "root": "melt",
+      "translit": "masas",
+      "gloss": "melt",
+      "color": "#4a4f6b",
+      "status": "open",
+      "tagged": true,
+      "opens": {
+        "unit": 2,
+        "ref": "2:11",
+        "note": "'our heart melted' — fear, returning for the Amorite/Canaanite kings and, reversed, for Israel after Ai."
+      },
+      "payoffs": [],
+      "note": "Melting hearts: Rahab's 'our heart melted' (2:11) returns for the Amorite and Canaanite kings (5:1) and, reversed, for Israel after Ai (7:5)."
     }
   ]
 }
