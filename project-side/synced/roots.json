@@ -64,6 +64,31 @@
         "7971"
       ],
       "note": "shalaḥ, send. 'Wherever you send us we will go' (1:16) is answered immediately: 2:1 opens with Joshua sending the spies."
+    },
+    "devote": {
+      "ids": [
+        "2763a"
+      ],
+      "note": "ḥaram, Hiphil devote to destruction. First occurrence in the book is in Rahab's mouth (2:10), before Israel has devoted a single city -- becomes the governing law of the conquest (Jericho, Ai, and the campaign reports)."
+    },
+    "swear": {
+      "ids": [
+        "7650",
+        "7621"
+      ],
+      "note": "shavaʿ̲ (Niphal swear) + shevuʿ̲ah (the noun, oath) -- one root, both ids. Yahweh's oath to the fathers (1:6, retro'd from unit 1) opens it; Rahab's oath (2:12, 17, 20) is the first oath sworn between people in the book, kept at 6:22; the Gibeonite oath (9:15, 19-20) and the rest formula (21:43-44) carry it to the end."
+    },
+    "blood": {
+      "ids": [
+        "1818"
+      ],
+      "note": "dam, blood. 'His blood on his head' (2:19) is the bloodguilt logic the cities-of-refuge law runs on -- the blood-avenger of 20:3, 5, 9."
+    },
+    "melt": {
+      "ids": [
+        "4549"
+      ],
+      "note": "masas, Niphal melt. Rahab's 'our heart melted' (2:11) returns for the Amorite and Canaanite kings (5:1) and, reversed, for Israel after Ai (7:5)."
     }
   },
   "declined": {
@@ -74,6 +99,14 @@
         "3605"
       ],
       "why": "kol, 236 occurrences book-wide. Asked Lane (the frequency made it a genuine toss-up) and kept local: a root that common carries no signal as a tracked thread -- colouring it would tint the page without telling a reader anything. Re-propose only with a specific payoff in view, not on frequency alone."
+    },
+    "cross-fords": {
+      "date": "2026-09-21",
+      "unit": 2,
+      "ids": [
+        "4569b"
+      ],
+      "why": "maʿ̲berot, 'the fords' (2:7) -- cognate with the tracked 'cross' root but a distinct lemma (4569b) and a single occurrence. Widening an already-tracked thread's id set on one thin hit isn't the same call as promoting a new one; declined for now. Re-propose only if maʿ̲berot recurs with its own payoff."
     }
   }
 }

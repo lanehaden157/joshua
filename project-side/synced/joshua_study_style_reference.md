@@ -135,6 +135,7 @@ and `discourse` were authored for eleven units and silently discarded.**)**
 | `threads` | ✓ | object | all four sub-keys, empty lists fine |
 | `slug` | — | str | `"unit-06"`; derived from `unit` if omitted |
 | `movement` | — | int | looked up from the Unit Map if omitted |
+| `questions` | — | array | wording/data calls only Lane can make, §3a |
 
 ### `roots[]` — every entry `{root, translit, gloss, example?}`
 
@@ -170,6 +171,35 @@ required. `op` ∈ `add` (default), `retag`, `retag_word`, `untag_word`, `unwrap
 `strip_span`, `text`. The root must resolve to a tracked thread or a declared
 root of the target unit. `add`/`retag`/`retag_word` onto a tracked thread
 requires `w`.
+
+---
+
+## 3a. `questions[]` — asking Lane in Claude Code, not on the project side
+
+**`questions[]`** — `{topic, note, options?}`. A wording or data call that
+only Lane can make (a glossary lock, a rendering choice, a coverage
+tradeoff) goes here **instead of** being asked in chat (Lane, 2026-09-21:
+those questions were landing on the project side and he doesn't want to
+answer them there — he wants them surfaced in Claude Code, at port time,
+with choices, same as any other decision the porter raises).
+
+`topic` is a short label (think of it as an `AskUserQuestion` header — a
+few words). `note` is the actual question, with enough context to answer
+cold — no "as discussed above," no project-internal references (same voice
+rule as fragment prose, §4). `options` is an optional list of short
+candidate answers; omit it for an open-ended question. Provisional choices
+you had to make to keep drafting (a gloss, a rendering already used in the
+verse text) still go in the fragment as normal — `questions[]` is for
+flagging that the choice is provisional and asking whether to lock it,
+not for leaving something unrendered.
+
+Consumed and dropped exactly like `candidates`/`retro`: `pipeline/port_artifact.py`
+prints every question to the terminal at port time and folds it into the
+thread-delta report, then `generate()` never re-adds the key, so a
+regenerated fragment carries none. Answered questions don't need cleanup on
+the chat side — once Lane decides, the decision goes in `translation-choices.md`
+(wording) or the relevant thread/root entry (coverage), same as any other
+locked choice.
 
 ---
 
