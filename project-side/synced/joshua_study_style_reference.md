@@ -53,7 +53,9 @@ Exod 15:16. **Read for these the way you read for notable translation
 choices**: a word with a canon history should at least get a local root with
 an `echo`, even when it is tagged nowhere else in the unit. Lead with the
 reference, then say what it adds, in one or two sentences. Tracked threads can
-carry an `echo` in `threads.json` too.
+carry an `echo` in `threads.json` too. Echoes and `aside.echo`s should come from the kept rows of the intertext
+pass's ledger (chat-side instructions, pass 3), not from memory at drafting
+time.
 
 **Resist a richer taxonomy. (learned:** `8d096c9` built a root/motif two-tier
 model; `98b721a` reverted it the same day. Hebrew's version — root vs. binyan
