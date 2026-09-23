@@ -18,9 +18,9 @@
    bug. 2026-09-17: missed on the first ship of threads.js's `example` field,
    which silently never rendered until this bump. */
 
-import { loadThreadData, resolveUnit, injectPalette, rebuildLegend, wireRoots } from "./threads.js?v=3";
-import { enhanceSpotlights } from "./spotlight.js?v=3";
-import { renderSearch } from "./search.js?v=3";
+import { loadThreadData, resolveUnit, injectPalette, rebuildLegend, wireRoots } from "./threads.js?v=4";
+import { enhanceSpotlights } from "./spotlight.js?v=4";
+import { renderSearch } from "./search.js?v=4";
 
 const UNITS_URL = new URL("../data/units.json", import.meta.url);
 
