@@ -488,3 +488,8 @@ Full suite green (`test_unit_meta.py` 52 checks), `build.py` green, coverage
 - Promoted `sole` (unit 1 1:3 + unit 3 3:13, 4:18), `lodge` (unit 3, opens 3:1, recurs 4:3/4:8), `fear` (unit 3, opens 4:14, payoff 4:24) to tracked threads with algorithmic colours (`#4f333c`, `#4d362b`, `#433a26`). Retrofitted `data-w` onto their spans in both units via `port_artifact.py --force`.
 - Full build re-verified clean: 0 gap/wrong/stray/missing-data-w across 18 tracked threads (up from 15) over the 3 built units; `validate_units.py`'s colour-collision check passes; all `pipeline/test_*.py` still pass; browser-verified live.
 - Saved a feedback memory: thread colours are always algorithmic, never manual, for future sessions.
+
+## 2026-09-24 — Canon leads in English verse numbering
+- `pipeline/canon_leads.py`: `fmt_ref()` now converts WLC refs to English (KJV) versification via morphhb's pinned `wlc/VerseMap.xml` (`load_verse_map()`); partial-verse entries print as ranges (Isa 63:19–64:1). Display only — matching/counting unchanged. Sheet header notes the convention.
+- `test_canon_leads.py`: new check covering Deut 29:8→29:9, Deut 28:69→29:1, Mal 3:19→4:1, Ps superscriptions, partials, and unchanged refs.
+- Regenerated canon-leads units 1–5 (40 refs changed). Audited echoes/notes in units, source artifacts, data/*.json: all already cite English numbering; nothing to fix.

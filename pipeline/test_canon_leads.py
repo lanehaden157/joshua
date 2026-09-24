@@ -49,6 +49,19 @@ def test_bare_ids():
     _check("pure prefix yields nothing", cl.bare_ids("d") == [], cl.bare_ids("d"))
 
 
+def test_refs_print_in_english_numbering():
+    cases = {"Deut.29.8": "Deut 29:9",          # the case Lane flagged
+             "Deut.28.69": "Deut 29:1",         # chapter boundary moves
+             "Mal.3.19": "Mal 4:1",             # English-only chapter
+             "Ps.51.3": "Ps 51:1",              # superscription counted in Hebrew
+             "Isa.63.19": "Isa 63:19–64:1",     # partial: one Hebrew verse, two English
+             "1Kgs.22.44": "1 Kgs 22:43",       # partial: whole Hebrew verse is half an English one
+             "Gen.8.9": "Gen 8:9",              # unchanged
+             "Josh.21.36": "Josh 21:36"}        # Joshua never shifts
+    for wlc, want in cases.items():
+        _check(f"fmt_ref({wlc})", cl.fmt_ref(wlc) == want, cl.fmt_ref(wlc))
+
+
 def test_passage_scope():
     uv = cl.passage_verses(BIBLE, "Joshua 2:1–24")
     _check("Joshua 2 has 24 verses", len(uv) == 24, len(uv))

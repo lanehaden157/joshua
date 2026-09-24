@@ -30,6 +30,11 @@ from node_modules/morphhb/wlc. Lemma identity is the bare Strong's number
 (letter suffixes and OSHB's '+' dropped, prefixes like b/ c/ d/ skipped),
 counted per verse. Everything printed is transliterated through
 pipeline/hebrew.py; no native script reaches the output.
+
+References print in English (KJV) versification, not the WLC's Hebrew
+numbering (Lane, 2026-09-24): Deut 29:9, not Deut 29:8. The conversion is
+morphhb's own wlc/VerseMap.xml, applied at display time only -- matching and
+counting stay on WLC refs. Joshua has no differences, so its refs are as-is.
 """
 import argparse
 import collections
@@ -46,6 +51,7 @@ from audit_thread_coverage import parse_range  # noqa: E402
 
 WLC = os.path.join(ROOT, "node_modules", "morphhb", "wlc")
 LEXICON = os.path.join(HERE, "corpus", "lexicon", "HebrewStrong.xml")
+VERSE_MAP = os.path.join(WLC, "VerseMap.xml")
 UNITS_JSON = os.path.join(ROOT, "data", "units.json")
 OUT_DIR = os.path.join(ROOT, "canon-leads")
 
@@ -118,9 +124,47 @@ def load_glosses(path=LEXICON):
     return out
 
 
+def load_verse_map(path=VERSE_MAP):
+    """WLC ref -> sorted list of the English (KJV) (chapter, verse) pairs it
+    covers. Only refs that differ are listed; anything absent is identical.
+
+    Seven entries are partial: a WLC half-verse ('1Kgs.18.34!a') sits in a
+    different English verse. A half the map doesn't list keeps its own
+    number, so WLC 1 Kgs 18:34 -> KJV 18:33b + 18:34a -> [(18,33), (18,34)]."""
+    if not os.path.exists(path):
+        sys.exit(f"{path} not found -- run `npm ci` (package.json pins morphhb)")
+    text = open(path, encoding="utf-8").read()
+    halves = collections.defaultdict(dict)
+    for wlc, kjv in re.findall(r'<verse wlc="([^"]+)" kjv="([^"]+)"', text):
+        base, _, half = wlc.partition("!")
+        book, c, v = kjv.split("!")[0].split(".")
+        halves[base][half] = (int(c), int(v))
+    out = {}
+    for base, parts in halves.items():
+        c, v = (int(x) for x in base.split(".")[1:])
+        got = set(parts.values())
+        if "" not in parts and not ({"a", "b"} <= parts.keys()):
+            got.add((c, v))  # the unlisted half keeps its WLC number
+        out[base] = sorted(got)
+    return out
+
+
+_VERSE_MAP = None
+
+
 def fmt_ref(ref):
+    """'Deut.29.8' (WLC) -> 'Deut 29:9' (English). A WLC verse split across two
+    English verses prints as a range: 'Isa 63:19–64:1'."""
+    global _VERSE_MAP
+    if _VERSE_MAP is None:
+        _VERSE_MAP = load_verse_map()
     book, c, v = ref.split(".")
-    return f"{DISPLAY.get(book, book)} {c}:{v}"
+    name = DISPLAY.get(book, book)
+    eng = _VERSE_MAP.get(ref, [(int(c), int(v))])
+    (c1, v1), (c2, v2) = eng[0], eng[-1]
+    if (c1, v1) == (c2, v2):
+        return f"{name} {c1}:{v1}"
+    return f"{name} {c1}:{v1}–{v2}" if c1 == c2 else f"{name} {c1}:{v1}–{c2}:{v2}"
 
 
 def translit(word):
@@ -213,7 +257,9 @@ def render(n, passage, rare_list, phrase_list, glosses, rare):
          "intertext pass's job. Every lead gets a verdict in the ledger, a rejection included.", "",
          f"It cannot see: common words (rare cutoff: {rare} verses in the Hebrew Bible), "
          "links by theme or type-scene, or the New Testament. Search for those separately. "
-         "Glosses are rough Strong's identifiers, not renderings.", ""]
+         "Glosses are rough Strong's identifiers, not renderings. "
+         "References use English verse numbering (Hebrew numbering differs in places, "
+         "e.g. English Deut 29:9 is Hebrew 29:8).", ""]
 
     L += [f"## Shared phrases with the Torah ({len(phrase_list)})", ""]
     if not phrase_list:

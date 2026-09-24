@@ -172,7 +172,9 @@ Per unit, `canon-leads/canon-leads-unit-NN.md` lists rare words (≤ `--rare`
 verses in the Hebrew Bible, default 20) and adjacent-lemma phrases shared
 with the Torah (overlapping pairs merged), each with every hit,
 transliterated. It reads the whole Hebrew Bible from
-`node_modules/morphhb/wlc`. It is deliberately narrow: listing every word
+`node_modules/morphhb/wlc`. References print in English (KJV) versification
+via morphhb's `wlc/VerseMap.xml` (Lane, 2026-09-24: English numbering is the
+standard); matching stays on WLC refs, and Joshua itself never shifts. It is deliberately narrow: listing every word
 would mean ~33,000 Torah verses for Joshua 2. Blind to common words, themes,
 type-scenes and the New Testament. `build.py` regenerates it for every built
 unit plus the next one, and `check_project_sync.TRACKED_FILES` globs the
