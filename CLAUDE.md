@@ -26,7 +26,7 @@ Everyday commands, from the repo root:
     python -m biblecore audit --ids ROOT  # every form/ref an id set pulls in
     python -m biblecore data-w 6          # fill data-w on a built unit by alignment
     python -m biblecore colour ROOT ...   # colours for threads about to be promoted
-    python -m biblecore sync              # mirror synced files, commit, push
+    python -m biblecore sync              # mirror synced files, commit, push (after every commit/push)
 
 `python -m biblecore` with no command lists the rest.
 
@@ -199,8 +199,9 @@ style reference and `../bible-core/ARCHITECTURE.md`. Joshua-specific notes:
   `paths.css` points at that single file, so core's `core.css` and
   `components.css` aren't written; Joshua's app doesn't load them.
 - Core's validator warns about close colours, which Joshua's old pipeline
-  never checked. At the migration it flagged `devote` and `servant` sharing
-  `#8a2f3a`.
+  never checked. At the migration it flagged `devote`, `servant` and unit 3's
+  local `land` sharing `#8a2f3a`; `devote` (`#53350e`) and `land` (`#55642f`)
+  were reassigned by the algorithm (Lane, 2026-09-26).
 - **Re-porting a built unit needs `--force`.** `7af1a59` (the unit 2 port)
   re-ported unit 1 from a stale source artifact and silently lost four
   local roots, the anonymous-voice notes and the C7 markup. Promoting a
@@ -275,7 +276,6 @@ out/                             port reports (gitignored)
 index.html, app/*.js, css/styles.css   app shell (Joshua's own)
 .claude/launch.json              local static server for previewing
 tools/build_english.py           English generator (Joshua-only)
-pipeline/sync_to_github.py       shim the scheduled task calls; runs biblecore sync
 corpus/{lexicon,web}/            pinned sources (Hebrew comes from node_modules/morphhb)
 package.json                     morphhb pin
 ```

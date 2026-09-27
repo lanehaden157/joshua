@@ -309,8 +309,8 @@ touch pipeline *logic*, only `port_artifact.py`'s colour assignment
 
 Lane reversed the 2026-09-22 "not migrating" call. Joshua vendors bible-core
 0.7.1 (`biblecore/`, `book.json`) and runs `python -m biblecore` for port,
-build, audit, data-w, leads and sync; `pipeline/` is gone except a sync shim
-for the scheduled task, and the `pipeline/` paths named in the phases above
+build, audit, data-w, leads and sync; `pipeline/` is gone (the scheduled sync task
+went too; sync runs with every commit/push), and the `pipeline/` paths named in the phases above
 are historical. Proof: re-porting units 1–4 through core gives byte-identical
 fragments apart from the new `contract` stamp; `corpus` rebuilds the
 reading/words/boundaries files byte-identically; audit 0 gaps;

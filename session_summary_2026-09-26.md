@@ -12,8 +12,10 @@
 - Core's validator warns on close colours; it found `devote` and `servant` sharing `#8a2f3a`.
 - The `JoshuaProjectSideSync` scheduled task's working directory is `Projects\Joshua`, which no longer exists, so it has been failing (0x8007010B) since the repo moved under `Bible\`.
 
+## Follow-up (same day, Lane: "fix all")
+- Scheduled task `JoshuaProjectSideSync` deleted and `pipeline/` shim removed. Sync now runs with every commit/push (memory rule); docs updated.
+- Recoloured by the algorithm: `devote` #8a2f3a → #53350e (promoted after `servant`); unit 3 local `land` #8a2f3a → #55642f (it collided too). Build clean; browser-checked.
+- Hub rebuilt and pushed (`29926f1`): Matthew's threads, Joshua's devote colour.
+
 ## Open
 - Lane: paste `Claude_ai_chat_side_instructions.md`, then `python -m biblecore sync-check --mark-pasted`; delete the hand-uploaded copies on the project side.
-- Fix the scheduled task's working directory (needs Lane's OK).
-- Recolour `devote` or `servant`? (Lane's call.)
-- The hub's `books.json` is stale on Matthew's threads (unrelated to Joshua); rebuild when convenient.

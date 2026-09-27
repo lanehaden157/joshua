@@ -16,19 +16,14 @@ overwritten on the next sync.
 **What keeps it current:** `python -m biblecore sync` copies every file
 in `book.json` `sync` (`files` + `globs`) into `synced/`, writes
 `synced/synced-index.md` (every synced file and what it's for, generated),
-and if anything actually changed, commits and pushes. A Windows scheduled
-task (`JoshuaProjectSideSync`) runs it every 15 minutes through the
-`pipeline/sync_to_github.py` shim — a silent no-op when nothing's changed.
-Run it by hand any time with:
+and if anything actually changed, commits and pushes. It runs as part of
+every commit and push in this repo (Claude Code runs it in the same turn), so
+the mirror moves when the repo does. The old 15-minute scheduled task
+(`JoshuaProjectSideSync`) was removed 2026-09-26. Run it by hand any time
+with:
 
 ```bash
 python -m biblecore sync
-```
-
-To check the task itself (last run, next run, result code):
-
-```powershell
-Get-ScheduledTaskInfo -TaskName "JoshuaProjectSideSync"
 ```
 
 **Drift check without pushing:** `python -m biblecore sync-check` lists
