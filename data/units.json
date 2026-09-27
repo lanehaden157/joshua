@@ -2,11 +2,12 @@
   "_note": "`built: true` marks a unit whose fragment exists in `units/`; unit 1 is built as of 2026-09-17. `book` drives pipeline/audit_thread_coverage.py's source-file and line-prefix lookup (Joshua-reading.txt, 'Josh ' prefix) -- see that script's module docstring. Keep this in sync with whatever the actual reading-text file's ref column uses if either ever changes. `units[]` is a straight transcription of joshua_literary_unit_map.md (Phase 1) -- not a second literary-critical pass, Lane already confirmed the map as-is. Two unit breaks fall off the chapter grid: unit 8 (8:30-9:2) and the 24:28/29 split closing the book -- both transcribed as the map states them, not rounded to chapter boundaries.",
   "book": "Joshua",
   "unit_count": 24,
-  "movements": [
+  "groupings": [
     {
+      "kind": "movement",
       "n": 1,
       "name": "Entry into the land",
-      "span": "Joshua 1:1–5:15",
+      "span": "1:1–5:15",
       "units": [
         1,
         2,
@@ -15,9 +16,10 @@
       ]
     },
     {
+      "kind": "movement",
       "n": 2,
       "name": "Conquest",
-      "span": "Joshua 6:1–12:24",
+      "span": "6:1–12:24",
       "units": [
         5,
         6,
@@ -30,9 +32,10 @@
       ]
     },
     {
+      "kind": "movement",
       "n": 3,
       "name": "Allotment",
-      "span": "Joshua 13:1–21:45",
+      "span": "13:1–21:45",
       "units": [
         13,
         14,
@@ -45,9 +48,10 @@
       ]
     },
     {
+      "kind": "movement",
       "n": 4,
       "name": "Epilogue: altar, farewell, covenant",
-      "span": "Joshua 22:1–24:33",
+      "span": "22:1–24:33",
       "units": [
         21,
         22,
@@ -56,7 +60,6 @@
       ]
     }
   ],
-  "discourses": [],
   "units": [
     {
       "n": 1,

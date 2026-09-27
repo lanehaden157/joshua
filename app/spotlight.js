@@ -1,20 +1,15 @@
-/* Per-verse asides, collapsed by default. Joshua has two kinds (unlike
-   Matthew's three): .gloss -> a light "note" (bare * marker, plain italic
-   aside, no box), and aside.echo -> a cross-book echo (Deuteronomy command
-   -> Joshua fulfilment, etc.), built 2026-09-21 (style reference §4).
-   Matthew's .compare ("spotlight" ✦ chip) has no Joshua analogue (Phase 2
-   resolved no compare box) and is dropped, not adapted. Both kinds share
-   one toggle per verse -- a reader doesn't need to know which is which to
-   find "is there more here"; the CSS (Jordan teal left-border + "cf."
-   prefix vs. the plain grey gloss border) tells them apart once open.
-   Runs on the freshly-loaded fragment; the fragments themselves are
-   untouched. */
+/* Per-verse asides, collapsed by default behind one toggle per verse:
+   .gloss (a light note) plus every enabled component whose role is
+   "verse-aside" (aside.echo, aside.textform, ...), passed in by main.js from
+   data/components.json. Runs on the freshly loaded fragment; the fragments
+   themselves are untouched. */
 
-const ASIDE_SEL = ".gloss, aside.echo";
+const BASE_SEL = ".gloss";
 const STOP_SEL =
   "p.v, div.v, h3, section, header, .verses, table";
 
-export function enhanceSpotlights(root) {
+export function enhanceSpotlights(root, extraSel = "") {
+  const ASIDE_SEL = extraSel ? `${BASE_SEL}, ${extraSel}` : BASE_SEL;
   let count = 0;
 
   for (const verse of root.querySelectorAll("p.v, div.v")) {
@@ -60,6 +55,17 @@ function setOpen(box, btn, open) {
   box.hidden = !open;
   btn.setAttribute("aria-expanded", String(open));
   btn.classList.toggle("is-open", open);
+}
+
+/* open (or close) every verse note under root: the "every note open"
+   reading mode and the print page */
+export function openAll(root, open = true) {
+  boxes(root).forEach((b) => setOpen(b, b._btn, open));
+  const btn = root.querySelector(".spot-all");
+  if (btn) {
+    btn.textContent = open ? "Hide all notes" : "Show all notes";
+    btn.dataset.mode = open ? "hide" : "show";
+  }
 }
 
 function boxes(root) {

@@ -1,48 +1,17 @@
 /* ============================================================================
-   Joshua Study — shared stylesheet
-   Phase 4 design pass (phase-4-5-plan.md). Structurally close to Projects/
-   Matthew/css/styles.css (same app-shell mechanism: topbar, unit nav, book
-   map, pager, root tip/popover, search, verse-note toggle) but the palette
-   and type are deliberately its own, not Matthew's parchment/crimson-gold
-   illuminated-manuscript look -- Lane's call: distinguishable, "similar but
-   unique," an Old Testament / conquest-narrative theme rather than a Gospel
-   one. Sun-bleached wilderness ground, clay/terracotta and bronze accents
-   (pottery, the altar, the boundary stones), Jordan-valley teal-indigo for
-   structural (movement) labels. Display type is Cinzel -- carved-inscription
-   capitals, evoking the standing stones of 4:20 and the covenant stela of
-   24:26-27 -- in place of Matthew's calligraphic Cormorant Garamond. Body
-   serif is Frank Ruhl Libre in place of EB Garamond.
+   core.css -- shared structure for every book site (bible-core biblecore/web/).
 
-   Per-unit root colours are injected at runtime by app/threads.js from
-   data/units.json / data/threads.json as
+   GENERATED COPY: the build writes css/core.css from the vendored package.
+   Don't edit it in a book; change it in bible-core and re-vendor, or override
+   a rule in the book's own css/theme.css (loaded after this file).
+
+   Every colour and font here is a custom property from theme.css. Component
+   rules (echo, list, poem, ...) live with their components and arrive in the
+   generated css/components.css, only for the components book.json enables.
+
+   Per-unit root colours are injected at runtime by app/threads.js as
      .unit[data-unit="N"] [data-root="x"] { color: ... }
-   Component vocabulary matches joshua_study_style_reference.md §4 exactly:
-   mast, kicker, pericope, block, block.legend, block.notes, v, n, r, rl,
-   gloss, en, aside.echo. No .compare (Phase 2: no compare box).
    ========================================================================== */
-
-:root {
-  --bg: #e9dfc3;
-  --panel: #f4eed9;
-  --panel-2: #e3d5ab;
-  --ink: #2e2717;
-  --ink-soft: #6b5d40;
-  --rule: #cab883;
-  --rule-soft: #ddcda0;
-
-  /* stable chrome accents — independent of any unit's root palette */
-  --accent-clay: #b1481f;     /* verse numbers, endnote markers */
-  --accent-bronze: #8c6d1f;   /* pericope headings, spotlight-adjacent accents */
-  --accent-jordan: #2f5f6b;   /* movement labels, structural chrome */
-  --accent-olive: #55642f;
-  --accent-wine: #7a3f5c;
-
-  --display: "Cinzel", Georgia, serif;
-  --serif: "Frank Ruhl Libre", Georgia, "Times New Roman", serif;
-
-  --maxw: 100%;
-  --flash: #f0c877;
-}
 
 * { box-sizing: border-box; }
 
@@ -51,8 +20,8 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 16% -5%, #f7f0da 0%, transparent 55%),
-    radial-gradient(circle at 106% 104%, #ddc98f 0%, transparent 52%),
+    radial-gradient(circle at 16% -5%, var(--glow-1) 0%, transparent 55%),
+    radial-gradient(circle at 106% 104%, var(--glow-2) 0%, transparent 52%),
     var(--bg);
   color: var(--ink);
   font-family: var(--serif);
@@ -70,7 +39,7 @@ a.lex:hover { border-bottom-color: var(--ink-soft); }
 
 .topbar-wrap { position: sticky; top: 0; z-index: 30; }
 .topbar {
-  background: rgba(233, 223, 195, 0.94);
+  background: var(--topbar-bg);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--rule);
 }
@@ -144,8 +113,7 @@ a.lex:hover { border-bottom-color: var(--ink-soft); }
 }
 
 /* ---------------------------------------------------------- book structure map
-   24 unit ticks grouped into the 4 movements. No discourse-equivalent layer
-   (phase-4-5-plan.md §A1: Joshua has no confirmed sub-movement grouping). */
+   One tick per unit, grouped by the book's primary grouping (app/main.js). */
 
 .book-map {
   margin: 2px auto 22px; padding: 16px 18px 12px;
@@ -283,8 +251,8 @@ sup.en a { border: none; }
 .note-back:hover { text-decoration: underline; }
 
 /* ============================================================== unit content
-   Everything below renders the /units fragments. Matches
-   joshua_study_style_reference.md §4's component vocabulary exactly. */
+   Everything below renders the /units fragments: the style reference's
+   component vocabulary. */
 
 .unit .mast { text-align: center; border-bottom: 2px solid var(--ink); padding-bottom: 26px; margin-bottom: 8px; }
 .unit .mast .kicker { letter-spacing: .28em; text-transform: uppercase; font-size: 12.5px; color: var(--ink-soft); }
@@ -346,8 +314,6 @@ sup.en a { border: none; }
 body.text-center .unit .v { text-align: center; padding-left: 0; text-indent: 0; }
 body.text-center .unit .v .n { display: inline; width: auto; margin-right: 4px; }
 .unit .gloss { display: block; text-indent: 0; margin: 3px 0 14px 0; padding: 6px 14px; border-left: 2px solid var(--rule); color: var(--ink-soft); font-style: italic; font-size: 15px; line-height: 1.5; }
-.unit aside.echo { display: block; text-indent: 0; margin: 3px 0 14px 0; padding: 6px 14px; border-left: 2px solid var(--accent-jordan); color: var(--ink-soft); font-size: 15px; line-height: 1.5; }
-.unit aside.echo::before { content: "cf. "; font-family: var(--display); font-weight: 600; font-style: normal; color: var(--accent-jordan); }
 .unit sup.en { font-size: .62em; font-style: normal; color: var(--accent-clay); font-weight: 700; vertical-align: super; line-height: 0; }
 
 /* ---- collapsed per-verse aside: light "note" (*) ---- */
@@ -378,14 +344,10 @@ body.text-center .unit .v .n { display: inline; width: auto; margin-right: 4px; 
 }
 .unit .verse-note .gloss { display: block; margin: 0; padding: 0; border: none; }
 .unit .verse-note .gloss + .gloss { margin-top: 8px; }
-.unit .verse-note aside.echo { display: block; margin: 0; padding-left: 14px; border: none; border-left: 2px solid var(--accent-jordan); }
-.unit .verse-note .gloss + aside.echo,
-.unit .verse-note aside.echo + .gloss,
-.unit .verse-note aside.echo + aside.echo { margin-top: 8px; }
 
 /* ---- root hover tip + click popover ---- */
 
-.unit [data-root] { cursor: pointer; }
+.unit [data-root] { cursor: pointer; --rc-shown: var(--rc); }
 .unit [data-root]:hover { text-decoration: underline dotted; text-underline-offset: 3px; }
 .unit [data-root].root-active {
   text-decoration: underline; text-underline-offset: 3px;
@@ -393,7 +355,7 @@ body.text-center .unit .v .n { display: inline; width: auto; margin-right: 4px; 
   border-radius: 2px;
 }
 @supports not (background: color-mix(in srgb, white, black)) {
-  .unit [data-root].root-active { background: rgba(139, 109, 31, .12); }
+  .unit [data-root].root-active { background: var(--root-active-bg); }
 }
 
 .root-tip {
@@ -431,6 +393,8 @@ body.text-center .unit .v .n { display: inline; width: auto; margin-right: 4px; 
 .root-pop .rp-traj a, .root-pop .rp-also a { color: var(--accent-bronze); border-bottom: 1px dotted currentColor; }
 .root-pop .rp-soon { color: var(--ink-soft); opacity: .7; }
 .root-pop .rp-also { font-size: 12.5px; color: var(--ink-soft); }
+.root-pop .rp-canon { font-size: 13px; color: var(--ink); }
+.root-pop .rp-canon a { color: var(--accent-jordan); border-bottom: 1px dotted currentColor; }
 .root-pop .rp-note { font-size: 12.5px; font-style: italic; color: var(--ink-soft); border-top: 1px solid var(--rule-soft); padding-top: 7px; }
 
 /* ---- concordance search ---- */
@@ -528,4 +492,64 @@ body.text-center .unit .v .n { display: inline; width: auto; margin-right: 4px; 
   .topbar-wrap, .nav-backdrop, .unit-pager, .unit-fab,
   .note-toggle, .spot-controls { display: none !important; }
   .verse-note { break-inside: avoid; }
+}
+
+/* ======================================================= reader features
+   (app/reader.js): settings, reading modes, interlinear, search, print */
+
+.settings-h { font-family: var(--display); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); margin: 10px 0 4px; }
+.settings-h:first-child { margin-top: 0; }
+.settings-modes .settings-row { display: flex; gap: 8px; align-items: baseline; }
+.settings-link { display: block; margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--rule-soft); border-bottom: none; font-size: 14px; }
+
+/* reading modes: body.mode-notes (default) / -open / -plain / -interlinear */
+body.mode-plain .unit .note-toggle,
+body.mode-plain .unit .verse-note,
+body.mode-plain .unit .spot-controls,
+body.mode-plain .unit sup.en,
+body.mode-plain .unit .notes { display: none !important; }
+
+/* interlinear: one row of word cells under each verse */
+.unit .il { display: flex; flex-wrap: wrap; gap: 4px 6px; margin: -6px 0 16px 42px; }
+.unit .il-w { display: inline-flex; flex-direction: column; min-width: 3.2em; padding: 3px 6px; border: 1px solid var(--rule-soft); border-radius: 5px; background: var(--panel); line-height: 1.25; border-bottom: 1px solid var(--rule-soft); }
+.unit .il-w:hover { border-color: var(--ink-soft); }
+.unit .il-w i { font-size: 15px; color: var(--ink); }
+.unit .il-w b { font-weight: 400; font-size: 12.5px; color: var(--accent-bronze); }
+.unit .il-w small { font-size: 10.5px; color: var(--ink-soft); max-width: 14em; }
+.unit .il-w b { max-width: 14em; }
+.unit .il-w.il-arc { border-style: dashed; }
+.unit .il-key { font-size: 13.5px; font-style: italic; color: var(--ink-soft); margin: 0 0 18px; }
+body.text-center .unit .il { justify-content: center; margin-left: 0; }
+
+/* search: grouped result blocks */
+.sr-block { margin: 0 0 30px; }
+.sr-block > h3 { font-family: var(--display); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; margin: 0 0 10px; display: flex; gap: 8px; align-items: baseline; }
+.sr-lemma { margin: 0 0 8px; padding: 6px 10px; border: 1px solid var(--rule-soft); border-radius: 6px; background: var(--panel); }
+.sr-lemma summary { cursor: pointer; font-size: 16px; display: flex; flex-wrap: wrap; gap: 6px; align-items: baseline; }
+.sr-lemma summary i { font-weight: 600; }
+.sr-refs { margin: 8px 0 2px; font-size: 14px; line-height: 1.9; word-spacing: 4px; }
+.sr-refs a { color: var(--accent-bronze); }
+.sr-unbuilt { color: var(--ink-soft); opacity: .6; }
+.sr-text { list-style: none; margin: 0; padding: 0; }
+.sr-text li a { display: block; padding: 5px 8px; border: none; border-radius: 4px; font-size: 15.5px; }
+.sr-text li a:hover { background: var(--panel); }
+.sr-text b { background: color-mix(in srgb, var(--flash) 55%, transparent); font-weight: 600; }
+
+/* whole-study print page (#/print) */
+.print-head { text-align: center; margin-bottom: 28px; }
+.print-head h1 { font-family: var(--display); font-weight: 600; font-size: 34px; margin: 0 0 4px; }
+.print-head p { color: var(--ink-soft); font-style: italic; margin: 0 0 14px; }
+.print-unit + .print-unit { margin-top: 60px; padding-top: 30px; border-top: 2px solid var(--rule); }
+
+@media (max-width: 720px) {
+  .unit .il { margin-left: 26px; }
+  .unit .il-w small { display: none; }
+}
+
+@media print {
+  .print-head .print-go, .settings-panel { display: none !important; }
+  .print-unit { break-before: page; }
+  .print-unit:first-child { break-before: auto; }
+  .print-unit + .print-unit { border-top: none; margin-top: 0; padding-top: 0; }
+  .unit .il { break-inside: avoid; }
 }

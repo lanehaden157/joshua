@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{document.documentElement.dataset.theme=localStorage.getItem("bible:theme")||"auto"}catch(e){document.documentElement.dataset.theme="auto"}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Joshua Study</title>
-<meta name="description" content="A 24-unit literary-canonical study translation of the Book of Joshua.">
+<meta name="description" content="A literary-canonical study translation of the Book of Joshua.">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("bible:theme")||"auto"}catch(e){document.documentElement.dataset.theme="auto"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="css/styles.css?v=4">
-<link rel="stylesheet" href="css/division.css?v=16427ee4">
+<link rel="stylesheet" href="css/core.css?v=6">
+<link rel="stylesheet" href="css/components.css?v=4">
+<link rel="stylesheet" href="css/division.css?v=4">
+<link rel="stylesheet" href="css/theme.css?v=4">
 </head>
 <body>
 
@@ -30,15 +32,16 @@
   </header>
   <nav id="unit-nav" class="unit-nav" aria-label="all units" hidden></nav>
   <div id="settings-panel" class="settings-panel" role="menu" aria-label="display settings" hidden>
-    <div class="settings-row" style="display:block"><b style="font-weight:600">Appearance</b>
-      <label style="display:block"><input type="radio" name="appearance" value="auto"> Match the system</label>
-      <label style="display:block"><input type="radio" name="appearance" value="light"> Light</label>
-      <label style="display:block"><input type="radio" name="appearance" value="dark"> Dark</label>
-    </div>
+    <div class="settings-h">Reading mode</div>
+    <div id="setting-modes" class="settings-modes"></div>
+    <div class="settings-h">Appearance</div>
+    <div id="setting-appearance" class="settings-modes"></div>
+    <div class="settings-h">Layout</div>
     <label class="settings-row">
       <input type="checkbox" id="setting-center-text">
       Center-align reading text
     </label>
+    <a class="settings-row settings-link" href="#/print">Print the whole study</a>
   </div>
 </div>
 <div id="nav-backdrop" class="nav-backdrop" hidden></div>
@@ -52,7 +55,6 @@
 <a id="fab-prev" class="unit-fab prev" aria-label="Previous unit" hidden>‹</a>
 <a id="fab-next" class="unit-fab next" aria-label="Next unit" hidden>›</a>
 
-<script type="module" src="app/main.js?v=4"></script>
-<script>(function(){var c=document.documentElement.dataset.theme||'auto';document.querySelectorAll('input[name=appearance]').forEach(function(i){i.checked=i.value===c;i.addEventListener('change',function(){document.documentElement.dataset.theme=i.value;try{localStorage.setItem('bible:theme',i.value)}catch(e){}})})})();</script>
+<script type="module" src="app/main.js?v=9"></script>
 </body>
 </html>

@@ -24,6 +24,29 @@ export async function loadThreadData() {
 }
 
 export function getOccurrences() { return _occ || {}; }
+
+/* Canon threads from the hub (bible-core canon/threads.json, published at
+   <hub>data/canon.json). Fetched once, in the background; the popover's
+   "in the canon" row appears once it has arrived, and never if the hub is
+   unreachable. */
+let _canon = null, _hub = null, _book = null;
+export function loadCanon(hub, bookSlug) {
+  if (!hub || !bookSlug) return;
+  _hub = hub.endsWith("/") ? hub : hub + "/";
+  _book = bookSlug;
+  fetch(new URL("data/canon.json", _hub)).then((r) => (r.ok ? r.json() : null))
+    .then((d) => { _canon = d?.threads || null; }).catch(() => {});
+}
+function canonRow(threadId) {
+  if (!_canon || !threadId) return "";
+  const hits = _canon.filter((c) => c.members.some((m) => m.book === _book && m.thread === threadId));
+  if (!hits.length) return "";
+  return `<p class="rp-canon">In the canon: ${hits.map((c) => {
+    const others = [...new Set(c.members.filter((m) => m.book !== _book).map((m) => m.book))];
+    return `<a href="${_hub}#/thread/${encodeURIComponent(c.id)}">${esc(c.label)}</a>` +
+      (others.length ? ` <span class="rp-soon">· also ${others.map((b) => esc(b[0].toUpperCase() + b.slice(1))).join(", ")}</span>` : "");
+  }).join("; ")}</p>`;
+}
 export function getThreadFor(root) { return _threads?.byRoot.get(root) || null; }
 
 /** root -> { color, translit, gloss, example, echo, threadId, status, count } */
@@ -53,13 +76,14 @@ export function resolveUnit(unit) {
 /** Inject `.unit[data-unit=N] [data-root=x]{color}` + legend swatch colours.
     Tracked-thread roots also get a dotted underline in their own colour
     (a "thread" stitched under the word) that glows on hover. */
-export function injectPalette(unit, resolved) {
-  document.getElementById("unit-palette")?.remove();
+export function injectPalette(unit, resolved, styleId = "unit-palette") {
+  document.getElementById(styleId)?.remove();
   const rules = [];
   const sel = `.unit[data-unit="${unit.n}"]`;
   for (const [root, m] of resolved) {
     if (!m.color) continue;
     const r = `[data-root="${cssEsc(root)}"]`;
+    // --rc is the root's own colour; division.css may lift it for dark mode
     rules.push(`${sel} ${r}{--rc:${m.color};color:var(--rc-shown,${m.color})}`);
     rules.push(`${sel} .swatch[style*="--c-${cssEsc(root)}"]{background:${m.color}!important}`);
     // cross-unit thread -> dotted underline (the same word recurring across
@@ -75,7 +99,7 @@ export function injectPalette(unit, resolved) {
     }
   }
   const s = document.createElement("style");
-  s.id = "unit-palette";
+  s.id = styleId;
   s.textContent = rules.join("\n");
   document.head.appendChild(s);
 }
@@ -233,6 +257,8 @@ function openPop(el, resolved, unit, builtByN) {
       rows.push(`<p class="rp-also">also in ${elsewhere
         .map((u) => `<a href="#/${u.slug}">Unit ${u.n}</a>`).join(", ")}</p>`);
     }
+    const cr = canonRow(th.id);
+    if (cr) rows.push(cr);
     if (th.note) rows.push(`<p class="rp-note">${esc(th.note)}</p>`);
   }
 

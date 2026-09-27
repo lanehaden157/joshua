@@ -41,9 +41,8 @@
   },
   "storage_key": "joshua",
   "paths": {
-    "css": "css/styles.css",
     "chat_side": "Claude_ai_chat_side_instructions.md"
   },
-  "core": "0.7.1",
+  "core": "0.8.5",
   "hub": "https://lanehaden157.github.io/bible/"
 }
