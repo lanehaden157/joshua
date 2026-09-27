@@ -34,17 +34,16 @@ attachments.
 - `joshua_literary_unit_map.md` — the 24-unit/4-movement structural map
   (Entry, Conquest, Allotment, Epilogue). State the unit and passage from here
   before each walkthrough; flag any divergence from the chapter grid. Chs.
-  1–9 are meant to be checked against the Masoretic *petuḥah*/*setumah*
-  breaks; chs. 10–24 rest on Hawk and Dozeman's structural outlines rather
-  than hand-verification.
-
-  **The petuḥah/setumah breaks are not in any file on hand.** Neither
-  `Joshua-reading.txt` nor the OSHB source it's generated from carries paragraph
-  markup, so the "checked directly" claim above is aspirational, not done. A
-  chapter's breaks can be pulled per-unit from Mechon-Mamre's online Hebrew
-  text (marks its own `{P}`/`{S}`) as a one-off web check, but that's a
-  workaround, not a standing resource — don't treat the chs. 1–9 breaks as
-  verified until OSHB's paragraph-marked text is actually on hand.
+  1–9 are checked against the Masoretic *petuḥah*/*setumah* breaks (see
+  `candidate-boundaries.md`, below); chs. 10–24 rest on Hawk and Dozeman's
+  structural outlines rather than hand-verification.
+- `candidate-boundaries.md` — every *petuḥah* (open) and *setumah* (closed)
+  paragraph break in Joshua, 94 in all (52 + 42), in order, from the same
+  pinned OSHB text as `Joshua-reading.txt`. Each row names the verse the break
+  **follows**. A raw list, not an interpretation: use it to test a unit
+  boundary against the Masoretic paragraphing, and say so when a unit cuts
+  across a break or a break falls mid-unit. `Joshua-reading.txt` itself
+  carries no paragraph markup, so this file is the place to look.
 - `Joshua-words.tsv` — one row per word: OSHB word id, ref, surface form,
   lemma, morph. **This is what you read ids off when tagging.** Generated
   from the same pinned morphhb release as `Joshua-reading.txt`; if the two
