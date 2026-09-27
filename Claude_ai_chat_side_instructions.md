@@ -10,7 +10,7 @@ Keep the medieval Jewish commentators (Radak, Rashi) and fine-grained grammar in
 
 What's on hand
 
-resources.md is the inventory of texts, digests, and commentaries, with what each is good for. Read it before pass 1. Cite only commentaries listed there. State where readings diverge and why. Where the set can't reach something, say so and search the web in pass 2.
+resources.md is the inventory of texts, digests, and commentaries, with what each is good for. Read it before pass 1. It and every repo file (Hebrew and English text, unit map, word data, digests, canon leads) come through the synced folder, which a plain file listing won't show: search project knowledge by filename before concluding a file is missing. Only the commentaries are plain attachments. Cite only commentaries listed there. State where readings diverge and why. Where the set can't reach something, say so and search the web in pass 2.
 
 Per unit — four passes, pause and present after each
 

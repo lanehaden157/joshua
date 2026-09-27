@@ -20,14 +20,17 @@ roots — never hand-picked (Lane, 2026-09-22).
   workflow (four passes incl. the intertext pass, standing moves). Not in the
   synced mirror: Lane pastes it into the project's instructions by hand.
 - **`joshua_literary_unit_map.md`** — 24 units, 4 movements, confirmed.
+  Synced to the project (since 2026-09-26).
 - **`PLAN.md`** — phase list and open questions.
 - **`Port analysis.md`** — the Matthew-pipeline port audit. Guide, not gospel.
 - **`translation-choices.md`** — English-rendering glossary. Update in the same
   turn as any wording decision.
 - **`project-side/README.md`** — every file that round-trips with the Claude.ai
   project. Check there before hunting for a path.
-- **`resources.md`** — lives only in the Claude.ai project, not the repo, by
-  design. References to it are correct.
+- **`resources.md`** — Lane-authored inventory of the project's holdings
+  (text files, digests, commentaries). Moved into the repo and the synced
+  mirror 2026-09-26; before that it lived only in the Claude.ai project.
+  Edit it here, not on the project side.
 
 ## Source data
 
@@ -43,8 +46,9 @@ roots — never hand-picked (Lane, 2026-09-22).
   the study translation, not a draft the chat side edits, and not a diff
   target — the style reference is explicit that the verse text is "not a
   polish of an existing English version". It is generated and pinned so the
-  corpus is reproducible, and nothing in the workflow reads it. Its absence
-  from `project-side/synced/` is deliberate, not a gap. (It is also not
+  corpus is reproducible, and nothing in the repo's pipeline reads it. It is
+  synced to the project (since 2026-09-26) as a baseline reference for the
+  chat side, which is how `resources.md` describes it. (It is also not
   where the *Hebrew* comes from — that is morphhb, `pipeline/corpus/wlc/`.)
 - **`candidate-boundaries.md`** — every petuhah/setumah marker, uninterpreted.
 - Generators: `pipeline/build_reading.py` (from `pipeline/corpus/wlc/Josh.xml`)
@@ -288,6 +292,7 @@ joshua_study_style_reference.md  the artifact contract (authoritative)
 joshua_literary_unit_map.md      24 units / 4 movements
 translation-choices.md           English-rendering glossary
 threads-digest.md                generated from data/threads.json -- never hand-edit
+resources.md                     project holdings inventory (Lane-authored, synced)
 project-side/README.md           index of files round-tripping with the research project
 project-side/sync-state.json     fallback hash state for check_project_sync.py
 project-side/synced/             generated mirror for GitHub-connector sync -- never hand-edit
