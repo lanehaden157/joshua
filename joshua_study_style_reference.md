@@ -207,7 +207,7 @@ verse text) still go in the fragment as normal — `questions[]` is for
 flagging that the choice is provisional and asking whether to lock it,
 not for leaving something unrendered.
 
-Consumed and dropped exactly like `candidates`/`retro`: `pipeline/port_artifact.py`
+Consumed and dropped exactly like `candidates`/`retro`: the porter (`python -m biblecore port`)
 prints every question to the terminal at port time and folds it into the
 thread-delta report, then `generate()` never re-adds the key, so a
 regenerated fragment carries none. Answered questions don't need cleanup on
@@ -265,7 +265,7 @@ echo (Deuteronomy command → Joshua fulfilment; conquest summary vs. Judges 1).
 `.gloss` (never nested, always closed) and collapsed behind the same per-verse
 `*` toggle (`app/spotlight.js`), distinguished once open by its "cf." prefix
 and Jordan-teal border rather than `.gloss`'s plain grey. `data-anchor` must
-match the `C:V` of the verse it's actually a sibling of — `pipeline/unit_meta.py`
+match the `C:V` of the verse it's actually a sibling of — `biblecore/meta.py`
 `check_echo()` enforces both that and the nesting-depth check.
 **(learned:** `67b2712` — asides spliced inside unclosed `.gloss` spans silently
 collapsed; `check_echo()`'s nesting check models exactly this failure mode,
@@ -284,7 +284,7 @@ sources and two repo files in reader-facing prose.**)**
 
 ## 5. Hebrew in English
 
-**Transliteration** comes only from `pipeline/hebrew.py`. Scheme: a diacritic
+**Transliteration** comes only from `biblecore/lang/hebrew.py`. Scheme: a diacritic
 only where the plain letter is already claimed (`ḥ ṭ ś`, `ʾ`/`ʿ`); no vowel
 marks.
 
@@ -349,8 +349,8 @@ sharing one id.
    and so does every word with a Torah or later-canon history, with an `echo`.
 5. Every `opens`/`payoffs` `id` is in `threads-digest.md` and has a `note`.
 6. Every `retro` targets an earlier unit, has a `why`, and resolves. `w` is
-   **optional in the incoming artifact** — `pipeline/assign_data_w.py` fills
-   it during the port. Supply it if you happen to know it; never hand-chase it.
+   **optional in the incoming artifact** — the porter fills
+   it during the port (`python -m biblecore data-w`). Supply it if you happen to know it; never hand-chase it.
 7. Every `data-root` is in `threads-digest.md` or `roots[]`.
 8. Every tracked-thread span has a `data-w` from `Joshua-words.tsv` **in the
    built fragment**. The artifact may arrive with none: the porter assigns

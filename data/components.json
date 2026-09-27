@@ -1,0 +1,10 @@
+{
+  "_note": "Enabled components for the app shell (biblecore/components). Generated; don't edit.",
+  "components": [
+    {
+      "name": "echo",
+      "role": "verse-aside",
+      "selector": "aside.echo"
+    }
+  ]
+}

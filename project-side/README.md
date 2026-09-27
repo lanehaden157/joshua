@@ -13,14 +13,16 @@ connector at that folder and its "sync" feature pulls fresh content on its
 own — no re-pasting, ever. Never hand-edit anything under `synced/`; it's
 overwritten on the next sync.
 
-**What keeps it current:** `pipeline/sync_to_github.py` copies every
-`TRACKED_FILES` entry into `synced/`, and if anything actually changed,
-commits and pushes. A Windows scheduled task (`JoshuaProjectSideSync`,
-`schtasks`/Task Scheduler) runs it every 15 minutes — it's a silent no-op
-when nothing's changed. Run it by hand any time with:
+**What keeps it current:** `python -m biblecore sync` copies every file
+in `book.json` `sync` (`files` + `globs`) into `synced/`, writes
+`synced/synced-index.md` (every synced file and what it's for, generated),
+and if anything actually changed, commits and pushes. A Windows scheduled
+task (`JoshuaProjectSideSync`) runs it every 15 minutes through the
+`pipeline/sync_to_github.py` shim — a silent no-op when nothing's changed.
+Run it by hand any time with:
 
 ```bash
-python pipeline/sync_to_github.py
+python -m biblecore sync
 ```
 
 To check the task itself (last run, next run, result code):
@@ -29,21 +31,15 @@ To check the task itself (last run, next run, result code):
 Get-ScheduledTaskInfo -TaskName "JoshuaProjectSideSync"
 ```
 
-**Fallback for projects that can't use a GitHub connector** (e.g. one
-that only takes uploaded files): `pipeline/check_project_sync.py` still
-does the old hash-diff-and-tell-you-what-changed job —
+**Drift check without pushing:** `python -m biblecore sync-check` lists
+what's changed since the last sync (hashes in `project-side/sync-state.json`)
+and also says when `Claude_ai_chat_side_instructions.md` has changed since it
+was last pasted into the instruction field. After pasting it, run
+`python -m biblecore sync-check --mark-pasted`. The build runs sync-check
+advisory.
 
-```bash
-python pipeline/check_project_sync.py               # what needs re-pasting
-python pipeline/check_project_sync.py --mark-synced  # after you've pasted everything
-```
-
-— tracked separately in `project-side/sync-state.json`, and also run
-advisory (non-failing) inside `pipeline/build.py`.
-
-To add a file to the loop, add it to `TRACKED_FILES` in
-`pipeline/check_project_sync.py` (both scripts import from there) and give it
-a row below.
+To add a file to the loop, add it to `book.json` `sync` and give it a row
+below.
 
 ## Files
 
@@ -51,18 +47,22 @@ a row below.
 |---|---|---|---|
 | [`joshua_study_style_reference.md`](../joshua_study_style_reference.md) | repo → project | The artifact contract — fragment shape, unit-meta schema, component whitelist, transliteration scheme, checklist | Re-paste whenever it changes |
 | [`translation-choices.md`](../translation-choices.md) | repo → project | Hand-maintained glossary of deliberate English renderings | Edit **in the same turn** as any wording decision — this is the rule that saved a retroactive pass on Matthew |
-| [`threads-digest.md`](../threads-digest.md) | repo → project | Generated snapshot of tracked cross-unit threads — source of truth for what to tag | Regenerate (`python pipeline/threads_digest.py`) any time `data/threads.json` changes; never hand-edit |
+| [`threads-digest.md`](../threads-digest.md) | repo → project | Generated snapshot of tracked cross-unit threads — source of truth for what to tag | Regenerate (`python -m biblecore digest`, part of the build) any time `data/threads.json` changes; never hand-edit |
 | [`resources.md`](../resources.md) | repo → project | Lane-authored inventory of what the project has on hand (text files, digests, the commentary set) and what each is good for. `Claude_ai_chat_side_instructions.md` points to it. Moved into the repo 2026-09-26; before that it lived only in the project | Edit in the repo whenever the project's holdings change |
 | [`data/roots.json`](../data/roots.json) | repo → project | Tracked-thread root identity — hand-curated Strong's/lemma id sets per root (style reference §2) | Re-paste whenever a root's id set changes |
-| [`Joshua-reading.txt`](../Joshua-reading.txt) | repo → project | Pointed Hebrew, `Josh C:V<TAB>text` — for quoting. Was a plain project attachment named `Joshua-Hebrew.txt` until 2026-09-26 | Static once generated (`pipeline/build_reading.py`) |
-| [`Joshua-english.txt`](../Joshua-english.txt) | repo → project | WEB-classic English — a baseline reference, not the study's translation (CLAUDE.md "Source data") | Static once generated (`pipeline/build_english.py`) |
+| [`Joshua-reading.txt`](../Joshua-reading.txt) | repo → project | Pointed Hebrew, `Josh C:V<TAB>text` — for quoting. Was a plain project attachment named `Joshua-Hebrew.txt` until 2026-09-26 | Static once generated (`python -m biblecore corpus`) |
+| [`Joshua-english.txt`](../Joshua-english.txt) | repo → project | WEB-classic English — a baseline reference, not the study's translation (CLAUDE.md "Source data") | Static once generated (`tools/build_english.py`) |
 | [`joshua_literary_unit_map.md`](../joshua_literary_unit_map.md) | repo → project | 24 units / 4 movements; fulfills the style reference's §9 TODO | Whenever the map changes |
-| [`candidate-boundaries.md`](../candidate-boundaries.md) | repo → project | All 94 petuḥah/setumah breaks from OSHB — what the unit map's chs. 1–9 are checked against. Synced 2026-09-26 | Static once generated (`pipeline/build_reading.py`) |
+| [`candidate-boundaries.md`](../candidate-boundaries.md) | repo → project | All 94 petuḥah/setumah breaks from OSHB — what the unit map's chs. 1–9 are checked against. Synced 2026-09-26 | Static once generated (`python -m biblecore corpus`) |
+| [`core-workflow.md`](../core-workflow.md) | core → project | The four passes, ledger, standing moves and scope rules shared by every book. Vendored from bible-core; the instruction field points to it and wins where they disagree | Changes when core is re-vendored; never hand-edit |
+| [`canon-conventions.md`](../canon-conventions.md), [`canon-decisions.md`](../canon-decisions.md) | core → project | Canon-wide rendering conventions, and canon threads/type-scenes already accepted or declined | Re-vendored with core; never hand-edit |
+| [`components-reference.md`](../components-reference.md) | repo → project | Generated from `book.json` `components` (Joshua: `echo`) | Regenerated by the build |
 | [`Joshua-words.tsv`](../Joshua-words.tsv) | repo → project | Per-word OSHB data (`word_id, ref, surface, lemma, morph`) — the thing every Hebrew string in an artifact must be pulled from, never hand-typed (style reference §2) | Static once generated; only changes if the corpus pin changes |
-| [`canon-leads/canon-leads-unit-NN.md`](../canon-leads/) | repo → project | Generated per unit by `pipeline/canon_leads.py`: where the unit's rare words and Torah-shared phrases occur elsewhere in the Hebrew Bible. The starting list for the chat side's intertext pass (pass 3). Leads, not conclusions | Regenerated by `build.py` for every built unit + the next one; never hand-edit |
+| [`canon-leads/canon-leads-unit-NN.md`](../canon-leads/) | repo → project | Generated per unit by `python -m biblecore leads`: where the unit's rare words and Torah-shared phrases occur elsewhere in the Hebrew Bible. The starting list for the chat side's intertext pass (pass 3). Leads, not conclusions | Regenerated by `build.py` for every built unit + the next one; never hand-edit |
 
 **Not synced:** `Claude_ai_chat_side_instructions.md` (Lane's call,
-2026-09-16) — Lane pastes it into the project's instructions field by hand.
+2026-09-16) — Lane pastes it into the project's instructions field by hand;
+`sync-check` says when it needs re-pasting.
 `Joshua-reading.txt` and `Joshua-english.txt` were dropped the same day and
 brought back 2026-09-26, along with the unit map and `resources.md`, so the
 project no longer carries hand-uploaded copies of repo files.
