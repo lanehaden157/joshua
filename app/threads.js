@@ -60,7 +60,7 @@ export function injectPalette(unit, resolved) {
   for (const [root, m] of resolved) {
     if (!m.color) continue;
     const r = `[data-root="${cssEsc(root)}"]`;
-    rules.push(`${sel} ${r}{color:${m.color}}`);
+    rules.push(`${sel} ${r}{--rc:${m.color};color:var(--rc-shown,${m.color})}`);
     rules.push(`${sel} .swatch[style*="--c-${cssEsc(root)}"]{background:${m.color}!important}`);
     // cross-unit thread -> dotted underline (the same word recurring across
     // units). plain local roots: colour only.

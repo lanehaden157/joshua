@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("bible:theme")||"auto"}catch(e){document.documentElement.dataset.theme="auto"}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Joshua Study</title>
 <meta name="description" content="A 24-unit literary-canonical study translation of the Book of Joshua.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Frank+Ruhl+Libre:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css?v=2">
+<link rel="stylesheet" href="css/division.css?v=1">
 </head>
 <body>
 
@@ -29,6 +30,11 @@
   </header>
   <nav id="unit-nav" class="unit-nav" aria-label="all units" hidden></nav>
   <div id="settings-panel" class="settings-panel" role="menu" aria-label="display settings" hidden>
+    <div class="settings-row" style="display:block"><b style="font-weight:600">Appearance</b>
+      <label style="display:block"><input type="radio" name="appearance" value="auto"> Match the system</label>
+      <label style="display:block"><input type="radio" name="appearance" value="light"> Light</label>
+      <label style="display:block"><input type="radio" name="appearance" value="dark"> Dark</label>
+    </div>
     <label class="settings-row">
       <input type="checkbox" id="setting-center-text">
       Center-align reading text
@@ -47,5 +53,6 @@
 <a id="fab-next" class="unit-fab next" aria-label="Next unit" hidden>›</a>
 
 <script type="module" src="app/main.js?v=3"></script>
+<script>(function(){var c=document.documentElement.dataset.theme||'auto';document.querySelectorAll('input[name=appearance]').forEach(function(i){i.checked=i.value===c;i.addEventListener('change',function(){document.documentElement.dataset.theme=i.value;try{localStorage.setItem('bible:theme',i.value)}catch(e){}})})})();</script>
 </body>
 </html>
