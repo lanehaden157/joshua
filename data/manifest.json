@@ -6,8 +6,9 @@
   "abbrev": "Josh",
   "language": "hebrew",
   "versification": "kjv",
-  "core": "0.8.5",
+  "core": "0.9.0",
   "hub": "https://lanehaden157.github.io/bible/",
+  "overlay": null,
   "unit_count": 24,
   "units_built": 4,
   "files": {
