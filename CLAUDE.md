@@ -51,6 +51,7 @@ roots — never hand-picked (Lane, 2026-09-22).
   chat side, which is how `resources.md` describes it. (It is also not
   where the *Hebrew* comes from — that is morphhb, `pipeline/corpus/wlc/`.)
 - **`candidate-boundaries.md`** — every petuhah/setumah marker, uninterpreted.
+  Synced (since 2026-09-26); `resources.md` points the chat side to it.
 - Generators: `pipeline/build_reading.py` (from `pipeline/corpus/wlc/Josh.xml`)
   and `pipeline/build_english.py` (from WEB USFM; asserts verse count matches
   the Hebrew file).
