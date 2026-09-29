@@ -43,6 +43,6 @@
   "paths": {
     "chat_side": "Claude_ai_chat_side_instructions.md"
   },
-  "core": "0.9.7",
+  "core": "0.9.9",
   "hub": "https://lanehaden157.github.io/bible/"
 }
