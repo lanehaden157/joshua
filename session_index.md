@@ -54,3 +54,5 @@ Read this first. 3 lines max per session.
 - **2026-09-24**: Canon leads now print English (KJV) verse numbers via morphhb's VerseMap.xml (Lane: English numbering is standard). Regenerated units 1–5; existing echoes were already English. See session_summary_2026-09-24.md.
 - **2026-09-26**: Synced Joshua-reading/english, unit map and resources.md (moved into repo) to the project; pointers updated everywhere. Then moved Joshua onto bible-core 0.7.1 (Lane: everything but the app shell): pipeline/ replaced by `python -m biblecore`, byte-identical units, chat-side field points to core-workflow.md. See session_summary_2026-09-26.md.
 - **2026-09-29**: Vendored core 0.9.9 (speed only, outputs identical): build 12.3s to about 4s, test 6.2s to about 1.5s. Build and `biblecore test` 8/8.
+- **2026-09-29 (instructions review)**: Lane-approved cleanups from the cross-repo instruction-file review (CLAUDE.md, PLAN.md rewrite, style reference §3a/§5, chat-side field, project-side README). Uncommitted; chat-side field needs a re-paste.
+  Flags and decisions: `../instructions_review_2026-09-29.md`.

@@ -15,8 +15,16 @@ pinned in `biblecore/CORE_VERSION` and `book.json` `core` (Lane reversed the
 `biblecore/` here (`../bible-core/tools/core_diff.py ../Joshua` reports local
 edits). `source-artifacts/` is current for all four units: edit there and
 re-port rather than editing `units/` by hand. Tracked-thread colours are
-assigned algorithmically, same as local roots — never hand-picked (Lane,
-2026-09-22).
+assigned algorithmically, same as local roots; hand-pick one only if Lane asks
+(Lane, 2026-09-22: eyeballed colours collided).
+
+Other sessions may be editing `../bible-core` or this repo at the same time:
+see "Concurrent sessions" in `../bible-core/CLAUDE.md` (check `git status`,
+stage explicit paths).
+
+Lane prefers questions (the porter's `questions[]`, wording calls, thread
+decisions) as AskUserQuestion multiple-choice popups, best provisional choice
+first and marked "(Recommended)", rather than a list in chat.
 
 Everyday commands, from the repo root:
 
@@ -26,7 +34,7 @@ Everyday commands, from the repo root:
     python -m biblecore audit --ids ROOT  # every form/ref an id set pulls in
     python -m biblecore data-w 6          # fill data-w on a built unit by alignment
     python -m biblecore colour ROOT ...   # colours for threads about to be promoted
-    python -m biblecore sync              # mirror synced files, commit, push (after every commit/push)
+    python -m biblecore sync              # mirror synced files, commit AND push (run it when Lane OKs the push)
 
 `python -m biblecore` with no command lists the rest.
 
@@ -139,13 +147,12 @@ reference §2).
 
 ### Thread promotion: book-wide vs. local (Lane, 2026-09-16)
 
-Claude decides whether a `threads.candidates[]` root becomes a tracked thread,
-**biased toward book-wide** — a local root that later pays off is worse than a
-tracked one that doesn't. Ask Lane only when genuinely unsure (unit 1: `kol`,
-236 occurrences, asked, kept local).
+The promotion policy is in the style reference §3 (Claude decides, biased
+book-wide; ask Lane when genuinely unsure). Unit 1 example: `kol`, 236
+occurrences, asked, kept local.
 
-Its colour comes from `python -m biblecore colour ROOT` (Lane, 2026-09-22:
-never hand-pick), checked against every other tracked colour plus every local
+Its colour comes from `python -m biblecore colour ROOT` by default (Lane,
+2026-09-22; hand-pick only if Lane asks), checked against every other tracked colour plus every local
 root colour on record in `data/units.json`. The well is `data/palette.json`:
 65 colours, expanded from 20 on 2026-09-22 by generation, not by eye (muted
 Lab-space candidates, filtered for WCAG contrast ≥ 2.8 against `--bg` and

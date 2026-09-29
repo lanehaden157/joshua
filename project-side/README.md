@@ -1,9 +1,8 @@
 # Project-side sync — index, not a copy of the canonical files
 
 Every file in the table below has **one canonical copy**, at the repo path
-linked. That's deliberate — `Claude_ai_chat_side_instructions.md` says it
-outright: *"Matthew's contract lived in three places and drifted."* This
-file exists so you don't have to hunt for the canonical paths.
+linked. That's deliberate: Matthew's contract once lived in three places and
+drifted. This file exists so you don't have to hunt for the canonical paths.
 
 **`project-side/synced/` is the one deliberate exception.** It holds a flat,
 auto-generated *copy* of every tracked file's current content (basenames
@@ -16,11 +15,11 @@ overwritten on the next sync.
 **What keeps it current:** `python -m biblecore sync` copies every file
 in `book.json` `sync` (`files` + `globs`) into `synced/`, writes
 `synced/synced-index.md` (every synced file and what it's for, generated),
-and if anything actually changed, commits and pushes. It runs as part of
-every commit and push in this repo (Claude Code runs it in the same turn), so
-the mirror moves when the repo does. The old 15-minute scheduled task
-(`JoshuaProjectSideSync`) was removed 2026-09-26. Run it by hand any time
-with:
+and if anything actually changed, commits and pushes. It pushes on its own, so
+run it when Lane has OK'd the push, normally together with the commit that
+caused the change, so the mirror moves when the repo does. The old 15-minute
+scheduled task (`JoshuaProjectSideSync`) was removed 2026-09-26. Run it by
+hand with:
 
 ```bash
 python -m biblecore sync
@@ -40,11 +39,11 @@ below.
 
 | file | direction | what it is | update cadence |
 |---|---|---|---|
-| [`joshua_study_style_reference.md`](../joshua_study_style_reference.md) | repo → project | The artifact contract — fragment shape, unit-meta schema, component whitelist, transliteration scheme, checklist | Re-paste whenever it changes |
+| [`joshua_study_style_reference.md`](../joshua_study_style_reference.md) | repo → project | The artifact contract — fragment shape, unit-meta schema, component whitelist, transliteration scheme, checklist | Synced automatically |
 | [`translation-choices.md`](../translation-choices.md) | repo → project | Hand-maintained glossary of deliberate English renderings | Edit **in the same turn** as any wording decision — this is the rule that saved a retroactive pass on Matthew |
 | [`threads-digest.md`](../threads-digest.md) | repo → project | Generated snapshot of tracked cross-unit threads — source of truth for what to tag | Regenerate (`python -m biblecore digest`, part of the build) any time `data/threads.json` changes; never hand-edit |
 | [`resources.md`](../resources.md) | repo → project | Lane-authored inventory of what the project has on hand (text files, digests, the commentary set) and what each is good for. `Claude_ai_chat_side_instructions.md` points to it. Moved into the repo 2026-09-26; before that it lived only in the project | Edit in the repo whenever the project's holdings change |
-| [`data/roots.json`](../data/roots.json) | repo → project | Tracked-thread root identity — hand-curated Strong's/lemma id sets per root (style reference §2) | Re-paste whenever a root's id set changes |
+| [`data/roots.json`](../data/roots.json) | repo → project | Tracked-thread root identity — hand-curated Strong's/lemma id sets per root (style reference §2) | Synced automatically |
 | [`Joshua-reading.txt`](../Joshua-reading.txt) | repo → project | Pointed Hebrew, `Josh C:V<TAB>text` — for quoting. Was a plain project attachment named `Joshua-Hebrew.txt` until 2026-09-26 | Static once generated (`python -m biblecore corpus`) |
 | [`Joshua-english.txt`](../Joshua-english.txt) | repo → project | WEB-classic English — a baseline reference, not the study's translation (CLAUDE.md "Source data") | Static once generated (`tools/build_english.py`) |
 | [`joshua_literary_unit_map.md`](../joshua_literary_unit_map.md) | repo → project | 24 units / 4 movements; fulfills the style reference's §9 TODO | Whenever the map changes |

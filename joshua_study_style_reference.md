@@ -201,7 +201,9 @@ with choices, same as any other decision the porter raises).
 few words). `note` is the actual question, with enough context to answer
 cold — no "as discussed above," no project-internal references (same voice
 rule as fragment prose, §4). `options` is an optional list of short
-candidate answers; omit it for an open-ended question. Provisional choices
+candidate answers; omit it for an open-ended question. Claude Code asks Lane
+each one in the AskUserQuestion popup (multiple choice, best provisional
+first), which Lane prefers to a chat list. Provisional choices
 you had to make to keep drafting (a gloss, a rendering already used in the
 verse text) still go in the fragment as normal — `questions[]` is for
 flagging that the choice is provisional and asking whether to lock it,
@@ -313,9 +315,9 @@ file's row and Log **in the same turn**. **(learned:** Matthew started this file
 at unit 10 and paid with a retroactive audit — `b0f73cc`, `aed087e`,
 `0138548`.**)**
 
-*Still open: ḥerem, ḥesed, goel, nefesh. Locked 2026-09-16: naḥalah →
-"inheritance"; `y'all` always marks a second-person plural. `translation-choices.md`
-is the authority — update it in the same turn as any wording decision.*
+*Still open: goel. Locked: ḥerem, ḥesed, naḥalah, nefesh; `y'all` always marks
+a second-person plural. `translation-choices.md` is the authority — update it in
+the same turn as any wording decision.*
 
 ---
 
