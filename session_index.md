@@ -56,3 +56,5 @@ Read this first. 3 lines max per session.
 - **2026-09-29**: Vendored core 0.9.9 (speed only, outputs identical): build 12.3s to about 4s, test 6.2s to about 1.5s. Build and `biblecore test` 8/8.
 - **2026-09-29 (instructions review)**: Lane-approved cleanups from the cross-repo instruction-file review (CLAUDE.md, PLAN.md rewrite, style reference §3a/§5, chat-side field, project-side README). Uncommitted; chat-side field needs a re-paste.
   Flags and decisions: `../instructions_review_2026-09-29.md`.
+- **2026-09-29 (audit step 1)**: `.gitattributes` (LF), core 0.9.10; sync-state.json no longer tracked; renamed to `CHAT_SIDE_INSTRUCTIONS.md` and `joshua-literary-unit-map.md` (orphan mirror copy removed); old plans into `archive/`. Field trimmed 631->367 words.
+  Test 8/8; pushed + synced. Lane: re-paste the field, re-sync the project's GitHub source. See ../session_summary_2026-09-29_step1.md.
