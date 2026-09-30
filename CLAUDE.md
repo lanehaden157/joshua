@@ -41,6 +41,10 @@ Everyday commands, from the repo root:
 `python -m biblecore` with no command lists the rest (`colour` and `data-w`
 for promoting a thread among them).
 
+GitHub Actions runs `python -m biblecore test` on every push
+(`.github/workflows/tests.yml`, shipped unchanged by bible-core's template;
+commits touching only `project-side/` or session files skip it).
+
 ## Project documents
 
 - **`joshua_study_style_reference.md`** — the artifact contract.

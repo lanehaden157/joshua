@@ -10,7 +10,7 @@ Keep the medieval Jewish commentators (Radak, Rashi) and fine-grained grammar in
 
 How we work
 
-Read `core-workflow.md` (synced folder) at the start of every unit and follow it; `joshua_study_style_reference.md` holds every artifact rule. This field wins where it and `core-workflow.md` disagree.
+Read `core-workflow.md` (synced folder) at the start of every unit and follow it; `joshua_study_style_reference.md` holds every artifact rule. This field wins where it and `core-workflow.md` disagree. If this field and the style reference conflict, flag it to Lane rather than picking one.
 
 Joshua on top of the core workflow
 
