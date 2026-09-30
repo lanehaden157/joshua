@@ -41,17 +41,19 @@ Everyday commands, from the repo root:
 ## Project documents
 
 - **`joshua_study_style_reference.md`** — the artifact contract.
-- **`Claude_ai_chat_side_instructions.md`** — the Claude.ai project's
+- **`CHAT_SIDE_INSTRUCTIONS.md`** — the Claude.ai project's
   instruction field: Joshua's lens plus its additions to `core-workflow.md`
   (the shared four passes, ledger and standing moves, vendored from core and
   synced). Not in the synced mirror: Lane pastes it by hand. `sync-check`
   says when it's stale; run `sync-check --mark-pasted` after pasting.
 - **`book.json`** — the book's core settings (paths, groupings, components,
   sync list). Closed schema: an unknown key is an error.
-- **`joshua_literary_unit_map.md`** — 24 units, 4 movements, confirmed.
+- **`joshua-literary-unit-map.md`** — 24 units, 4 movements, confirmed.
   Synced to the project (since 2026-09-26).
 - **`PLAN.md`** — phase list and open questions.
-- **`Port analysis.md`** — the Matthew-pipeline port audit. Guide, not gospel.
+- **`archive/`** — historical plans and audits (`Port analysis.md`, the
+  Matthew-pipeline port audit; `phase-0.6-plan.md`, `phase-4-5-plan.md`,
+  `platform-design-review.md`). Reference only; nothing reads them.
 - **`translation-choices.md`** — English-rendering glossary. Update in the same
   turn as any wording decision.
 - **`project-side/README.md`** — every file that round-trips with the Claude.ai
@@ -242,17 +244,17 @@ CLAUDE.md                        this file
 book.json                        core settings for this book
 biblecore/                       vendored bible-core (edit in bible-core; CORE_VERSION pins it)
 PLAN.md                          phase list, open questions
-Port analysis.md                 Matthew port audit
-Claude_ai_chat_side_instructions.md  the project's instruction field (pasted by hand)
+archive/                         old plans + Port analysis.md (historical, reference only)
+CHAT_SIDE_INSTRUCTIONS.md        the project's instruction field (pasted by hand)
 core-workflow.md, canon-conventions.md, canon-decisions.md   vendored from core, synced
 components-reference.md          generated from book.json components, synced
 joshua_study_style_reference.md  the artifact contract (authoritative)
-joshua_literary_unit_map.md      24 units / 4 movements
+joshua-literary-unit-map.md      24 units / 4 movements
 translation-choices.md           English-rendering glossary
 threads-digest.md                generated from data/threads.json -- never hand-edit
 resources.md                     project holdings inventory (Lane-authored, synced)
 project-side/README.md           index of files round-tripping with the research project
-project-side/sync-state.json     sync + paste hash state (biblecore sync-check)
+project-side/sync-state.json     sync + paste hash state (biblecore sync-check; gitignored)
 project-side/synced/             generated mirror for GitHub-connector sync -- never hand-edit
 Joshua-reading.txt, Joshua-words.tsv, Joshua-english.txt, candidate-boundaries.md   generated source data
 source-artifacts/                incoming research artifacts (joshua_NN_translation.html)

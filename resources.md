@@ -31,7 +31,7 @@ attachments.
 - `Joshua-english.txt` — WEB-classic English verse text. A baseline reference,
   not this study's own translation. Renders the divine name as Yahweh,
   matching `translation-choices.md` row 1.
-- `joshua_literary_unit_map.md` — the 24-unit/4-movement structural map
+- `joshua-literary-unit-map.md` — the 24-unit/4-movement structural map
   (Entry, Conquest, Allotment, Epilogue). State the unit and passage from here
   before each walkthrough; flag any divergence from the chapter grid. Chs.
   1–9 are checked against the Masoretic *petuḥah*/*setumah* breaks (see

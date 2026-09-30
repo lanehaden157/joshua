@@ -1,7 +1,7 @@
 # Joshua Study — Style Reference
 
 > **The artifact contract.** What a unit artifact must contain and must not.
-> `Claude_ai_chat_side_instructions.md` says how to work; `resources.md` says
+> `CHAT_SIDE_INSTRUCTIONS.md` says how to work; `resources.md` says
 > what's on hand; `CLAUDE.md` says how the repo behaves. Each rule lives in one
 > of the four.
 
@@ -450,6 +450,6 @@ as already accomplished.</span>
 
 ## 9. The Literary Unit Map
 
-Done — see `joshua_literary_unit_map.md` (24 units, 4 movements, confirmed by
+Done — see `joshua-literary-unit-map.md` (24 units, 4 movements, confirmed by
 Lane). Renumbering after units ship means editing `threads.json` opens/payoffs,
 every `retro` entry, and every fragment's meta block.
