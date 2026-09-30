@@ -58,3 +58,4 @@ Read this first. 3 lines max per session.
   Flags and decisions: `../instructions_review_2026-09-29.md`.
 - **2026-09-29 (audit step 1)**: `.gitattributes` (LF), core 0.9.10; sync-state.json no longer tracked; renamed to `CHAT_SIDE_INSTRUCTIONS.md` and `joshua-literary-unit-map.md` (orphan mirror copy removed); old plans into `archive/`. Field trimmed 631->367 words.
   Test 8/8; pushed + synced. Lane: re-paste the field, re-sync the project's GitHub source. See ../session_summary_2026-09-29_step1.md.
+- **2026-09-29 (audit step 2)**: Core 0.10.0: `book.json` sync is extras/skips on core's defaults (Joshua extras: reading, english, boundaries; same 19 files), `python -m biblecore book` shows state (CLAUDE.md points there), command list re-cut. Test 8/8; pushed + synced. Field paste still pending. See ../session_summary_2026-09-29_step2.md.
