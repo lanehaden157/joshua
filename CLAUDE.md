@@ -5,10 +5,13 @@ components, transliteration scheme, checklist) lives in
 `joshua_study_style_reference.md` and is authoritative over this file — this
 file points there rather than restating it.
 
-**State (2026-09-26):** Phases 0–5 done; units 1–4 built (Movement I complete);
-20 tracked threads in `data/threads.json`/`data/roots.json` (every one carries an
-`echo`). **Runs on bible-core** since 2026-09-26: vendored `biblecore/`,
-pinned in `biblecore/CORE_VERSION` and `book.json` `core` (Lane reversed the
+**State:** `python -m biblecore book` prints where the book stands (units
+built and planned, tracked threads, core pin vs vendored copy, sync and paste
+status), read from its data. It isn't written here, so it can't go stale.
+Every tracked thread carries an `echo`.
+
+**Runs on bible-core** since 2026-09-26: vendored `biblecore/`, pinned in
+`biblecore/CORE_VERSION` and `book.json` `core` (Lane reversed the
 2026-09-22 "not migrating" call). Mechanism lives in core:
 `../bible-core/ARCHITECTURE.md`. Fix core bugs in bible-core and re-vendor
 (`python ../bible-core/tools/core_sync.py ../Joshua`) rather than editing
@@ -28,15 +31,15 @@ first and marked "(Recommended)", rather than a list in chat.
 
 Everyday commands, from the repo root:
 
+    python -m biblecore book              # where the book stands (see State above)
     python -m biblecore port 6            # port source-artifacts/joshua_06_translation.html (--dry, --src X, --force)
     python -m biblecore build             # re-derive everything downstream of the fragments
-    python -m biblecore test              # book-side checks: core pin, units, audit, idempotence
     python -m biblecore audit --ids ROOT  # every form/ref an id set pulls in
-    python -m biblecore data-w 6          # fill data-w on a built unit by alignment
-    python -m biblecore colour ROOT ...   # colours for threads about to be promoted
+    python -m biblecore test              # book-side checks: core pin, units, audit, idempotence
     python -m biblecore sync              # mirror synced files, commit AND push (run it when Lane OKs the push)
 
-`python -m biblecore` with no command lists the rest.
+`python -m biblecore` with no command lists the rest (`colour` and `data-w`
+for promoting a thread among them).
 
 ## Project documents
 
@@ -46,8 +49,9 @@ Everyday commands, from the repo root:
   (the shared four passes, ledger and standing moves, vendored from core and
   synced). Not in the synced mirror: Lane pastes it by hand. `sync-check`
   says when it's stale; run `sync-check --mark-pasted` after pasting.
-- **`book.json`** — the book's core settings (paths, groupings, components,
-  sync list). Closed schema: an unknown key is an error.
+- **`book.json`** — the book's core settings (groupings, components, the
+  files it syncs beyond core's defaults). Closed schema: an unknown key is an
+  error.
 - **`joshua-literary-unit-map.md`** — 24 units, 4 movements, confirmed.
   Synced to the project (since 2026-09-26).
 - **`PLAN.md`** — phase list and open questions.
@@ -191,7 +195,7 @@ in the Hebrew Bible by default) and adjacent-lemma phrases shared with the
 Torah, each with every hit, transliterated, in English (KJV) verse numbering
 (Lane, 2026-09-24). Deliberately narrow: blind to common words, themes,
 type-scenes and the New Testament. The build regenerates it for every built
-unit plus the next one; `book.json` `sync.globs` syncs it.
+unit plus the next one; core's default sync set syncs it.
 
 Drafting cross-references here from memory is the thing this replaces. The
 unit 1–2 echoes were written that way and are provisional until the project

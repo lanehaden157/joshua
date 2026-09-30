@@ -12,8 +12,11 @@ connector at that folder and its "sync" feature pulls fresh content on its
 own — no re-pasting, ever. Never hand-edit anything under `synced/`; it's
 overwritten on the next sync.
 
-**What keeps it current:** `python -m biblecore sync` copies every file
-in `book.json` `sync` (`files` + `globs`) into `synced/`, writes
+**What keeps it current:** `python -m biblecore sync` copies every synced
+file into `synced/` (core's default set, `biblecore/sync.py` `DEFAULT_SYNC`,
+plus Joshua's `book.json` `sync.extra`: `Joshua-reading.txt`,
+`Joshua-english.txt` and `candidate-boundaries.md`), removes mirror files
+that have left the list, writes
 `synced/synced-index.md` (every synced file and what it's for, generated),
 and if anything actually changed, commits and pushes. It pushes on its own, so
 run it when Lane has OK'd the push, normally together with the commit that
@@ -32,8 +35,8 @@ was last pasted into the instruction field. After pasting it, run
 `python -m biblecore sync-check --mark-pasted`. The build runs sync-check
 advisory.
 
-To add a file to the loop, add it to `book.json` `sync` and give it a row
-below.
+To add a file to the loop, add it to `book.json` `sync.extra` and give it a
+row below; to drop a default, add it to `sync.skip`.
 
 ## Files
 
