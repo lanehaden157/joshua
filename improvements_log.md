@@ -505,3 +505,4 @@ Full suite green (`test_unit_meta.py` 52 checks), `build.py` green, coverage
 - 2026-09-30 (structural audit step 4): core 0.11.1 (`4cde316`) by `tools/core_sync.py --all` (`f8aa7ae`, 13 files). book.json `template: 591dba6` (`b0962bc`), read by `core_diff.py --template`. Test 8/8.
 - 2026-09-30 (structural audit step 5): CI workflow + template drift pass, 12bd778: CI line in CLAUDE.md, instruction-field conflict clause (another paste is still pending anyway). book.json template -> `39fca4f`. Test 8/8 locally and on Actions.
 - 2026-10-01 (Greek pass 1): core 0.12.0 (`dea9975`) by `tools/core_sync.py --all` (`27abf8c`, 10 files). Test 8/8; chat-side mirror unchanged.
+- 2026-10-01 (Greek pass 2): core 0.13.0 (`885314c`) by `tools/core_sync.py --all` (`d6af40b`, 26 files). Test 9/9 (new `words` check); chat-side mirror unchanged.
