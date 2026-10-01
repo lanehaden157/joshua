@@ -24,6 +24,8 @@ Commands:
                         move built units to a newer contract
   test [--quick]        check this book: core pin, units, audit, build idempotence
   corpus                build the word table and reading text from the corpus
+  fetch [--force|--check]
+                        a Greek book's pinned corpus, sha1-checked (no-op for Hebrew)
   units-from-map [MAP] [--kinds outer,inner] [--dry]
                         unit rows + groupings from the literary unit map
   sync-check [--mark-synced [FILE ...] | --mark-pasted]
@@ -57,21 +59,39 @@ COMMANDS = {
     "manifest": ("biblecore.manifest", "main"),
     "migrate": ("biblecore.migrate", "main"),
     "test": ("biblecore.selftest", "main"),
+    "fetch": ("biblecore.fetch", "main"),
     "sync-check": ("biblecore.sync", "check_main"),
     "sync": ("biblecore.sync", "push_main"),
 }
 # commands whose main() parses its arguments with argparse (its own --help);
 # every other one gets its module docstring for -h/--help and doesn't run
-ARGPARSED = {"port", "data-w", "leads", "migrate", "units-from-map"}
+ARGPARSED = {"port", "data-w", "leads", "migrate", "units-from-map", "fetch"}
 HELP = ("-h", "--help")
 
 
 def _corpus(argv):
     from biblecore import corpus
     from biblecore.book import book
-    counts = corpus.adapter().build(book())
+    b = book()
+    counts = corpus.adapter().build(b)
     print(json.dumps(counts))
     print("check these counts against a printed edition before trusting the corpus")
+    if b.language == "greek":
+        # the interlinear's glosses: MorphGNT sub-projects have drifted on
+        # accents before, so check every lemma finds its lexicon entry
+        import os
+        from biblecore.corpus import morphgnt
+        from biblecore.lang import greek_lexicon
+        if os.path.exists(b.path("greek_lexicon")):
+            glosses = greek_lexicon.load_glosses(b.path("greek_lexicon"))
+            forms = morphgnt.lemma_forms(b)
+            used = sorted({r["lemma"] for r in morphgnt.load_words(b)})
+            miss = [k for k in used if not glosses.get(forms.get(k))]
+            print(f"lexicon: {len(used) - len(miss)} of {len(used)} lemmas have a gloss"
+                  + (f"; none for {', '.join(miss)}" if miss else ""))
+        else:
+            print(f"lexicon: none at {os.path.relpath(b.path('greek_lexicon'), b.root)} "
+                  f"(tools/new_book.py copies it); the interlinear will have no glosses")
     return 0
 
 
@@ -103,7 +123,7 @@ def _template_line(b):
     import subprocess
     base = b.cfg.get("template")
     if not base:
-        return "no base recorded -> ../bible-core/tools/core_diff.py <book> --template --set-base <commit>"
+        return "no base recorded -> ../bible-core/tools/core_diff.py . --template --set-base <commit>"
     core = os.path.join(os.path.dirname(os.path.abspath(b.root)), "bible-core")
     try:
         r = subprocess.run(["git", "rev-list", "--count", f"{base}..HEAD", "--", "template"],
@@ -116,7 +136,7 @@ def _template_line(b):
     if not n:
         return f"base {base} (template unchanged since)"
     return (f"base {base} ({n} template commit{'s' if n != 1 else ''} since -> "
-            f"../bible-core/tools/core_diff.py <book> --template)")
+            f"../bible-core/tools/core_diff.py . --template)")
 
 
 def status_lines(b):
@@ -178,9 +198,12 @@ def _show_book(argv):
     for line in status_lines(b):
         print(line)
     print("paths")
-    for k in ("words", "reading", "units", "data", "css", "source", "out",
-              "retrofit", "retro", "wlc"):
-        print(f"  {k:10} {b.path(k)}")
+    corpus = ("morphgnt", "lxx", "greek_lexicon") if b.language == "greek" else ("wlc",)
+    keys = ("words", "reading", "units", "data", "css", "source", "out",
+            "retrofit", "retro") + corpus
+    w = max(10, *(len(k) for k in keys))
+    for k in keys:
+        print(f"  {k:{w}} {b.path(k)}")
     return 0
 
 
