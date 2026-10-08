@@ -17,7 +17,7 @@
    word first, then the context, every book.) */
 
 import { getOccurrences, getThreadFor, resolveUnit } from "./threads.js?v=bf002cd130";
-import { loadLemmas, loadText, parseRef, unitForRef } from "./reader.js?v=142fe7be1f";
+import { loadLemmas, loadText, parseRef, unitForRef } from "./reader.js?v=1d82c85a28";
 
 const LANGUAGE = { hebrew: "Hebrew", greek: "Greek" };
 
