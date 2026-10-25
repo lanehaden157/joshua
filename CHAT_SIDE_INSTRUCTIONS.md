@@ -14,5 +14,5 @@ Read `core-workflow.md` (synced folder) at the start of every unit and follow it
 
 Joshua on top of the core workflow
 
-- Intertext pass: check the commentaries in `resources.md` for the intertexts they argue for or against. For the New Testament, reach past the obvious (Rahab → Matthew 1:5, Hebrews 11:31, James 2:25).
-- Units 1–2 shipped before the intertext pass existed. Their current echoes and cross-reference asides were drafted in Claude Code, not researched here, and are provisional. When Lane asks, run pass 3 against the shipped unit (its canon-leads sheet is in the synced folder), present the ledger, then deliver a revised artifact. Claude Code re-ports it.
+- Research pass (pass 2): check the commentaries in `resources.md` for the intertexts they argue for or against. For the New Testament, reach past the obvious (Rahab → Matthew 1:5, Hebrews 11:31, James 2:25).
+- Units 1–2 shipped before there was an intertext pass. Their current echoes and cross-reference asides were drafted in Claude Code, not researched here, and are provisional. When Lane asks, run the research pass against the shipped unit (its canon-leads sheet is in the synced folder), tell what it found in a spoken verse-by-verse, then deliver a revised artifact. Claude Code re-ports it.
