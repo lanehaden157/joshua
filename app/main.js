@@ -18,7 +18,7 @@
    real bug, which is why nothing is bumped by hand. */
 
 import { loadThreadData, loadCanon, resolveUnit, injectPalette, rebuildLegend, wireRoots } from "./threads.js?v=bf002cd130";
-import { enhanceSpotlights, openAll } from "./spotlight.js?v=6a79a5c22c";
+import { enhanceSpotlights, openAll } from "./spotlight.js?v=3cc3d9993c";
 import { renderSearch } from "./search.js?v=4c4e4ba06a";
 import { MODES, modeLabel, applyMode, indexVerses, findVerse, mountInterlinear, unmountInterlinear,
          prepVerseNumbers, wireVerseNumbers, parseRef, unitForRef, rememberPosition, lastPosition, renderPrint } from "./reader.js?v=1d82c85a28";
