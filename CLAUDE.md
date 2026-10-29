@@ -32,9 +32,9 @@ first and marked "(Recommended)", rather than a list in chat.
 Everyday commands, from the repo root:
 
     python -m biblecore book              # where the book stands (see State above)
-    python -m biblecore port 6            # port source-artifacts/joshua_06_translation.html (--dry, --src X, --force)
+    python -m biblecore port 6            # port source-artifacts/joshua_06_translation.html (--dry, --src X, --force, --answers FILE)
     python -m biblecore build             # re-derive everything downstream of the fragments
-    python -m biblecore audit --ids ROOT  # every form/ref an id set pulls in
+    python -m biblecore audit --ids ROOT  # every form/ref an id set pulls in (plain `audit`: gaps end with ready retrofit `add` JSON)
     python -m biblecore test              # book-side checks: core pin, units, audit, idempotence
     python -m biblecore sync              # mirror synced files, commit AND push (run it when Lane OKs the push)
 
