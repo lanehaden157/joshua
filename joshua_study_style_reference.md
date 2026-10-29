@@ -149,6 +149,7 @@ and `discourse` were authored for eleven units and silently discarded.**)**
 | `slug` | — | str | `"unit-06"`; derived from `unit` if omitted |
 | `movement` | — | int | looked up from the Unit Map if omitted |
 | `questions` | — | array | wording/data calls only Lane can make, §3a |
+| `checks` | — | array | claims for the code side to verify, §3a |
 
 ### `roots[]` — every entry `{root, translit, gloss, example?, echo?}`
 
@@ -163,9 +164,9 @@ root splits across stems, fold both senses into one gloss without naming stems
 Never seed a gloss from Strong's first definition — misleading in 9 of 16
 sampled Joshua words (*gevul* "cord", *ḥaram* "seclude").
 
-### `threads` — `{opens, payoffs, candidates, retro}`
+### `threads` — `{opens, payoffs, candidates, retro, promote?}`
 
-All four present, each a list, empty allowed.
+The first four present, each a list, empty allowed; `promote` is optional.
 
 **`opens[]` / `payoffs[]`** — `{id, ref, note}`. The artifact is the only author
 of both. `id` must exist in `threads-digest.md` (propose new ones via
@@ -186,36 +187,36 @@ required. `op` ∈ `add` (default), `retag`, `retag_word`, `untag_word`, `unwrap
 root of the target unit. `add`/`retag`/`retag_word` onto a tracked thread
 requires `w`.
 
+**`promote[]`** (optional) — `{entry, reach, retrofit}`: a new thread ready for
+`threads.json`, taken from the handoff. `entry` is `{id, root, ids, gloss,
+opens: {unit, ref, note?}, payoffs: [{unit, ref, note?}], translit?, note?}`
+(`ids` the lemma ids; no colour, the site assigns it), `reach` a sentence
+("16 occurrences, retrofit in units 1, 2, 5"), `retrofit` the unit numbers
+that need tags added. Use it for a thread Lane has ruled on with the reach in
+view; `candidates[]` stays for a proposal that still needs an id set.
+
 ---
 
-## 3a. `questions[]` — asking Lane in Claude Code, not on the project side
+## 3a. `questions[]` and `checks[]` — for Lane and for the code side
 
-**`questions[]`** — `{topic, note, options?}`. A wording or data call that
-only Lane can make (a glossary lock, a rendering choice, a coverage
-tradeoff) goes here **instead of** being asked in chat (Lane, 2026-09-21:
-those questions were landing on the project side and he doesn't want to
-answer them there — he wants them surfaced in Claude Code, at port time,
-with choices, same as any other decision the porter raises).
+**`questions[]`** — `{topic, note, options?}`. A call only Lane can make, with a
+genuinely open alternative the unit's argument depends on. Before adding one,
+read `translation-choices.md` and the earlier units' meta: a wording already
+ruled is used, and a note about it goes in the artifact's prose, not here. The
+build chat first puts the handoff's questions to Lane in chat; only what's still
+open goes in `questions[]`. `topic` is a few words; `note` is the question,
+answerable cold; `options` optional short answers. Render your best
+provisional choice so the draft keeps moving, and flag it. Claude Code then
+asks Lane each question in the AskUserQuestion popup (multiple choice,
+`options` become the choices, best provisional first), which Lane prefers to a
+chat list. The porter prints every question at port time; the decision then
+goes in `translation-choices.md` or the thread/root entry.
 
-`topic` is a short label (think of it as an `AskUserQuestion` header — a
-few words). `note` is the actual question, with enough context to answer
-cold — no "as discussed above," no project-internal references (same voice
-rule as fragment prose, §4). `options` is an optional list of short
-candidate answers; omit it for an open-ended question. Claude Code asks Lane
-each one in the AskUserQuestion popup (multiple choice, best provisional
-first), which Lane prefers to a chat list. Provisional choices
-you had to make to keep drafting (a gloss, a rendering already used in the
-verse text) still go in the fragment as normal — `questions[]` is for
-flagging that the choice is provisional and asking whether to lock it,
-not for leaving something unrendered.
-
-Consumed and dropped exactly like `candidates`/`retro`: the porter (`python -m biblecore port`)
-prints every question to the terminal at port time and folds it into the
-thread-delta report, then `generate()` never re-adds the key, so a
-regenerated fragment carries none. Answered questions don't need cleanup on
-the chat side — once Lane decides, the decision goes in `translation-choices.md`
-(wording) or the relevant thread/root entry (coverage), same as any other
-locked choice.
+**`checks[]`** — `{ref, claim, expect}`. A claim about another passage's text
+that the code side can verify against the corpus (`ref` like `"Isa 22:22"`,
+`claim` what the artifact says, `expect` the lemma(s) it should find, a string
+or a list). These never go in `questions[]`: the porter prints them in their
+own section, they have no options and Lane doesn't answer them.
 
 ---
 
@@ -342,8 +343,8 @@ sharing one id.
 ## 7. Before saving — the checklist
 
 1. One `<article>`, nothing above or below it.
-2. Meta parses as JSON; required keys and all four `threads` sub-keys; no
-   unknown top-level keys.
+2. Meta parses as JSON; required keys and the four required `threads` sub-keys
+   (`promote` optional); no unknown top-level keys.
 3. Every `roots[]` entry: `root` (`[a-z0-9-]+`) + bare `translit` + plain
    `gloss`, optional `example`/`echo`; no `color`/`kind`/`members`, no stem or
    part-of-speech labels.
@@ -371,6 +372,11 @@ sharing one id.
 16. No named commentator or project-internal reference in prose (§4).
 17. Glosses are short, longer material is in footnotes, and the unit's
     intertextual links are surfaced (§4 *Balance*).
+
+17. Every `questions[]` entry is a call only Lane can make, with a genuinely
+    open alternative, and isn't a wording `translation-choices.md` or an earlier
+    unit already rules. Claims about other passages' text are in `checks[]`.
+18. Every `threads.promote[]` entry is complete (`entry`, `reach`, `retrofit`).
 
 Save as `joshua_NN_translation.html`, zero-padded, and present the file. It
 renders unstyled in chat — expected.

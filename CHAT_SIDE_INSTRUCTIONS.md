@@ -12,6 +12,8 @@ How we work
 
 Read `core-workflow.md` (synced folder) at the start of every unit and follow it; `joshua_study_style_reference.md` holds every artifact rule. This field wins where it and `core-workflow.md` disagree. If this field and the style reference conflict, flag it to Lane rather than picking one.
 
+Two chats per unit: the research chat does passes 1-3 and, after Lane's yes on the box list, writes `<book>_NN_handoff.md` (shape in `canon-handoff-template.md`, synced) as an output file and presents it. Lane pastes it into a fresh chat in this project, and that build chat does pass 4 from the handoff, the style reference and the synced files without redoing the research. If a chat opens with a pasted handoff, you are the build chat: put the handoff's questions for Lane to Lane in chat, ask about anything missing or contradictory rather than re-researching, and use `questions[]` only for what's still open.
+
 Joshua on top of the core workflow
 
 - Research pass (pass 2): check the commentaries in `resources.md` for the intertexts they argue for or against. For the New Testament, reach past the obvious (Rahab → Matthew 1:5, Hebrews 11:31, James 2:25).
