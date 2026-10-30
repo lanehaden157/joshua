@@ -2,30 +2,30 @@
 
 Generated from `data/threads.json` (version 1). 20 threads, 20 open.
 
-**This is the source of truth for thread tagging.** In a unit's fragment, a root that appears in the `id` column below is a *tracked thread*: tag every occurrence `<span class="r" data-root="<id>" data-w="<word id>">…</span>` (the word id from `Joshua-words.tsv`) and list it under `threads.opens` / `threads.payoffs` in the unit-meta block, with a matching id set in `data/roots.json`. A root that is recurring but *not* here is unit-local — tag it with its own name (no `data-w` needed) and just declare it in the unit's own `roots`. To propose promoting a local root to a tracked thread, add it to `threads.candidates` with a one-line reason (the Strong's/lemma `ids` you've actually observed in `Joshua-words.tsv`, plus a few representative `refs`, if you have them). **Claude decides, biased toward book-wide**: a local root that later pays off is worse than a tracked one that doesn't, so promote on a real second sighting. Ask Lane only when genuinely unsure.
+**The source of truth for thread tagging.** Tag every occurrence of a thread below with `<span class="r" data-root="<id>">…</span>` (the porter fills `data-w`) and list it under `threads.opens` / `threads.payoffs`. A root not listed here is unit-local: declare it in the unit's `roots`. To propose one, add it to `threads.candidates` with a one-line reason and the lemma `ids` you saw in `Joshua-words.tsv`. **Claude decides, biased toward book-wide** (a local root that later pays off is worse than a tracked one that doesn't), and asks Lane only when genuinely unsure.
 
-| id | root (data-root) | translit | gloss | opens | payoffs | status |
-|---|---|---|---|---|---|---|
-| `cross` | `cross` | ʿavar | cross over; the far side (of the Jordan) | 1 (1:2) | 2 (2:10) · 2 (2:23) · 3 (3:17) · 4 (5:1) | open |
-| `firm` | `firm` | ʾamats | be firm, be resolute (the glottal ʾ, aleph — not the ʿ of ʿavar) | 1 (1:6) | — | open |
-| `give` | `give` | natan | give | 1 (1:2) | 2 (2:9) · 2 (2:24) · 4 (5:6) | open |
-| `inherit` | `inherit` | naḥal | cause to inherit, give as an inheritance | 1 (1:6) | — | open |
-| `possess` | `possess` | yarash | take possession, possess | 1 (1:11) | 3 (3:10) | open |
-| `rest` | `rest` | nuaḥ | give rest; lay/set down (causative) | 1 (1:13) | 3 (3:13) | open |
-| `send` | `send` | shalaḥ | send | 1 (1:16) | 2 (2:1) | open |
-| `servant` | `servant` | ʿeved | slave (Moses' title, 'slave of Yahweh') | 1 (1:1) | 4 (5:14) | open |
-| `sole` | `sole` | kap | palm of the hand; sole of the foot | 1 (1:3) | 3 (3:13) · 3 (4:18) | open |
-| `strong` | `strong` | ḥazaq | be strong; strong (adjective) | 1 (1:6) | 3 (4:24) | open |
-| `swear` | `swear` | shavaʿ̲ | swear (an oath) | 1 (1:6) | 4 (5:6) | open |
-| `torah` | `torah` | torah | instruction, the Torah (here 'the scroll of the torah') | 1 (1:7) | — | open |
-| `blood` | `blood` | dam | blood | 2 (2:19) | — | open |
-| `chase` | `chase` | radaf | chase, pursue | 2 (2:5) | — | open |
-| `devote` | `devote` | ḥaram | devote to destruction | 2 (2:10) | — | open |
-| `melt` | `melt` | masas | melt | 2 (2:11) | 4 (5:1) | open |
-| `complete` | `complete` | tamam | be complete, come to an end, finish | 3 (3:16) | 4 (5:6) · 4 (5:8) | open |
-| `fear` | `fear` | yareʾ | fear, stand in awe of | 3 (4:14) | 3 (4:24) | open |
-| `holy` | `holy` | qadash | be holy; set apart, make holy | 3 (3:5) | 4 (5:15) | open |
-| `lodge` | `lodge` | lun | spend the night; lodging place | 3 (3:1) | — | open |
+| id | translit | gloss | opens | payoffs |
+|---|---|---|---|---|
+| `cross` | ʿavar | cross over; the far side (of the Jordan) | 1 (1:2) | 2 (2:10) · 2 (2:23) · 3 (3:17) · 4 (5:1) |
+| `firm` | ʾamats | be firm, be resolute (the glottal ʾ, aleph — not the ʿ of ʿavar) | 1 (1:6) | — |
+| `give` | natan | give | 1 (1:2) | 2 (2:9) · 2 (2:24) · 4 (5:6) |
+| `inherit` | naḥal | cause to inherit, give as an inheritance | 1 (1:6) | — |
+| `possess` | yarash | take possession, possess | 1 (1:11) | 3 (3:10) |
+| `rest` | nuaḥ | give rest; lay/set down (causative) | 1 (1:13) | 3 (3:13) |
+| `send` | shalaḥ | send | 1 (1:16) | 2 (2:1) |
+| `servant` | ʿeved | slave (Moses' title, 'slave of Yahweh') | 1 (1:1) | 4 (5:14) |
+| `sole` | kap | palm of the hand; sole of the foot | 1 (1:3) | 3 (3:13) · 3 (4:18) |
+| `strong` | ḥazaq | be strong; strong (adjective) | 1 (1:6) | 3 (4:24) |
+| `swear` | shavaʿ̲ | swear (an oath) | 1 (1:6) | 4 (5:6) |
+| `torah` | torah | instruction, the Torah (here 'the scroll of the torah') | 1 (1:7) | — |
+| `blood` | dam | blood | 2 (2:19) | — |
+| `chase` | radaf | chase, pursue | 2 (2:5) | — |
+| `devote` | ḥaram | devote to destruction | 2 (2:10) | — |
+| `melt` | masas | melt | 2 (2:11) | 4 (5:1) |
+| `complete` | tamam | be complete, come to an end, finish | 3 (3:16) | 4 (5:6) · 4 (5:8) |
+| `fear` | yareʾ | fear, stand in awe of | 3 (4:14) | 3 (4:24) |
+| `holy` | qadash | be holy; set apart, make holy | 3 (3:5) | 4 (5:15) |
+| `lodge` | lun | spend the night; lodging place | 3 (3:1) | — |
 
 ## Notes per thread
 
