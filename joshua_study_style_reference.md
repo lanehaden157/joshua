@@ -188,9 +188,9 @@ root of the target unit. `add`/`retag`/`retag_word` onto a tracked thread
 requires `w`.
 
 **`promote[]`** (optional) — `{entry, reach, retrofit}`: a new thread ready for
-`threads.json`, taken from the handoff. `entry` is `{id, root, ids, gloss,
+`threads.json`, taken from the handoff. `entry` is `{id, root?, ids, gloss,
 opens: {unit, ref, note?}, payoffs: [{unit, ref, note?}], translit?, note?}`
-(`ids` the lemma ids; no colour, the site assigns it), `reach` a sentence
+(`ids` the lemma ids; no colour, the site assigns it; `root` is optional and defaults to `id`, ASCII `[a-z0-9-]` only, e.g. `kerdaino` not `kerdainō`; a `retro[]` in the same unit may tag the promoted id, and `apply-delta` creates the `threads.json` and `roots.json` entries), `reach` a sentence
 ("16 occurrences, retrofit in units 1, 2, 5"), `retrofit` the unit numbers
 that need tags added. Use it for a thread Lane has ruled on with the reach in
 view; `candidates[]` stays for a proposal that still needs an id set.
