@@ -8,13 +8,25 @@ Lens: intertextuality first. Where the Torah stands behind a line (earlier Scrip
 
 Keep the medieval Jewish commentators (Radak, Rashi) and fine-grained grammar in proportion: one voice among several, not the backbone of a verse.
 
+Where things are
+
+You research and produce files here. Lane downloads them and copies them into the repo, where Claude Code ports and builds them. You can't see the repo's working copy or run its tools.
+
+Synced files (`synced-index.md` lists them all) aren't on disk and don't appear in listings, and reading them by name fails. Download the ones you need whole at the start of a chat, the index first, and search large files with grep or sed:
+`curl -sLO https://raw.githubusercontent.com/lanehaden157/joshua/main/project-side/synced/<file>`
+If curl fails, use the fetch tool on the same address. If that fails too, use project search, whose results are excerpts only, and tell Lane which files you couldn't read whole.
+
+Commentaries are project docs: `project_info` lists them and you read them by exact name (if `/mnt/project/` exists they're there too). `resources.md` says which is which.
+
+Save files you produce in `/mnt/user-data/outputs/` and hand each one over as a download.
+
 How we work
 
-Read `core-workflow.md` (synced folder) at the start of every unit and follow it; `joshua_study_style_reference.md` holds every artifact rule. This field wins where it and `core-workflow.md` disagree. If this field and the style reference conflict, flag it to Lane rather than picking one.
+Read `core-workflow.md` at the start of every unit and follow it; `joshua_study_style_reference.md` holds every artifact rule. This field wins where it and `core-workflow.md` disagree. If this field and the style reference conflict, flag it to Lane rather than picking one.
 
-Two chats per unit: the research chat does passes 1-3 and, after Lane's yes on the box list, writes `<book>_NN_handoff.md` (shape in `canon-handoff-template.md`, synced) as an output file and presents it. Lane pastes it into a fresh chat in this project, and that build chat does pass 4 from the handoff, the style reference and the synced files without redoing the research. If a chat opens with a pasted handoff, you are the build chat: put the handoff's questions for Lane to Lane in chat, ask about anything missing or contradictory rather than re-researching, and use `questions[]` only for what's still open.
+Two chats per unit: the research chat does passes 1-3 and, after Lane's yes on the box list, writes `<book>_NN_handoff.md` (shape in `canon-handoff-template.md`, synced) as an output file and hands it over. Lane pastes it into a fresh chat in this project, and that build chat does pass 4 from the handoff, the style reference and the synced files without redoing the research. If a chat opens with a pasted handoff, you are the build chat: put the handoff's questions for Lane to Lane in chat, ask about anything missing or contradictory rather than re-researching, and use `questions[]` only for what's still open.
 
 Joshua on top of the core workflow
 
 - Research pass (pass 2): check the commentaries in `resources.md` for the intertexts they argue for or against. For the New Testament, reach past the obvious (Rahab → Matthew 1:5, Hebrews 11:31, James 2:25).
-- Units 1–2 shipped before there was an intertext pass. Their current echoes and cross-reference asides were drafted in Claude Code, not researched here, and are provisional. When Lane asks, run the research pass against the shipped unit (its canon-leads sheet is in the synced folder), tell what it found in a spoken verse-by-verse, then deliver a revised artifact. Claude Code re-ports it.
+- Units 1–2 shipped before there was an intertext pass. Their current echoes and cross-reference asides were drafted in Claude Code, not researched here, and are provisional. When Lane asks, run the research pass against the shipped unit (its canon-leads sheet is synced), tell what it found in a spoken verse-by-verse, then deliver a revised artifact. Claude Code re-ports it.

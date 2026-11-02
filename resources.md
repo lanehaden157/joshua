@@ -1,31 +1,27 @@
 # Joshua Study — Resources
 
 > **Single authored copy.** This file lives in the repo and reaches the
-> Claude.ai project through the synced folder, like the text files below.
+> Claude.ai project by sync, like the text files below.
 > Edit it in the repo; the sync picks up the change on its own.
 >
 > **This file says what is on hand and what each thing is good for. It does not
-> say how to work** — that lives directly in the project's instructions field,
-> not a separate synced file — **and it does not say what to produce** —
-> that's `joshua_study_style_reference.md`. If you find yourself wanting to
-> duplicate a rule from either into here, don't.
+> say how to work** — that's `core-workflow.md` and the project's instruction
+> field — **and it does not say what to produce** — that's
+> `joshua_study_style_reference.md`. If you find yourself wanting to duplicate a
+> rule from either into here, don't.
 >
-> **The commentary list below is exhaustive.** Nothing else is available. Don't
-> cite a commentary that isn't here, and don't imply coverage you don't have.
+> **The commentaries below are a starting point, not a limit.** Search the web
+> freely and cite any source by name (`core-workflow.md`), and don't imply
+> coverage you don't have.
 
 ---
 
 ## 1. Text and data
 
-**Everything in this section is synced from the repo, under
-`project-side/synced/`.** Synced files will **not** appear in a plain file
-listing or directory tool. That's expected, not a sign a file is missing:
-search project knowledge by filename or a distinctive phrase before
-concluding it isn't there. Only the commentaries (§2) are plain project
-attachments.
+**Everything in this section is synced from the repo.** The commentaries (§2)
+are project docs.
 
-- `Joshua-reading.txt` (was `Joshua-Hebrew.txt` as a project attachment) —
-  pointed Hebrew, `Josh C:V<TAB>text`. For quoting. No paragraph markup of
+- `Joshua-reading.txt` — pointed Hebrew, `Josh C:V<TAB>text`. For quoting. No paragraph markup of
   any kind (see below) and still carries OSHB's morpheme slashes (e.g.
   `וְ/כָל`); strip before quoting a phrase.
 - `Joshua-english.txt` — WEB-classic English verse text. A baseline reference,
@@ -69,7 +65,7 @@ attachments.
 State where readings diverge and why; don't let one silently displace another.
 
 ### Hawk, *Joshua* (Berit Olam)
-`dokumen_pub_berit-olam-joshua-*.txt`
+`dokumen.pub_berit-olam-joshua-9780814669068-0814650422-9780814650424.txt`
 
 The closest thing here to this project's lens, and the first stop in passes 1
 and 2: narrative art, type-scenes, the boundary-and-identity theme, the ḥerem
@@ -77,11 +73,11 @@ discussion. Text is clean, but his transliterations are glyph-damaged (ḥerem
 prints as `˙∑rem`). Re-derive every Hebrew form from `Joshua-words.tsv`. Never
 copy one out of this file.
 
-### Dozeman, *Joshua* (Anchor Yale, 2015 / 2023)
-`dozeman_vol1_fixed.txt` (chs. 1–12) · `AYBC_-_6_2__Iosue_13_24__*.txt` (chs. 13–24)
+### Dozeman, *Joshua 1–12* (Anchor Yale, 2015)
+`dozeman_vol1_fixed.txt`
 
-The technical anchor: LXX text criticism, composition history, geography. Vol 2
-is the only real coverage of the allotment chapters anywhere in this set.
+The technical anchor for chs. 1–12: LXX text criticism, composition history,
+geography.
 
 **Use `dozeman_vol1_fixed.txt` only.** The original vol 1 PDF had its digits
 mapped to private-use codepoints, so every chapter and verse number extracted
@@ -89,7 +85,7 @@ blank. If a vol 1 quotation ever comes through as `Josh :–`, it's the wrong
 file — say so rather than reconstructing the reference.
 
 ### Rashi (Metsudah 1997, via Sefaria)
-`Rashi_on_Joshua_-_en_-_merged.txt`
+`Rashi on Joshua - en - merged.txt`
 
 All 24 chapters, ~630 verse entries. The midrashic and intertextual voice, often
 hearing a Torah echo before a critical commentary names it. Raw Sefaria export:
@@ -97,7 +93,7 @@ it contains native Hebrew script and ~2,100 HTML tags, so strip the markup and
 transliterate anything quoted.
 
 ### Radak (Sefaria, Hebrew only)
-`Radak_on_Joshua_-_he_-_Radak_on_Nach.txt`
+`Radak on Joshua - he - Radak on Nach.txt`
 
 All 24 chapters, 610 verse entries, digital text rather than a scan. The
 grammarian of this set: roots, binyanim, the force of a waw at the head of a
@@ -119,7 +115,9 @@ markup and transliterate everything that reaches the page.
 
 ## 3. Gaps — name them out loud, don't paper over them
 
-There is no evangelical verse-level volume (Hess, Howard, Butler), no Alter, no
+Dozeman's second volume (chs. 13–24) isn't on hand, so the allotment chapters
+have no technical commentary here. There is no evangelical verse-level volume
+(Hess, Howard, Butler), no Alter, no
 Origen, and no dedicated treatment of the ethics (McConville, Moberly, Earl).
 Younger's *Ancient Conquest Accounts* — the ANE control for Assyrian, Hittite,
 and Egyptian conquest rhetoric, and the closest thing this set had to direct
