@@ -25,15 +25,14 @@ Units 1–4 are built (Movement I); 20 tracked threads.
 ## Open
 
 - **Units 5–24.** Same loop each time: the unit's canon-leads sheet is waiting
-  after the build, then the research artifact (Claude.ai, four passes, pass 3 the
-  intertext ledger), `python -m biblecore port N`, thread promotion +
+  after the build, then the research chat (passes 1-3, pass 2 the intertext
+  ledger) and the build chat (pass 4), `python -m biblecore port N`, thread promotion +
   `data-w`, browser review, commit. Revisit per unit whether anything from
   Matthew's later phases (concordance/dashboard, persistence, author ergonomics)
   has become worth building.
-- **Units 1–2 through the intertext pass.** Their echoes and cross-reference
-  asides were drafted in Claude Code from memory (2026-09-21) and are
-  provisional. The project side runs pass 3 on each shipped unit and delivers a
-  revised artifact; re-port with `python -m biblecore port N --force`.
+- **Rebuild units 1–4 through the two-chat loop** (Lane, 2026-11-02). Shipped
+  units are rebuilt through the normal research-then-build loop; this replaces
+  the old units 1–2 "retrofit" flow. Re-port with `python -m biblecore port N --force`.
 
 ## Decisions still in force
 
@@ -44,8 +43,9 @@ Units 1–4 are built (Movement I); 20 tracked threads.
 - **Transliteration only, no native script**, checked by the build. Because of
   that the shell needs no RTL support; that changes only if the policy is ever
   relaxed.
-- **Joshua-specific shape:** no Matthew-style compare or synoptic box; `aside.echo`
-  covers the cross-book case.
+- **Joshua-specific shape:** no Matthew-style compare or synoptic box;
+  `aside.echo` covers a verse-level cross-book link and `aside.story` an earlier
+  event worth telling (enabled 2026-11-04).
 
 ## Open questions for Lane
 

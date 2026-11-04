@@ -5,6 +5,24 @@
       "name": "echo",
       "role": "verse-aside",
       "selector": "aside.echo"
+    },
+    {
+      "name": "story",
+      "role": "verse-aside",
+      "selector": "aside.story",
+      "toggle": {
+        "sym": "◈",
+        "label": "earlier story",
+        "each": true,
+        "cls": "story-toggle",
+        "labels": {
+          "attr": "data-kind",
+          "map": {
+            "type-scene": "Type scene"
+          },
+          "default": "Earlier story"
+        }
+      }
     }
   ]
 }

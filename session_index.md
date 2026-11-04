@@ -68,3 +68,6 @@ Read this first. 3 lines max per session.
 ## 2026-10-28 — Core 0.18.0, two-chat workflow
 - Vendored core 0.18.0 (handoff template, `checks[]`, `threads.promote[]`); migrate refreshed unit metas; instruction field, style reference updated. Build, test 9 ok.
 - **2026-10-28 (core 0.19.0)**: Vendored core 0.19.0 (`lxx` lookup and `checks[]` runner, `audit` ready retrofit `add` JSON, `port --answers`, CRLF note). See session_summary_2026-10-28_core-0.19.0.md.
+
+## 2026-11-04 — Core 0.25.0 consistency fixes
+- Migrated units to 0.25.0; enabled `story`, added "What belongs where" and box-kind mapping; field "How we work" rewritten (precedence ladder, popup for build chat); pass numbering, checklist, `sole` log correction, native-script notes.

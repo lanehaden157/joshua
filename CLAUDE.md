@@ -6,7 +6,7 @@ components, transliteration scheme, checklist) lives in
 file points there rather than restating it.
 
 **State:** `python -m biblecore book` prints where the book stands (units
-built and planned, tracked threads, core pin vs vendored copy, sync and paste
+built and planned, tracked threads, core pin vs vendored copy, sync
 status), read from its data. It isn't written here, so it can't go stale.
 Every tracked thread carries an `echo`.
 
@@ -51,8 +51,9 @@ commits touching only `project-side/` or session files skip it).
 - **`CHAT_SIDE_INSTRUCTIONS.md`** — the Claude.ai project's
   instruction field: Joshua's lens plus its additions to `core-workflow.md`
   (the shared four passes, ledger and standing moves, vendored from core and
-  synced). Not in the synced mirror: Lane pastes it by hand. `sync-check`
-  says when it's stale; run `sync-check --mark-pasted` after pasting.
+  synced). The source of truth for the instruction field; not in the synced
+  mirror, so Lane pastes it by hand after any edit (core 0.25.0 no longer
+  tracks pastes).
 - **`book.json`** — the book's core settings (groupings, components, the
   files it syncs beyond core's defaults). Closed schema: an unknown key is an
   error.
@@ -72,6 +73,9 @@ commits touching only `project-side/` or session files skip it).
   Edit it here, not on the project side.
 
 ## Source data
+
+The files below carry native Hebrew script. It is reference data: don't copy it
+into chat or a fragment; transliterate.
 
 - **`Joshua-reading.txt`** — pointed Hebrew, `Josh C:V<TAB>text`. Ketiv/Qere
   pairs use the pointed Qere.
@@ -202,8 +206,8 @@ type-scenes and the New Testament. The build regenerates it for every built
 unit plus the next one; core's default sync set syncs it.
 
 Drafting cross-references here from memory is the thing this replaces. The
-unit 1–2 echoes were written that way and are provisional until the project
-side runs its pass on them.
+unit 1–2 echoes were written that way; shipped units are rebuilt through the
+normal research-then-build loop.
 
 ## Fragment validation and porting
 
@@ -264,7 +268,7 @@ translation-choices.md           English-rendering glossary
 threads-digest.md                generated from data/threads.json -- never hand-edit
 resources.md                     project holdings inventory (Lane-authored, synced)
 project-side/README.md           index of files round-tripping with the research project
-project-side/sync-state.json     sync + paste hash state (biblecore sync-check; gitignored)
+project-side/sync-state.json     sync hash state (biblecore sync-check; gitignored)
 project-side/synced/             generated mirror for GitHub-connector sync -- never hand-edit
 Joshua-reading.txt, Joshua-words.tsv, Joshua-english.txt, candidate-boundaries.md   generated source data
 source-artifacts/                incoming research artifacts (joshua_NN_translation.html)

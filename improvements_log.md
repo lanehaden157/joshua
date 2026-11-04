@@ -512,3 +512,5 @@ Full suite green (`test_unit_meta.py` 52 checks), `build.py` green, coverage
 
 ## 2026-10-28 — Core 0.19.0
 - Vendored 0.19.0: `python -m biblecore lxx` (verse lemmas, `--expect`, `--checks N`; `!lemma` = absent), `audit` ends with paste-ready retrofit `add` JSON, `port --answers FILE`, `biblecore test` notes CRLF policy files.
+
+- **2026-11-04 (core 0.25.0)**: `migrate` to 0.25.0; `story` enabled in book.json; style reference gets "What belongs where" + handoff box mapping, checklist renumbered 17-20, root echo = one line; field trimmed, "How we work" one paragraph, retrofit bullet replaced by rebuild line; pass 2/3 fixed in style ref, README, PLAN; paste tracking text removed; `sole` log correction; unit map confirmed; native-script notes. See session_summary_2026-11-04_consistency.md.

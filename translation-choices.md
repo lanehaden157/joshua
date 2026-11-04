@@ -11,7 +11,8 @@ carrying forward consistently.
 
 Verse refs below are Joshua chapter:verse. Hebrew forms are the actual OSHB
 citation cited next to each row — pulled from `Joshua-words.tsv` by word id,
-not hand-typed.
+not hand-typed. The Hebrew column is native script for reference only: do not
+copy it into chat or a fragment; use the transliteration.
 
 ## How to use this file
 
@@ -65,3 +66,4 @@ trusting the file blindly.
 - 2026-09-21 (part 2, unit 2 review): ḥerem locked to "devote(d) to destruction" (Lane, ahead of unit 5) — kept as an English phrase rather than transliterated since the verb form dominates the early occurrences and a transliterated verb reads far worse than a transliterated noun. Yam Suf locked to "Reed Sea" (Lane) over the traditional "Red Sea." Corrected the ḥesed row's occurrence count (3, not 2 — 2:12 ×2 + 2:14 ×1; the actual unit-02.html tagging was already right, only the glossary row was wrong).
 - 2026-09-21 (part 5): radaf row added — "chase / the chasers", the rendering unit 2 already used, recorded when the root became the `chase` tracked thread. In use, not yet formally locked.
 - 2026-09-22 (unit 3 port): 5 wording calls locked (Lane) and applied to `source-artifacts/joshua_03_translation.html` before porting — ʾaron → "chest" (not the artifact's drafted "ark"), berit → "covenant", qadash/hitqaddeshu (3:5) → "set yourselves apart", ʾerets → "land" at 3:11/3:13/4:24 (not "earth"), and y'all-for-2pl extended to possessives ("y'all's"). Also widened two tracked threads onto unit 3 occurrences: `rest` (5117) to include 3240, the causative "lay down" at 4:3/4:8; `strong` (2388) to include 2389, the adjective at 4:24 — both in `data/roots.json` and `data/threads.json`. Kept `sole`/`lodge`/`fear` as unit-3 local roots rather than promoting the artifact's book-wide candidates — promotion needs a hand-picked tracked-thread colour (Lane's call), left open rather than decided silently.
+- 2026-11-04 (correction to the 2026-09-22 entry): `sole` was promoted to a tracked thread afterwards (Lane, 2026-09-22; see `data/threads.json`, `data/roots.json`, `threads-digest.md`). Colours are now assigned algorithmically, so the "hand-picked colour" reason above no longer applies.

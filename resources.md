@@ -4,6 +4,9 @@
 > Claude.ai project by sync, like the text files below.
 > Edit it in the repo; the sync picks up the change on its own.
 >
+> `CHAT_SIDE_INSTRUCTIONS.md` is the source of truth for the project's
+> instruction field; this file only lists holdings.
+>
 > **This file says what is on hand and what each thing is good for. It does not
 > say how to work** — that's `core-workflow.md` and the project's instruction
 > field — **and it does not say what to produce** — that's
@@ -23,7 +26,8 @@ are project docs.
 
 - `Joshua-reading.txt` — pointed Hebrew, `Josh C:V<TAB>text`. For quoting. No paragraph markup of
   any kind (see below) and still carries OSHB's morpheme slashes (e.g.
-  `וְ/כָל`); strip before quoting a phrase.
+  `וְ/כָל`); strip before quoting a phrase. Native script is for reference
+  only: do not copy it into chat or a fragment, transliterate.
 - `Joshua-english.txt` — WEB-classic English verse text. A baseline reference,
   not this study's own translation. Renders the divine name as Yahweh,
   matching `translation-choices.md` row 1.
@@ -61,6 +65,8 @@ are project docs.
 ---
 
 ## 2. The commentary set
+
+<!-- TODO (Lane): confirm the attachment names below match what the project actually holds. -->
 
 State where readings diverge and why; don't let one silently displace another.
 
