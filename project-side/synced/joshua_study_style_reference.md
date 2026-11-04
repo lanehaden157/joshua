@@ -1,9 +1,10 @@
 # Joshua Study — Style Reference
 
 > **The artifact contract.** What a unit artifact must contain and must not.
-> `CHAT_SIDE_INSTRUCTIONS.md` says how to work; `resources.md` says
-> what's on hand; `CLAUDE.md` says how the repo behaves. Each rule lives in one
-> of the four.
+> `CHAT_SIDE_INSTRUCTIONS.md` is the source of truth for the project's
+> instruction field (Lane pastes it in) and says how to work; `resources.md`
+> says what's on hand; `CLAUDE.md` says how the repo behaves. Each rule lives
+> in one of the four.
 
 A guide, not a spec: where a rule gives a reason, the reason outranks the rule.
 Rules marked **(learned)** cost something to find — read the cited source
@@ -47,14 +48,15 @@ faster than the gloss.
 **`echo`** — optional field on any root: one line saying where the word has
 already appeared in the Torah, or where it reappears distinctively later, shown
 in the root's popover with a "cf." (Lane, 2026-09-21). *Sole of the foot* at
-1:3 → the dove that "found no resting place for the sole of its foot" (Gen 8:9);
+1:3 → the dove that "found no resting place for the sole of its foot" (Gen 8:9)
+and the same promise in Deut 11:24;
 *scarlet* at 2:18 → Tamar's scarlet thread (Gen 38:28–30); *dread* at 2:9 →
 Exod 15:16. **Read for these the way you read for notable translation
 choices**: a word with a canon history should at least get a local root with
 an `echo`, even when it is tagged nowhere else in the unit. Lead with the
-reference, then say what it adds, in one or two sentences. Tracked threads can
-carry an `echo` in `threads.json` too. Echoes and `aside.echo`s should come from the kept rows of the intertext
-pass's ledger (chat-side instructions, pass 3), not from memory at drafting
+reference, then say what it adds, on one line. Tracked threads can
+carry an `echo` in `threads.json` too. Echoes and `aside.echo`s should come from the kept rows of the
+research pass's ledger (pass 2) via the handoff, not from memory at drafting
 time.
 
 **Resist a richer taxonomy. (learned:** `8d096c9` built a root/motif two-tier
@@ -203,14 +205,15 @@ view; `candidates[]` stays for a proposal that still needs an id set.
 genuinely open alternative the unit's argument depends on. Before adding one,
 read `translation-choices.md` and the earlier units' meta: a wording already
 ruled is used, and a note about it goes in the artifact's prose, not here. The
-build chat first puts the handoff's questions to Lane in chat; only what's still
-open goes in `questions[]`. `topic` is a few words; `note` is the question,
+build chat asks the handoff's open calls by AskUserQuestion popup before
+drafting (the research chat asks in chat); only what's still open goes in
+`questions[]`. `topic` is a few words; `note` is the question,
 answerable cold; `options` optional short answers. Render your best
 provisional choice so the draft keeps moving, and flag it. Claude Code then
-asks Lane each question in the AskUserQuestion popup (multiple choice,
-`options` become the choices, best provisional first), which Lane prefers to a
-chat list. The porter prints every question at port time; the decision then
-goes in `translation-choices.md` or the thread/root entry.
+asks Lane each remaining question in the same popup (multiple choice,
+`options` become the choices, best provisional first). The porter prints every
+question at port time; the decision then goes in `translation-choices.md` or
+the thread/root entry.
 
 **`checks[]`** — `{ref, claim, expect}`. A claim about another passage's text
 that the code side can verify against the corpus (`ref` like `"Isa 22:22"`,
@@ -231,6 +234,7 @@ whitelist entry, and the build reports unknown classes.
 | verse | `<p class="v"><span class="n">17</span> … text<sup class="en"><a href="#n1">1</a></sup></p>` | one per verse, in order. The endnote marker is the last thing in the verse `<p>`, **never** inside the `.gloss` |
 | gloss | `<span class="gloss">…</span>` | **following sibling** of the verse, never nested, always closed. Short word-level notes, collapsed behind the per-verse `*` toggle; see *Balance* below |
 | pericope heading | `<h3 class="pericope">Title <span>· 6:1–7</span></h3>` | `· C:V` range required |
+| story box | `<aside class="story" data-anchor="C:V" data-kind="…" data-strength="…">` | a *different, earlier* event told beside a verse; shape and required parts in `components-reference.md`. Follows its verse like `.gloss`; no `data-root`, `class="r"` or `class="rl"` inside |
 | legend | `<section class="block legend" aria-label="color key"><ul></ul></section>` | **required, even as an empty stub** |
 | notes | `<div class="notes"><h2>Notes</h2><ol><li id="n3"><strong>hid him (v4).</strong> …</li></ol></div>` | Matthew's shape (Lane, 2026-09-21): real `<ol><li>`, each note opening with a bold lead (the phrase and verse); every `href` resolves to an `id` in the fragment. `section.block.notes` still renders correctly, but new artifacts should use `div.notes` |
 
@@ -239,6 +243,39 @@ the toggle.**)** **(learned:** the legend was once "optional" — `rebuildLegend
 only fills an existing one, and Matthew's unit 11 shipped with no colour key.**)**
 
 Never hand-write swatches or `style="background:…"`.
+
+### What belongs where
+
+Each link lives in exactly one place. Pick by what the link *is*:
+
+| The link is… | It goes in | Shown |
+|---|---|---|
+| A word's history across books (a root) | root `echo` | the root's popover |
+| One verse or phrase elsewhere that sounds through this verse; one sentence says it | `aside.echo` | the verse note, behind `*` |
+| A *different* earlier event with the same shape, worth telling | `aside.story` | its own ◈ chip |
+| A direct quotation of earlier Scripture | `intertext[]` entry, kind `quotation` (§3) | the canon hub |
+| A contested reading, or a debate that needs room | footnote | the endnotes |
+
+An earlier event gets a story box if a reader needs the background to see the
+point, an echo if one sentence carries it. A story box holds its own word-level
+evidence, so don't also ship an echo for that link. An interpretive argument
+about a link is a footnote; the box states only what the parallel is. A
+conquest-summary tension with Judges 1 is a footnote or an echo; Joshua has no
+parallel-account box.
+
+**Handoff box kinds → Joshua** (`canon-handoff-template.md`):
+
+| kind | in Joshua |
+|---|---|
+| story | `aside.story` |
+| echo | `aside.echo` |
+| OT pointer | none defined; a quotation goes in `intertext[]` (kind `quotation`) |
+| intertext | `intertext[]` entry, no box |
+| type-scene | the story box's `data-scene` when it is told; otherwise a `typescenes[]` entry |
+| parallel / synoptic | not enabled; use a footnote or echo |
+
+Story boxes and echoes are harvested into `data/canon.json`, so `intertext[]`
+and `typescenes[]` list only what a box doesn't say.
 
 ### Balance — what goes where (Lane, 2026-09-21)
 
@@ -295,6 +332,8 @@ marks.
 - **No spirantization** (`melek`, `torah`) — one root, one spelling.
 - **Dagesh forte doubles**, and sheva under it is vocal: `hammelakim`.
 - **`יהוה` → `YHWH`**; the English rendering is **Yahweh**.
+  (Native script appears in reference files like this one only as a source
+  form; do not copy it into chat or a fragment.)
 
 Overrides key on **lemma id**, not codepoint (U+05C7 occurs zero times). Seeded:
 3068/3069 (YHWH), 3389 (Jerusalem), 3605 (*kol*).
@@ -372,11 +411,12 @@ sharing one id.
 16. No named commentator or project-internal reference in prose (§4).
 17. Glosses are short, longer material is in footnotes, and the unit's
     intertextual links are surfaced (§4 *Balance*).
-
-17. Every `questions[]` entry is a call only Lane can make, with a genuinely
+18. Every `questions[]` entry is a call only Lane can make, with a genuinely
     open alternative, and isn't a wording `translation-choices.md` or an earlier
     unit already rules. Claims about other passages' text are in `checks[]`.
-18. Every `threads.promote[]` entry is complete (`entry`, `reach`, `retrofit`).
+19. Every `threads.promote[]` entry is complete (`entry`, `reach`, `retrofit`).
+20. Each link lives in one place (§4 *What belongs where*); every story box tells
+    the story, states a difference and says what it does here. Nothing weak ships.
 
 Save as `joshua_NN_translation.html`, zero-padded, and hand it over as a download. It
 renders unstyled in chat — expected.
