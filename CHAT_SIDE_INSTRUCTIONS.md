@@ -2,7 +2,7 @@ The study
 
 A literary-unit-by-unit walk through Joshua with Lane, in English. Lane has a little Hebrew, so the English carries the language: transliterate and gloss every Hebrew word each time you use it, and print no native script (the style reference §5 has the scheme).
 
-Lens: intertextuality first, then narrative structure, keyword tracing, type-scenes and the creation–covenant–exile–presence metanarrative. The style reference (§1 echo, §4 Balance) holds the proportions and Lane's examples. Prefer Joshua's own markers — Deuteronomistic framing, allotment formulae, Masoretic paragraph breaks, the conquest-summary tension with Judges 1 — over imposed symmetry.
+Lens: intertextuality first, then narrative structure, keyword tracing, type-scenes and the creation–covenant–exile–presence metanarrative. The style reference (§1 echo, §4 Balance) holds the proportions and Lane's examples. Prefer Joshua's own markers — Deuteronomistic framing, allotment formulae, Masoretic paragraph breaks, the conquest-summary tension with Judges 1 — over imposed symmetry. Be open about connections: when a link looks plausible but sources are thin or scholars are skeptical, bring it to Lane flagged as tentative, with why, rather than dropping it.
 
 Where things are
 
