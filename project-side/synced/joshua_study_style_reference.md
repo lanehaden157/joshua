@@ -71,27 +71,9 @@ vs. semantic field — gets the same answer: one slug, one colour.**)**
 thread occurrence carries its OSHB word id.** No Hebrew string is ever compared
 to another.
 
-### Why not substring stems
-
-Consonant-substring matching against OSHB Joshua:
-
-| root | recall | precision |
-|---|---|---|
-| *lakad* "capture" | 100% | 100% |
-| *ʿavar* "cross" | 95% | 68% |
-| *natan* "give" | **42%** | 97% |
-| *ḥaram* "devote" | 63% | 63% |
-| *qum* "arise" | **24%** | 33% |
-| *nakah* "strike" | **3%** | 100% |
-| *Yehoshuaʿ* | **0%** | — |
-
-Joshua's load-bearing verbs are weak roots.
-
-### Why not bare lemmas either
-
-One root often spans several Strong's numbers (*ḥaram* 2763/2764, *naḥal*
-5157/5159, *yareʾ* 3372–3374), and one number can bundle senses worth splitting.
-So a root is a **decision**, recorded as an id set with a note.
+Substring matching fails on Joshua's weak-root verbs, and one root can span
+several Strong's numbers, so a root is a **decision**, recorded as an id set with a
+note (the measurements: `archive/root-identity-rationale.md`).
 
 Lowercase suffixes on ids (`834a`) **are** meaningful, and matching honours
 them (Lane/Claude, 2026-09-19 — this reverses the earlier "treated as opaque"
@@ -263,16 +245,10 @@ about a link is a footnote; the box states only what the parallel is. A
 conquest-summary tension with Judges 1 is a footnote or an echo; Joshua has no
 parallel-account box.
 
-**Handoff box kinds → Joshua** (`canon-handoff-template.md`):
-
-| kind | in Joshua |
-|---|---|
-| story | `aside.story` |
-| echo | `aside.echo` |
-| OT pointer | none defined; a quotation goes in `intertext[]` (kind `quotation`) |
-| intertext | `intertext[]` entry, no box |
-| type-scene | the story box's `data-scene` when it is told; otherwise a `typescenes[]` entry |
-| parallel / synoptic | not enabled; use a footnote or echo |
+**Handoff box kinds** (`canon-handoff-template.md`): story → `aside.story`; echo →
+`aside.echo`; type-scene → the story box's `data-scene` when it is told, otherwise a
+`typescenes[]` entry; intertext and quotations → `intertext[]`. Joshua has no OT pointer
+or parallel/synoptic box: use a footnote or echo.
 
 Story boxes and echoes are harvested into `data/canon.json`, so `intertext[]`
 and `typescenes[]` list only what a box doesn't say.
@@ -299,18 +275,8 @@ Strong suggestions, from reading units 1–2 on the site:
   the kind of connection Lane wants surfaced. Use `aside.echo` for a
   verse-level connection and a root `echo` (§1) for a word-level one.
 
-**`aside.echo`** — optional, built 2026-09-21 (Lane, before unit 2): cross-book
-echo (Deuteronomy command → Joshua fulfilment; conquest summary vs. Judges 1).
-`<aside class="echo" data-anchor="C:V">`, a verse sibling, same shape as
-`.gloss` (never nested, always closed) and collapsed behind the same per-verse
-`*` toggle (`app/spotlight.js`), distinguished once open by its "cf." prefix
-and Jordan-teal border rather than `.gloss`'s plain grey. `data-anchor` must
-match the `C:V` of the verse it's actually a sibling of — `biblecore/meta.py`
-`check_echo()` enforces both that and the nesting-depth check.
-**(learned:** `67b2712` — asides spliced inside unclosed `.gloss` spans silently
-collapsed; `check_echo()`'s nesting check models exactly this failure mode,
-not a hypothetical one.**)** The CSS prepends "cf." — don't write it into the
-echo's own text, or it renders "cf. cf. Deut 27:2-4…".
+**`aside.echo`** markup and checks are in `components-reference.md`. The CSS
+prepends "cf.", so don't write it into the echo's own text.
 
 **Voice: no named commentators or resources, and no project-internal
 references, anywhere in fragment prose (Lane, 2026-09-17).** Not "Dozeman
