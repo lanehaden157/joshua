@@ -71,7 +71,7 @@ Attachment names below are as `project_info` lists them (confirmed by Lane, 2026
 State where readings diverge and why; don't let one silently displace another.
 
 ### Hawk, *Joshua* (Berit Olam)
-`dokumen.pub berit olam joshua-9780814669068-0814650422-9780814650424 TXT`
+`dokumen.pub_berit-olam-joshua-9780814669068-0814650422-9780814650424.txt`
 
 The closest thing here to this project's lens, and the first stop in passes 1
 and 2: narrative art, type-scenes, the boundary-and-identity theme, the ḥerem
@@ -80,18 +80,18 @@ prints as `˙∑rem`). Re-derive every Hebrew form from `Joshua-words.tsv`. Neve
 copy one out of this file.
 
 ### Dozeman, *Joshua 1–12* (Anchor Yale, 2015)
-`dozeman vol1_fixed TXT`
+`dozeman_vol1_fixed.txt`
 
 The technical anchor for chs. 1–12: LXX text criticism, composition history,
 geography.
 
-**Use `dozeman vol1_fixed TXT` only.** The original vol 1 PDF had its digits
+**Use `dozeman_vol1_fixed.txt` only.** The original vol 1 PDF had its digits
 mapped to private-use codepoints, so every chapter and verse number extracted
 blank. If a vol 1 quotation ever comes through as `Josh :–`, it's the wrong
 file — say so rather than reconstructing the reference.
 
 ### Rashi (Metsudah 1997, via Sefaria)
-`Rashi on Joshua - en - merged TXT`
+`Rashi on Joshua - en - merged.txt`
 
 All 24 chapters, ~630 verse entries. The midrashic and intertextual voice, often
 hearing a Torah echo before a critical commentary names it. Raw Sefaria export:
@@ -99,7 +99,7 @@ it contains native Hebrew script and ~2,100 HTML tags, so strip the markup and
 transliterate anything quoted.
 
 ### Radak (Sefaria, Hebrew only)
-`Radak on Joshua - he - Radak on Nach TXT`
+`Radak on Joshua - he - Radak on Nach.txt`
 
 All 24 chapters, 610 verse entries, digital text rather than a scan. The
 grammarian of this set: roots, binyanim, the force of a waw at the head of a
