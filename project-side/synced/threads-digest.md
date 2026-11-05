@@ -1,15 +1,18 @@
 # Cross-unit threads — canonical digest
 
-Generated from `data/threads.json` (version 1). 20 threads, 20 open.
+Generated from `data/threads.json` (version 1). 23 threads, 23 open.
 
 **The source of truth for thread tagging.** Tag every occurrence of a thread below with `<span class="r" data-root="<id>">…</span>` (the porter fills `data-w`) and list it under `threads.opens` / `threads.payoffs`. A root not listed here is unit-local: declare it in the unit's `roots`. To propose one, add it to `threads.candidates` with a one-line reason and the lemma `ids` you saw in `Joshua-words.tsv`. **Claude decides, biased toward book-wide** (a local root that later pays off is worse than a tracked one that doesn't), and asks Lane only when genuinely unsure.
 
 | id | translit | gloss | opens | payoffs |
 |---|---|---|---|---|
+| `command` | tsavah | command, charge | 1 (1:7) | 8 (8:31) · 11 (11:15) · 21 (22:2) · 21 (22:5) |
 | `cross` | ʿavar | cross over; the far side (of the Jordan) | 1 (1:2) | 2 (2:10) · 2 (2:23) · 3 (3:17) · 4 (5:1) |
 | `firm` | ʾamats | be firm, be resolute (the glottal ʾ, aleph — not the ʿ of ʿavar) | 1 (1:6) | — |
+| `forsake` | ʿazav | leave, abandon, forsake | 1 (1:5) | 21 (22:3) · 23 (24:16) · 23 (24:20) |
 | `give` | natan | give | 1 (1:2) | 2 (2:9) · 2 (2:24) · 4 (5:6) |
 | `inherit` | naḥal | cause to inherit, give as an inheritance | 1 (1:6) | — |
+| `keep` | shamar | keep, observe; guard | 1 (1:7) | 21 (22:2) · 21 (22:5) · 22 (23:6) |
 | `possess` | yarash | take possession, possess | 1 (1:11) | 3 (3:10) |
 | `rest` | nuaḥ | give rest; lay/set down (causative) | 1 (1:13) | 3 (3:13) |
 | `send` | shalaḥ | send | 1 (1:16) | 2 (2:1) |
@@ -31,14 +34,17 @@ Generated from `data/threads.json` (version 1). 20 threads, 20 open.
 
 - **`blood`**: 'his blood on his head' (2:19) is the bloodguilt logic the cities-of-refuge law runs on — the blood-avenger of 20:3, 20:5, 20:9.
 - **`chase`**: Chasing: Jericho's decoy chase (2:5–22) turns into Israel's own routs (7:5, where Israel is the one chased; 8:16–24; 10:10, 19; 11:8), the blood-avenger who chases the manslayer to a city of refuge (20:5), 'one of you chases a thousand' (23:10), and Egypt chasing the fathers to the Reed Sea (24:6).
+- **`command`**: tsavah carries the book's chain of authority: Yahweh commands Moses, Moses commands Joshua, Joshua commands the people, and 'as Moses commanded' becomes the measure of faithfulness to the end of the book.
 - **`complete`**: tamam marks the crossing's completion (3:16-17, 4:1, 4:10-11), then a generation's extinction (5:6), then the circumcision rite's completion (5:8) -- one verb for triumph and for ending.
 - **`cross`**: the book's first command, qum ʿavor 'rise, cross' (1:2), relayed down the chain (1:11); ʿever 'far side' marks the eastern tribes as people of the other bank. One root, both ids.
 - **`devote`**: first ḥaram in the book, in Rahab's mouth (2:10), before Israel has devoted a single Canaanite city; becomes the governing law of Jericho, Ai, and the campaign reports.
 - **`fear`**: yareʾ: Israel fears Joshua as it feared Moses (4:14); the crossing is so that Israel fears Yahweh (4:24); 'do not fear' before battle (8:1; 10:8); 'fear Yahweh and serve him' at Shechem (24:14). Promoted to a tracked thread 2026-09-22 (Lane, unit 3).
 - **`firm`**: ʾamats, always paired with ḥazaq; kept as its own root per the colour policy (split pairs).
+- **`forsake`**: ʿazav runs from Yahweh's promise not to abandon Joshua, through the eastern tribes who did not abandon their brothers, to the people's vow not to forsake Yahweh. 8:17 (Ai's men leave the city open) is a plain-sense use.
 - **`give`**: natan ×8 in unit 1's speeches; Yahweh 'is giving' (participle) vs. 'Moses gave' (perfect) — the land as gift, already done and not yet done.
 - **`holy`**: qadash runs from 'set yourselves apart' (3:5) to the commander's holy ground (5:15), the holy spoil (6:19), the second setting-apart (7:13), Kedesh set apart (20:7), and 'a holy God' (24:19).
 - **`inherit`**: tanḥil 'you will cause to inherit' (1:6) is the first naḥal-family word in the book, ahead of naḥalah 'inheritance' in the allotment chapters (units 13-20).
+- **`keep`**: shamar covers both keeping a command and guarding something (6:18 'guard yourselves from the devoted things'; 10:18 men posted to guard the cave). The commission's 'keep and do' (1:7–8) is answered at the release of the eastern tribes and in the farewell.
 - **`lodge`**: lun, 'lodge the night', with malon 'lodging place': Israel spends the night before each decisive move (the Jordan 3:1, the stones 4:3, 4:8, Jericho 6:11, Ai 8:9). Promoted to a tracked thread 2026-09-22 (Lane, unit 3).
 - **`melt`**: Melting hearts: Rahab's 'our heart melted' (2:11) returns for the Amorite and Canaanite kings (5:1) and, reversed, for Israel after Ai (7:5).
 - **`possess`**: Qal yarash 'possess' only in unit 1; the Hiphil 'drive out' arrives later in the book — the stem split is the thread.
