@@ -69,44 +69,84 @@
       "movement": 1,
       "built": true,
       "roots": {
-        "command": {
-          "color": "#9c5a1e",
-          "translit": "tsawah",
-          "gloss": "command, give orders"
+        "attendant": {
+          "color": "#005847",
+          "translit": "sharat",
+          "gloss": "attend, serve (as a personal aide)",
+          "example": "Joshua son of Nun, Moses' attendant",
+          "echo": "Exod 24:13 — Joshua's first title, the attendant who climbs the mountain with Moses"
+        },
+        "stand": {
+          "color": "#006494",
+          "translit": "yatsav",
+          "gloss": "take a stand, hold one's ground",
+          "echo": "Deut 11:25 — 'no one will take a stand before y'all,' the promise this verse narrows to Joshua alone"
         },
         "insight": {
           "color": "#4a4f6b",
-          "translit": "sakal",
-          "gloss": "have understanding, act wisely",
-          "example": "so that you may act with insight wherever you go (1:7)",
-          "echo": "1 Kgs 2:3 — David's dying charge to Solomon: keep what is written in the torah of Moses 'so that you may act with insight in all you do.' Joshua 1 is the template for a king."
+          "translit": "śakal",
+          "gloss": "have insight; act wisely and so succeed",
+          "echo": "Deut 29:9 — keep the covenant's words 'so that y'all have insight in all y'all do'"
         },
-        "listen": {
-          "color": "#5c3f7a",
-          "translit": "shamaʿ",
-          "gloss": "listen to, heed, obey",
-          "echo": "Deut 34:9 — 'the sons of Israel listened to him,' Joshua, as the Torah closes. The same verb opens the Shema (Deut 6:4)."
+        "prosper": {
+          "color": "#5a5a9c",
+          "translit": "tsalaḥ",
+          "gloss": "prosper, make go well",
+          "example": "then you will make your way prosper"
+        },
+        "depart": {
+          "color": "#7f5482",
+          "translit": "mush",
+          "gloss": "depart, move away from",
+          "echo": "Isa 59:21 — 'my words … shall not depart from your mouth,' the same promise handed on to a prophet's offspring"
         },
         "murmur": {
           "color": "#a67c1e",
           "translit": "hagah",
-          "gloss": "read or recite aloud in a low voice, mutter",
-          "example": "you shall murmur it day and night (1:8)",
-          "echo": "Ps 1:2–3 — on Yahweh's torah he murmurs day and night, and everything he does succeeds: the same verb, the same hours, the same promise."
+          "gloss": "murmur, mutter (reading half-aloud); ponder",
+          "example": "you shall murmur it day and night"
+        },
+        "terrified": {
+          "color": "#945042",
+          "translit": "ʿarats",
+          "gloss": "be terrified, tremble",
+          "echo": "Deut 20:3 — the priest's speech before battle: 'do not be terrified before them'"
         },
         "shatter": {
           "color": "#7a5c1e",
           "translit": "ḥatat",
-          "gloss": "be shattered, lose courage, be dismayed",
-          "example": "do not tremble and do not shatter (1:9)",
-          "echo": "Deut 31:8 — Moses to Joshua: 'do not fear and do not shatter.' Yahweh now repeats Moses' words."
+          "gloss": "be shattered, broken in spirit, dismayed",
+          "example": "do not be terrified and do not be shattered"
+        },
+        "scribes": {
+          "color": "#a24860",
+          "translit": "shoter",
+          "gloss": "scribe, officer (a record-keeping official)",
+          "echo": "Deut 20:5–9 — the same officials address the army before battle and send home the unready"
+        },
+        "provisions": {
+          "color": "#716889",
+          "translit": "tsedah",
+          "gloss": "provisions, supplies for a journey",
+          "echo": "Exod 12:39 — Israel left Egypt in such haste that it had prepared no provisions; this entry is orderly"
         },
         "valor": {
           "color": "#1f6e7a",
-          "translit": "gibbor ḥayil",
-          "gloss": "mighty man, man of strength — a stock military phrase",
-          "example": "every mighty man of valor (1:14)",
-          "echo": "Judg 6:12 — the angel greets Gideon as a 'mighty man of valor'; Ruth 2:1 gives Boaz the same title."
+          "translit": "ḥayil",
+          "gloss": "strength, valor; an army",
+          "example": "all the mighty men of valor"
+        },
+        "battle-ready": {
+          "color": "#00807c",
+          "translit": "ḥamush",
+          "gloss": "armed, in battle order",
+          "echo": "Exod 13:18 — Israel went up out of Egypt battle-ready, the same rare word"
+        },
+        "only": {
+          "color": "#007da2",
+          "translit": "raq",
+          "gloss": "only, just; however",
+          "example": "Only be strong and very firm"
         }
       },
       "contract": "0.25.0"

@@ -453,6 +453,107 @@
       ],
       "note": "qadash runs from 'set yourselves apart' (3:5) to the commander's holy ground (5:15), the holy spoil (6:19), the second setting-apart (7:13), Kedesh set apart (20:7), and 'a holy God' (24:19).",
       "echo": "Exod 3:5 -- Moses at the burning bush stands on ground made holy by the same root; the commander's 'strip your sandal' at 5:15 quotes the scene nearly word for word."
+    },
+    {
+      "id": "command",
+      "root": "command",
+      "translit": "tsavah",
+      "gloss": "command, charge",
+      "status": "open",
+      "tagged": true,
+      "opens": {
+        "unit": 1,
+        "ref": "1:7",
+        "note": "'all the torah that Moses my slave commanded you' — the first of seven tsavah in this unit, handing the word down from Yahweh to Joshua to the scribes to the people"
+      },
+      "payoffs": [
+        {
+          "unit": 8,
+          "ref": "8:31",
+          "note": "the Ebal altar built 'as Moses, slave of Yahweh, commanded'"
+        },
+        {
+          "unit": 11,
+          "ref": "11:15",
+          "note": "'as Yahweh commanded Moses, so Moses commanded Joshua, and so Joshua did; he left nothing undone'"
+        },
+        {
+          "unit": 21,
+          "ref": "22:2",
+          "note": "the eastern tribes released: they kept all that Moses commanded and listened to all Joshua commanded (1:16–18 fulfilled)"
+        },
+        {
+          "unit": 21,
+          "ref": "22:5",
+          "note": "'only keep diligently the commandment and the torah that Moses commanded'"
+        }
+      ],
+      "note": "tsavah carries the book's chain of authority: Yahweh commands Moses, Moses commands Joshua, Joshua commands the people, and 'as Moses commanded' becomes the measure of faithfulness to the end of the book.",
+      "color": "#496fb2"
+    },
+    {
+      "id": "forsake",
+      "root": "forsake",
+      "translit": "ʿazav",
+      "gloss": "leave, abandon, forsake",
+      "status": "open",
+      "tagged": true,
+      "opens": {
+        "unit": 1,
+        "ref": "1:5",
+        "note": "'I will not drop you and I will not abandon you' — Yahweh's promise, in his own first-person mouth"
+      },
+      "payoffs": [
+        {
+          "unit": 21,
+          "ref": "22:3",
+          "note": "the eastern tribes 'have not abandoned' their brothers"
+        },
+        {
+          "unit": 23,
+          "ref": "24:16",
+          "note": "'far be it from us to forsake Yahweh'"
+        },
+        {
+          "unit": 23,
+          "ref": "24:20",
+          "note": "the warning: if y'all forsake Yahweh, he will turn"
+        }
+      ],
+      "note": "ʿazav runs from Yahweh's promise not to abandon Joshua, through the eastern tribes who did not abandon their brothers, to the people's vow not to forsake Yahweh. 8:17 (Ai's men leave the city open) is a plain-sense use.",
+      "color": "#557f44"
+    },
+    {
+      "id": "keep",
+      "root": "keep",
+      "translit": "shamar",
+      "gloss": "keep, observe; guard",
+      "status": "open",
+      "tagged": true,
+      "opens": {
+        "unit": 1,
+        "ref": "1:7",
+        "note": "'to keep and do according to all the torah' — keeping as the condition of insight and success"
+      },
+      "payoffs": [
+        {
+          "unit": 21,
+          "ref": "22:2",
+          "note": "'y'all have kept all that Moses commanded y'all'"
+        },
+        {
+          "unit": 21,
+          "ref": "22:5",
+          "note": "'only keep diligently to do the commandment and the torah'"
+        },
+        {
+          "unit": 22,
+          "ref": "23:6",
+          "note": "'be very strong to keep and do all that is written in the scroll of the torah of Moses' — 1:7–8 returned almost word for word"
+        }
+      ],
+      "note": "shamar covers both keeping a command and guarding something (6:18 'guard yourselves from the devoted things'; 10:18 men posted to guard the cave). The commission's 'keep and do' (1:7–8) is answered at the release of the eastern tribes and in the farewell.",
+      "color": "#aa5a88"
     }
   ]
 }

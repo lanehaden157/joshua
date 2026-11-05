@@ -130,6 +130,24 @@
         "6918"
       ],
       "note": "qadash (verb, set apart) + qodesh (noun, holiness) + qadosh (adjective, holy) -- one root, three ids (Lane, 2026-09-22: promoted to a tracked thread, unit 4). Runs from 'set yourselves apart' (3:5) to the commander's holy ground (5:15), the holy spoil (6:19), the second setting-apart (7:13), Kedesh set apart (20:7), and 'a holy God' (24:19)."
+    },
+    "command": {
+      "ids": [
+        "6680"
+      ],
+      "note": "tsavah carries the book's chain of authority: Yahweh commands Moses, Moses commands Joshua, Joshua commands the people, and 'as Moses commanded' becomes the measure of faithfulness to the end of the book."
+    },
+    "forsake": {
+      "ids": [
+        "5800"
+      ],
+      "note": "ʿazav runs from Yahweh's promise not to abandon Joshua, through the eastern tribes who did not abandon their brothers, to the people's vow not to forsake Yahweh. 8:17 (Ai's men leave the city open) is a plain-sense use."
+    },
+    "keep": {
+      "ids": [
+        "8104"
+      ],
+      "note": "shamar covers both keeping a command and guarding something (6:18 'guard yourselves from the devoted things'; 10:18 men posted to guard the cave). The commission's 'keep and do' (1:7–8) is answered at the release of the eastern tribes and in the farewell."
     }
   },
   "declined": {
