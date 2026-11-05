@@ -163,14 +163,14 @@
       "id": "firm",
       "root": "firm",
       "translit": "ʾamats",
-      "gloss": "be firm, be resolute (the glottal ʾ, aleph — not the ʿ of ʿavar)",
+      "gloss": "be firm, be resolute",
       "color": "#7a3f5c",
       "status": "open",
       "tagged": true,
       "opens": {
         "unit": 1,
         "ref": "1:6",
-        "note": "ʾamats, always paired with ḥazaq; kept as its own root per the colour policy (split pairs)."
+        "note": "ʾamats (the glottal ʾ, aleph — not the ʿ of ʿavar), always paired with ḥazaq; kept as its own root per the colour policy (split pairs)."
       },
       "payoffs": [],
       "note": "ʾamats, always paired with ḥazaq; kept as its own root per the colour policy (split pairs).",
@@ -259,7 +259,7 @@
     {
       "id": "swear",
       "root": "swear",
-      "translit": "shavaʿ̲",
+      "translit": "shavaʿ",
       "gloss": "swear (an oath)",
       "color": "#2f4f7a",
       "status": "open",
@@ -362,7 +362,7 @@
         }
       ],
       "note": "kap regel, 'sole of the foot': promised at 1:3 ('every place the sole of your foot treads'), made literal at 3:13 and 4:18, where soles touching and leaving the water start and stop the miracle. Promoted to a tracked thread 2026-09-22 (Lane, unit 3) — a phrase-level thread with a Torah history.",
-      "echo": "Gen 8:9 — the dove found no resting place for the sole of its foot (manoaḥ, the root of 'rest' at 1:13); Deut 11:24 repeats the promise nearly word for word; Deut 28:65 turns the same words into exile's curse. Here every place the sole treads is given, and at the Jordan a sole coming to rest is what stops the water."
+      "echo": "Gen 8:9 — the dove found no resting place for the sole of its foot (manoaḥ, the root of 'rest' at 1:13); Deut 11:24 repeats the promise nearly word for word; Deut 2:5 draws the line the other way, Edom's land withheld down to a sole's tread; Deut 28:65 turns the same words into exile's curse. Here every place the sole treads is given, and at the Jordan a sole coming to rest is what stops the water."
     },
     {
       "id": "lodge",

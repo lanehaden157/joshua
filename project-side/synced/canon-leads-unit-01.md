@@ -34,7 +34,7 @@ It cannot see: common words (rare cutoff: 20 verses in the Hebrew Bible), links 
   - Deut 31:6 — ḥizqu we-ʾimtsu
   - Deut 31:7 — ḥazaq we-ʾemats
   - Deut 31:23 — ḥazaq we-ʾemats
-- **yamin u-śemoʾwl lemaʿ̲an taśkil** (H3225 + H8040 + H4616 + H7919: right; stronger; south / wrapping; dark; enveloped / heed; purpose; on account of / be; make; act) — Josh 1:7
+- **yamin u-śemoʾwl lemaʿan taśkil** (H3225 + H8040 + H4616 + H7919: right; stronger; south / wrapping; dark; enveloped / heed; purpose; on account of / be; make; act) — Josh 1:7
   - Gen 48:13 — bi-ymin-wo mi-śśemoʾl
   - Exod 14:22 — mi-ymina-m u-mi-śśemoʾla-m
   - Exod 14:29 — mi-ymina-m u-mi-śśemoʾla-m
@@ -43,9 +43,9 @@ It cannot see: common words (rare cutoff: 20 verses in the Hebrew Bible), links 
   - Deut 2:27 — yamin u-śemoʾwl
   - Deut 5:32 — yamin u-śemoʾl
   - Deut 17:11 — yamin u-śemoʾl
-  - Deut 17:20 — yamin u-śemoʾwl … u-śemoʾwl lemaʿ̲an
+  - Deut 17:20 — yamin u-śemoʾwl … u-śemoʾwl lemaʿan
   - Deut 28:14 — yamin u-śemoʾwl
-  - Deut 29:9 — lemaʿ̲an taśkilu
+  - Deut 29:9 — lemaʿan taśkilu
 - **seper ha-torah** (H5612 + H8451: writing; book / precept; statute; Decalogue) — Josh 1:8
   - Deut 28:61 — be-seper ha-torah
   - Deut 29:21 — be-seper ha-torah
@@ -87,9 +87,9 @@ It cannot see: common words (rare cutoff: 20 verses in the Hebrew Bible), links 
 - **yerushshat-kem** (H3425, occupied; conquest; patrimony) — Josh 1:15; 12 verses in the Hebrew Bible
   - Torah: Deut 2:5 (yerushshah); Deut 2:9 (yerushshah); Deut 2:12 (yerushshat-wo); Deut 2:19 (yerushshah); Deut 3:20 (li-yrushshat-wo)
   - Later: Judg 21:17 (yerushshat); 2 Chr 20:11 (mi-yyerushshat-ka); Ps 61:5 (yerushshat); Jer 32:8 (ha-yerushshah)
-- **taʿ̲arots** (H6206, awe; dread; harass) — Josh 1:9; 15 verses in the Hebrew Bible
-  - Torah: Deut 1:29 (taʿ̲artsu-n); Deut 7:21 (taʿ̲arots); Deut 20:3 (taʿ̲artsu); Deut 31:6 (taʿ̲artsu)
-  - Later: Job 13:25 (taʿ̲arots); Job 31:34 (ʾeʿ̲erots); Ps 10:18 (la-ʿ̲arots); Ps 89:7 (naʿ̲arats); Isa 2:19 (la-ʿ̲arots); Isa 2:21 (la-ʿ̲arots); Isa 8:12 (taʿ̲aritsu); Isa 8:13 (maʿ̲arits-kem); Isa 29:23 (yaʿ̲aritsu); Isa 47:12 (taʿ̲arotsi)
+- **taʿarots** (H6206, awe; dread; harass) — Josh 1:9; 15 verses in the Hebrew Bible
+  - Torah: Deut 1:29 (taʿartsu-n); Deut 7:21 (taʿarots); Deut 20:3 (taʿartsu); Deut 31:6 (taʿartsu)
+  - Later: Job 13:25 (taʿarots); Job 31:34 (ʾeʿerots); Ps 10:18 (la-ʿarots); Ps 89:7 (naʿarats); Isa 2:19 (la-ʿarots); Isa 2:21 (la-ʿarots); Isa 8:12 (taʿaritsu); Isa 8:13 (maʿarits-kem); Isa 29:23 (yaʿaritsu); Isa 47:12 (taʿarotsi)
 - **we-la-gadi** (H1425, Gadite) — Josh 1:12; 16 verses in the Hebrew Bible
   - Torah: Num 34:14 (ha-gadi); Deut 3:12 (we-la-gadi); Deut 3:16 (we-la-gadi); Deut 4:43 (la-gadi); Deut 29:8 (we-la-gadi)
   - Later: 2 Sam 23:36 (ha-gadi); 2 Kgs 10:33 (ha-gadi); 1 Chr 5:18 (we-gadi); 1 Chr 5:26 (we-la-gadi); 1 Chr 12:8 (ha-gadi); 1 Chr 12:37 (we-ha-gadi); 1 Chr 26:32 (we-ha-gadiy)

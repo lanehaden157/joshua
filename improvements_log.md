@@ -13,7 +13,7 @@
 ## 2026-09-14 (part 2)
 - Built `pipeline/hebrew.py`, the Hebrew sibling to `Projects/Matthew/pipeline/greek.py`. Niqqud/cantillation detection via `unicodedata.combining() != 0` (not a hand-rolled range check, which would also catch maqqef/sof-pasuq). Handles phrases without losing spaces; word-initial shuruq renders `u-` not `w-`; `OVERRIDES` table (keyed by bare consonant skeleton) covers YHWH, Jerusalem (both spellings), and kol; ayin gets a trailing combining low line so it's distinguishable from alef in plain text, not just via a wrapping HTML span.
 - `pipeline/test_hebrew.py`: 30 word-level cases pulled by id from `Joshua-words.tsv` (YHWH x2, kol bare/prefixed x3, Jerusalem bare/prefixed, Ketiv/Qere pair, word-initial shuruq, begadkefat and shin/sin-dot minimal pairs, heavy niqqud/cantillation stacking), plus a full-verse phrase case (Josh 1:1, proves spaces survive) and an isolated maqqef case. All 32 checks pass. This test file, not `hebrew.py`'s docstring, is the scheme's authoritative definition.
-- **Bug fix, caught in review**: bare vav+holam (plene "o" spelling, holam male) was rendering as consonant "w" + vowel "o" instead of vowel "o" alone -- Yehoshuaʿ's own name came out `yehwošuʿ̲a`. Not an edge case: 1,191 of 10,083 words in Joshua (~12%) carry this pattern. Fixed by giving holam male the same vowel-only treatment as shuruq; all 32 test cases updated to the corrected output. Also checked (not assumed) whether the skeleton-keyed override table risks homograph collisions: scanned all 469 skeleton matches in Joshua's actual vocabulary against their lemmas -- zero mismatches for the three current entries (kol 236, YHWH 224, Jerusalem 9).
+- **Bug fix, caught in review**: bare vav+holam (plene "o" spelling, holam male) was rendering as consonant "w" + vowel "o" instead of vowel "o" alone -- Yehoshuaʿ's own name came out `yehwošuʿa`. Not an edge case: 1,191 of 10,083 words in Joshua (~12%) carry this pattern. Fixed by giving holam male the same vowel-only treatment as shuruq; all 32 test cases updated to the corrected output. Also checked (not assumed) whether the skeleton-keyed override table risks homograph collisions: scanned all 469 skeleton matches in Joshua's actual vocabulary against their lemmas -- zero mismatches for the three current entries (kol 236, YHWH 224, Jerusalem 9).
 
 
 ## 2026-09-14 (part 3)
@@ -397,10 +397,10 @@ Full suite green (`test_unit_meta.py` 52 checks), `build.py` green, coverage
   `pipeline/port_artifact.py 2`. `assign_data_w.py` placed all 9 spans by alignment,
   no human intervention needed.
 - Thread promotions (Claude's call, biased book-wide per CLAUDE.md policy):
-  promoted `devote` (haram, 2763a), `swear` (shavaʿ̲/shevuʿ̲ah, 7650+7621),
+  promoted `devote` (haram, 2763a), `swear` (shavaʿ/shevuʿah, 7650+7621),
   `blood` (dam, 1818), `melt` (masas, 4549) to tracked threads in
   `data/roots.json` + `data/threads.json`. Declined widening `cross`'s id set to
-  cover maʿ̲berot "fords" (4569b, distinct lemma, single occurrence) -- logged
+  cover maʿberot "fords" (4569b, distinct lemma, single occurrence) -- logged
   in `roots.json`'s `declined` ledger instead.
 - `swear`'s first occurrence is actually 1:6 (Yahweh's oath to the fathers),
   untagged when unit 1 was built -- retro'd via a new `add` op in

@@ -22,13 +22,13 @@ It cannot see: common words (rare cutoff: 20 verses in the Hebrew Bible), links 
   - Deut 26:15 — zabat ḥalab … ḥalab u-debash
   - Deut 27:3 — zabat ḥalab … ḥalab u-debash
   - Deut 31:20 — zabat ḥalab … ḥalab u-debash
-- **la-ḥodesh ba-ʿ̲ereb** (H2320 + H6153: new; month / dusk) — Josh 5:10
-  - Exod 12:18 — la-ḥodesh ba-ʿ̲ereb … la-ḥodesh ba-ʿ̲areb
-  - Lev 23:32 — la-ḥodesh ba-ʿ̲ereb
+- **la-ḥodesh ba-ʿereb** (H2320 + H6153: new; month / dusk) — Josh 5:10
+  - Exod 12:18 — la-ḥodesh ba-ʿereb … la-ḥodesh ba-ʿareb
+  - Lev 23:32 — la-ḥodesh ba-ʿereb
 - **mi-mmaḥorat ha-pesaḥ** (H4283 + H6453: morrow; tomorrow / pretermission; exemption; Passover) — Josh 5:11
   - Num 33:3 — mi-mmaḥorat ha-pesaḥ
-- **shal naʿ̲al-ka** (H5394 + H5275: pluck off; divest; eject / sandal tongue; sandal; slipper) — Josh 5:15
-  - Exod 3:5 — shal neʿ̲aley-ka
+- **shal naʿal-ka** (H5394 + H5275: pluck off; divest; eject / sandal tongue; sandal; slipper) — Josh 5:15
+  - Exod 3:5 — shal neʿaley-ka
 
 ## Rare words (7)
 
@@ -44,9 +44,9 @@ It cannot see: common words (rare cutoff: 20 verses in the Hebrew Bible), links 
 - **ha-mman** (H4478, whatness; manna) — Josh 5:12; 12 verses in the Hebrew Bible
   - Torah: Exod 16:15 (man); Exod 16:31 (man); Exod 16:33 (man); Exod 16:35 (ha-mman); Num 11:6 (ha-mman); Num 11:7 (we-ha-mman); Num 11:9 (ha-mman); Deut 8:3 (ha-mman); Deut 8:16 (man)
   - Later: Neh 9:20 (u-man-ka); Ps 78:24 (man)
-- **ha-ʿ̲aralot** (H6190, prepuce) — Josh 5:3; 16 verses in the Hebrew Bible
-  - Torah: Gen 17:11 (ʿ̲arlat-kem); Gen 17:14 (ʿ̲arlat-wo); Gen 17:23 (ʿ̲arlata-m); Gen 17:24 (ʿ̲arlat-wo); Gen 17:25 (ʿ̲arlat-wo); Gen 34:14 (ʿ̲arlah); Exod 4:25 (ʿ̲arlat); Lev 12:3 (ʿ̲arlat-wo); Lev 19:23 (ʿ̲arlat-wo); Deut 10:16 (ʿ̲arlat)
-  - Later: 1 Sam 18:25 (ʿ̲arlot); 1 Sam 18:27 (ʿ̲arlote-hem); 2 Sam 3:14 (ʿ̲arlot); Jer 4:4 (ʿ̲arlot); Jer 9:25 (be-ʿ̲arlah)
+- **ha-ʿaralot** (H6190, prepuce) — Josh 5:3; 16 verses in the Hebrew Bible
+  - Torah: Gen 17:11 (ʿarlat-kem); Gen 17:14 (ʿarlat-wo); Gen 17:23 (ʿarlata-m); Gen 17:24 (ʿarlat-wo); Gen 17:25 (ʿarlat-wo); Gen 34:14 (ʿarlah); Exod 4:25 (ʿarlat); Lev 12:3 (ʿarlat-wo); Lev 19:23 (ʿarlat-wo); Deut 10:16 (ʿarlat)
+  - Later: 1 Sam 18:25 (ʿarlot); 1 Sam 18:27 (ʿarlote-hem); 2 Sam 3:14 (ʿarlot); Jer 4:4 (ʿarlot); Jer 9:25 (be-ʿarlah)
 - **galloti** (H1556, roll) — Josh 5:9; 18 verses in the Hebrew Bible
   - Torah: Gen 29:3 (we-galalu); Gen 29:8 (we-galalu); Gen 29:10 (wa-yyagel); Gen 43:18 (le-hitgolel)
   - Later: 1 Sam 14:33 (gollu); 2 Sam 20:12 (mitgolel); Job 30:14 (hitgalgalu); Ps 22:8 (gol); Ps 37:5 (gol); Ps 119:22 (gal); Prov 16:3 (gol); Prov 26:27 (we-golel); Isa 9:5 (megolalah); Isa 34:4 (we-nagollu); Jer 51:25 (we-gilgalti-ka); Amos 5:24 (we-yiggal)

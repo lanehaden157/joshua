@@ -8,7 +8,7 @@ Generated from `data/threads.json` (version 1). 23 threads, 23 open.
 |---|---|---|---|---|
 | `command` | tsavah | command, charge | 1 (1:7) | 8 (8:31) · 11 (11:15) · 21 (22:2) · 21 (22:5) |
 | `cross` | ʿavar | cross over; the far side (of the Jordan) | 1 (1:2) | 2 (2:10) · 2 (2:23) · 3 (3:17) · 4 (5:1) |
-| `firm` | ʾamats | be firm, be resolute (the glottal ʾ, aleph — not the ʿ of ʿavar) | 1 (1:6) | — |
+| `firm` | ʾamats | be firm, be resolute | 1 (1:6) | — |
 | `forsake` | ʿazav | leave, abandon, forsake | 1 (1:5) | 21 (22:3) · 23 (24:16) · 23 (24:20) |
 | `give` | natan | give | 1 (1:2) | 2 (2:9) · 2 (2:24) · 4 (5:6) |
 | `inherit` | naḥal | cause to inherit, give as an inheritance | 1 (1:6) | — |
@@ -19,7 +19,7 @@ Generated from `data/threads.json` (version 1). 23 threads, 23 open.
 | `servant` | ʿeved | slave (Moses' title, 'slave of Yahweh') | 1 (1:1) | 4 (5:14) |
 | `sole` | kap | palm of the hand; sole of the foot | 1 (1:3) | 3 (3:13) · 3 (4:18) |
 | `strong` | ḥazaq | be strong; strong (adjective) | 1 (1:6) | 3 (4:24) |
-| `swear` | shavaʿ̲ | swear (an oath) | 1 (1:6) | 4 (5:6) |
+| `swear` | shavaʿ | swear (an oath) | 1 (1:6) | 4 (5:6) |
 | `torah` | torah | instruction, the Torah (here 'the scroll of the torah') | 1 (1:7) | — |
 | `blood` | dam | blood | 2 (2:19) | — |
 | `chase` | radaf | chase, pursue | 2 (2:5) | — |
@@ -61,4 +61,4 @@ Generated from `data/threads.json` (version 1). 23 threads, 23 open.
 These were proposed as threads and deliberately declined. Don't re-propose one without a specific new payoff in view -- say what changed.
 
 - **`all`** (declined 2026-09-16, unit 1): kol, 236 occurrences book-wide. Asked Lane (the frequency made it a genuine toss-up) and kept local: a root that common carries no signal as a tracked thread -- colouring it would tint the page without telling a reader anything. Re-propose only with a specific payoff in view, not on frequency alone.
-- **`cross-fords`** (declined 2026-09-21, unit 2): maʿ̲berot, 'the fords' (2:7) -- cognate with the tracked 'cross' root but a distinct lemma (4569b) and a single occurrence. Widening an already-tracked thread's id set on one thin hit isn't the same call as promoting a new one; declined for now. Re-propose only if maʿ̲berot recurs with its own payoff.
+- **`cross-fords`** (declined 2026-09-21, unit 2): maʿberot, 'the fords' (2:7) -- cognate with the tracked 'cross' root but a distinct lemma (4569b) and a single occurrence. Widening an already-tracked thread's id set on one thin hit isn't the same call as promoting a new one; declined for now. Re-propose only if maʿberot recurs with its own payoff.

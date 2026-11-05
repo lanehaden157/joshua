@@ -7,11 +7,11 @@
   per-verse alignment with no human intervention needed.
 - Made the thread-promotion calls for unit 2's `threads.candidates[]`
   (Claude decides, biased book-wide, per CLAUDE.md policy):
-  - **Promoted**: `devote` (ḥaram, 2763a), `swear` (shavaʿ̲/shevuʿ̲ah,
+  - **Promoted**: `devote` (ḥaram, 2763a), `swear` (shavaʿ/shevuʿah,
     7650+7621), `blood` (dam, 1818), `melt` (masas, 4549) — all added to
     `data/roots.json` and `data/threads.json`.
   - **Declined**: widening the existing `cross` thread's id set to cover
-    maʿ̲berot "fords" (4569b) — different lemma, single occurrence, no
+    maʿberot "fords" (4569b) — different lemma, single occurrence, no
     clear payoff. Logged in `roots.json`'s `declined` ledger instead of
     silently dropping it.
 - `swear`'s actual first occurrence is 1:6 (Yahweh's oath to the fathers),
@@ -40,7 +40,7 @@
   itself named (governing law of the conquest; oath thread spanning to
   ch. 21), and blood/melt each had a specific forward reference even though
   their occurrence counts are thin.
-- The "extend an existing tracked thread's id set" case (cross + maʿ̲berot)
+- The "extend an existing tracked thread's id set" case (cross + maʿberot)
   is a different kind of judgment call than "promote a new local root" —
   it changes what an *already-shipped* thread means. Declining it and
   logging why felt like the right default; worth watching whether this

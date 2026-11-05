@@ -59,7 +59,7 @@
       "ids": [
         "5650"
       ],
-      "note": "ʿeved, servant. Moses' title ('servant of Yahweh') throughout unit 1 -- watch whether and when Joshua receives the same title (24:29)."
+      "note": "ʿeved, slave. Moses' title ('slave of Yahweh') throughout unit 1 -- watch whether and when Joshua receives the same title (24:29)."
     },
     "send": {
       "ids": [
@@ -78,7 +78,7 @@
         "7650",
         "7621"
       ],
-      "note": "shavaʿ̲ (Niphal swear) + shevuʿ̲ah (the noun, oath) -- one root, both ids. Yahweh's oath to the fathers (1:6, retro'd from unit 1) opens it; Rahab's oath (2:12, 17, 20) is the first oath sworn between people in the book, kept at 6:22; the Gibeonite oath (9:15, 19-20) and the rest formula (21:43-44) carry it to the end."
+      "note": "shavaʿ (Niphal swear) + shevuʿah (the noun, oath) -- one root, both ids. Yahweh's oath to the fathers (1:6, retro'd from unit 1) opens it; Rahab's oath (2:12, 17, 20) is the first oath sworn between people in the book, kept at 6:22; the Gibeonite oath (9:15, 19-20) and the rest formula (21:43-44) carry it to the end."
     },
     "blood": {
       "ids": [
@@ -165,7 +165,7 @@
       "ids": [
         "4569b"
       ],
-      "why": "maʿ̲berot, 'the fords' (2:7) -- cognate with the tracked 'cross' root but a distinct lemma (4569b) and a single occurrence. Widening an already-tracked thread's id set on one thin hit isn't the same call as promoting a new one; declined for now. Re-propose only if maʿ̲berot recurs with its own payoff."
+      "why": "maʿberot, 'the fords' (2:7) -- cognate with the tracked 'cross' root but a distinct lemma (4569b) and a single occurrence. Widening an already-tracked thread's id set on one thin hit isn't the same call as promoting a new one; declined for now. Re-propose only if maʿberot recurs with its own payoff."
     }
   }
 }
