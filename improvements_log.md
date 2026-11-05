@@ -518,3 +518,6 @@ Full suite green (`test_unit_meta.py` 52 checks), `build.py` green, coverage
 - Style reference was over its 24 KB budget: the substring-stem measurements moved to `archive/root-identity-rationale.md`, the `aside.echo` build history replaced by a pointer to `components-reference.md`, handoff box kinds folded to one line.
 
 - **2026-11-04 (unit 1 re-port)**: Promoting threads via a re-port hits an ordering catch-22: `port` refuses a fragment whose promoted roots aren't in threads.json (fragment check), but refuses once they are (metadata check). Working order: `port N --force --write-invalid`, then `apply-delta N`, then `build`. Also, a failed build had already replayed stale retag entries over the built unit, clobbering `data-w`; the old unit-1 retrofit entries were deleted because the new artifact carries its own tags, then the unit was re-ported.
+
+## 2026-11-05 — core 0.27.0
+- Vendored 0.27.0 after committing the pending ayin-translit/wording cleanup. Template changes (three-chat field, unit packs) not taken yet: Joshua's own call when its next unit starts.
