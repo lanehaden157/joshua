@@ -8,7 +8,7 @@ Generated from `data/threads.json` (version 1). 23 threads, 23 open.
 |---|---|---|---|---|
 | `command` | tsavah | command, charge | 1 (1:7) | 8 (8:31) · 11 (11:15) · 21 (22:2) · 21 (22:5) |
 | `cross` | ʿavar | cross over; the far side (of the Jordan) | 1 (1:2) | 2 (2:10) · 2 (2:23) · 3 (3:17) · 4 (5:1) |
-| `firm` | ʾamats | be firm, be resolute (the glottal ʾ, aleph — not the ʿ of ʿavar) | 1 (1:6) | — |
+| `firm` | ʾamats | be firm, be resolute | 1 (1:6) | — |
 | `forsake` | ʿazav | leave, abandon, forsake | 1 (1:5) | 21 (22:3) · 23 (24:16) · 23 (24:20) |
 | `give` | natan | give | 1 (1:2) | 2 (2:9) · 2 (2:24) · 4 (5:6) |
 | `inherit` | naḥal | cause to inherit, give as an inheritance | 1 (1:6) | — |

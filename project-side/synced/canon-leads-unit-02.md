@@ -8,17 +8,17 @@ It cannot see: common words (rare cutoff: 20 verses in the Hebrew Bible), links 
 
 - **ṭerem yishkabu-n** (H2962 + H7901: non-occurrence; not yet; before / lie down) — Josh 2:8
   - Gen 19:4 — ṭerem yishkabu
-- **le-siḥon u-le-ʿog** (H5511 + H5747: tempestuous; Sichon / round; Og) — Josh 2:10
-  - Deut 31:4 — le-siḥon u-le-ʿog
+- **le-siḥon u-le-ʿ̲og** (H5511 + H5747: tempestuous; Sichon / round; Og) — Josh 2:10
+  - Deut 31:4 — le-siḥon u-le-ʿ̲og
 - **ḥesed we-ʾemet** (H2617 + H571: kindness; piety; reproof / stability; certainty; truth) — Josh 2:14
   - Gen 24:27 — ḥasd-wo wa-ʾamitt-wo
   - Gen 24:49 — ḥesed we-ʾemet
   - Gen 47:29 — ḥesed we-ʾemet
   - Exod 34:6 — ḥesed we-ʾemet
-- **beʿad ha-ḥallon** (H1157 + H2474: in up to; over against; at / window) — Josh 2:15
-  - Gen 26:8 — beʿad ha-ḥallon
-- **pen yipgeʿu** (H6435 + H6293: removal; lest / impinge) — Josh 2:16
-  - Exod 5:3 — pen yipgaʿe-nu
+- **beʿ̲ad ha-ḥallon** (H1157 + H2474: in up to; over against; at / window) — Josh 2:15
+  - Gen 26:8 — beʿ̲ad ha-ḥallon
+- **pen yipgeʿ̲u** (H6435 + H6293: removal; lest / impinge) — Josh 2:16
+  - Exod 5:3 — pen yipgaʿ̲e-nu
 
 ## Rare words (11)
 
@@ -28,9 +28,9 @@ It cannot see: common words (rare cutoff: 20 verses in the Hebrew Bible), links 
 - **ḥuṭ** (H2339, string; measuring tape) — Josh 2:18; 7 verses in the Hebrew Bible
   - Torah: Gen 14:23 (mi-ḥuṭ)
   - Later: Judg 16:12 (ka-ḥuṭ); 1 Kgs 7:15 (we-ḥuṭ); Eccl 4:12 (we-ha-ḥuṭ); Song 4:3 (ke-ḥuṭ); Jer 52:21 (we-ḥuṭ)
-- **ha-mmaʿberot** (H4569, crossing; ford; pass) — Josh 2:7; 11 verses in the Hebrew Bible
-  - Torah: Gen 32:22 (maʿabar)
-  - Later: Judg 3:28 (maʿberot); Judg 12:5 (maʿberot); Judg 12:6 (maʿberot); 1 Sam 13:23 (maʿabar); 1 Sam 14:4 (ha-mmaʿberot); Isa 10:29 (maʿbarah); Isa 16:2 (maʿbarot); Isa 30:32 (maʿabar); Jer 51:32 (we-ha-mmaʿbarot)
+- **ha-mmaʿ̲berot** (H4569, crossing; ford; pass) — Josh 2:7; 11 verses in the Hebrew Bible
+  - Torah: Gen 32:22 (maʿ̲abar)
+  - Later: Judg 3:28 (maʿ̲berot); Judg 12:5 (maʿ̲berot); Judg 12:6 (maʿ̲berot); 1 Sam 13:23 (maʿ̲abar); 1 Sam 14:4 (ha-mmaʿ̲berot); Isa 10:29 (maʿ̲barah); Isa 16:2 (maʿ̲barot); Isa 30:32 (maʿ̲abar); Jer 51:32 (we-ha-mmaʿ̲barot)
 - **be-pishte** (H6593, comminuting; linen; carded) — Josh 2:6; 15 verses in the Hebrew Bible
   - Torah: Lev 13:47 (pishtim); Lev 13:48 (la-pishtim); Lev 13:52 (ba-pishtim); Lev 13:59 (ha-pishtim); Deut 22:11 (u-pishtim)
   - Later: Judg 15:14 (ka-pishtim); Prov 31:13 (u-pishtim); Isa 19:9 (pishtim); Jer 13:1 (pishtim); Ezek 40:3 (pishtim); Ezek 44:17 (pishtim); Ezek 44:18 (pishtim); Hos 2:5 (u-pishti-y); Hos 2:9 (u-pishti-y)

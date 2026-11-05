@@ -27,11 +27,11 @@ It cannot see: common words (rare cutoff: 20 verses in the Hebrew Bible), links 
 
 ## Rare words (3)
 
-- **wa-ʿakartem** (H5916, roil water; disturb; affict) — Josh 6:18; 13 verses in the Hebrew Bible
-  - Torah: Gen 34:30 (ʿakartem)
-  - Later: Judg 11:35 (be-ʿokra-y); 1 Sam 14:29 (ʿakar); 1 Kgs 18:17 (ʿoker); 1 Kgs 18:18 (ʿakartiy); 1 Chr 2:7 (ʿoker); Ps 39:2 (neʿkar); Prov 11:17 (we-ʿoker); Prov 11:29 (ʿoker); Prov 15:6 (neʿkaret); Prov 15:27 (ʿoker)
+- **wa-ʿ̲akartem** (H5916, roil water; disturb; affict) — Josh 6:18; 13 verses in the Hebrew Bible
+  - Torah: Gen 34:30 (ʿ̲akartem)
+  - Later: Judg 11:35 (be-ʿ̲okra-y); 1 Sam 14:29 (ʿ̲akar); 1 Kgs 18:17 (ʿ̲oker); 1 Kgs 18:18 (ʿ̲akartiy); 1 Chr 2:7 (ʿ̲oker); Ps 39:2 (neʿ̲kar); Prov 11:17 (we-ʿ̲oker); Prov 11:29 (ʿ̲oker); Prov 15:6 (neʿ̲karet); Prov 15:27 (ʿ̲oker)
 - **haqqep** (H5362, strike; beat; fell) — Josh 6:3, 6:11; 19 verses in the Hebrew Bible
   - Torah: Lev 19:27 (taqqipu)
   - Later: 1 Kgs 7:24 (maqqipim); 2 Kgs 6:14 (wa-yyaqqipu); 2 Kgs 11:8 (we-hiqqaptem); 2 Chr 4:3 (maqqipim); 2 Chr 23:7 (we-hiqqipu); Job 1:5 (hiqqipu); Job 19:6 (hiqqip); Job 19:26 (niqqepu); Ps 17:9 (yaqqipu); Ps 22:16 (hiqqipu-ni); Ps 48:12 (we-haqqipu-ha); Ps 88:17 (hiqqipu); Isa 10:34 (we-niqqap); Isa 15:8 (hiqqipah); Isa 29:1 (yinqopu); Lam 3:5 (wa-yyaqqap)
-- **shamʿ-wo** (H8089, report) — Josh 6:27; 4 verses in the Hebrew Bible
-  - Later: Esth 9:4 (we-shamʿ-wo); Jer 6:24 (shamʿ-wo)
+- **shamʿ̲-wo** (H8089, report) — Josh 6:27; 4 verses in the Hebrew Bible
+  - Later: Esth 9:4 (we-shamʿ̲-wo); Jer 6:24 (shamʿ̲-wo)

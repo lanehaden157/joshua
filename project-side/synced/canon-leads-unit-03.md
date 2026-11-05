@@ -6,8 +6,8 @@ It cannot see: common words (rare cutoff: 20 verses in the Hebrew Bible), links 
 
 ## Shared phrases with the Torah (10)
 
-- **ba-boqer wa-yyisʿu** (H1242 + H5265: dawn; morning / pull; start) — Josh 3:1
-  - Num 9:21 — ba-boqer we-nasaʿu
+- **ba-boqer wa-yyisʿ̲u** (H1242 + H5265: dawn; morning / pull; start) — Josh 3:1
+  - Num 9:21 — ba-boqer we-nasaʿ̲u
 - **be-qereb ha-mmaḥaneh** (H7130 + H4264: nearest; center / encampment; army) — Josh 3:2
   - Num 14:44 — mi-qqereb ha-mmaḥaneh
   - Deut 2:14 — mi-qqereb ha-mmaḥaneh
@@ -47,32 +47,32 @@ It cannot see: common words (rare cutoff: 20 verses in the Hebrew Bible), links 
   - Num 32:33 — we-la-ḥatsi shebeṭ … shebeṭ menashsheh
   - Deut 3:13 — la-ḥatsi shebeṭ … shebeṭ ha-menashsheh
   - Deut 29:8 — we-la-ḥatsi shebeṭ
-- **ʾaron ha-ʿedut** (H727 + H5715: box / testimony) — Josh 4:16
-  - Exod 25:22 — ʾaron ha-ʿedut
-  - Exod 26:33 — ʾaron ha-ʿedut
-  - Exod 26:34 — ʾaron ha-ʿedut
-  - Exod 30:6 — ʾaron ha-ʿedut
-  - Exod 30:26 — ʾaron ha-ʿedut
-  - Exod 31:7 — ha-ʾaron la-ʿedut
-  - Exod 39:35 — ʾaron ha-ʿedut
-  - Exod 40:3 — ʾaron ha-ʿedut
-  - Exod 40:5 — ʾaron ha-ʿedut
-  - Exod 40:21 — ʾaron ha-ʿedut
-  - Num 4:5 — ʾaron ha-ʿedut
-  - Num 7:89 — ʾaron ha-ʿedut
-- **be-ʿaśor la-ḥodesh ha-riʾshon** (H6218 + H2320 + H7223: ten; ten strings; decachord / new; month / first) — Josh 4:19
+- **ʾaron ha-ʿ̲edut** (H727 + H5715: box / testimony) — Josh 4:16
+  - Exod 25:22 — ʾaron ha-ʿ̲edut
+  - Exod 26:33 — ʾaron ha-ʿ̲edut
+  - Exod 26:34 — ʾaron ha-ʿ̲edut
+  - Exod 30:6 — ʾaron ha-ʿ̲edut
+  - Exod 30:26 — ʾaron ha-ʿ̲edut
+  - Exod 31:7 — ha-ʾaron la-ʿ̲edut
+  - Exod 39:35 — ʾaron ha-ʿ̲edut
+  - Exod 40:3 — ʾaron ha-ʿ̲edut
+  - Exod 40:5 — ʾaron ha-ʿ̲edut
+  - Exod 40:21 — ʾaron ha-ʿ̲edut
+  - Num 4:5 — ʾaron ha-ʿ̲edut
+  - Num 7:89 — ʾaron ha-ʿ̲edut
+- **be-ʿ̲aśor la-ḥodesh ha-riʾshon** (H6218 + H2320 + H7223: ten; ten strings; decachord / new; month / first) — Josh 4:19
   - Exod 12:2 — ḥodashim riʾshon
-  - Exod 12:3 — be-ʿaśor la-ḥodesh
+  - Exod 12:3 — be-ʿ̲aśor la-ḥodesh
   - Exod 40:2 — ha-ḥodesh ha-riʾshon
   - Exod 40:17 — ba-ḥodesh ha-riʾshon
-  - Lev 16:29 — be-ʿaśor la-ḥodesh
+  - Lev 16:29 — be-ʿ̲aśor la-ḥodesh
   - Lev 23:5 — ba-ḥodesh ha-riʾshon
-  - Lev 23:27 — be-ʿaśor la-ḥodesh
-  - Lev 25:9 — be-ʿaśor la-ḥodesh
+  - Lev 23:27 — be-ʿ̲aśor la-ḥodesh
+  - Lev 25:9 — be-ʿ̲aśor la-ḥodesh
   - Num 9:1 — ba-ḥodesh ha-riʾshon
   - Num 20:1 — ba-ḥodesh ha-riʾshon
   - Num 28:16 — u-ba-ḥodesh ha-riʾshon
-  - Num 29:7 — u-be-ʿaśor la-ḥodesh
+  - Num 29:7 — u-be-ʿ̲aśor la-ḥodesh
   - Num 33:3 — ba-ḥodesh ha-riʾshon … la-ḥodesh ha-riʾshon
 
 ## Rare words (13)
@@ -104,9 +104,9 @@ It cannot see: common words (rare cutoff: 20 verses in the Hebrew Bible), links 
 - **niṭbelu** (H2881, dip; immerse) — Josh 3:15; 16 verses in the Hebrew Bible
   - Torah: Gen 37:31 (wa-yyiṭbelu); Exod 12:22 (u-ṭebaltem); Lev 4:6 (we-ṭabal); Lev 4:17 (we-ṭabal); Lev 9:9 (wa-yyiṭbol); Lev 14:6 (we-ṭabal); Lev 14:16 (we-ṭabal); Lev 14:51 (we-ṭabal); Num 19:18 (we-ṭabal); Deut 33:24 (we-ṭobel)
   - Later: Ruth 2:14 (we-ṭabalt); 1 Sam 14:27 (wa-yyiṭbol); 2 Kgs 5:14 (wa-yyiṭbol); 2 Kgs 8:15 (wa-yyiṭbol); Job 9:31 (tiṭbele-ni)
-- **be-ʿaśor** (H6218, ten; ten strings; decachord) — Josh 4:19; 16 verses in the Hebrew Bible
-  - Torah: Gen 24:55 (ʿaśor); Exod 12:3 (be-ʿaśor); Lev 16:29 (be-ʿaśor); Lev 23:27 (be-ʿaśor); Lev 25:9 (be-ʿaśor); Num 29:7 (u-be-ʿaśor)
-  - Later: 2 Kgs 25:1 (be-ʿaśor); Ps 33:2 (ʿaśor); Ps 92:3 (ʿaśor); Ps 144:9 (ʿaśor); Jer 52:4 (be-ʿaśor); Jer 52:12 (be-ʿaśor); Ezek 20:1 (be-ʿaśor); Ezek 24:1 (be-ʿaśor); Ezek 40:1 (be-ʿaśor)
+- **be-ʿ̲aśor** (H6218, ten; ten strings; decachord) — Josh 4:19; 16 verses in the Hebrew Bible
+  - Torah: Gen 24:55 (ʿ̲aśor); Exod 12:3 (be-ʿ̲aśor); Lev 16:29 (be-ʿ̲aśor); Lev 23:27 (be-ʿ̲aśor); Lev 25:9 (be-ʿ̲aśor); Num 29:7 (u-be-ʿ̲aśor)
+  - Later: 2 Kgs 25:1 (be-ʿ̲aśor); Ps 33:2 (ʿ̲aśor); Ps 92:3 (ʿ̲aśor); Ps 144:9 (ʿ̲aśor); Jer 52:4 (be-ʿ̲aśor); Jer 52:12 (be-ʿ̲aśor); Ezek 20:1 (be-ʿ̲aśor); Ezek 24:1 (be-ʿ̲aśor); Ezek 40:1 (be-ʿ̲aśor)
 - **tsartan** (H6891, Tsarethan) — Josh 3:16; 3 verses in the Hebrew Bible
   - Later: 1 Kgs 4:12 (tsartana-h); 1 Kgs 7:46 (tsartan)
 - **gedotay-w** (H1415, cut; border) — Josh 3:15, 4:18; 4 verses in the Hebrew Bible
