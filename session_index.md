@@ -12,3 +12,4 @@ Read this first. One line per session, newest last. Full history: `archive/sessi
 - 2026-11-04: CLAUDE.md rewritten to the template's shape.
 - 2026-11-04: Unit 1 re-ported from the replaced artifact (Meribah note on 1:18 added); `command`, `forsake`, `keep` promoted; unit 3 `command` retrofitted.
 - 2026-11-05: Pending cleanup committed; core 0.27.0 vendored. Template changes not taken.
+- 2026-11-05: Field 'How we work' said two chats (stale); now three chats to match core 0.27.0, plus a which-chat-am-I line and question timing. Re-paste needed; not synced.
