@@ -1,21 +1,8 @@
 # Joshua Study — Resources
 
-> **Single authored copy.** This file lives in the repo and reaches the
-> Claude.ai project by sync, like the text files below.
-> Edit it in the repo; the sync picks up the change on its own.
->
-> `CHAT_SIDE_INSTRUCTIONS.md` is the source of truth for the project's
-> instruction field; this file only lists holdings.
->
-> **This file says what is on hand and what each thing is good for. It does not
-> say how to work** — that's `core-workflow.md` and the project's instruction
-> field — **and it does not say what to produce** — that's
-> `joshua_study_style_reference.md`. If you find yourself wanting to duplicate a
-> rule from either into here, don't.
->
-> **The commentaries below are a starting point, not a limit.** Search the web
-> freely and cite any source by name (`core-workflow.md`), and don't imply
-> coverage you don't have.
+Read before pass 1 of every unit. What's on hand and what each is good for;
+start, not limit: search the web, and don't imply coverage you don't have.
+Edit in the repo, never on the project side.
 
 ---
 
