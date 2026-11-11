@@ -521,3 +521,8 @@ Full suite green (`test_unit_meta.py` 52 checks), `build.py` green, coverage
 
 ## 2026-11-05 — core 0.27.0
 - Vendored 0.27.0 after committing the pending ayin-translit/wording cleanup. Template changes (three-chat field, unit packs) not taken yet: Joshua's own call when its next unit starts.
+
+## 2026-11-11 — Lean instructions (core 0.30.0)
+- Layout: `CLAUDE.md` imports `biblecore/BOOK_CLAUDE.md`; `fragment-contract.md` is the shared contract and the style reference holds only this book's differences (it wins); each chat fetches one `card-*.md`. The pre-lean full style reference, CLAUDE.md and project-side README are in git history (the commit before this one).
+- Joshua keeps its own `## 8. Worked example` (heading unchanged): bible-core's `test_meta` and `test_port` read that fence. That is why `checks.doc_budget_kb.style_reference` is 7.
+- The style reference's "(learned …)" notes and dated attributions went with the old file; the rules they justified are in the shared contract.

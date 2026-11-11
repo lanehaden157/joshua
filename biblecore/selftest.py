@@ -15,9 +15,12 @@ acceptance checks a book can run on itself:
   units        every built unit validates (validate step)
   contracts    every built unit carries a contract stamp no newer than core
   example      the style reference's worked example (section 8) validates, if it has one
+  mirror       a book that mirrors another: every ref resolves in its corpus, every shared
+               word is in both passages, a strength-3 pair has evidence (nesting and
+               order are reported, not failed)
   audit        tracked-thread coverage (reported, not a failure)
   docs         instruction files against their size budgets (reported, not a failure)
-  logs         session_index.md / improvements_log.md whose newest core version
+  logs         session_index.md / history/improvements_log.md whose newest core version
                is older than book.json's pin (reported, not a failure)
   idempotent   re-running the build's hard steps changes no file (data,
                units, digest, css/, app/, index.html); anything it would
@@ -40,8 +43,10 @@ FENCE_RE = re.compile(r"```html\n(.*?)```", re.S)
 # Instruction files a chat or session reads whole, in KB. Each addition looks
 # reasonable alone, so nothing else notices them adding up. A book tightens or
 # loosens one with checks.doc_budget_kb.
-DOC_BUDGET_KB = {"field": 5, "claude": 7, "style_reference": 24,
-                 "translation_choices": 16, "resources": 9, "workflow": 9}
+DOC_BUDGET_KB = {"field": 4, "claude": 2.5, "style_reference": 6,
+                 "translation_choices": 16, "resources": 9,
+                 "card_research": 4.5, "card_verse": 5, "card_build": 2.5,
+                 "contract": 10, "book_guide": 3.5}
 
 
 def _quiet(fn, *a):
@@ -148,14 +153,19 @@ def check_contracts():
 
 def check_example():
     from biblecore import meta as um
-    path = book().path("style_reference")
-    if not os.path.exists(path):
-        return [], ["no style reference"]
-    text = open(path, encoding="utf-8").read()
-    m = re.search(r"^## 8\..*?(?=^## \d)", text, re.S | re.M)
-    fence = FENCE_RE.search(m.group(0)) if m else None
+    # the book's own example wins; without one, the shared contract's
+    b = book()
+    fence = None
+    for path in (b.path("style_reference"), os.path.join(b.root, "fragment-contract.md")):
+        if not os.path.exists(path):
+            continue
+        text = open(path, encoding="utf-8").read()
+        m = re.search(r"^## [^\n]*Worked example.*?(?=^## |\Z)", text, re.S | re.M | re.I)
+        fence = FENCE_RE.search(m.group(0)) if m else None
+        if fence:
+            break
     if not fence:
-        return [], ["section 8 has no ```html worked example yet"]
+        return [], ["no ```html worked example in the style reference or fragment-contract.md"]
     meta = um.parse(fence.group(1))
     if meta is None:
         return ["worked example has no unit-meta block"], []
@@ -166,6 +176,11 @@ def check_example():
     errs += um.check_no_native_script(fence.group(1))
     errs += um.check_no_inline_style(fence.group(1))
     return [f"example: {e}" for e in errs], []
+
+
+def check_mirror():
+    from biblecore import mirror
+    return mirror.check()
 
 
 def check_audit():
@@ -183,7 +198,11 @@ def check_docs():
              "style_reference": b.path("style_reference"),
              "translation_choices": os.path.join(b.root, "translation-choices.md"),
              "resources": os.path.join(b.root, "resources.md"),
-             "workflow": os.path.join(b.root, "core-workflow.md")}
+             "card_research": os.path.join(b.root, "card-research.md"),
+             "card_verse": os.path.join(b.root, "card-verse.md"),
+             "card_build": os.path.join(b.root, "card-build.md"),
+             "contract": os.path.join(b.root, "fragment-contract.md"),
+             "book_guide": os.path.join(b.root, "biblecore", "BOOK_CLAUDE.md")}
     budget = {**DOC_BUDGET_KB, **b.check("doc_budget_kb")}
     over = []
     for doc, path in paths.items():
@@ -209,7 +228,7 @@ def check_logs():
     if not pin or not re.match(r"^\d+\.\d+\.\d+$", str(pin)):
         return [], []
     stale = []
-    for name in ("session_index.md", "improvements_log.md"):
+    for name in ("session_index.md", "history/improvements_log.md", "improvements_log.md"):
         path = os.path.join(b.root, name)
         if not os.path.exists(path):
             continue
@@ -279,6 +298,7 @@ CHECKS = [
     ("units", check_units),
     ("contracts", check_contracts),
     ("example", check_example),
+    ("mirror", check_mirror),
     ("audit", check_audit),
     ("docs", check_docs),
     ("logs", check_logs),

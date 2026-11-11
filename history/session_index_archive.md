@@ -71,3 +71,7 @@ Read this first. 3 lines max per session.
 
 ## 2026-11-04 — Core 0.25.0 consistency fixes
 - Migrated units to 0.25.0; enabled `story`, added "What belongs where" and box-kind mapping; field "How we work" rewritten (precedence ladder, popup for build chat); pass numbering, checklist, `sole` log correction, native-script notes.
+
+- 2026-11-04: Units migrated to 0.25.0; `story` enabled; field "How we work" rewritten.
+- 2026-11-04: CLAUDE.md rewritten to the template's shape.
+- 2026-11-04: Unit 1 re-ported from the replaced artifact (Meribah note on 1:18 added); `command`, `forsake`, `keep` promoted; unit 3 `command` retrofitted.
