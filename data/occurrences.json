@@ -690,15 +690,15 @@
       "hits": [
         {
           "v": 19,
-          "pre": "…s out of the doors of your house into the street — his ",
+          "pre": "…es out of the doors of your house into the street, his ",
           "hit": "blood",
-          "post": " is on his head, and we are clear; and anyone who is wi…"
+          "post": " is on his head, and we will be clear; and anyone who i…"
         },
         {
           "v": 19,
-          "pre": "…s out of the doors of your house into the street — his ",
+          "pre": "…es out of the doors of your house into the street, his ",
           "hit": "blood",
-          "post": " is on his head, and we are clear; and anyone who is wi…"
+          "post": " is on his head, and we will be clear; and anyone who i…"
         }
       ],
       "total": 2
@@ -716,75 +716,61 @@
           "v": 5,
           "pre": "…k, the men went out. I do not know where the men went. ",
           "hit": "Chase",
-          "post": " after them, fast — y'all will overtake them.\"…"
+          "post": " after them quickly, for you will overtake them.\"…"
         },
         {
           "v": 7,
           "pre": "…And the men ",
           "hit": "chased",
-          "post": " after them on the Jordan road, as far as the fords; an…"
+          "post": " after them on the road to the Jordan, to the fords; an…"
         },
         {
           "v": 7,
-          "pre": "…the fords; and the gate — they shut it just after the ",
+          "pre": "…n, to the fords; and they shut the gate as soon as the ",
           "hit": "chasers",
           "post": " had gone out after them.…"
         },
         {
           "v": 16,
-          "pre": "…nd she said to them, \"To the hill country — go, so the ",
+          "pre": "…nd she said to them, \"Go to the hill country, lest the ",
           "hit": "chasers",
-          "post": " don't run into y'all; and hide there three days, until…"
+          "post": " meet y'all, and keep hidden there three days until the…"
         },
         {
           "v": 16,
-          "pre": "…nd she said to them, \"To the hill country — go, so the ",
+          "pre": "…nd she said to them, \"Go to the hill country, lest the ",
           "hit": "chasers",
-          "post": " don't run into y'all; and hide there three days, until…"
+          "post": " meet y'all, and keep hidden there three days until the…"
         },
         {
           "v": 22,
-          "pre": "…e hill country, and stayed there three days, until the ",
+          "pre": "…he hill country and stayed there three days, until the ",
           "hit": "chasers",
-          "post": " returned; and the chasers searched the whole road, and…"
+          "post": " had returned; and the chasers searched all along the r…"
         },
         {
           "v": 22,
-          "pre": "…e hill country, and stayed there three days, until the ",
+          "pre": "…he hill country and stayed there three days, until the ",
           "hit": "chasers",
-          "post": " returned; and the chasers searched the whole road, and…"
+          "post": " had returned; and the chasers searched all along the r…"
         }
       ],
       "total": 7
     },
-    "clear": {
-      "count": 3,
+    "conceal": {
+      "count": 1,
       "verses": [
-        17,
-        19,
-        20
+        4
       ],
       "hits": [
         {
-          "v": 17,
-          "pre": "…And the men said to her, \"",
-          "hit": "Clear",
-          "post": " are we of this oath of yours that you made us swear —…"
-        },
-        {
-          "v": 19,
-          "pre": "…into the street — his blood is on his head, and we are ",
-          "hit": "clear",
-          "post": "; and anyone who is with you in the house — his blood i…"
-        },
-        {
-          "v": 20,
-          "pre": "…And if you tell this business of ours, we will be ",
-          "hit": "clear",
-          "post": " of your oath that you made us swear.\"…"
+          "v": 4,
+          "pre": "…And the woman took the two men and ",
+          "hit": "hid",
+          "post": " them, and she said, \"Yes, the men came to me, but I di…"
         }
       ],
-      "total": 3
+      "total": 1
     },
     "cord": {
       "count": 2,
@@ -795,9 +781,9 @@
       "hits": [
         {
           "v": 18,
-          "pre": "…look: we are coming into the land. This ",
+          "pre": "…\"Look, we are coming into the land: this ",
           "hit": "cord",
-          "post": " of scarlet thread you will tie in the window you broug…"
+          "post": " of scarlet thread you will tie in the window you let u…"
         },
         {
           "v": 21,
@@ -817,15 +803,15 @@
       "hits": [
         {
           "v": 10,
-          "pre": "…what y'all did to the two kings of the Amorites on the ",
-          "hit": "far side",
-          "post": " of the Jordan — to Sihon and to Og — whom y'all devote…"
+          "pre": "…at y'all did to the two kings of the Amorites who were ",
+          "hit": "beyond",
+          "post": " the Jordan, to Sihon and to Og, whom y'all devoted to…"
         },
         {
           "v": 23,
-          "pre": "…turned back, and came down from the hill country, and ",
+          "pre": "…en turned back and came down from the hill country and ",
           "hit": "crossed over",
-          "post": ", and came to Joshua son of Nun, and recounted to him e…"
+          "post": " and came to Joshua son of Nun, and recounted to him al…"
         }
       ],
       "total": 2
@@ -838,34 +824,12 @@
       "hits": [
         {
           "v": 10,
-          "pre": "…r side of the Jordan — to Sihon and to Og — whom y'all ",
+          "pre": "…were beyond the Jordan, to Sihon and to Og, whom y'all ",
           "hit": "devoted to destruction",
           "post": ".…"
         }
       ],
-      "total": 2
-    },
-    "dig": {
-      "count": 2,
-      "verses": [
-        2,
-        3
-      ],
-      "hits": [
-        {
-          "v": 2,
-          "pre": "…men have come here tonight from the sons of Israel, to ",
-          "hit": "dig out",
-          "post": " the land.\"…"
-        },
-        {
-          "v": 3,
-          "pre": "…o came to you, who came into your house — for it is to ",
-          "hit": "dig out",
-          "post": " all the land that they have come.\"…"
-        }
-      ],
-      "total": 2
+      "total": 1
     },
     "dread": {
       "count": 1,
@@ -877,101 +841,25 @@
           "v": 9,
           "pre": "…\"I know that Yahweh has given y'all the land, and that ",
           "hit": "dread",
-          "post": " of y'all has fallen on us, and that all who live in th…"
+          "post": " of y'all has fallen on us, and that all the inhabitant…"
         }
       ],
       "total": 1
     },
-    "enter": {
-      "count": 9,
+    "dry": {
+      "count": 1,
       "verses": [
-        1,
-        2,
-        3,
-        4,
-        18,
-        22,
-        23
+        10
       ],
       "hits": [
         {
-          "v": 1,
-          "pre": "…o, see the land, and Jericho.\" And they went, and they ",
-          "hit": "came into",
-          "post": " the house of a woman, a prostitute, and her name was R…"
-        },
-        {
-          "v": 2,
-          "pre": "…d it was told to the king of Jericho: \"Look — men have ",
-          "hit": "come",
-          "post": " here tonight from the sons of Israel, to dig out the l…"
-        },
-        {
-          "v": 3,
-          "pre": "…Jericho sent to Rahab, saying, \"Bring out the men who ",
-          "hit": "came",
-          "post": " to you, who came into your house — for it is to dig ou…"
-        },
-        {
-          "v": 3,
-          "pre": "…Rahab, saying, \"Bring out the men who came to you, who ",
-          "hit": "came into",
-          "post": " your house — for it is to dig out all the land that th…"
-        },
-        {
-          "v": 3,
-          "pre": "…use — for it is to dig out all the land that they have ",
-          "hit": "come",
-          "post": ".\"…"
-        },
-        {
-          "v": 4,
-          "pre": "…the two men and hid him. And she said, \"Yes — the men ",
-          "hit": "came",
-          "post": " to me, but I did not know where they were from.…"
-        },
-        {
-          "v": 18,
-          "pre": "…look: we are ",
-          "hit": "coming into",
-          "post": " the land. This cord of scarlet thread you will tie in…"
-        },
-        {
-          "v": 22,
-          "pre": "…And they went, and ",
-          "hit": "came",
-          "post": " to the hill country, and stayed there three days, unti…"
-        },
-        {
-          "v": 23,
-          "pre": "…And the two men turned back, and ",
-          "hit": "came",
-          "post": " down from the hill country, and crossed over, and came…"
+          "v": 10,
+          "pre": "…\"For we have heard how Yahweh ",
+          "hit": "dried up",
+          "post": " the waters of the Reed Sea before y'all when y'all cam…"
         }
       ],
-      "total": 9
-    },
-    "find": {
-      "count": 2,
-      "verses": [
-        22,
-        23
-      ],
-      "hits": [
-        {
-          "v": 22,
-          "pre": "…; and the chasers searched the whole road, and did not ",
-          "hit": "find",
-          "post": ".…"
-        },
-        {
-          "v": 23,
-          "pre": "…a son of Nun, and recounted to him everything that had ",
-          "hit": "found",
-          "post": " them.…"
-        }
-      ],
-      "total": 2
+      "total": 1
     },
     "give": {
       "count": 4,
@@ -990,21 +878,21 @@
         },
         {
           "v": 12,
-          "pre": "…at y'all too will do ḥesed with my father's house, and ",
+          "pre": "…t y'all also will do ḥesed with my father's house, and ",
           "hit": "give",
           "post": " me a sign of truth,…"
         },
         {
           "v": 14,
-          "pre": "…ell this business of ours. And it will be, when Yahweh ",
+          "pre": "…ell this business of ours; and it will be, when Yahweh ",
           "hit": "gives",
-          "post": " us the land, we will do ḥesed and truth with you.\"…"
+          "post": " us the land, that we will do ḥesed and truth with you.…"
         },
         {
           "v": 24,
-          "pre": "…And they said to Joshua, \"Yahweh has ",
+          "pre": "…And they said to Joshua, \"Yes, Yahweh has ",
           "hit": "given",
-          "post": " into our hand all the land; and also, all who live in…"
+          "post": " all the land into our hand; and also all the inhabitan…"
         }
       ],
       "total": 4
@@ -1018,83 +906,127 @@
       "hits": [
         {
           "v": 12,
-          "pre": "…ow, swear to me, please, by Yahweh — since I have done ",
+          "pre": "…now, swear to me, please, by Yahweh, since I have done ",
           "hit": "ḥesed",
-          "post": " with y'all — that y'all too will do ḥesed with my fath…"
+          "post": " with y'all, that y'all also will do ḥesed with my fath…"
         },
         {
           "v": 12,
-          "pre": "…ow, swear to me, please, by Yahweh — since I have done ",
+          "pre": "…now, swear to me, please, by Yahweh, since I have done ",
           "hit": "ḥesed",
-          "post": " with y'all — that y'all too will do ḥesed with my fath…"
+          "post": " with y'all, that y'all also will do ḥesed with my fath…"
         },
         {
           "v": 14,
-          "pre": "…it will be, when Yahweh gives us the land, we will do ",
+          "pre": "…ill be, when Yahweh gives us the land, that we will do ",
           "hit": "ḥesed",
           "post": " and truth with you.\"…"
         }
       ],
       "total": 3
     },
-    "lie-down": {
-      "count": 2,
-      "verses": [
-        1,
-        8
-      ],
-      "hits": [
-        {
-          "v": 1,
-          "pre": "…woman, a prostitute, and her name was Rahab; and they ",
-          "hit": "lay down",
-          "post": " there.…"
-        },
-        {
-          "v": 8,
-          "pre": "…And they — before they ",
-          "hit": "lay down",
-          "post": " — she went up to them, on the roof.…"
-        }
-      ],
-      "total": 2
-    },
-    "melt": {
+    "hide": {
       "count": 1,
       "verses": [
-        11
+        6
       ],
       "hits": [
         {
-          "v": 11,
-          "pre": "…And we heard, and our heart ",
-          "hit": "melted",
-          "post": ", and no spirit rose any longer in anyone before y'all…"
+          "v": 6,
+          "pre": "…But she had brought them up to the roof and ",
+          "hit": "hidden",
+          "post": " them in the stalks of flax laid out for her on the roo…"
         }
       ],
       "total": 1
     },
-    "rahab": {
-      "count": 2,
+    "know": {
+      "count": 3,
       "verses": [
-        1,
-        3
+        4,
+        5,
+        9
+      ],
+      "hits": [
+        {
+          "v": 4,
+          "pre": "…and she said, \"Yes, the men came to me, but I did not ",
+          "hit": "know",
+          "post": " where they were from.…"
+        },
+        {
+          "v": 5,
+          "pre": "…ate was to be shut at dark, the men went out. I do not ",
+          "hit": "know",
+          "post": " where the men went. Chase after them quickly, for you…"
+        },
+        {
+          "v": 9,
+          "pre": "…And she said to the men, \"I ",
+          "hit": "know",
+          "post": " that Yahweh has given y'all the land, and that dread o…"
+        }
+      ],
+      "total": 3
+    },
+    "melt": {
+      "count": 3,
+      "verses": [
+        9,
+        11,
+        24
+      ],
+      "hits": [
+        {
+          "v": 9,
+          "pre": "…n on us, and that all the inhabitants of the land have ",
+          "hit": "melted away",
+          "post": " before y'all.…"
+        },
+        {
+          "v": 11,
+          "pre": "…\"And we heard, and our heart ",
+          "hit": "melted",
+          "post": ", and no spirit rose up anymore in anyone because of y'…"
+        },
+        {
+          "v": 24,
+          "pre": "…ur hand; and also all the inhabitants of the land have ",
+          "hit": "melted away",
+          "post": " before us.\"…"
+        }
+      ],
+      "total": 3
+    },
+    "prostitute": {
+      "count": 1,
+      "verses": [
+        1
       ],
       "hits": [
         {
           "v": 1,
-          "pre": "…o the house of a woman, a prostitute, and her name was ",
-          "hit": "Rahab",
-          "post": "; and they lay down there.…"
-        },
-        {
-          "v": 3,
-          "pre": "…And the king of Jericho sent to ",
-          "hit": "Rahab",
-          "post": ", saying, \"Bring out the men who came to you, who came…"
+          "pre": "…ho.\" And they went and came to the house of a woman, a ",
+          "hit": "prostitute",
+          "post": ", and her name was Rahab, and they lay down there.…"
         }
       ],
-      "total": 2
+      "total": 1
+    },
+    "save-alive": {
+      "count": 1,
+      "verses": [
+        13
+      ],
+      "hits": [
+        {
+          "v": 13,
+          "pre": "…\"and ",
+          "hit": "save alive",
+          "post": " my father and my mother and my brothers and my sisters…"
+        }
+      ],
+      "total": 1
     },
     "scarlet": {
       "count": 2,
@@ -1105,9 +1037,9 @@
       "hits": [
         {
           "v": 18,
-          "pre": "…look: we are coming into the land. This cord of ",
+          "pre": "…\"Look, we are coming into the land: this cord of ",
           "hit": "scarlet",
-          "post": " thread you will tie in the window you brought us down…"
+          "post": " thread you will tie in the window you let us down thro…"
         },
         {
           "v": 21,
@@ -1130,44 +1062,67 @@
           "v": 1,
           "pre": "…And Joshua son of Nun ",
           "hit": "sent",
-          "post": ", from Shittim, two men — spies — quietly, saying, \"Go,…"
+          "post": " from Shittim two men, spies, secretly, saying, \"Go, se…"
         },
         {
           "v": 3,
           "pre": "…And the king of Jericho ",
           "hit": "sent",
-          "post": " to Rahab, saying, \"Bring out the men who came to you,…"
+          "post": " to Rahab, saying, \"Bring out the men who have come to…"
         },
         {
           "v": 21,
-          "pre": "…And she said, \"As y'all say — so it is.\" And she ",
+          "pre": "…And she said, \"As y'all's words, so it is.\" And she ",
           "hit": "sent",
           "post": " them off, and they went; and she tied the scarlet cord…"
         }
       ],
       "total": 3
     },
-    "soften": {
-      "count": 2,
+    "sign": {
+      "count": 1,
       "verses": [
-        9,
-        24
+        12
       ],
       "hits": [
         {
-          "v": 9,
-          "pre": "…s fallen on us, and that all who live in the land have ",
-          "hit": "gone soft",
-          "post": " before y'all.…"
-        },
-        {
-          "v": 24,
-          "pre": "…all the land; and also, all who live in the land have ",
-          "hit": "gone soft",
-          "post": " before us.\"…"
+          "v": 12,
+          "pre": "…so will do ḥesed with my father's house, and give me a ",
+          "hit": "sign",
+          "post": " of truth,…"
         }
       ],
-      "total": 2
+      "total": 1
+    },
+    "spirit": {
+      "count": 1,
+      "verses": [
+        11
+      ],
+      "hits": [
+        {
+          "v": 11,
+          "pre": "…\"And we heard, and our heart melted, and no ",
+          "hit": "spirit",
+          "post": " rose up anymore in anyone because of y'all; for Yahweh…"
+        }
+      ],
+      "total": 1
+    },
+    "spy": {
+      "count": 1,
+      "verses": [
+        1
+      ],
+      "hits": [
+        {
+          "v": 1,
+          "pre": "…And Joshua son of Nun sent from Shittim two men, ",
+          "hit": "spies",
+          "post": ", secretly, saying, \"Go, see the land, and Jericho.\" An…"
+        }
+      ],
+      "total": 1
     },
     "swear": {
       "count": 5,
@@ -1179,36 +1134,58 @@
       "hits": [
         {
           "v": 12,
-          "pre": "…And now, ",
+          "pre": "…\"And now, ",
           "hit": "swear",
-          "post": " to me, please, by Yahweh — since I have done ḥesed wit…"
+          "post": " to me, please, by Yahweh, since I have done ḥesed with…"
         },
         {
           "v": 17,
-          "pre": "…And the men said to her, \"Clear are we of this ",
+          "pre": "…And the men said to her, \"We will be clear of this ",
           "hit": "oath",
-          "post": " of yours that you made us swear —…"
+          "post": " of yours that you made us swear.…"
         },
         {
           "v": 17,
-          "pre": "…, \"Clear are we of this oath of yours that you made us ",
+          "pre": "…e will be clear of this oath of yours that you made us ",
           "hit": "swear",
-          "post": " —…"
+          "post": ".…"
         },
         {
           "v": 20,
-          "pre": "…u tell this business of ours, we will be clear of your ",
+          "pre": "…l this business of ours, then we will be clear of your ",
           "hit": "oath",
           "post": " that you made us swear.\"…"
         },
         {
           "v": 20,
-          "pre": "…f ours, we will be clear of your oath that you made us ",
+          "pre": "…s, then we will be clear of your oath that you made us ",
           "hit": "swear",
           "post": ".\"…"
         }
       ],
       "total": 5
+    },
+    "truth": {
+      "count": 2,
+      "verses": [
+        12,
+        14
+      ],
+      "hits": [
+        {
+          "v": 12,
+          "pre": "…do ḥesed with my father's house, and give me a sign of ",
+          "hit": "truth",
+          "post": ",…"
+        },
+        {
+          "v": 14,
+          "pre": "…en Yahweh gives us the land, that we will do ḥesed and ",
+          "hit": "truth",
+          "post": " with you.\"…"
+        }
+      ],
+      "total": 2
     }
   },
   "unit-03": {
@@ -1482,6 +1459,27 @@
       ],
       "total": 22
     },
+    "dry": {
+      "count": 2,
+      "verses": [
+        23
+      ],
+      "hits": [
+        {
+          "v": 23,
+          "pre": "…For Yahweh y'all's God ",
+          "hit": "dried up",
+          "post": " the waters of the Jordan from before y'all until y'all…"
+        },
+        {
+          "v": 23,
+          "pre": "…For Yahweh y'all's God ",
+          "hit": "dried up",
+          "post": " the waters of the Jordan from before y'all until y'all…"
+        }
+      ],
+      "total": 2
+    },
     "dry-ground": {
       "count": 3,
       "verses": [
@@ -1511,10 +1509,9 @@
       "total": 4
     },
     "dry-land": {
-      "count": 3,
+      "count": 1,
       "verses": [
-        22,
-        23
+        22
       ],
       "hits": [
         {
@@ -1522,21 +1519,9 @@
           "pre": "…hen y'all shall let y'all's children know, saying, ‘On ",
           "hit": "dry land",
           "post": " Israel crossed this Jordan.’…"
-        },
-        {
-          "v": 23,
-          "pre": "…For Yahweh y'all's God ",
-          "hit": "dried up",
-          "post": " the waters of the Jordan from before y'all until y'all…"
-        },
-        {
-          "v": 23,
-          "pre": "…For Yahweh y'all's God ",
-          "hit": "dried up",
-          "post": " the waters of the Jordan from before y'all until y'all…"
         }
       ],
-      "total": 4
+      "total": 2
     },
     "fear": {
       "count": 3,
@@ -1798,6 +1783,21 @@
       ],
       "total": 1
     },
+    "sign": {
+      "count": 1,
+      "verses": [
+        6
+      ],
+      "hits": [
+        {
+          "v": 6,
+          "pre": "…so that this may be a ",
+          "hit": "sign",
+          "post": " among y'all. When y'all's children ask tomorrow, sayin…"
+        }
+      ],
+      "total": 1
+    },
     "sole": {
       "count": 2,
       "verses": [
@@ -1985,6 +1985,21 @@
         }
       ],
       "total": 2
+    },
+    "dry": {
+      "count": 1,
+      "verses": [
+        1
+      ],
+      "hits": [
+        {
+          "v": 1,
+          "pre": "…Canaanites who were by the sea, heard that Yahweh had ",
+          "hit": "dried up",
+          "post": " the waters of the Jordan before the sons of Israel unt…"
+        }
+      ],
+      "total": 1
     },
     "foreskin": {
       "count": 2,
@@ -2237,6 +2252,21 @@
           "pre": "…own, and said to him, \"What is my lord speaking to his ",
           "hit": "slave",
           "post": "?\"…"
+        }
+      ],
+      "total": 1
+    },
+    "spirit": {
+      "count": 1,
+      "verses": [
+        1
+      ],
+      "hits": [
+        {
+          "v": 1,
+          "pre": "…had crossed, that their heart melted, and there was no ",
+          "hit": "spirit",
+          "post": " left in them before the sons of Israel.…"
         }
       ],
       "total": 1

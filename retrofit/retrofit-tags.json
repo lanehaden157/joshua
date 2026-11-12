@@ -33,6 +33,24 @@
       "to": "holy",
       "text": "set apart",
       "w": "06NvG"
+    },
+    {
+      "unit": "unit-03",
+      "verse": "4:23",
+      "occ": 1,
+      "from": "dry-land",
+      "to": "dry",
+      "text": "dried up",
+      "w": "06uHz"
+    },
+    {
+      "unit": "unit-03",
+      "verse": "4:23",
+      "occ": 1,
+      "from": "dry-land",
+      "to": "dry",
+      "text": "dried up",
+      "w": "06w5T"
     }
   ],
   "add": [
@@ -129,6 +147,27 @@
       "root": "command",
       "text": "commanded",
       "w": "0645a"
+    },
+    {
+      "unit": "unit-03",
+      "verse": "4:6",
+      "root": "sign",
+      "text": "sign",
+      "w": "06L3V"
+    },
+    {
+      "unit": "unit-04",
+      "verse": 1,
+      "root": "spirit",
+      "text": "spirit",
+      "w": "06Lgy"
+    },
+    {
+      "unit": "unit-04",
+      "verse": 1,
+      "root": "dry",
+      "text": "dried up",
+      "w": "06EjA"
     }
   ],
   "text": []

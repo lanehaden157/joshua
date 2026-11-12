@@ -88,7 +88,8 @@
     },
     "melt": {
       "ids": [
-        "4549"
+        "4549",
+        "4127"
       ],
       "note": "masas, Niphal melt. Rahab's 'our heart melted' (2:11) returns for the Amorite and Canaanite kings (5:1) and, reversed, for Israel after Ai (7:5)."
     },
@@ -148,6 +149,30 @@
         "8104"
       ],
       "note": "shamar covers both keeping a command and guarding something (6:18 'guard yourselves from the devoted things'; 10:18 men posted to guard the cave). The commission's 'keep and do' (1:7–8) is answered at the release of the eastern tribes and in the farewell."
+    },
+    "spirit": {
+      "ids": [
+        "7307"
+      ],
+      "note": "ruaḥ occurs in the book only at 2:11 and 5:1, both times paired with the melting heart (Lane, 2026-11-05, unit 2)."
+    },
+    "dry": {
+      "ids": [
+        "3001"
+      ],
+      "note": "One verb from the Reed Sea to the Jordan, then a joke at Gibeon (Lane, 2026-11-05, unit 2)."
+    },
+    "sign": {
+      "ids": [
+        "226"
+      ],
+      "note": "ʾot: Rahab's sign, the stones' sign, the exodus signs (Lane, 2026-11-05, unit 2)."
+    },
+    "hide": {
+      "ids": [
+        "2934"
+      ],
+      "note": "The verb of hiding to deceive. The hiding at 2:4 (tsafan) and 2:16 (ḥava) are different verbs and stay out (Lane, 2026-11-05, unit 2)."
     }
   },
   "declined": {

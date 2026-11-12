@@ -271,6 +271,11 @@
       },
       "payoffs": [
         {
+          "unit": 2,
+          "ref": "2:12",
+          "note": "the first oath sworn between people in the book, asked by a Canaanite, by Yahweh"
+        },
+        {
           "unit": 4,
           "ref": "5:6",
           "note": "one oath shuts a generation out of the land; the other oath, to the fathers, still stands"
@@ -554,6 +559,109 @@
       ],
       "note": "shamar covers both keeping a command and guarding something (6:18 'guard yourselves from the devoted things'; 10:18 men posted to guard the cave). The commission's 'keep and do' (1:7–8) is answered at the release of the eastern tribes and in the farewell.",
       "color": "#aa5a88"
+    },
+    {
+      "id": "spirit",
+      "root": "spirit",
+      "translit": "ruaḥ",
+      "gloss": "spirit, breath, wind",
+      "status": "open",
+      "tagged": true,
+      "opens": {
+        "unit": 2,
+        "ref": "2:11",
+        "note": "'no spirit rose up anymore in anyone': Rahab's words for Jericho"
+      },
+      "payoffs": [
+        {
+          "unit": 4,
+          "ref": "5:1",
+          "note": "the same pair for the kings of the land: hearts melted, no spirit left in them"
+        }
+      ],
+      "note": "ruaḥ occurs in the book only at 2:11 and 5:1, both times paired with the melting heart (Lane, 2026-11-05, unit 2).",
+      "color": "#a66566"
+    },
+    {
+      "id": "dry",
+      "root": "dry",
+      "translit": "yavesh",
+      "gloss": "dry up; become dry",
+      "status": "open",
+      "tagged": true,
+      "opens": {
+        "unit": 2,
+        "ref": "2:10",
+        "note": "'Yahweh dried up the waters of the Reed Sea before y'all'"
+      },
+      "payoffs": [
+        {
+          "unit": 3,
+          "ref": "4:23",
+          "note": "the Jordan dried up 'as Yahweh y'all's God did to the Reed Sea'"
+        },
+        {
+          "unit": 4,
+          "ref": "5:1",
+          "note": "the kings hear that Yahweh dried up the Jordan"
+        },
+        {
+          "unit": 9,
+          "ref": "9:5",
+          "note": "the Gibeonites' bread 'dried out': the miracle verb turned to a prop"
+        }
+      ],
+      "note": "One verb from the Reed Sea to the Jordan, then a joke at Gibeon (Lane, 2026-11-05, unit 2).",
+      "color": "#827b4a"
+    },
+    {
+      "id": "sign",
+      "root": "sign",
+      "translit": "ʾot",
+      "gloss": "sign, token",
+      "status": "open",
+      "tagged": true,
+      "opens": {
+        "unit": 2,
+        "ref": "2:12",
+        "note": "'give me a sign of truth': Rahab asks for a token, and gets a scarlet cord"
+      },
+      "payoffs": [
+        {
+          "unit": 3,
+          "ref": "4:6",
+          "note": "the Jordan stones, 'a sign among y'all'"
+        },
+        {
+          "unit": 23,
+          "ref": "24:17",
+          "note": "'the great signs' Yahweh did in Egypt, at Shechem"
+        }
+      ],
+      "note": "ʾot: Rahab's sign, the stones' sign, the exodus signs (Lane, 2026-11-05, unit 2).",
+      "color": "#8b6cae"
+    },
+    {
+      "id": "hide",
+      "root": "hide",
+      "translit": "taman",
+      "gloss": "hide, bury out of sight",
+      "status": "open",
+      "tagged": true,
+      "opens": {
+        "unit": 2,
+        "ref": "2:6",
+        "note": "Rahab hides the spies under the flax: hiding that saves"
+      },
+      "payoffs": [
+        {
+          "unit": 6,
+          "ref": "7:21",
+          "note": "Achan hides the devoted things in the ground of his tent: hiding that damns"
+        }
+      ],
+      "note": "The verb of hiding to deceive. The hiding at 2:4 (tsafan) and 2:16 (ḥava) are different verbs and stay out (Lane, 2026-11-05, unit 2).",
+      "color": "#9c744c"
     }
   ]
 }

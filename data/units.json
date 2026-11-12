@@ -159,76 +159,68 @@
       "movement": 1,
       "built": true,
       "roots": {
-        "clear": {
-          "color": "#6b1e46",
-          "translit": "naqi",
-          "gloss": "clear, innocent, released from an obligation",
-          "echo": "Gen 24:8, 41 — Abraham's servant will be 'clear of this oath of mine' if the woman will not come. Another oath, another woman, the same way out."
+        "spy": {
+          "color": "#8a2f3a",
+          "translit": "ragal",
+          "gloss": "spy out; spies",
+          "example": "two men, spies, secretly"
         },
-        "cord": {
-          "color": "#3d6b4a",
-          "translit": "tiqvah",
-          "gloss": "cord; hope",
-          "example": "this cord of scarlet thread",
-          "echo": "Hos 2:15 — 'the Valley of Achor a door of hope (tiqvah)': Hosea joins Rahab's word to Achor, the valley of Achan's judgment (Josh 7:24–26)."
+        "prostitute": {
+          "color": "#005847",
+          "translit": "zonah",
+          "gloss": "prostitute",
+          "example": "a woman, a prostitute, and her name was Rahab"
         },
-        "dig": {
-          "color": "#7a3f5c",
-          "translit": "ḥafar",
-          "gloss": "dig; search out",
-          "example": "to dig out the land",
-          "echo": "Deut 1:22 — the first generation asked for men to 'dig out the land for us': the spy mission that ended in forty years of wandering."
+        "know": {
+          "color": "#006494",
+          "translit": "yadaʿ",
+          "gloss": "know",
+          "example": "I did not know where they were from"
+        },
+        "conceal": {
+          "color": "#5a5a9c",
+          "translit": "tsafan",
+          "gloss": "hide away, keep concealed",
+          "example": "took the two men and hid them"
         },
         "dread": {
           "color": "#8f4a1e",
           "translit": "ʾemah",
           "gloss": "dread, terror",
-          "echo": "Exod 15:16 — 'dread and terror fall on them,' sung at the sea; Exod 23:27 — 'my dread I will send ahead of you.' Rahab reports it has happened."
-        },
-        "enter": {
-          "color": "#55642f",
-          "translit": "boʾ",
-          "gloss": "come, come in, enter",
-          "example": "who came into your house"
-        },
-        "find": {
-          "color": "#8c6d1f",
-          "translit": "matsaʾ",
-          "gloss": "find; befall"
+          "echo": "Exod 15:16 — 'terror and dread falls on them' in the Song of the Sea; Exod 23:27, Yahweh's promise to send his terror ahead of Israel"
         },
         "hesed": {
           "color": "#5c3f7a",
           "translit": "ḥesed",
-          "gloss": "loyalty that binds both parties; kindness owed and kept",
-          "echo": "Ruth 3:10 — Boaz praises the ḥesed of Ruth, a foreign woman. Matthew makes Boaz Rahab's son (Matt 1:5)."
+          "gloss": "covenant loyalty: kindness owed and sworn, the faithfulness of a bond",
+          "example": "since I have done ḥesed with y'all"
         },
-        "lie-down": {
-          "color": "#6b3620",
-          "translit": "shakav",
-          "gloss": "lie down",
-          "example": "and they lay down there"
+        "truth": {
+          "color": "#7f5482",
+          "translit": "ʾemet",
+          "gloss": "truth, reliability",
+          "example": "give me a sign of truth"
         },
-        "rahab": {
-          "color": "#9c5a1e",
-          "translit": "Raḥav",
-          "gloss": "wide, spacious — the name Rahab",
-          "echo": "Matt 1:5 — 'Salmon fathered Boaz by Rahab,' in Jesus' genealogy beside Tamar and Ruth. Heb 11:31 counts her faith; Jas 2:25 her works."
+        "save-alive": {
+          "color": "#945042",
+          "translit": "ḥayah",
+          "gloss": "keep alive, let live",
+          "example": "save alive my father and my mother"
         },
         "scarlet": {
           "color": "#1f6e7a",
           "translit": "shani",
-          "gloss": "scarlet, crimson (the dye and the thread)",
-          "example": "this cord of scarlet thread",
-          "echo": "Gen 38:28–30 — a scarlet thread tied on Zerah's hand at birth, in the story of Tamar, whom Judah took for a prostitute. Matt 1:3, 5 names Tamar and Rahab together."
+          "gloss": "scarlet, crimson thread",
+          "example": "this cord of scarlet thread"
         },
-        "soften": {
-          "color": "#7a5c1e",
-          "translit": "mug",
-          "gloss": "go soft, dissolve (with fear)",
-          "echo": "Exod 15:15 — 'all who live in Canaan went soft': the same verb, in the song Israel sang at the sea."
+        "cord": {
+          "color": "#3d6b4a",
+          "translit": "tiqvah",
+          "gloss": "cord, line; (same form) hope",
+          "example": "she tied the scarlet cord in the window"
         }
       },
-      "contract": "0.25.0"
+      "contract": "0.30.1"
     },
     {
       "n": 3,
