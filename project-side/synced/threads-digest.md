@@ -1,6 +1,6 @@
 # Cross-unit threads — canonical digest
 
-Generated from `data/threads.json` (version 1). 23 threads, 23 open.
+Generated from `data/threads.json` (version 1). 27 threads, 27 open.
 
 **The source of truth for thread tagging.** Tag every occurrence of a thread below with `<span class="r" data-root="<id>">…</span>` (the porter fills `data-w`) and list it under `threads.opens` / `threads.payoffs`. A root not listed here is unit-local: declare it in the unit's `roots`. To propose one, add it to `threads.candidates` with a one-line reason and the lemma `ids` you saw in `Joshua-words.tsv`. **Claude decides, biased toward book-wide** (a local root that later pays off is worse than a tracked one that doesn't), and asks Lane only when genuinely unsure.
 
@@ -19,12 +19,16 @@ Generated from `data/threads.json` (version 1). 23 threads, 23 open.
 | `servant` | ʿeved | slave (Moses' title, 'slave of Yahweh') | 1 (1:1) | 4 (5:14) |
 | `sole` | kap | palm of the hand; sole of the foot | 1 (1:3) | 3 (3:13) · 3 (4:18) |
 | `strong` | ḥazaq | be strong; strong (adjective) | 1 (1:6) | 3 (4:24) |
-| `swear` | shavaʿ | swear (an oath) | 1 (1:6) | 4 (5:6) |
+| `swear` | shavaʿ | swear (an oath) | 1 (1:6) | 2 (2:12) · 4 (5:6) |
 | `torah` | torah | instruction, the Torah (here 'the scroll of the torah') | 1 (1:7) | — |
 | `blood` | dam | blood | 2 (2:19) | — |
 | `chase` | radaf | chase, pursue | 2 (2:5) | — |
 | `devote` | ḥaram | devote to destruction | 2 (2:10) | — |
+| `dry` | yavesh | dry up; become dry | 2 (2:10) | 3 (4:23) · 4 (5:1) · 9 (9:5) |
+| `hide` | taman | hide, bury out of sight | 2 (2:6) | 6 (7:21) |
 | `melt` | masas | melt | 2 (2:11) | 4 (5:1) |
+| `sign` | ʾot | sign, token | 2 (2:12) | 3 (4:6) · 23 (24:17) |
+| `spirit` | ruaḥ | spirit, breath, wind | 2 (2:11) | 4 (5:1) |
 | `complete` | tamam | be complete, come to an end, finish | 3 (3:16) | 4 (5:6) · 4 (5:8) |
 | `fear` | yareʾ | fear, stand in awe of | 3 (4:14) | 3 (4:24) |
 | `holy` | qadash | be holy; set apart, make holy | 3 (3:5) | 4 (5:15) |
@@ -38,10 +42,12 @@ Generated from `data/threads.json` (version 1). 23 threads, 23 open.
 - **`complete`**: tamam marks the crossing's completion (3:16-17, 4:1, 4:10-11), then a generation's extinction (5:6), then the circumcision rite's completion (5:8) -- one verb for triumph and for ending.
 - **`cross`**: the book's first command, qum ʿavor 'rise, cross' (1:2), relayed down the chain (1:11); ʿever 'far side' marks the eastern tribes as people of the other bank. One root, both ids.
 - **`devote`**: first ḥaram in the book, in Rahab's mouth (2:10), before Israel has devoted a single Canaanite city; becomes the governing law of Jericho, Ai, and the campaign reports.
+- **`dry`**: One verb from the Reed Sea to the Jordan, then a joke at Gibeon (Lane, 2026-11-05, unit 2).
 - **`fear`**: yareʾ: Israel fears Joshua as it feared Moses (4:14); the crossing is so that Israel fears Yahweh (4:24); 'do not fear' before battle (8:1; 10:8); 'fear Yahweh and serve him' at Shechem (24:14). Promoted to a tracked thread 2026-09-22 (Lane, unit 3).
 - **`firm`**: ʾamats, always paired with ḥazaq; kept as its own root per the colour policy (split pairs).
 - **`forsake`**: ʿazav runs from Yahweh's promise not to abandon Joshua, through the eastern tribes who did not abandon their brothers, to the people's vow not to forsake Yahweh. 8:17 (Ai's men leave the city open) is a plain-sense use.
 - **`give`**: natan ×8 in unit 1's speeches; Yahweh 'is giving' (participle) vs. 'Moses gave' (perfect) — the land as gift, already done and not yet done.
+- **`hide`**: The verb of hiding to deceive. The hiding at 2:4 (tsafan) and 2:16 (ḥava) are different verbs and stay out (Lane, 2026-11-05, unit 2).
 - **`holy`**: qadash runs from 'set yourselves apart' (3:5) to the commander's holy ground (5:15), the holy spoil (6:19), the second setting-apart (7:13), Kedesh set apart (20:7), and 'a holy God' (24:19).
 - **`inherit`**: tanḥil 'you will cause to inherit' (1:6) is the first naḥal-family word in the book, ahead of naḥalah 'inheritance' in the allotment chapters (units 13-20).
 - **`keep`**: shamar covers both keeping a command and guarding something (6:18 'guard yourselves from the devoted things'; 10:18 men posted to guard the cave). The commission's 'keep and do' (1:7–8) is answered at the release of the eastern tribes and in the farewell.
@@ -51,7 +57,9 @@ Generated from `data/threads.json` (version 1). 23 threads, 23 open.
 - **`rest`**: meniaḥ 'giving rest' (1:13) and yaniaḥ (1:15) set up the book's completion formula (21:44, 22:4, 23:1). Widened 2026-09-22 (Lane) to include 3240, the lexicon's separate number for the causative 'lay down' at 4:3, 4:8 — the stones set down exactly where the feet came to rest.
 - **`send`**: 'wherever you send us we will go' (1:16) — the next verse in the book, 2:1, is Joshua sending the spies.
 - **`servant`**: ʿeved YHWH belongs to Moses in unit 1; watch whether and when Joshua receives it (24:29).
+- **`sign`**: ʾot: Rahab's sign, the stones' sign, the exodus signs (Lane, 2026-11-05, unit 2).
 - **`sole`**: kap regel, 'sole of the foot': promised at 1:3 ('every place the sole of your foot treads'), made literal at 3:13 and 4:18, where soles touching and leaving the water start and stop the miracle. Promoted to a tracked thread 2026-09-22 (Lane, unit 3) — a phrase-level thread with a Torah history.
+- **`spirit`**: ruaḥ occurs in the book only at 2:11 and 5:1, both times paired with the melting heart (Lane, 2026-11-05, unit 2).
 - **`strong`**: ḥazaq ×4 — three times from Yahweh, the last time from the eastern tribes (1:18); recurs at 10:25. Widened 2026-09-22 (Lane) to include 2389, the adjective used at 4:24.
 - **`swear`**: Oaths bind the book together: Yahweh's oath to the fathers (1:6), Rahab's oath (2:12, 17, 20), its keeping (6:22), the Gibeonite oath (9:15, 19-20), the rest formula (21:43-44).
 - **`torah`**: 'the scroll of the torah' (1:8) opens a line to 8:31-34, 22:5, and 23:6.
