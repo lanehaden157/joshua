@@ -48,6 +48,7 @@ FENCE_RE = re.compile(r"```html\n(.*?)```", re.S)
 DOC_BUDGET_KB = {"field": 4, "claude": 2, "style_reference": 6,
                  "translation_choices": 16, "resources": 9,
                  "card_research": 4.5, "card_verse": 5, "card_build": 2,
+                 "card_condensed": 3, "lens": 3,
                  "contract": 10, "book_guide": 4.5}
 
 
@@ -203,6 +204,8 @@ def check_docs():
              "card_research": os.path.join(b.root, "card-research.md"),
              "card_verse": os.path.join(b.root, "card-verse.md"),
              "card_build": os.path.join(b.root, "card-build.md"),
+             "card_condensed": os.path.join(b.root, "card-condensed.md"),
+             "lens": os.path.join(b.root, "lens.md"),
              "contract": os.path.join(b.root, "fragment-contract.md"),
              "book_guide": os.path.join(b.root, "biblecore", "BOOK_CLAUDE.md")}
     budget = {**DOC_BUDGET_KB, **b.check("doc_budget_kb")}
